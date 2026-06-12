@@ -1,0 +1,67 @@
+# Separator
+
+A thin divider line that separates content, horizontally or vertically. Wraps the reka-ui Separator primitive.
+
+## When to Use
+- Visually divide sections of content (lists, menus, toolbars, cards)
+- Separate groups of related items
+- NOT for spacing alone (use margin/padding)
+- NOT as a decorative border around a container (use border utilities)
+
+## Usage
+
+Horizontal (default):
+```vue
+<Separator />
+```
+
+Vertical (needs a sized parent, since it fills height):
+```vue
+<div class="flex h-5 items-center gap-2">
+    <span>One</span>
+    <Separator orientation="vertical" />
+    <span>Two</span>
+</div>
+```
+
+## Props
+
+- `orientation`: "horizontal" or "vertical" (default: "horizontal")
+- `decorative`: when true (default), the separator is purely visual and hidden from assistive tech. Set false to expose it as a semantic separator.
+- `class`: custom class(es)
+- Also forwards the remaining reka-ui `SeparatorProps` (for example `as`)
+
+## Accessibility
+
+- `decorative` defaults to true, so the separator is `aria-hidden` and adds no semantics. This is correct for purely visual dividers.
+- Set `decorative="false"` when the separation is meaningful to the document structure. reka-ui then renders the correct `role="separator"` and `aria-orientation`.
+
+## Common Patterns
+
+Between dropdown sections:
+```vue
+<DropdownMenuItem>Edit</DropdownMenuItem>
+<Separator class="my-1" />
+<DropdownMenuItem>Delete</DropdownMenuItem>
+```
+
+Inline metadata divider:
+```vue
+<div class="flex h-3 items-center gap-2 text-xs text-muted-foreground">
+    <span>{{ author }}</span>
+    <Separator orientation="vertical" />
+    <span>{{ date }}</span>
+</div>
+```
+
+## Don't
+
+- Don't use a vertical separator without a height on the parent. It has nothing to fill.
+- Don't rely on a decorative separator to convey meaning to screen readers. Set `decorative="false"` instead.
+- Don't stack separators to create spacing.
+
+## Related
+
+- Frame: for bordered containers
+- DropdownMenu: uses separators between groups
+- List: for separated rows

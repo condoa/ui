@@ -1,0 +1,35 @@
+{
+  "name": "numberfield",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/NumberField/NumberField.vue",
+      "to": "components/ui/NumberField/NumberField.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/NumberField/Input.vue",
+      "to": "components/ui/NumberField/Input.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/NumberField/Increment.vue",
+      "to": "components/ui/NumberField/Increment.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/NumberField/Decrement.vue",
+      "to": "components/ui/NumberField/Decrement.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-minus",
+    "icon-plus"
+  ],
+  "doc": "resources/js/common/components/ui/NumberField/NumberField.llm.txt"
+}

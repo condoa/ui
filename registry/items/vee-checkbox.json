@@ -1,0 +1,22 @@
+{
+  "name": "vee-checkbox",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/Checkbox.vue",
+      "to": "components/ui/Vee/Checkbox.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "motion-v",
+    "tailwind-variants",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": null
+}

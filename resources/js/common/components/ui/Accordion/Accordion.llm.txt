@@ -1,0 +1,160 @@
+# Accordion
+
+Collapsible content sections. Use for organizing content in a compact, expandable format.
+
+## When to Use
+- FAQs and help content
+- Settings with expandable details
+- Grouped content that doesn't need to be visible at once
+- NOT for navigation (use NavigationMenu)
+- NOT for tabs (use Tabs)
+
+## Usage
+
+With items array:
+```vue
+<Accordion :items="[
+    { value: 'item-1', title: 'What is this library?', content: 'A self-contained Vue 3 component registry.' },
+    { value: 'item-2', title: 'How do I get started?', content: 'Sign up and follow the setup wizard.' },
+    { value: 'item-3', title: 'Is there a mobile app?', content: 'Yes, the app works as a PWA on mobile devices.' },
+]" />
+```
+
+With slots for custom content:
+```vue
+<Accordion type="single" collapsible>
+    <AccordionItem value="item-1">
+        <AccordionHeader>
+            <AccordionTrigger>Account Settings</AccordionTrigger>
+        </AccordionHeader>
+        <AccordionContent>
+            <div class="space-y-4">
+                <VeeInput name="name" label="Name" />
+                <VeeInput name="email" label="Email" />
+            </div>
+        </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2">
+        <AccordionHeader>
+            <AccordionTrigger>Notifications</AccordionTrigger>
+        </AccordionHeader>
+        <AccordionContent>
+            <div class="space-y-2">
+                <VeeCheckbox name="email_notif" label="Email notifications" />
+                <VeeCheckbox name="push_notif" label="Push notifications" />
+            </div>
+        </AccordionContent>
+    </AccordionItem>
+</Accordion>
+```
+
+## Components
+
+### Accordion
+Root component.
+- `type`: "single" | "multiple" (default: "single")
+- `collapsible`: allow closing all items (default: true, only for single)
+- `defaultValue`: initially open item(s)
+- `v-model`: controlled open state
+- `items`: array of items for declarative usage
+- `disabled`: disable all items
+
+### AccordionItem
+Individual collapsible section.
+- `value`: unique identifier (required)
+- `disabled`: disable this item
+
+### AccordionHeader
+Container for the trigger button.
+
+### AccordionTrigger
+The button that toggles the item.
+- `title`: trigger text (or use slot)
+- `icon`: leading icon
+
+### AccordionContent
+The collapsible content area.
+- `content`: text content (or use slot)
+
+## Item Object Shape
+
+When using `items` prop:
+```ts
+interface AccordionItem {
+    value: string       // Required unique ID
+    title?: string      // Trigger text
+    content?: string    // Content text
+    icon?: string       // Leading icon
+    disabled?: boolean  // Disable item
+}
+```
+
+## Accessibility
+- Space/Enter toggles focused item
+- Arrow keys navigate between items
+- ARIA expanded states managed automatically
+- Focus management on expand/collapse
+
+## Common Patterns
+
+FAQ section:
+```vue
+<div class="space-y-4">
+    <h2 class="text-2xl font-bold">Frequently Asked Questions</h2>
+    <Accordion :items="faqs" />
+</div>
+```
+
+Settings page:
+```vue
+<Accordion type="multiple" default-value="['general']">
+    <AccordionItem value="general">
+        <AccordionHeader>
+            <AccordionTrigger icon="icon-settings">General</AccordionTrigger>
+        </AccordionHeader>
+        <AccordionContent>
+            <!-- General settings form -->
+        </AccordionContent>
+    </AccordionItem>
+
+    <AccordionItem value="security">
+        <AccordionHeader>
+            <AccordionTrigger icon="icon-shield">Security</AccordionTrigger>
+        </AccordionHeader>
+        <AccordionContent>
+            <!-- Security settings form -->
+        </AccordionContent>
+    </AccordionItem>
+</Accordion>
+```
+
+Multiple open (type="multiple"):
+```vue
+<Accordion type="multiple" :default-value="['item-1', 'item-2']">
+    <!-- Multiple items can be open simultaneously -->
+</Accordion>
+```
+
+Controlled state:
+```vue
+<script setup>
+const openItem = ref('item-1')
+</script>
+
+<template>
+    <Accordion v-model="openItem" type="single">
+        <!-- ... -->
+    </Accordion>
+</template>
+```
+
+## Don't
+- Don't nest accordions deeply
+- Don't put critical content only in accordions (may be missed)
+- Don't use for navigation (use proper nav components)
+- Don't use for tab-like content switching (use Tabs)
+
+## Related
+- Collapsible: single collapsible section
+- Tabs: content switching without collapse
+- DescriptionList: static key-value display

@@ -1,0 +1,28 @@
+{
+  "name": "alert",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Alert/Title.vue",
+      "to": "components/ui/Alert/Title.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Alert/Description.vue",
+      "to": "components/ui/Alert/Description.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Alert/Alert.vue",
+      "to": "components/ui/Alert/Alert.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Alert/Alert.llm.txt"
+}

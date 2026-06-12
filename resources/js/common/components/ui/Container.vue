@@ -1,0 +1,36 @@
+<template>
+    <Primitive data-slot="container" :data-constrained="constrained" :class="styles({ class: props.class, constrained })" v-bind="forwarded">
+        <slot />
+    </Primitive>
+</template>
+
+<script lang="ts" setup>
+import { reactiveOmit } from '@vueuse/core'
+import { Primitive } from 'reka-ui'
+import type { PrimitiveProps } from 'reka-ui'
+import { tv, type ClassValue } from 'tailwind-variants'
+
+interface Props extends PrimitiveProps {
+    /** Custom class(es) to add to the element */
+    class?: ClassValue
+    /** Whether to constrain the width of the container */
+    constrained?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), { as: 'div' })
+
+const forwarded = reactiveOmit(props, 'class', 'constrained')
+
+const styles = tv({
+    base: 'mx-auto w-full max-w-7xl 2xl:max-w-(--breakpoint-2xl)',
+    variants: {
+        constrained: {
+            true: 'sm:px-6',
+            false: 'px-4 sm:px-6',
+        },
+    },
+    defaultVariants: {
+        constrained: false,
+    },
+})
+</script>

@@ -1,0 +1,20 @@
+{
+  "name": "treenode",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/TreeNode/TreeNode.vue",
+      "to": "components/ui/TreeNode/TreeNode.vue"
+    }
+  ],
+  "dependencies": [
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-chevron-right"
+  ],
+  "doc": "resources/js/common/components/ui/TreeNode/TreeNode.llm.txt"
+}

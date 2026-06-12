@@ -1,0 +1,28 @@
+{
+  "name": "collapsible",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Collapsible/Trigger.vue",
+      "to": "components/ui/Collapsible/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Collapsible/Content.vue",
+      "to": "components/ui/Collapsible/Content.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Collapsible/Collapsible.vue",
+      "to": "components/ui/Collapsible/Collapsible.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Collapsible/Collapsible.llm.txt"
+}

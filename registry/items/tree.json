@@ -1,0 +1,26 @@
+{
+  "name": "tree",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Tree/Virtualizer.vue",
+      "to": "components/ui/Tree/Virtualizer.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Tree/Tree.vue",
+      "to": "components/ui/Tree/Tree.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Tree/Item.vue",
+      "to": "components/ui/Tree/Item.vue"
+    }
+  ],
+  "dependencies": [
+    "reka-ui"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Tree/Tree.llm.txt"
+}

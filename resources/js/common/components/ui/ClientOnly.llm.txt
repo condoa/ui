@@ -1,0 +1,36 @@
+# ClientOnly
+
+Render wrapper that mounts its slot only after the component has mounted on the client. Use it to defer browser-only content past the initial server-rendered/hydration pass.
+
+## When to Use
+- Wrapping content that reads `window`, `document`, `localStorage`, or other browser-only globals at render time
+- Hiding markup that would mismatch between server render and client hydration
+- NOT for data that should be server-rendered for SEO (it renders nothing until mounted)
+
+## Usage
+
+Basic:
+```vue
+<ClientOnly>
+    <ChartThatNeedsWindow />
+</ClientOnly>
+```
+
+## Slots
+- `default`: rendered only after `onMounted`. Before mount it renders nothing.
+
+## Behavior
+- On first render (server and the initial client hydration pass) the slot is absent.
+- After `onMounted` runs, the internal `mounted` ref flips to true and the slot renders.
+- There is no fallback slot. Reserve layout space yourself if the empty first frame causes a layout shift.
+
+## Accessibility
+- Adds no markup of its own, so it introduces no roles or landmarks.
+- The deferred content is invisible to assistive tech until it mounts. Do not place essential, non-interactive content that must be present on first paint here.
+
+## Don't
+- Don't rely on it for SEO-critical content; crawlers may see the empty first frame.
+- Don't nest browser-only logic in computed/setup code that runs before mount; ClientOnly only gates the template, not the script.
+
+## Related
+- IframeLazy: defers an iframe until it scrolls into view

@@ -1,0 +1,21 @@
+{
+  "name": "fullcalendar",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/FullCalendar.vue",
+      "to": "components/ui/FullCalendar.vue"
+    }
+  ],
+  "dependencies": [
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-chevron-left",
+    "icon-chevron-right"
+  ],
+  "doc": "resources/js/common/components/ui/FullCalendar.llm.txt"
+}

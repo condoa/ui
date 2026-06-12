@@ -1,0 +1,22 @@
+<template>
+    <Primitive data-slot="frame-panel-header" :class="styles({ class: props.class })" :as="as" :as-child="asChild">
+        <slot />
+    </Primitive>
+</template>
+
+<script lang="ts" setup>
+import { Primitive } from 'reka-ui'
+import type { PrimitiveProps } from 'reka-ui'
+import { tv, type ClassValue } from 'tailwind-variants'
+
+interface Props extends PrimitiveProps {
+    /** Custom class(es) to add to the element */
+    class?: ClassValue
+}
+
+const props = withDefaults(defineProps<Props>(), { as: 'header' })
+
+const styles = tv({
+    base: 'flex flex-col px-5 py-4',
+})
+</script>

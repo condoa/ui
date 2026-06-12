@@ -1,0 +1,165 @@
+# RadioGroup
+
+Single selection from multiple options. Use when user must choose exactly one option.
+
+## When to Use
+- Single selection from 2-5 options
+- Options need to be visible at once
+- NOT for many options (use Select)
+- NOT for multiple selection (use Checkbox)
+- NOT for on/off (use Switch or Checkbox)
+
+## Usage
+
+Basic:
+```vue
+<RadioGroup v-model="selected">
+    <div class="flex items-center gap-2">
+        <RadioGroupItem id="opt1" value="option1" />
+        <Label for="opt1">Option 1</Label>
+    </div>
+    <div class="flex items-center gap-2">
+        <RadioGroupItem id="opt2" value="option2" />
+        <Label for="opt2">Option 2</Label>
+    </div>
+    <div class="flex items-center gap-2">
+        <RadioGroupItem id="opt3" value="option3" />
+        <Label for="opt3">Option 3</Label>
+    </div>
+</RadioGroup>
+```
+
+With descriptions:
+```vue
+<RadioGroup v-model="plan">
+    <RadioGroupItem value="free">
+        <div>
+            <p class="font-medium">Free</p>
+            <p class="text-sm text-muted-foreground">Basic features</p>
+        </div>
+    </RadioGroupItem>
+    <RadioGroupItem value="pro">
+        <div>
+            <p class="font-medium">Pro</p>
+            <p class="text-sm text-muted-foreground">Advanced features</p>
+        </div>
+    </RadioGroupItem>
+</RadioGroup>
+```
+
+Horizontal layout:
+```vue
+<RadioGroup v-model="size" orientation="horizontal" class="flex-row">
+    <div class="flex items-center gap-2">
+        <RadioGroupItem id="size-sm" value="sm" />
+        <Label for="size-sm">Small</Label>
+    </div>
+    <div class="flex items-center gap-2">
+        <RadioGroupItem id="size-md" value="md" />
+        <Label for="size-md">Medium</Label>
+    </div>
+    <div class="flex items-center gap-2">
+        <RadioGroupItem id="size-lg" value="lg" />
+        <Label for="size-lg">Large</Label>
+    </div>
+</RadioGroup>
+```
+
+## Components
+
+### RadioGroup
+Root container.
+- `v-model`: selected value
+- `defaultValue`: initial value
+- `orientation`: "vertical" | "horizontal" (default: "vertical")
+- `loop`: keyboard navigation loops (default: true)
+- `disabled`: disable all options
+- `name`: form field name
+- `required`: mark as required
+- `class`: custom classes
+
+### RadioGroupItem
+Individual radio option. Pair with a `<Label for="id">` for accessible labeling.
+- `value`: option value (required)
+- `id` - links to a `<Label for="...">` element
+- `disabled`: disable this option
+- `class`: custom classes
+
+## Accessibility
+- Arrow keys navigate between options
+- Space selects focused option
+- Full ARIA radiogroup implementation
+- Disabled options skip in navigation
+
+## Common Patterns
+
+Payment method selection:
+```vue
+<RadioGroup v-model="paymentMethod">
+    <div class="space-y-2">
+        <label class="flex items-center gap-3 rounded-lg border p-4 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+            <RadioGroupItem value="pix" />
+            <Icon name="icon-pix" class="size-5" />
+            <span>PIX</span>
+        </label>
+        <label class="flex items-center gap-3 rounded-lg border p-4 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+            <RadioGroupItem value="boleto" />
+            <Icon name="icon-barcode" class="size-5" />
+            <span>Boleto</span>
+        </label>
+        <label class="flex items-center gap-3 rounded-lg border p-4 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+            <RadioGroupItem value="card" />
+            <Icon name="icon-credit-card" class="size-5" />
+            <span>Credit Card</span>
+        </label>
+    </div>
+</RadioGroup>
+```
+
+In a form:
+```vue
+<div class="space-y-2">
+    <Label>Notification preference</Label>
+    <RadioGroup v-model="form.notificationPreference">
+        <div class="flex items-center gap-2">
+            <RadioGroupItem id="notif-all" value="all" />
+            <Label for="notif-all">All notifications</Label>
+        </div>
+        <div class="flex items-center gap-2">
+            <RadioGroupItem id="notif-important" value="important" />
+            <Label for="notif-important">Important only</Label>
+        </div>
+        <div class="flex items-center gap-2">
+            <RadioGroupItem id="notif-none" value="none" />
+            <Label for="notif-none">None</Label>
+        </div>
+    </RadioGroup>
+</div>
+```
+
+Card-style selection:
+```vue
+<RadioGroup v-model="tier" class="grid gap-4 md:grid-cols-3">
+    <label v-for="plan in plans" :key="plan.id"
+        class="relative rounded-lg border p-4 cursor-pointer has-[:checked]:border-primary has-[:checked]:ring-1 has-[:checked]:ring-primary"
+    >
+        <RadioGroupItem :value="plan.id" class="sr-only" />
+        <div class="space-y-2">
+            <p class="font-medium">{{ plan.name }}</p>
+            <p class="text-2xl font-bold">{{ plan.price }}</p>
+            <p class="text-sm text-muted-foreground">{{ plan.description }}</p>
+        </div>
+    </label>
+</RadioGroup>
+```
+
+## Don't
+- Don't use for more than 5-7 options (use Select)
+- Don't use for multiple selection (use Checkbox)
+- Don't use for boolean values (use Switch or Checkbox)
+
+## Related
+- Select: for many options
+- Checkbox: for multiple selection
+- Switch: for on/off toggles
+- VeeRadioGroup: with VeeValidate integration

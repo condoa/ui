@@ -1,0 +1,34 @@
+{
+  "name": "slider",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Slider/Track.vue",
+      "to": "components/ui/Slider/Track.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Slider/Thumb.vue",
+      "to": "components/ui/Slider/Thumb.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Slider/Slider.vue",
+      "to": "components/ui/Slider/Slider.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Slider/Range.vue",
+      "to": "components/ui/Slider/Range.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "tooltip"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Slider/Slider.llm.txt"
+}

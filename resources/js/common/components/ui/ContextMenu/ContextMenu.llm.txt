@@ -1,0 +1,156 @@
+# ContextMenu
+
+Right-click context menu. Use for contextual actions on elements.
+
+## When to Use
+- Right-click actions on items
+- Power-user shortcuts
+- Desktop-like interactions
+- NOT for primary actions (make them visible)
+- NOT for mobile (no right-click)
+
+## Usage
+
+Basic:
+```vue
+<ContextMenu>
+    <ContextMenuTrigger>
+        <div class="p-4 border rounded">Right-click me</div>
+    </ContextMenuTrigger>
+    <ContextMenuContent>
+        <ContextMenuItem @click="edit">Edit</ContextMenuItem>
+        <ContextMenuItem @click="duplicate">Duplicate</ContextMenuItem>
+        <ContextMenuSeparator />
+        <ContextMenuItem @click="deleteItem" class="text-destructive">
+            Delete
+        </ContextMenuItem>
+    </ContextMenuContent>
+</ContextMenu>
+```
+
+With icons and shortcuts:
+```vue
+<ContextMenuContent>
+    <ContextMenuItem>
+        <Icon name="icon-edit" class="size-4 mr-2" />
+        Edit
+        <ContextMenuShortcut>⌘E</ContextMenuShortcut>
+    </ContextMenuItem>
+    <ContextMenuItem>
+        <Icon name="icon-copy" class="size-4 mr-2" />
+        Copy
+        <ContextMenuShortcut>⌘C</ContextMenuShortcut>
+    </ContextMenuItem>
+    <ContextMenuItem>
+        <Icon name="icon-clipboard" class="size-4 mr-2" />
+        Paste
+        <ContextMenuShortcut>⌘V</ContextMenuShortcut>
+    </ContextMenuItem>
+</ContextMenuContent>
+```
+
+## Components
+
+### ContextMenu
+Root component.
+
+### ContextMenuTrigger
+Element that shows menu on right-click.
+- `asChild`: merge props onto child
+
+### ContextMenuContent
+The menu panel.
+- `class`: custom classes
+
+### ContextMenuItem
+Menu action item.
+- `disabled`: disable item
+
+### ContextMenuSeparator
+Visual divider.
+
+### ContextMenuLabel
+Non-interactive label.
+
+### ContextMenuShortcut
+Keyboard shortcut hint.
+
+### ContextMenuCheckboxItem
+Toggleable checkbox item.
+- `checked` (v-model): checked state
+
+### ContextMenuRadioGroup / ContextMenuRadioItem
+Radio selection.
+
+### ContextMenuSub / ContextMenuSubTrigger / ContextMenuSubContent
+Nested submenu.
+
+## Accessibility
+- Keyboard navigation after opening
+- Escape closes menu
+- Arrow keys navigate items
+- Enter/Space activates item
+
+## Common Patterns
+
+File manager context menu:
+```vue
+<ContextMenu>
+    <ContextMenuTrigger>
+        <div class="p-3 border rounded hover:bg-accent">
+            <Icon name="icon-file" class="size-8" />
+            <p class="text-sm">document.pdf</p>
+        </div>
+    </ContextMenuTrigger>
+    <ContextMenuContent>
+        <ContextMenuItem @click="open">
+            <Icon name="icon-external-link" class="size-4 mr-2" />
+            Open
+        </ContextMenuItem>
+        <ContextMenuItem @click="download">
+            <Icon name="icon-download" class="size-4 mr-2" />
+            Download
+        </ContextMenuItem>
+        <ContextMenuSeparator />
+        <ContextMenuItem @click="rename">
+            <Icon name="icon-edit" class="size-4 mr-2" />
+            Rename
+        </ContextMenuItem>
+        <ContextMenuItem @click="move">
+            <Icon name="icon-folder" class="size-4 mr-2" />
+            Move to...
+        </ContextMenuItem>
+        <ContextMenuSeparator />
+        <ContextMenuItem @click="deleteFile" class="text-destructive">
+            <Icon name="icon-trash" class="size-4 mr-2" />
+            Delete
+        </ContextMenuItem>
+    </ContextMenuContent>
+</ContextMenu>
+```
+
+With submenus:
+```vue
+<ContextMenuContent>
+    <ContextMenuItem>Open</ContextMenuItem>
+    <ContextMenuSub>
+        <ContextMenuSubTrigger>Share</ContextMenuSubTrigger>
+        <ContextMenuSubContent>
+            <ContextMenuItem>Email</ContextMenuItem>
+            <ContextMenuItem>Message</ContextMenuItem>
+            <ContextMenuItem>Copy link</ContextMenuItem>
+        </ContextMenuSubContent>
+    </ContextMenuSub>
+    <ContextMenuSeparator />
+    <ContextMenuItem>Delete</ContextMenuItem>
+</ContextMenuContent>
+```
+
+## Don't
+- Don't rely on context menu for primary actions
+- Don't use on mobile (no right-click support)
+- Don't make essential actions only available via context menu
+
+## Related
+- DropdownMenu: click-triggered menu
+- Popover: general floating content

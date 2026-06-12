@@ -1,0 +1,21 @@
+{
+  "name": "toggle",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Toggle.vue",
+      "to": "components/ui/Toggle.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Toggle.llm.txt"
+}

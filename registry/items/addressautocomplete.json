@@ -1,0 +1,24 @@
+{
+  "name": "addressautocomplete",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/AddressAutocomplete.vue",
+      "to": "components/ui/AddressAutocomplete.vue"
+    }
+  ],
+  "dependencies": [
+    "@inertiajs/vue3",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "inputcontrol",
+    "loader"
+  ],
+  "icons": [
+    "icon-map-pin",
+    "icon-search"
+  ],
+  "doc": "resources/js/common/components/ui/AddressAutocomplete.llm.txt"
+}

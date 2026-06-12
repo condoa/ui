@@ -1,0 +1,40 @@
+<template>
+    <AvatarRoot data-slot="avatar" :as="as" :as-child="asChild" :class="styles({ class: props.class })">
+        <slot>
+            <slot name="image">
+                <AvatarImage v-if="src" :src="src" :alt="alt" :class="imageClass" @loading-status-change="emits('loadingStatusChange', $event)" />
+            </slot>
+            <slot name="fallback">
+                <AvatarFallback :delay-ms="delayMs" :class="fallbackClass" :fallback="fallback" />
+            </slot>
+        </slot>
+    </AvatarRoot>
+</template>
+
+<script lang="ts" setup>
+import { type AvatarImageEmits, type AvatarImageProps, AvatarRoot, type AvatarRootProps } from 'reka-ui'
+import { type ClassValue, tv } from 'tailwind-variants'
+
+interface Props extends AvatarRootProps, Partial<AvatarImageProps> {
+    /** Class to add to the root element */
+    class?: ClassValue
+    /** Class to pass to the image element */
+    imageClass?: ClassValue
+    /** Class to pass to the fallback element */
+    fallbackClass?: ClassValue
+    /** The `alt` attribute value for the image */
+    alt?: string
+    /** The fallback text to display when the image fails to load */
+    fallback?: string
+    /** Useful for delaying rendering so it only appears for those with slower connections */
+    delayMs?: number
+}
+
+const props = defineProps<Props>()
+
+const emits = defineEmits<AvatarImageEmits>()
+
+const styles = tv({
+    base: 'relative flex size-8 shrink-0 overflow-hidden rounded-full',
+})
+</script>

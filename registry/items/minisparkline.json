@@ -1,0 +1,18 @@
+{
+  "name": "minisparkline",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/MiniSparkline.vue",
+      "to": "components/ui/MiniSparkline.vue"
+    }
+  ],
+  "dependencies": [
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/MiniSparkline.llm.txt"
+}

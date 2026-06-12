@@ -1,0 +1,52 @@
+# MiniSparkline
+
+Tiny inline trend line for KPI tiles and table cells. Plain SVG `<polyline>`, no charting library. Strokes with `currentColor`, so it inherits the surrounding text color; wrap it in a `text-*` color class to tint it.
+
+## When to Use
+- A compact trend next to a metric (KPI tile, stat row, table cell)
+- Showing direction of a short time series at a glance
+- NOT for axes, tooltips, or readable values (use Chart Line)
+- NOT for a single data point (needs at least two)
+
+## Usage
+```vue
+<template>
+    <div class="flex items-center gap-2 text-emerald-500">
+        <span class="text-sm font-semibold tabular-nums">1.240</span>
+        <MiniSparkline :data="insight.sparkline" />
+    </div>
+</template>
+```
+
+Sized and tinted:
+```vue
+<MiniSparkline
+    :data="[
+        { date: '2026-06-01', value: 12 },
+        { date: '2026-06-02', value: 18 },
+        { date: '2026-06-03', value: 9 },
+    ]"
+    :width="96"
+    :height="28"
+    class="text-primary"
+/>
+```
+
+## Props
+- `data`: `{ date: string; value: number }[]`. The line is plotted from `value`; `date` only orders the points. Renders nothing when fewer than two points.
+- `width`: viewBox width in px (default 60)
+- `height`: viewBox height in px (default 20)
+
+## Behavior
+- Y range auto-scales between the min and max value in `data`
+- `currentColor` stroke with a non-scaling 1.5px line, so it stays crisp at any width
+- `preserveAspectRatio="none"`, so the line stretches to the given width/height
+
+## Don't
+- Don't pass a single point and expect a line; it returns empty
+- Don't rely on it to convey exact numbers; it shows shape, not values
+- Don't set a stroke color via fill; tint with a text color class instead
+
+## Related
+- Chart Line: full line chart with axes, tooltips, and legend
+- StatBlock: labeled metric block this often sits inside

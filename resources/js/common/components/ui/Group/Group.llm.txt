@@ -1,0 +1,120 @@
+# Group
+
+Merges adjacent interactive elements (buttons, inputs, selects) into a visually joined control group. Use to combine related actions or a label with an input into a single compound widget.
+
+## When to Use
+- Combining an Input with an action Button (search bars, add-item fields)
+- Segmented button sets (filter options, view toggles)
+- Input with a leading or trailing GroupText label
+- NOT for generic layout (use flex/grid directly)
+- NOT for form field labels (use Label + Input)
+
+## Usage
+
+Button group:
+```vue
+<Group>
+    <Button variant="outline">Day</Button>
+    <Button variant="outline">Week</Button>
+    <Button variant="outline">Month</Button>
+</Group>
+```
+
+Input with trailing button:
+```vue
+<Group>
+    <Input v-model="search" placeholder="Search..." />
+    <Button>Search</Button>
+</Group>
+```
+
+Input with leading text:
+```vue
+<Group>
+    <GroupText>R$</GroupText>
+    <Input v-model="amount" type="number" />
+</Group>
+```
+
+Vertical group:
+```vue
+<Group orientation="vertical">
+    <Button variant="outline">Option A</Button>
+    <Button variant="outline">Option B</Button>
+</Group>
+```
+
+Input with separator between groups:
+```vue
+<Group>
+    <Input v-model="value" />
+    <GroupSeparator />
+    <Button>Submit</Button>
+</Group>
+```
+
+## Components
+
+### Group
+Root wrapper that collapses borders and adjusts radius on children.
+- `orientation` -- "horizontal" | "vertical" (default: "horizontal")
+- `class` -- custom classes
+
+### GroupText
+Non-interactive text adornment (currency symbol, unit label, etc.).
+- `class` -- custom classes
+
+### GroupSeparator
+Visual separator between group segments, adapts to focus state of adjacent inputs.
+- `orientation` -- "horizontal" | "vertical" (default: "vertical")
+- `class` -- custom classes
+
+## Accessibility
+- Interactive children (Button, Input) retain their individual ARIA roles and keyboard behavior.
+- Use `aria-label` on icon-only buttons inside a group.
+- GroupText is purely decorative; pair it with a visually hidden label on the Input if it is the only label.
+
+## Common Patterns
+
+Search bar:
+```vue
+<Group class="w-full max-w-sm">
+    <Input v-model="query" placeholder="Search residents..." class="flex-1" />
+    <Button type="submit" variant="outline">
+        <Icon name="icon-search" aria-hidden="true" class="size-4" />
+    </Button>
+</Group>
+```
+
+Currency input:
+```vue
+<Group>
+    <GroupText>R$</GroupText>
+    <Input v-model="amount" type="number" step="0.01" min="0" />
+</Group>
+```
+
+Segmented toggle:
+```vue
+<Group aria-label="View mode">
+    <Button
+        v-for="mode in ['list', 'grid', 'map']"
+        :key="mode"
+        variant="outline"
+        :data-active="viewMode === mode ? '' : undefined"
+        @click="viewMode = mode"
+    >
+        {{ mode }}
+    </Button>
+</Group>
+```
+
+## Don't
+- Don't mix very different component types (e.g., a Datepicker next to a Slider) inside one Group
+- Don't use Group for unrelated actions; it implies they operate on the same value
+- Don't nest Group inside Group
+
+## Related
+- InputGroup -- specialized input addon wrapper
+- Button -- individual button
+- Input -- individual input

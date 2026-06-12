@@ -1,0 +1,43 @@
+{
+  "name": "frame",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Frame/Title.vue",
+      "to": "components/ui/Frame/Title.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Frame/Panel.vue",
+      "to": "components/ui/Frame/Panel.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Frame/Header.vue",
+      "to": "components/ui/Frame/Header.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Frame/Frame.vue",
+      "to": "components/ui/Frame/Frame.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Frame/Footer.vue",
+      "to": "components/ui/Frame/Footer.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Frame/Description.vue",
+      "to": "components/ui/Frame/Description.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Frame/Body.vue",
+      "to": "components/ui/Frame/Body.vue"
+    }
+  ],
+  "dependencies": [
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Frame/Frame.llm.txt"
+}

@@ -1,0 +1,124 @@
+# Slider
+
+Range input for selecting numeric values. Use for continuous value selection.
+
+## When to Use
+- Volume, brightness controls
+- Price range filters
+- Percentage values
+- NOT for precise values (use NumberInput)
+- NOT for discrete options (use RadioGroup)
+
+## Usage
+
+Basic:
+```vue
+<Slider v-model="value" />
+```
+
+With min/max/step:
+```vue
+<Slider v-model="price" :min="0" :max="1000" :step="10" />
+```
+
+With tooltip:
+```vue
+<Slider v-model="volume" show-tooltip />
+```
+
+Range slider (two thumbs):
+```vue
+<Slider v-model="priceRange" :min="0" :max="500" />
+<!-- priceRange = [100, 300] -->
+```
+
+## Props
+
+- `modelValue` (v-model) - value(s) as array (default: [0])
+- `min` - minimum value (default: 0)
+- `max` - maximum value (default: 100)
+- `step` - step increment (default: 1)
+- `orientation` - "horizontal" | "vertical" (default: "horizontal")
+- `disabled` - disable slider
+- `minStepsBetweenThumbs` - min steps between thumbs for range (default: 1)
+- `showTooltip` - show value tooltip on drag
+- `class` - custom classes
+
+## Components
+
+### Slider
+Root component with track and thumb(s).
+
+### SliderTrack
+The track background.
+
+### SliderRange
+The filled portion of track.
+
+### SliderThumb
+The draggable handle(s).
+
+## Accessibility
+- Keyboard: arrow keys adjust value
+- Home/End jump to min/max
+- Page Up/Down for larger steps
+- Full ARIA slider implementation
+
+## Common Patterns
+
+Volume control:
+```vue
+<div class="flex items-center gap-3">
+    <Icon name="icon-volume" class="size-4" />
+    <Slider v-model="volume" :max="100" class="flex-1" />
+    <span class="w-8 text-sm tabular-nums">{{ volume[0] }}</span>
+</div>
+```
+
+Price range filter:
+```vue
+<div class="space-y-4">
+    <div class="flex justify-between text-sm">
+        <span>R$ {{ priceRange[0] }}</span>
+        <span>R$ {{ priceRange[1] }}</span>
+    </div>
+    <Slider
+        v-model="priceRange"
+        :min="0"
+        :max="1000"
+        :step="50"
+        :minStepsBetweenThumbs="2"
+    />
+</div>
+```
+
+With labels:
+```vue
+<div class="space-y-2">
+    <div class="flex justify-between text-sm text-muted-foreground">
+        <span>0%</span>
+        <span>50%</span>
+        <span>100%</span>
+    </div>
+    <Slider v-model="percentage" show-tooltip />
+</div>
+```
+
+Vertical slider:
+```vue
+<Slider
+    v-model="value"
+    orientation="vertical"
+    class="h-48"
+/>
+```
+
+## Don't
+- Don't use for precise values (use NumberInput)
+- Don't use without visible value feedback
+- Don't make step too small (hard to control)
+
+## Related
+- NumberInput - precise numeric input
+- Progress - display-only progress
+- VeeSlider - with VeeValidate integration

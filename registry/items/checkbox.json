@@ -1,0 +1,19 @@
+{
+  "name": "checkbox",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Checkbox/Checkbox.vue",
+      "to": "components/ui/Checkbox/Checkbox.vue"
+    }
+  ],
+  "dependencies": [
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Checkbox/Checkbox.llm.txt"
+}

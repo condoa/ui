@@ -1,0 +1,170 @@
+# Tree
+
+Hierarchical tree view for nested data. Use for file browsers, navigation trees, or org charts.
+
+## When to Use
+- File/folder structures
+- Nested navigation menus
+- Organizational hierarchies
+- Category trees
+- NOT for flat lists (use regular list)
+- NOT for accordion content (use Accordion)
+
+## Usage
+
+Basic:
+```vue
+<Tree v-model="selectedItems" :items="treeData" :get-key="(item) => item.id">
+    <template #default="{ flattenItems }">
+        <TreeItem v-for="item in flattenItems" :key="item._id" v-bind="item.bind">
+            <Icon
+                v-if="item.hasChildren"
+                name="icon-chevron-right"
+                class="size-4 shrink-0 transition-transform data-[state=open]:rotate-90"
+                aria-hidden="true"
+            />
+            <span v-else class="size-4 shrink-0" />
+            <Icon :name="item.value.icon" class="size-4" />
+            <span>{{ item.value.name }}</span>
+        </TreeItem>
+    </template>
+</Tree>
+```
+
+With data structure:
+```vue
+<script setup>
+const treeData = [
+    {
+        id: '1',
+        name: 'Documents',
+        icon: 'icon-folder',
+        children: [
+            { id: '1-1', name: 'Report.pdf', icon: 'icon-file' },
+            { id: '1-2', name: 'Invoice.pdf', icon: 'icon-file' },
+        ],
+    },
+    {
+        id: '2',
+        name: 'Images',
+        icon: 'icon-folder',
+        children: [
+            { id: '2-1', name: 'photo.jpg', icon: 'icon-image' },
+        ],
+    },
+]
+</script>
+```
+
+## Components
+
+### Tree
+Root component.
+- `v-model` -- selected item(s)
+- `items` -- tree data array
+- `getKey` -- function to get unique key from item
+- `expanded` (v-model:expanded) -- expanded item keys
+- `selectionBehavior` -- "toggle" | "replace"
+- `multiple` -- allow multiple selection
+
+### TreeItem
+Individual tree node. Receives props from `flattenItems bind`. There is no separate indicator component; render a chevron `<Icon>` yourself (see examples).
+
+### TreeVirtualizer
+For large trees with virtualization.
+
+## Accessibility
+- Arrow keys navigate tree
+- Enter/Space selects item
+- Left/Right expands/collapses
+- Home/End jump to first/last
+- Full ARIA tree implementation
+
+## Common Patterns
+
+File browser:
+```vue
+<Tree
+    v-model="selected"
+    v-model:expanded="expanded"
+    :items="files"
+    :get-key="(item) => item.path"
+    multiple
+>
+    <template #default="{ flattenItems }">
+        <TreeItem
+            v-for="item in flattenItems"
+            :key="item._id"
+            v-bind="item.bind"
+            class="flex items-center gap-2 py-1 px-2 rounded hover:bg-accent"
+        >
+            <Icon
+                v-if="item.hasChildren"
+                name="icon-chevron-right"
+                class="size-4 shrink-0 transition-transform data-[state=open]:rotate-90"
+                aria-hidden="true"
+            />
+            <span v-else class="w-4" />
+            <Icon :name="item.hasChildren ? 'icon-folder' : 'icon-file'" class="size-4" />
+            <span class="truncate">{{ item.value.name }}</span>
+        </TreeItem>
+    </template>
+</Tree>
+```
+
+With checkboxes:
+```vue
+<TreeItem v-for="item in flattenItems" :key="item._id" v-bind="item.bind">
+    <Icon
+        v-if="item.hasChildren"
+        name="icon-chevron-right"
+        class="size-4 shrink-0 transition-transform data-[state=open]:rotate-90"
+        aria-hidden="true"
+    />
+    <span v-else class="size-4 shrink-0" />
+    <Checkbox
+        :checked="selected.includes(item.value.id)"
+        @update:checked="toggleSelection(item.value.id)"
+    />
+    <span>{{ item.value.name }}</span>
+</TreeItem>
+```
+
+Navigation tree:
+```vue
+<Tree :items="navigation" :get-key="(item) => item.href">
+    <template #default="{ flattenItems }">
+        <TreeItem
+            v-for="item in flattenItems"
+            :key="item._id"
+            v-bind="item.bind"
+            as-child
+        >
+            <Link
+                :href="item.value.href"
+                class="flex items-center gap-2 py-1.5 px-2"
+                :class="{ 'bg-accent': isActive(item.value.href) }"
+            >
+                <Icon
+                    v-if="item.hasChildren"
+                    name="icon-chevron-right"
+                    class="size-4 shrink-0 transition-transform data-[state=open]:rotate-90"
+                    aria-hidden="true"
+                />
+                <Icon :name="item.value.icon" class="size-4" />
+                {{ item.value.label }}
+            </Link>
+        </TreeItem>
+    </template>
+</Tree>
+```
+
+## Don't
+- Don't use for flat lists
+- Don't nest too deeply (becomes unusable)
+- Don't use without clear expand/collapse indicators
+
+## Related
+- Accordion -- collapsible sections
+- NavigationMenu -- primary navigation
+- Collapsible -- single collapsible

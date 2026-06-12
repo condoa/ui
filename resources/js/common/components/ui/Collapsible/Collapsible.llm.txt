@@ -1,0 +1,135 @@
+# Collapsible
+
+Single expandable/collapsible section. Use for show/hide content toggles.
+
+## When to Use
+- Show more/less content
+- Expandable details
+- Single collapsible section
+- NOT for multiple sections (use Accordion)
+- NOT for navigation (use NavigationMenu)
+
+## Usage
+
+Basic:
+```vue
+<Collapsible v-model:open="isOpen">
+    <CollapsibleTrigger as-child>
+        <Button variant="ghost">
+            Toggle
+            <Icon :name="isOpen ? 'icon-chevron-up' : 'icon-chevron-down'" class="size-4 ml-2" />
+        </Button>
+    </CollapsibleTrigger>
+    <CollapsibleContent>
+        <div class="p-4">
+            Hidden content goes here
+        </div>
+    </CollapsibleContent>
+</Collapsible>
+```
+
+With animation (built-in -- no extra classes needed):
+```vue
+<Collapsible>
+    <CollapsibleTrigger>Show details</CollapsibleTrigger>
+    <CollapsibleContent>
+        <div class="pt-2">
+            Animated content
+        </div>
+    </CollapsibleContent>
+</Collapsible>
+```
+
+## Components
+
+### Collapsible
+Root component.
+- `open` (v-model:open): controlled open state
+- `defaultOpen`: initial open state
+- `disabled`: disable toggle
+
+### CollapsibleTrigger
+Element that toggles the collapsible.
+- `asChild`: merge props onto child
+
+### CollapsibleContent
+The collapsible content area.
+- `class`: custom classes
+
+## Accessibility
+- Space/Enter toggles state
+- ARIA expanded state managed
+- Content hidden when collapsed
+
+## Common Patterns
+
+Show more details:
+```vue
+<div class="space-y-2">
+    <p>{{ description.slice(0, 100) }}...</p>
+    <Collapsible>
+        <CollapsibleContent>
+            <p>{{ description.slice(100) }}</p>
+        </CollapsibleContent>
+        <CollapsibleTrigger as-child>
+            <Button variant="link" class="p-0 h-auto">
+                {{ isOpen ? 'Show less' : 'Show more' }}
+            </Button>
+        </CollapsibleTrigger>
+    </Collapsible>
+</div>
+```
+
+Sidebar section:
+```vue
+<Collapsible v-model:open="settingsOpen" class="space-y-2">
+    <CollapsibleTrigger class="flex items-center justify-between w-full p-2 hover:bg-accent rounded">
+        <span class="font-medium">Settings</span>
+        <Icon :name="settingsOpen ? 'icon-chevron-up' : 'icon-chevron-down'" class="size-4" />
+    </CollapsibleTrigger>
+    <CollapsibleContent>
+        <nav class="pl-4 space-y-1">
+            <Link href="/settings/general">General</Link>
+            <Link href="/settings/security">Security</Link>
+            <Link href="/settings/notifications">Notifications</Link>
+        </nav>
+    </CollapsibleContent>
+</Collapsible>
+```
+
+Advanced filters:
+```vue
+<div class="space-y-4">
+    <div class="space-y-2">
+        <Label>Basic filters</Label>
+        <Input v-model="search" placeholder="Search..." />
+    </div>
+
+    <Collapsible>
+        <CollapsibleTrigger as-child>
+            <Button variant="ghost" size="sm">
+                <Icon name="icon-sliders" class="size-4 mr-2" />
+                Advanced filters
+            </Button>
+        </CollapsibleTrigger>
+        <CollapsibleContent class="pt-4 space-y-4">
+            <VeeSelect name="status" label="Status">
+                <option value="">All</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </VeeSelect>
+            <VeeInput name="dateFrom" label="Date from" type="date" />
+        </CollapsibleContent>
+    </Collapsible>
+</div>
+```
+
+## Don't
+- Don't use for multiple collapsible sections (use Accordion)
+- Don't hide critical information
+- Don't use without clear trigger affordance
+
+## Related
+- Accordion: multiple collapsible sections
+- Sheet: slide-out content
+- Dialog: modal content

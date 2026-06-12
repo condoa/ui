@@ -1,0 +1,28 @@
+{
+  "name": "codeblock",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/CodeBlock/index.ts",
+      "to": "components/ui/CodeBlock/index.ts"
+    },
+    {
+      "from": "resources/js/common/components/ui/CodeBlock/CodeBlock.vue",
+      "to": "components/ui/CodeBlock/CodeBlock.vue"
+    }
+  ],
+  "dependencies": [
+    "@shikijs/transformers",
+    "shiki",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "button"
+  ],
+  "icons": [
+    "icon-check",
+    "icon-copy"
+  ],
+  "doc": "resources/js/common/components/ui/CodeBlock/CodeBlock.llm.txt"
+}

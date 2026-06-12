@@ -1,0 +1,18 @@
+{
+  "name": "licenseplate",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/LicensePlate.vue",
+      "to": "components/ui/LicensePlate.vue"
+    }
+  ],
+  "dependencies": [
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/LicensePlate.llm.txt"
+}

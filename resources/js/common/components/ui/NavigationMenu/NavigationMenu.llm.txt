@@ -1,0 +1,146 @@
+# NavigationMenu
+
+Horizontal navigation with dropdown menus. Use for main site navigation.
+
+## When to Use
+- Primary site navigation
+- Header navigation bars
+- Mega menus
+- NOT for sidebar navigation (use Nav components)
+- NOT for action menus (use DropdownMenu)
+
+## Usage
+
+Basic:
+```vue
+<NavigationMenu>
+    <NavigationMenuList>
+        <NavigationMenuItem>
+            <NavigationMenuLink href="/dashboard">Dashboard</NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+            <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+            <NavigationMenuContent>
+                <div class="grid gap-3 p-6 w-96">
+                    <NavigationMenuLink href="/products/new">New Arrivals</NavigationMenuLink>
+                    <NavigationMenuLink href="/products/sale">Sale</NavigationMenuLink>
+                </div>
+            </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+            <NavigationMenuLink href="/about">About</NavigationMenuLink>
+        </NavigationMenuItem>
+    </NavigationMenuList>
+</NavigationMenu>
+```
+
+## Components
+
+### NavigationMenu
+Root component.
+- `viewport`: show viewport container (default: true)
+- `class`: custom classes
+
+### NavigationMenuList
+Container for menu items.
+
+### NavigationMenuItem
+Individual menu item container.
+
+### NavigationMenuTrigger
+Button that opens a submenu.
+
+### NavigationMenuContent
+Dropdown content panel.
+- `class`: custom classes
+
+### NavigationMenuLink
+Navigation link.
+- `href`: link URL
+- `active`: active state
+
+### NavigationMenuViewport
+Container for dropdown content (rendered automatically).
+
+### NavigationMenuIndicator
+Active item indicator (optional).
+
+## Accessibility
+- Arrow keys navigate between items
+- Enter/Space opens submenus
+- Escape closes submenus
+- Tab moves through links
+- Full ARIA menu implementation
+
+## Common Patterns
+
+Header navigation:
+```vue
+<header class="border-b">
+    <div class="container flex items-center h-16">
+        <Logo />
+        <NavigationMenu class="ml-8">
+            <NavigationMenuList>
+                <NavigationMenuItem>
+                    <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                        <ul class="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                            <li v-for="product in products" :key="product.href">
+                                <NavigationMenuLink :href="product.href">
+                                    <div class="font-medium">{{ product.title }}</div>
+                                    <p class="text-sm text-muted-foreground">
+                                        {{ product.description }}
+                                    </p>
+                                </NavigationMenuLink>
+                            </li>
+                        </ul>
+                    </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                    <NavigationMenuLink href="/pricing">Pricing</NavigationMenuLink>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                    <NavigationMenuLink href="/docs">Docs</NavigationMenuLink>
+                </NavigationMenuItem>
+            </NavigationMenuList>
+        </NavigationMenu>
+    </div>
+</header>
+```
+
+Mega menu:
+```vue
+<NavigationMenuContent>
+    <div class="grid gap-6 p-6 md:w-[600px] lg:w-[800px] lg:grid-cols-3">
+        <div class="space-y-3">
+            <h3 class="font-medium">Getting Started</h3>
+            <NavigationMenuLink href="/docs/installation">Installation</NavigationMenuLink>
+            <NavigationMenuLink href="/docs/quickstart">Quick Start</NavigationMenuLink>
+        </div>
+        <div class="space-y-3">
+            <h3 class="font-medium">Components</h3>
+            <NavigationMenuLink href="/docs/components">Overview</NavigationMenuLink>
+            <NavigationMenuLink href="/docs/components/button">Button</NavigationMenuLink>
+        </div>
+        <div class="space-y-3">
+            <h3 class="font-medium">Resources</h3>
+            <NavigationMenuLink href="/blog">Blog</NavigationMenuLink>
+            <NavigationMenuLink href="/examples">Examples</NavigationMenuLink>
+        </div>
+    </div>
+</NavigationMenuContent>
+```
+
+## Don't
+- Don't use for sidebar navigation
+- Don't use for action menus (use DropdownMenu)
+- Don't nest too deeply
+- Don't make dropdowns too complex on mobile
+
+## Related
+- DropdownMenu: action menus
+- Nav: sidebar navigation
+- Tabs: content tabs
+- Breadcrumbs: location indicator

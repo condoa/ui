@@ -1,0 +1,76 @@
+# DateField
+
+Segmented date entry built on reka-ui DateFieldRoot. Each date part (day, month, year) is its own focusable segment. Use for typing a date without a calendar popover.
+
+## When to Use
+- Typed date entry with keyboard segments
+- Forms where a calendar popover is unnecessary
+- NOT for free-text masked dates (use DateInput)
+- NOT for picking from a calendar (use Datepicker)
+
+## Usage
+
+Basic:
+```vue
+<DateField v-model="date" />
+```
+
+The value is a `DateValue` from `@internationalized/date`:
+```vue
+<script setup>
+import { CalendarDate } from '@internationalized/date'
+const date = ref(new CalendarDate(2026, 6, 10))
+</script>
+
+<template>
+    <DateField v-model="date" />
+</template>
+```
+
+Custom separator:
+```vue
+<DateField v-model="date" separator="-" />
+```
+
+Icon separator:
+```vue
+<DateField v-model="date" separator-icon="icon-slash" />
+```
+
+## Props
+Extends reka-ui `DateFieldRootProps` (v-model, `locale`, `granularity`, `minValue`, `maxValue`, `disabled`, `readonly`, `placeholder`, and the rest).
+
+- `v-model` (modelValue) - the `DateValue`
+- `separator` - string between segments (default: "/")
+- `separatorIcon` - icon name rendered in place of the separator string
+- `class` - custom classes on the root
+
+## Accessibility
+- Arrow keys increment/decrement the focused segment
+- Left/Right arrows move between segments
+- Empty segments expose `aria-valuetext="Empty"` and render muted
+- Invalid state shows a destructive border via `data-[invalid]`
+
+## Common Patterns
+
+With a label:
+```vue
+<div class="space-y-2">
+    <Label>Data de nascimento</Label>
+    <DateField v-model="birthDate" />
+</div>
+```
+
+Bounded range:
+```vue
+<DateField v-model="date" :min-value="today" :max-value="maxDate" />
+```
+
+## Don't
+- Don't pass a plain JS Date or string (use a `DateValue`)
+- Don't use for masked text entry (use DateInput)
+
+## Related
+- DateInput - masked dd/mm/yyyy text input
+- Datepicker - calendar popover picker
+- VeeDateField - with VeeValidate integration

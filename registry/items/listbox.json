@@ -1,0 +1,50 @@
+{
+  "name": "listbox",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Listbox/Virtualizer.vue",
+      "to": "components/ui/Listbox/Virtualizer.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Listbox/Listbox.vue",
+      "to": "components/ui/Listbox/Listbox.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Listbox/ItemIndicator.vue",
+      "to": "components/ui/Listbox/ItemIndicator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Listbox/Item.vue",
+      "to": "components/ui/Listbox/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Listbox/GroupLabel.vue",
+      "to": "components/ui/Listbox/GroupLabel.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Listbox/Group.vue",
+      "to": "components/ui/Listbox/Group.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Listbox/Filter.vue",
+      "to": "components/ui/Listbox/Filter.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Listbox/Content.vue",
+      "to": "components/ui/Listbox/Content.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-check"
+  ],
+  "doc": "resources/js/common/components/ui/Listbox/Listbox.llm.txt"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "dateperiodselector",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/DatePeriodSelector.vue",
+      "to": "components/ui/DatePeriodSelector.vue"
+    }
+  ],
+  "dependencies": [
+    "@inertiajs/vue3",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-chevrons-left",
+    "icon-chevrons-right"
+  ],
+  "doc": "resources/js/common/components/ui/DatePeriodSelector.llm.txt"
+}

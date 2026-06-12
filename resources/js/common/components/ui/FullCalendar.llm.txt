@@ -1,0 +1,62 @@
+# FullCalendar
+
+Month-grid date picker with marked days. Hand-rolled with the native `Date` API and `Intl` for localized weekday and month labels, no calendar library at runtime. Use it to pick a single date and to surface dots on days that carry events, due dates, or reservations.
+
+## When to Use
+- Selecting a single date from a month view
+- Highlighting days that have events, bookings, or deadlines
+- NOT for date-range selection (this picks one date)
+- NOT for a full agenda or week/day timeline view
+
+## Usage
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const selected = ref<Date | null>(new Date())
+
+const marks = [
+    { date: '2026-06-12', label: 'Vencimento', variant: 'destructive' },
+    { date: '2026-06-20', label: 'Reserva do salão' },
+]
+</script>
+
+<template>
+    <FullCalendar
+        v-model="selected"
+        :marked-dates="marks"
+        :min-date="new Date()"
+        @month-change="(year, month) => loadMonth(year, month)"
+    />
+</template>
+```
+
+## Props
+- `modelValue`: selected `Date | null` (use `v-model`)
+- `initialMonth`: `Date | null` month to open on when nothing is selected
+- `minDate` / `maxDate`: `Date | null` bounds; days outside are disabled
+- `markedDates`: `{ date: 'YYYY-MM-DD', label?, variant? }[]`. `variant` is "default" | "destructive" | "warning". Multiple marks on the same day stack as dots.
+- `dayNames`: override the seven weekday headers (`string[]`); otherwise derived from `locale`
+- `locale`: Intl locale for weekday/month labels (default "pt-BR")
+- `weekStart`: first column weekday, 0 = Sunday (default 0)
+- `headerClass`: extra classes on the month/year nav row
+
+## v-model
+- `v-model` (modelValue): the selected `Date | null`
+
+## Emits
+- `update:modelValue`: `(value: Date | null)` when a day is clicked
+- `monthChange`: `(year: number, month: number)` on prev/next navigation; `month` is 0-based
+
+## Accessibility
+- Day cells are real `<button>` elements; disabled days carry `disabled`
+- Marked days expose the mark `label` via the native `title` tooltip
+
+## Don't
+- Don't pass marked dates as `Date` objects; use `YYYY-MM-DD` strings
+- Don't expect range selection or time-of-day; this is a single-date day grid
+- Don't rely on `monthChange.month` being 1-based; it is 0-based to match `Date`
+
+## Related
+- Datepicker: input-bound popover date picker
+- DateField: segmented date entry

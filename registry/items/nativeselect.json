@@ -1,0 +1,21 @@
+{
+  "name": "nativeselect",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/NativeSelect.vue",
+      "to": "components/ui/NativeSelect.vue"
+    }
+  ],
+  "dependencies": [
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-chevron-down"
+  ],
+  "doc": "resources/js/common/components/ui/NativeSelect.llm.txt"
+}

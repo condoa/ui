@@ -1,0 +1,20 @@
+{
+  "name": "textarea",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Textarea.vue",
+      "to": "components/ui/Textarea.vue"
+    }
+  ],
+  "dependencies": [
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "inputcontrol"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Textarea.llm.txt"
+}

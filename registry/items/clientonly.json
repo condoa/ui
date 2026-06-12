@@ -1,0 +1,18 @@
+{
+  "name": "clientonly",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/ClientOnly.vue",
+      "to": "components/ui/ClientOnly.vue"
+    }
+  ],
+  "dependencies": [
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/ClientOnly.llm.txt"
+}

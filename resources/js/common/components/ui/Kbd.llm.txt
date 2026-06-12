@@ -1,0 +1,66 @@
+# Kbd
+
+Renders a keyboard key label in a styled badge-like element. Use inside KbdGroup to show multi-key shortcuts.
+
+## When to Use
+- Displaying keyboard shortcuts in tooltips, help text, or command palettes
+- Showing single keys (Enter, Ctrl, K) inline with prose
+- NOT for interactive buttons (Kbd is pointer-events-none)
+
+## Usage
+
+Single key:
+```vue
+<Kbd>Enter</Kbd>
+```
+
+With size:
+```vue
+<Kbd size="xs">Esc</Kbd>
+<Kbd size="sm">Tab</Kbd>
+<Kbd size="md">Space</Kbd>
+```
+
+As a different element (asChild):
+```vue
+<Kbd as-child>
+    <span>Ctrl</span>
+</Kbd>
+```
+
+## Props
+
+- `size` -- "xs" | "sm" | "md" (default: "sm")
+- `class` -- custom classes applied to the root
+- `as` -- rendered HTML tag (default: "kbd")
+- `asChild` -- render slot content as root element
+
+## Slots
+
+- `default` -- the key label or icon to display
+
+## Accessibility
+- Renders as a `<kbd>` element by default, which browsers expose with the correct semantic role
+- `pointer-events-none` and `select-none` prevent accidental selection
+
+## Common Patterns
+
+Shortcut inline with text:
+```vue
+<p>Press <Kbd>Ctrl</Kbd> + <Kbd>K</Kbd> to open the search.</p>
+```
+
+Inside a tooltip:
+```vue
+<TooltipContent>
+    Save file <KbdGroup><Kbd>Ctrl</Kbd><Kbd>S</Kbd></KbdGroup>
+</TooltipContent>
+```
+
+## Don't
+- Don't use for clickable keys (use Button instead)
+- Don't nest KbdGroup inside Kbd
+
+## Related
+- KbdGroup -- wraps multiple Kbd elements for a chord
+- Button -- for interactive triggers

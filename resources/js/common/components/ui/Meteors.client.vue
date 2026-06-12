@@ -1,0 +1,66 @@
+<template>
+    <span v-for="(s, i) in meteorStyles" :key="i" aria-hidden="true" :class="localStyles().wrapper({ class: props.class })" :style="s">
+        <div :class="localStyles().tail()" />
+    </span>
+</template>
+
+<script lang="ts" setup>
+import { tv, type ClassValue } from 'tailwind-variants'
+import { ref, watch, type CSSProperties } from 'vue'
+
+interface MeteorsProps {
+    number?: number
+    minDelay?: number
+    maxDelay?: number
+    minDuration?: number
+    maxDuration?: number
+    angle?: number
+    class?: ClassValue
+}
+
+const props = withDefaults(defineProps<MeteorsProps>(), {
+    number: 20,
+    minDelay: 0.2,
+    maxDelay: 1.2,
+    minDuration: 2,
+    maxDuration: 10,
+    angle: 215,
+})
+
+const meteorStyles = ref<CSSProperties[]>(
+    [Array.from({ length: props.number })].map(() => ({
+        '--angle': `-${props.angle}deg`,
+        top: '-5%',
+        left: `calc(0% + ${Math.floor(Math.random() * window.innerWidth)}px)`,
+        animationDelay: `${Math.random() * (props.maxDelay - props.minDelay) + props.minDelay}s`,
+        animationDuration: `${Math.floor(Math.random() * (props.maxDuration - props.minDuration) + props.minDuration)}s`,
+    })),
+)
+
+const setStyles = () => {
+    const styles = Array.from({ length: props.number }).map(() => ({
+        '--angle': `-${props.angle}deg`,
+        top: '-5%',
+        left: `calc(0% + ${Math.floor(Math.random() * window.innerWidth)}px)`,
+        animationDelay: `${Math.random() * (props.maxDelay - props.minDelay) + props.minDelay}s`,
+        animationDuration: `${Math.floor(Math.random() * (props.maxDuration - props.minDuration) + props.minDuration)}s`,
+    }))
+
+    meteorStyles.value = styles
+}
+
+setStyles()
+
+watch(
+    () => [props.number, props.minDelay, props.maxDelay, props.minDuration, props.maxDuration, props.angle],
+    setStyles,
+)
+
+const localStyles = tv({
+    slots: {
+        wrapper:
+            'pointer-events-none absolute size-0.5 rotate-[var(--angle)] animate-meteor motion-reduce:animate-none rounded-full bg-zinc-500 shadow-[0_0_0_1px_#ffffff10]',
+        tail: 'pointer-events-none absolute top-1/2 -z-10 h-px w-[50px] -translate-y-1/2 bg-gradient-to-r from-zinc-500 to-transparent',
+    },
+})
+</script>

@@ -1,0 +1,64 @@
+# AspectRatio
+
+Locks a container to a specific width-to-height ratio. Content placed inside fills the constrained box. Built on the reka-ui AspectRatio primitive.
+
+## When to Use
+- Preventing layout shift for images, videos, or maps before they load
+- Embedding iframes at a fixed ratio (16/9 video, 1/1 avatar)
+- Responsive thumbnail grids where height must track width
+- NOT for elements with fixed explicit dimensions
+
+## Usage
+
+16:9 video embed:
+```vue
+<AspectRatio :ratio="16 / 9">
+    <iframe src="..." class="size-full rounded-md" />
+</AspectRatio>
+```
+
+Square image:
+```vue
+<AspectRatio :ratio="1 / 1">
+    <img src="..." class="size-full object-cover" />
+</AspectRatio>
+```
+
+4:3 map:
+```vue
+<AspectRatio :ratio="4 / 3" class="rounded-lg overflow-hidden">
+    <AddressMap :lat="lat" :lng="lng" />
+</AspectRatio>
+```
+
+## Props
+
+- `ratio` -- width/height ratio as a number (e.g. 16/9, 4/3, 1) (default: 1)
+- `class` -- custom classes applied to the wrapper
+
+## Slots
+
+- `default` -- slotted with `{ style }` from reka-ui; fill with `class="size-full"`
+
+## Accessibility
+- Does not add any ARIA attributes; ensure the content inside (img, video, iframe) carries its own accessible labels
+
+## Common Patterns
+
+Responsive thumbnail list:
+```vue
+<div class="grid grid-cols-3 gap-4">
+    <div v-for="image in images" :key="image.id">
+        <AspectRatio :ratio="4 / 3">
+            <img :src="image.url" :alt="image.alt" class="size-full rounded-md object-cover" />
+        </AspectRatio>
+    </div>
+</div>
+```
+
+## Don't
+- Don't place block elements that ignore height constraints inside (they may overflow)
+- Don't use ratio="NaN" or 0 (browser will not apply any constraint)
+
+## Related
+- ImageWithPlaceholder -- image with built-in loading state

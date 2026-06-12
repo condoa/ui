@@ -1,0 +1,74 @@
+# Container
+
+Centers page content horizontally with a max-width constraint and responsive horizontal padding. The polymorphic `as` prop lets it render as any element.
+
+## When to Use
+- Wrapping page-level content sections to prevent line-length overflow on wide screens
+- Providing consistent horizontal padding across routes
+- NOT for inner card/panel width constraints (use max-w-* utilities directly)
+
+## Usage
+
+Basic:
+```vue
+<Container>
+    <p>Page content here.</p>
+</Container>
+```
+
+Constrained (no side padding, relies on parent to provide it):
+```vue
+<Container :constrained="true">
+    <p>Content already inside a padded context.</p>
+</Container>
+```
+
+As a section element:
+```vue
+<Container as="section">
+    <Heading>About us</Heading>
+</Container>
+```
+
+## Props
+
+- `constrained` -- when true, removes horizontal padding (default: false); use when the container is nested inside an already-padded element
+- `class` -- custom classes applied to the root
+- `as` -- rendered HTML element (default: "div")
+- `asChild` -- render slot content as root element
+
+## Slots
+
+- `default` -- page content
+
+## Accessibility
+- Renders as a plain `<div>` by default; change `as` to use semantic HTML (section, main, article, etc.)
+
+## Common Patterns
+
+Page layout wrapper:
+```vue
+<main>
+    <Container>
+        <Heading>Dashboard</Heading>
+        <p>Welcome back.</p>
+    </Container>
+</main>
+```
+
+Full-width header with constrained inner:
+```vue
+<header class="border-b bg-background">
+    <Container class="flex h-14 items-center justify-between">
+        <Logo />
+        <nav>...</nav>
+    </Container>
+</header>
+```
+
+## Don't
+- Don't stack multiple Container elements on the same level; they will double-pad
+- Don't use for small UI regions (cards, dialogs)
+
+## Related
+- Placeholder -- uses Container for layout scaffolding

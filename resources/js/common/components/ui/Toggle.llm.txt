@@ -1,0 +1,105 @@
+# Toggle
+
+Button that switches between pressed and unpressed states. Use for toolbar actions, view options, or any binary choice that needs a button-style control.
+
+## When to Use
+- Toolbar actions (bold, italic, align)
+- View toggles (grid / list)
+- Filter chips that activate a filter
+- NOT for settings that apply immediately (use Switch)
+- NOT for form fields (use Checkbox)
+- NOT for multiple exclusive options (use RadioGroup)
+
+## Usage
+
+Basic:
+```vue
+<Toggle v-model="bold">Bold</Toggle>
+```
+
+With icon:
+```vue
+<Toggle v-model="gridView">
+    <Icon name="icon-grid" />
+</Toggle>
+```
+
+With icon and label:
+```vue
+<Toggle v-model="showSidebar" size="sm">
+    <Icon name="icon-sidebar" />
+    Sidebar
+</Toggle>
+```
+
+Outline variant:
+```vue
+<Toggle v-model="active" variant="outline">Filter</Toggle>
+```
+
+## Props
+
+- `v-model`: pressed state (boolean, default: false)
+- `variant`: visual style (default: "default")
+  - "default" | "outline"
+- `size`: "xs" | "sm" | "default" | "lg" (default: "default")
+- `disabled`: disable interactions
+- `class`: custom classes
+
+## Slots
+
+- default: button content (text, icon, or both). Receives slot props from reka-ui ToggleRoot.
+
+## Accessibility
+- Renders as a `<button>` with `aria-pressed` managed by reka-ui
+- Space and Enter keys toggle state
+- Focus ring visible on keyboard navigation
+- Disabled state properly conveyed via `aria-disabled`
+
+## Common Patterns
+
+Toolbar group:
+```vue
+<div class="flex items-center gap-1 rounded-lg border p-1">
+    <Toggle v-model="bold" size="sm" aria-label="Bold">
+        <Icon name="icon-bold" />
+    </Toggle>
+    <Toggle v-model="italic" size="sm" aria-label="Italic">
+        <Icon name="icon-italic" />
+    </Toggle>
+    <Toggle v-model="underline" size="sm" aria-label="Underline">
+        <Icon name="icon-underline" />
+    </Toggle>
+</div>
+```
+
+View switcher:
+```vue
+<div class="flex items-center gap-1">
+    <Toggle v-model="isGrid" size="sm" aria-label="Grid view">
+        <Icon name="icon-grid" />
+    </Toggle>
+    <Toggle v-model="isList" size="sm" aria-label="List view">
+        <Icon name="icon-list" />
+    </Toggle>
+</div>
+```
+
+Filter toggle:
+```vue
+<Toggle v-model="showOnlyActive" variant="outline" size="sm">
+    Active only
+</Toggle>
+```
+
+## Don't
+- Don't use for settings (use Switch)
+- Don't use for navigation (use Button with active state or Link)
+- Don't use in forms (use Checkbox)
+- Don't replace RadioGroup with multiple Toggles for exclusive options
+
+## Related
+- Switch: for immediate settings toggles
+- Checkbox: for form fields
+- Button: for actions without persistent state
+- RadioGroup: for exclusive options

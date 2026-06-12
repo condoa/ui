@@ -1,0 +1,67 @@
+# Dropfile
+
+Click-or-drag file dropzone built on VueUse `useDropZone` and `useFileDialog`. Renders a dashed drop area that highlights while a file hovers over it. Hands picked or dropped files back as a `File[]`; it does not upload anything itself. Client-only (the file dialog and drop listeners are browser APIs).
+
+## When to Use
+- Letting a user pick or drop files before you upload them
+- A standalone upload affordance with custom title, subtext, and icon
+- NOT for the actual upload (no progress, no request; wire that in your handler)
+- NOT for a styled form field with validation (use Vee/FileInput)
+
+## Usage
+```vue
+<script setup lang="ts">
+const onFiles = (files: File[]) => {
+    // upload files
+}
+</script>
+
+<template>
+    <Dropfile
+        title="Solte os comprovantes aqui"
+        subtext="PDF, JPG ou PNG"
+        accept="application/pdf,image/*"
+        @dropped="onFiles"
+    />
+</template>
+```
+
+Custom content via the default slot:
+```vue
+<Dropfile @dropped="onFiles">
+    <div class="py-8 text-center text-sm">Arraste arquivos ou clique</div>
+</Dropfile>
+```
+
+## Props
+- `title`: bold message (HTML, rendered with `v-html`). Default "Click to upload or drag & drop files."
+- `subtext`: secondary line below the title (HTML). Default "All file types accepted".
+- `icon`: icon name shown above the title (default `icon-cloud-upload`)
+- `onDrop`: optional callback invoked with the files, called alongside the `dropped` event
+- `multiple`: allow selecting multiple files from the dialog (default true). Drag and drop always accepts multiple.
+- `accept`: file dialog accept filter (default `*`). Does not restrict drag and drop.
+- `class`: extra classes on the dropzone
+
+## Events
+- `dropped`: emitted with the `File[]` after a pick or drop
+
+## Slots
+- default: replaces the entire inner content
+- `message`, `icon`, `title`, `subtext`: override individual parts of the default layout
+
+## Exposed
+- `dropZoneRef`: template ref to the dropzone element
+
+## Behavior
+- Clicking anywhere on the zone opens the native file dialog
+- While a file is dragged over it, the border and icon switch to the primary color and the icon bounces
+- `accept` and `multiple` apply only to the file dialog, not to dropped files
+
+## Don't
+- Don't expect an upload; `dropped` only hands you the files
+- Don't rely on `accept` to filter dropped files; validate the `File[]` yourself
+- Don't pass untrusted strings to `title` or `subtext`; they render as HTML
+
+## Related
+- Vee/FileInput: validated file field for forms
+- ImageLightbox: preview the images a user dropped

@@ -1,0 +1,70 @@
+# SignaturePad
+
+Canvas-based handwritten signature capture with mouse and touch support. Pure 2D canvas, no signing library. Emits the drawing as a PNG data URL. Client-only: it draws on a real `<canvas>`, so it never renders during SSR. Depends on the Button registry item (the Clear button).
+
+## When to Use
+- Collecting a drawn signature for a termo, acordo, or delivery receipt
+- Capturing a quick freehand mark on desktop or touch devices
+- NOT for typed or uploaded signatures (no text or file mode)
+- NOT for validated digital certificates (this is a raster image, not a signed document)
+
+## Usage
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const signature = ref<string | null>(null)
+</script>
+
+<template>
+    <SignaturePad v-model="signature" :width="500" :height="200" />
+</template>
+```
+
+Reading the value imperatively via the exposed ref:
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const pad = ref<InstanceType<typeof SignaturePad> | null>(null)
+
+const submit = () => {
+    if (pad.value?.isEmpty()) return
+    const png = pad.value?.toDataURL()
+    // send png to the server
+}
+</script>
+
+<template>
+    <SignaturePad ref="pad" />
+    <Button @click="submit">Salvar</Button>
+</template>
+```
+
+## Props
+- `width`: canvas pixel width (default 400). Sets the drawing resolution; the canvas is displayed full width via CSS.
+- `height`: canvas pixel height (default 200). Display height is half this value.
+- `penColor`: stroke color, applied once on mount (default `#000000`)
+- `disabled`: blocks drawing and dims the pad (default false)
+
+## Events
+- `update:modelValue`: fires on each stroke end with the PNG data URL, or `null` after Clear
+
+## Exposed Methods
+- `clear()`: wipes the canvas, resets state, emits `null`
+- `isEmpty()`: returns `true` until the first stroke is drawn
+- `toDataURL()`: returns the PNG data URL, or `null` when empty
+
+## Behavior
+- Listens for both mouse and touch events; `touch-none` keeps drawing from scrolling the page
+- Pointer coordinates are scaled from CSS size to canvas resolution, so strokes land where you draw at any display width
+- A faint "Assine aqui" placeholder shows until the first stroke; the Clear button appears only after drawing
+
+## Don't
+- Don't expect SSR; the canvas and its data URL exist only in the browser
+- Don't change `penColor` after mount and expect existing strokes to recolor; it is read once on mount
+- Don't treat the output as a legally signed document; it is a plain image
+
+## Related
+- Dropfile: accept an uploaded signature image instead of capturing one
+- Button: the Clear control shown after drawing

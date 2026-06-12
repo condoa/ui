@@ -1,0 +1,86 @@
+{
+  "name": "select",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Select/Viewport.vue",
+      "to": "components/ui/Select/Viewport.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/Value.vue",
+      "to": "components/ui/Select/Value.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/Trigger.vue",
+      "to": "components/ui/Select/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/Separator.vue",
+      "to": "components/ui/Select/Separator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/Select.vue",
+      "to": "components/ui/Select/Select.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/ScrollUpButton.vue",
+      "to": "components/ui/Select/ScrollUpButton.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/ScrollDownButton.vue",
+      "to": "components/ui/Select/ScrollDownButton.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/Portal.vue",
+      "to": "components/ui/Select/Portal.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/Label.vue",
+      "to": "components/ui/Select/Label.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/ItemText.vue",
+      "to": "components/ui/Select/ItemText.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/ItemIndicator.vue",
+      "to": "components/ui/Select/ItemIndicator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/Item.vue",
+      "to": "components/ui/Select/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/Icon.vue",
+      "to": "components/ui/Select/Icon.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/Group.vue",
+      "to": "components/ui/Select/Group.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/Content.vue",
+      "to": "components/ui/Select/Content.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Select/Arrow.vue",
+      "to": "components/ui/Select/Arrow.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-check",
+    "icon-chevron-down",
+    "icon-chevron-up",
+    "icon-chevrons-up-down"
+  ],
+  "doc": "resources/js/common/components/ui/Select/Select.llm.txt"
+}

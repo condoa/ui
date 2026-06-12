@@ -1,0 +1,61 @@
+# Scrollspy
+
+Tracks which section is currently in view and marks the matching anchor as active, so a table of contents or side nav highlights the section the reader is on. Clicking an anchor smooth-scrolls to its section. Optionally reflects the active section in the URL hash.
+
+## When to Use
+- Docs pages, long forms, or landing pages with a sticky in-page navigation
+- Any "on this page" outline that should follow scroll position
+- NOT for cross-page navigation (it scrolls within one page only)
+
+## Usage
+
+Wrap the anchors. Each anchor carries `data-scrollspy-anchor="<section-id>"` matching a section element `id`:
+```vue
+<Scrollspy>
+    <a data-scrollspy-anchor="intro" :class="{ active: '...' }">Intro</a>
+    <a data-scrollspy-anchor="install">Install</a>
+</Scrollspy>
+
+<section id="intro">...</section>
+<section id="install">...</section>
+```
+The active anchor gets `data-active="true"`; style it with `[data-active]:...`.
+
+Custom scroll container and offset:
+```vue
+<Scrollspy :target="scrollEl" :offset="80" />
+```
+
+Per-anchor offset overrides the default via `data-scrollspy-offset="120"`.
+
+## Props
+- `target`: scroll container (ref/getter to a scrollable element). Defaults to `window`.
+- `offset`: px offset from the top when computing the active section and when scrolling (default 0).
+- `smooth`: smooth scrolling on anchor click (default true).
+- `dataAttribute`: base data attribute name (default "scrollspy"), so anchors use `data-<name>-anchor`.
+- `history`: reflect the active section id in the URL hash via `replaceState` (default true).
+- `throttleTime`: scroll handler throttle in ms (default 50).
+- `onUpdate`: callback `(id: string) => void` fired when the active section changes.
+- `class`: classes for the container element.
+
+## Emits
+- `change`: emits the new active section id whenever it changes (mirrors `onUpdate`).
+
+## Behavior
+- Anchors are discovered by querying `[data-<name>-anchor]` inside the container, and re-discovered on DOM changes via a MutationObserver, so dynamically added anchors are picked up.
+- On mount, if the URL already has a matching hash, it scrolls there.
+- At the bottom of the scroll area, the last anchor is forced active so the final short section can still light up.
+
+## Client-only caveat
+- Reads `window`, `document`, scroll position, and the URL hash. All tracking runs after mount in the browser.
+
+## Accessibility
+- Marks the active anchor with `data-active`; also style a clear focus ring on the anchors themselves (they are your elements).
+- Consider `aria-current="true"` on the active anchor if you bind it; Scrollspy sets only the data attribute.
+
+## Don't
+- Don't point anchors at ids that do not exist; those anchors are skipped.
+- Don't set `history` true on pages where hash changes would conflict with routing.
+
+## Related
+- Nav: the navigation primitives an outline is usually built from

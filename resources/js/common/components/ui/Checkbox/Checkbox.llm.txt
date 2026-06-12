@@ -1,0 +1,112 @@
+# Checkbox
+
+Basic checkbox input. Use for binary choices in forms that submit.
+
+## When to Use
+- Form fields with boolean values
+- Multi-select options
+- Terms acceptance
+- NOT for immediate settings (use Switch)
+- NOT for VeeValidate forms (use VeeCheckbox)
+
+## Usage
+
+Basic:
+```vue
+<Checkbox v-model="accepted" label="I accept the terms" />
+```
+
+Without label (provide aria-label):
+```vue
+<Checkbox v-model="selected" aria-label="Select item" />
+```
+
+Indeterminate state:
+```vue
+<Checkbox v-model="selectAll" :indeterminate="someSelected" label="Select all" />
+```
+
+## Props
+
+- `modelValue` (v-model) - boolean checked state
+- `checked` (v-model:checked) - alternative binding
+- `defaultValue` - initial value
+- `label` - label text
+- `indeterminate` - show indeterminate state
+- `disabled` - disable checkbox
+- `id` - element id
+- `class` - checkbox classes
+- `wrapperClass` - wrapper classes
+
+## Emits
+
+- `update:modelValue` - value changed
+- `update:checked` - value changed (alternative)
+
+## Accessibility
+- Uses native checkbox with associated label
+- Indeterminate state properly conveyed
+- Disabled state visually indicated
+- Focus ring on keyboard navigation
+
+## Common Patterns
+
+Terms acceptance:
+```vue
+<div class="space-y-4">
+    <Checkbox v-model="form.acceptTerms" label="I accept the terms and conditions" />
+    <Checkbox v-model="form.acceptPrivacy" label="I accept the privacy policy" />
+    <Button :disabled="!form.acceptTerms || !form.acceptPrivacy">
+        Continue
+    </Button>
+</div>
+```
+
+Select all with indeterminate:
+```vue
+<script setup>
+const items = ref([...])
+const selected = ref([])
+
+const selectAll = computed({
+    get: () => selected.value.length === items.value.length,
+    set: (value) => {
+        selected.value = value ? items.value.map(i => i.id) : []
+    }
+})
+
+const someSelected = computed(() =>
+    selected.value.length > 0 && selected.value.length < items.value.length
+)
+</script>
+
+<template>
+    <Checkbox v-model="selectAll" :indeterminate="someSelected" label="Select all" />
+    <div v-for="item in items" :key="item.id">
+        <Checkbox v-model="selected" :value="item.id" :label="item.name" />
+    </div>
+</template>
+```
+
+In a list:
+```vue
+<div v-for="item in items" :key="item.id" class="flex items-center gap-3 p-2">
+    <Checkbox v-model="selected" :value="item.id" />
+    <span>{{ item.name }}</span>
+</div>
+```
+
+Disabled state:
+```vue
+<Checkbox v-model="value" disabled label="Cannot change this" />
+```
+
+## Don't
+- Don't use for immediate settings (use Switch)
+- Don't skip label (accessibility)
+- Don't use without form context where Switch fits better
+
+## Related
+- VeeCheckbox - with VeeValidate integration
+- Switch - for immediate on/off settings
+- RadioGroup - for single selection from multiple options

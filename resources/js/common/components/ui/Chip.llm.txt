@@ -1,0 +1,96 @@
+# Chip
+
+Wraps a target element and overlays a small badge dot or counter at a configurable corner. Useful for notification counts, status dots, and unread indicators.
+
+## When to Use
+- Notification badge on an icon or avatar
+- Unread count on a nav item
+- Online/offline status dot on an avatar
+- NOT as a standalone pill or tag (use Badge instead)
+
+## Usage
+
+Dot badge (no text):
+```vue
+<Chip>
+    <Icon name="icon-bell" class="size-5" />
+</Chip>
+```
+
+With count:
+```vue
+<Chip text="3">
+    <Avatar :src="user.avatar" />
+</Chip>
+```
+
+Custom color:
+```vue
+<Chip color="bg-emerald-500" size="md">
+    <Icon name="icon-user" class="size-5" />
+</Chip>
+```
+
+Controlled visibility:
+```vue
+<Chip v-model:show="hasNotifications">
+    <Icon name="icon-bell" class="size-5" />
+</Chip>
+```
+
+Custom content slot:
+```vue
+<Chip>
+    <Avatar :src="user.avatar" />
+    <template #content>
+        <span>5+</span>
+    </template>
+</Chip>
+```
+
+## Props
+
+- `text` -- text to display inside the chip dot
+- `color` -- Tailwind background class for the chip color (default: "bg-primary")
+- `size` -- "3xs" | "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" (default: "sm")
+- `position` -- "top-right" | "bottom-right" | "top-left" | "bottom-left" (default: "top-right")
+- `inset` -- whether the chip stays within the container bounds instead of overflowing (default: false)
+- `show` -- prop alias for v-model:show; controls chip visibility (default: true)
+- `class` -- custom classes applied to the chip dot
+
+## Model
+
+- `v-model:show` (boolean, default: true) -- toggle chip visibility
+
+## Slots
+
+- `default` -- the element the chip attaches to (icon, avatar, etc.)
+- `content` -- custom chip content, replacing the `text` prop
+
+## Accessibility
+- The chip itself is decorative; ensure the parent element conveys the same information through an aria-label or screen-reader text
+
+## Common Patterns
+
+Nav item with unread count:
+```vue
+<button class="relative" aria-label="Messages (3 unread)">
+    <Icon name="icon-message" class="size-5" />
+    <Chip text="3" size="xs" color="bg-destructive" />
+</button>
+```
+
+Online indicator on avatar:
+```vue
+<Chip color="bg-emerald-500" size="sm" position="bottom-right" :inset="true">
+    <Avatar :src="user.avatar" size="lg" />
+</Chip>
+```
+
+## Don't
+- Don't use for standalone tags or labels (use Badge)
+- Don't use very large sizes for simple dot indicators
+
+## Related
+- Badge -- standalone pill/label component
+- Avatar -- often used as the chip target

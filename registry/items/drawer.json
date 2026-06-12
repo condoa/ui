@@ -1,0 +1,57 @@
+{
+  "name": "drawer",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Drawer/Trigger.vue",
+      "to": "components/ui/Drawer/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Drawer/Title.vue",
+      "to": "components/ui/Drawer/Title.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Drawer/Portal.vue",
+      "to": "components/ui/Drawer/Portal.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Drawer/Overlay.vue",
+      "to": "components/ui/Drawer/Overlay.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Drawer/Header.vue",
+      "to": "components/ui/Drawer/Header.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Drawer/Footer.vue",
+      "to": "components/ui/Drawer/Footer.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Drawer/Drawer.vue",
+      "to": "components/ui/Drawer/Drawer.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Drawer/Description.vue",
+      "to": "components/ui/Drawer/Description.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Drawer/Content.vue",
+      "to": "components/ui/Drawer/Content.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Drawer/Close.vue",
+      "to": "components/ui/Drawer/Close.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vaul-vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Drawer/Drawer.llm.txt"
+}

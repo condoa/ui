@@ -1,0 +1,73 @@
+{
+  "name": "nav",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Nav/Trigger.vue",
+      "to": "components/ui/Nav/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Nav/Start.vue",
+      "to": "components/ui/Nav/Start.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Nav/Spacer.vue",
+      "to": "components/ui/Nav/Spacer.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Nav/Separator.vue",
+      "to": "components/ui/Nav/Separator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Nav/Section.vue",
+      "to": "components/ui/Nav/Section.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Nav/Provider.vue",
+      "to": "components/ui/Nav/Provider.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Nav/provider.ts",
+      "to": "components/ui/Nav/provider.ts"
+    },
+    {
+      "from": "resources/js/common/components/ui/Nav/Nav.vue",
+      "to": "components/ui/Nav/Nav.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Nav/Mobile.vue",
+      "to": "components/ui/Nav/Mobile.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Nav/Label.vue",
+      "to": "components/ui/Nav/Label.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Nav/Item.vue",
+      "to": "components/ui/Nav/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Nav/Inset.vue",
+      "to": "components/ui/Nav/Inset.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Nav/Gap.vue",
+      "to": "components/ui/Nav/Gap.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "button",
+    "separator"
+  ],
+  "icons": [
+    "icon-menu"
+  ],
+  "doc": "resources/js/common/components/ui/Nav/Nav.llm.txt"
+}

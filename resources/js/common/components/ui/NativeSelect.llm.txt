@@ -1,0 +1,81 @@
+# NativeSelect
+
+A styled wrapper around the browser's native `<select>` element. Use when you want the OS-native dropdown behavior with the design system's look.
+
+## When to Use
+- Simple option lists where native behavior is fine
+- Mobile-friendly selects (native picker on touch devices)
+- Forms that post a plain `<select>` value
+- NOT for searchable lists (use Combobox)
+- NOT for rich, custom option markup (use Select)
+
+## Usage
+
+Basic:
+```vue
+<NativeSelect v-model="value">
+    <option value="" disabled>Choose...</option>
+    <option v-for="opt in options" :key="opt.value" :value="opt.value">
+        {{ opt.label }}
+    </option>
+</NativeSelect>
+```
+
+Multiple:
+```vue
+<NativeSelect v-model="values" multiple :size="5">
+    <option v-for="opt in options" :key="opt.value" :value="opt.value">
+        {{ opt.label }}
+    </option>
+</NativeSelect>
+```
+
+## Props
+- `v-model` (`modelValue`) - selected value (array when `multiple`)
+- `id` - id of the select element
+- `name` - name for form submission
+- `placeholder` - placeholder text
+- `disabled` - disable the select
+- `required` - mark as required
+- `multiple` - allow multiple selection
+- `size` - number of visible options
+- `autofocus` - focus on mount
+- `trailingIcon` - chevron icon name (default: `icon-chevron-down`, single-select only)
+- `class` - custom classes on the select element
+
+Any other attributes are forwarded to the underlying `<select>` (inheritAttrs is off, so they land on the select, not the wrapper).
+
+## Slots
+- default - the `<option>` elements
+- `trailingIcon` - replace the trailing chevron (single-select only)
+
+## Events
+- `update:modelValue` - fired when the selection changes
+
+## Accessibility
+- Renders a real `<select>`, so keyboard and screen-reader support is native
+- The trailing chevron is `aria-hidden` and decorative
+- Pair with `<Label :for="id">` for an accessible name
+
+## Common Patterns
+
+With a label:
+```vue
+<div class="space-y-2">
+    <Label for="status">Status</Label>
+    <NativeSelect id="status" v-model="status">
+        <option value="open">Open</option>
+        <option value="closed">Closed</option>
+    </NativeSelect>
+</div>
+```
+
+## Don't
+- Don't use for searchable or async option lists (use Combobox)
+- Don't put non-`<option>` markup inside (the browser will not render it)
+- Don't forget a label for accessibility
+
+## Related
+- Select - custom-rendered dropdown with rich options
+- FormSelect - Select wired to VeeValidate with label and hint
+- Combobox - searchable dropdown

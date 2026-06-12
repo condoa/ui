@@ -1,0 +1,48 @@
+# ImageWithPlaceholder
+
+Image that shows a placeholder (typically a tiny blurred or low-res version) underneath while the full image loads, then cross-fades the real image in on load. Smooths the pop-in of large images without a layout shift.
+
+## When to Use
+- Hero images, cards, and gallery thumbnails where a hard load flash looks abrupt
+- Pairing a tiny inline data-URI or low-res placeholder with a full-size source
+- NOT for icons or already-tiny images (the fade adds nothing)
+
+## Usage
+
+Basic (placeholder + main):
+```vue
+<ImageWithPlaceholder
+    :src="fullUrl"
+    :placeholder="tinyBlurUrl"
+    alt="Lobby of the building"
+    class="aspect-video w-full"
+/>
+```
+
+Without a placeholder (just the fade-in):
+```vue
+<ImageWithPlaceholder :src="fullUrl" alt="Lobby of the building" />
+```
+
+## Props
+- `src`: source URL of the main image.
+- `alt`: alt text. It is forwarded to the `<img>` as-is. Pass a descriptive string for meaningful images, or an empty string `alt=""` for purely decorative ones.
+- `placeholder`: source URL of the placeholder shown until the main image loads. Omit to skip the placeholder layer.
+- `class`: classes for the container (the container is `rounded overflow-hidden shadow-xs` by default).
+- Other attributes are forwarded to the underlying images.
+
+## Behavior
+- The main image starts at opacity 0 and fades to 1 on its `load` event; the placeholder sits behind it.
+- No layout shift: the images stack in a relative/absolute container.
+
+## Accessibility
+- `alt` passes through unchanged. Provide real alt text for content images; only use `alt=""` for decoration.
+- The placeholder is not separately announced; it shares the same alt as the main image.
+
+## Don't
+- Don't force `alt=""` on a meaningful image; screen readers then skip it.
+- Don't use a huge placeholder; a small blurred or low-res source is the point.
+
+## Related
+- AspectRatio: lock the image box to a fixed ratio
+- Skeleton: neutral loading block when you have no placeholder image

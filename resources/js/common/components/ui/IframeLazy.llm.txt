@@ -1,0 +1,60 @@
+# IframeLazy
+
+Iframe that defers loading until it is about to scroll into view, with an optional placeholder shown until then. Uses an IntersectionObserver so off-screen embeds (maps, videos, third-party widgets) do not cost network or CPU on first paint.
+
+## When to Use
+- Heavy or third-party embeds below the fold (maps, video players, social widgets)
+- Long pages with several iframes where eager loading would block rendering
+- NOT for an iframe that is always above the fold and must load immediately (set `loading="eager"`)
+
+## Usage
+
+Basic:
+```vue
+<IframeLazy src="https://example.com/embed" title="Location map" class="aspect-video" />
+```
+
+Custom placeholder:
+```vue
+<IframeLazy src="https://example.com/embed" title="Promo video">
+    <template #placeholder>
+        <Skeleton class="size-full" />
+    </template>
+</IframeLazy>
+```
+
+Eager load (skip lazy gating):
+```vue
+<IframeLazy src="..." title="..." loading="eager" :placeholder="false" />
+```
+
+## Props
+- `src`: URL to embed. Only set on the real iframe once it becomes visible.
+- `title`: accessible title for the iframe. Always provide one; screen readers announce it as the frame name.
+- `class`: classes for the wrapper element.
+- `iframeClass`: classes for the iframe element.
+- `loading`: "lazy" | "eager" (default "lazy"). Forwarded to the native iframe `loading` attribute.
+- `placeholder`: boolean (default true). When true, shows the placeholder slot (or a muted block) until the iframe is visible.
+- `rootMargin`: IntersectionObserver root margin (default "150px"), so loading starts slightly before the frame enters the viewport.
+- `threshold`: IntersectionObserver threshold (default 0).
+
+## Slots
+- `placeholder`: replaces the default muted block shown before the iframe loads.
+
+## Emits
+- `load`: the native iframe `load` event, fired once the embedded page finishes loading.
+
+## Client-only caveat
+- Loading is gated on IntersectionObserver, which only runs in the browser. The iframe `src` stays unset until the wrapper intersects the viewport, so nothing is fetched during server render.
+
+## Accessibility
+- Always pass a meaningful `title`; it is the iframe's accessible name.
+- The placeholder is decorative. Keep any real content accessible outside the frame.
+
+## Don't
+- Don't omit `title`; an untitled iframe is an accessibility failure.
+- Don't use it for critical content that must be present on first paint; prefer eager loading there.
+
+## Related
+- ClientOnly: defer arbitrary slot content until mount
+- AspectRatio: lock the embed to a fixed ratio

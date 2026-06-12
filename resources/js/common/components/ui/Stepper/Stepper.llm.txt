@@ -1,0 +1,167 @@
+# Stepper
+
+Multi-step progress indicator. Use for wizards and sequential flows.
+
+## When to Use
+- Multi-step forms/wizards
+- Setup flows
+- Checkout processes
+- NOT for navigation (use Tabs or NavigationMenu)
+- NOT for progress bars (use Progress)
+
+## Usage
+
+Basic:
+```vue
+<Stepper v-model="currentStep">
+    <StepperItem :step="1">
+        <StepperTrigger>
+            <StepperIndicator>1</StepperIndicator>
+            <StepperTitle>Account</StepperTitle>
+        </StepperTrigger>
+        <StepperSeparator />
+    </StepperItem>
+    <StepperItem :step="2">
+        <StepperTrigger>
+            <StepperIndicator>2</StepperIndicator>
+            <StepperTitle>Profile</StepperTitle>
+        </StepperTrigger>
+        <StepperSeparator />
+    </StepperItem>
+    <StepperItem :step="3">
+        <StepperTrigger>
+            <StepperIndicator>3</StepperIndicator>
+            <StepperTitle>Complete</StepperTitle>
+        </StepperTrigger>
+    </StepperItem>
+</Stepper>
+```
+
+With content panels:
+```vue
+<Stepper v-model="step">
+    <StepperItem :step="1">
+        <StepperTrigger>...</StepperTrigger>
+    </StepperItem>
+    <!-- more steps -->
+</Stepper>
+
+<!-- Render step content outside the Stepper -->
+<div v-if="step === 1">
+    <Card>
+        <CardContent>Step 1 content</CardContent>
+        <CardFooter>
+            <Button @click="step = 2">Next</Button>
+        </CardFooter>
+    </Card>
+</div>
+```
+
+## Components
+
+### Stepper
+Root component.
+- `v-model`: current step (1-indexed)
+- `orientation`: "horizontal" | "vertical" (default: "horizontal")
+- `linear`: require sequential completion
+- `class`: custom classes
+
+### StepperItem
+Individual step container.
+- `step`: step number (required)
+- `disabled`: disable step
+- `completed`: mark as completed
+
+### StepperTrigger
+Clickable step button.
+
+### StepperIndicator
+Step number/icon circle.
+
+### StepperTitle
+Step title text.
+
+### StepperDescription
+Step description text.
+
+### StepperSeparator
+Line between steps.
+
+## Accessibility
+- Keyboard navigation between steps
+- ARIA step semantics
+- Disabled/completed states announced
+- Focus management
+
+## Common Patterns
+
+Setup wizard:
+```vue
+<script setup>
+const step = ref(1)
+const steps = [
+    { title: 'Account', description: 'Create your account' },
+    { title: 'Profile', description: 'Set up your profile' },
+    { title: 'Settings', description: 'Configure preferences' },
+]
+</script>
+
+<template>
+    <div class="space-y-8">
+        <Stepper v-model="step">
+            <StepperItem v-for="(s, i) in steps" :key="i" :step="i + 1">
+                <StepperTrigger>
+                    <StepperIndicator>
+                        <Icon v-if="step > i + 1" name="icon-check" class="size-4" />
+                        <span v-else>{{ i + 1 }}</span>
+                    </StepperIndicator>
+                    <div class="flex flex-col">
+                        <StepperTitle>{{ s.title }}</StepperTitle>
+                        <StepperDescription>{{ s.description }}</StepperDescription>
+                    </div>
+                </StepperTrigger>
+                <StepperSeparator v-if="i < steps.length - 1" />
+            </StepperItem>
+        </Stepper>
+
+        <div v-if="step === 1">Step 1 content</div>
+        <div v-else-if="step === 2">Step 2 content</div>
+        <div v-else>Step 3 content</div>
+
+        <div class="flex justify-between">
+            <Button variant="outline" :disabled="step === 1" @click="step--">
+                Previous
+            </Button>
+            <Button @click="step++">
+                {{ step === steps.length ? 'Complete' : 'Next' }}
+            </Button>
+        </div>
+    </div>
+</template>
+```
+
+Vertical stepper:
+```vue
+<Stepper v-model="step" orientation="vertical">
+    <StepperItem :step="1">
+        <StepperTrigger>...</StepperTrigger>
+        <StepperSeparator />
+    </StepperItem>
+    <!-- more steps -->
+</Stepper>
+
+<!-- Step content rendered separately -->
+<div v-if="step === 1" class="pl-8 pb-4">
+    Step 1 content goes here
+</div>
+```
+
+## Don't
+- Don't use for navigation (use Tabs)
+- Don't use for non-sequential content
+- Don't have too many steps (5-7 max)
+
+## Related
+- Tabs: for non-sequential content switching
+- Progress: for simple progress display
+- Breadcrumbs: for navigation hierarchy

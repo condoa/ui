@@ -1,0 +1,87 @@
+{
+  "name": "dropdownmenu",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/Trigger.vue",
+      "to": "components/ui/DropdownMenu/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/SubTrigger.vue",
+      "to": "components/ui/DropdownMenu/SubTrigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/SubContent.vue",
+      "to": "components/ui/DropdownMenu/SubContent.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/Sub.vue",
+      "to": "components/ui/DropdownMenu/Sub.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/Shortcut.vue",
+      "to": "components/ui/DropdownMenu/Shortcut.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/Separator.vue",
+      "to": "components/ui/DropdownMenu/Separator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/RadioItem.vue",
+      "to": "components/ui/DropdownMenu/RadioItem.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/RadioGroup.vue",
+      "to": "components/ui/DropdownMenu/RadioGroup.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/Portal.vue",
+      "to": "components/ui/DropdownMenu/Portal.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/Label.vue",
+      "to": "components/ui/DropdownMenu/Label.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/ItemIndicator.vue",
+      "to": "components/ui/DropdownMenu/ItemIndicator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/Item.vue",
+      "to": "components/ui/DropdownMenu/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/Group.vue",
+      "to": "components/ui/DropdownMenu/Group.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/DropdownMenu.vue",
+      "to": "components/ui/DropdownMenu/DropdownMenu.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/Content.vue",
+      "to": "components/ui/DropdownMenu/Content.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/CheckboxItem.vue",
+      "to": "components/ui/DropdownMenu/CheckboxItem.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DropdownMenu/Arrow.vue",
+      "to": "components/ui/DropdownMenu/Arrow.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-check",
+    "icon-chevron-right"
+  ],
+  "doc": "resources/js/common/components/ui/DropdownMenu/DropdownMenu.llm.txt"
+}

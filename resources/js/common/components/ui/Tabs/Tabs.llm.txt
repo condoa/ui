@@ -1,0 +1,162 @@
+# Tabs
+
+Tab-based content organization. Use for switching between related views without navigation.
+
+## When to Use
+- Related content sections on same page
+- Settings organized by category
+- Alternative views of same data
+- NOT for primary navigation (use NavigationMenu or sidebar)
+- NOT for wizard steps (use Stepper)
+
+## Usage
+
+Basic:
+```vue
+<Tabs default-value="general">
+    <TabsList>
+        <TabsTrigger value="general">General</TabsTrigger>
+        <TabsTrigger value="security">Security</TabsTrigger>
+        <TabsTrigger value="notifications">Notifications</TabsTrigger>
+    </TabsList>
+    <TabsContent value="general">
+        <Card>
+            <CardContent>General settings content</CardContent>
+        </Card>
+    </TabsContent>
+    <TabsContent value="security">
+        <Card>
+            <CardContent>Security settings content</CardContent>
+        </Card>
+    </TabsContent>
+    <TabsContent value="notifications">
+        <Card>
+            <CardContent>Notifications settings content</CardContent>
+        </Card>
+    </TabsContent>
+</Tabs>
+```
+
+Controlled:
+```vue
+<script setup>
+const activeTab = ref('general')
+</script>
+
+<template>
+    <Tabs v-model="activeTab">
+        <TabsList>
+            <TabsTrigger value="general">General</TabsTrigger>
+            <TabsTrigger value="advanced">Advanced</TabsTrigger>
+        </TabsList>
+        <TabsContent value="general">...</TabsContent>
+        <TabsContent value="advanced">...</TabsContent>
+    </Tabs>
+</template>
+```
+
+## Components
+
+### Tabs
+Root component. Manages active tab state.
+- `v-model` / `defaultValue`: active tab value
+- `orientation`: "horizontal" | "vertical" (default: "horizontal")
+- `activationMode`: "automatic" | "manual" (default: "automatic")
+- `class`: custom classes
+
+### TabsList
+Container for tab triggers.
+- `pill`: use pill-style background (default: true)
+- `class`: custom classes
+
+### TabsTrigger
+Tab button.
+- `value`: unique tab identifier (required)
+- `disabled`: disable tab
+- `pill`: pill styling (default: true)
+- `class`: custom classes
+
+### TabsContent
+Content panel for a tab.
+- `value`: matching tab identifier (required)
+- `class`: custom classes
+
+## Accessibility
+- Arrow keys navigate between tabs
+- Tab key moves focus into content
+- ARIA tablist/tab/tabpanel roles
+- Disabled tabs skip in navigation
+
+## Common Patterns
+
+Settings page:
+```vue
+<Tabs default-value="profile" class="space-y-4">
+    <TabsList>
+        <TabsTrigger value="profile">Profile</TabsTrigger>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="billing">Billing</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="profile">
+        <Frame>
+            <FramePanel>
+                <FrameHeader>
+                    <FrameTitle>Profile Information</FrameTitle>
+                </FrameHeader>
+                <FrameBody>
+                    <VeeInput name="name" label="Name" />
+                    <VeeInput name="email" label="Email" />
+                </FrameBody>
+            </FramePanel>
+        </Frame>
+    </TabsContent>
+
+    <TabsContent value="account">
+        <!-- Account settings -->
+    </TabsContent>
+
+    <TabsContent value="billing">
+        <!-- Billing settings -->
+    </TabsContent>
+</Tabs>
+```
+
+With icons:
+```vue
+<TabsList>
+    <TabsTrigger value="overview">
+        <Icon name="icon-home" class="size-4 mr-2" />
+        Overview
+    </TabsTrigger>
+    <TabsTrigger value="analytics">
+        <Icon name="icon-chart" class="size-4 mr-2" />
+        Analytics
+    </TabsTrigger>
+</TabsList>
+```
+
+Vertical tabs:
+```vue
+<Tabs orientation="vertical" class="flex gap-4">
+    <TabsList class="flex-col">
+        <TabsTrigger value="general">General</TabsTrigger>
+        <TabsTrigger value="privacy">Privacy</TabsTrigger>
+    </TabsList>
+    <div class="flex-1">
+        <TabsContent value="general">...</TabsContent>
+        <TabsContent value="privacy">...</TabsContent>
+    </div>
+</Tabs>
+```
+
+## Don't
+- Don't use for primary navigation
+- Don't use for sequential steps (use Stepper)
+- Don't have too many tabs (consider grouping or different pattern)
+- Don't use tabs for unrelated content
+
+## Related
+- Stepper: sequential steps
+- NavigationMenu: primary navigation
+- Accordion: collapsible sections

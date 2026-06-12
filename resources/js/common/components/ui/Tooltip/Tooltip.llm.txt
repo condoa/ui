@@ -1,0 +1,128 @@
+# Tooltip
+
+Floating label that appears on hover or focus. Use for supplementary information.
+
+## When to Use
+- Icon-only buttons (required for accessibility)
+- Truncated text that needs full display
+- Brief explanations of UI elements
+- NOT for complex content (use Popover)
+- NOT for interactive content (use Popover)
+- NOT for form validation (use inline errors)
+
+## Usage
+
+Basic:
+```vue
+<Tooltip>
+    <TooltipTrigger as-child>
+        <Button variant="ghost" size="icon" aria-label="Settings">
+            <Icon name="icon-settings" class="size-4" />
+        </Button>
+    </TooltipTrigger>
+    <TooltipContent>Settings</TooltipContent>
+</Tooltip>
+```
+
+With directive (floating-vue):
+```vue
+<Button v-tooltip="'Click to save'" @click="save">
+    <Icon name="icon-save" class="size-4" />
+</Button>
+```
+
+## Components
+
+### Tooltip
+Root component. Wraps content in TooltipProvider.
+- `delayDuration` - ms before showing (default: 0)
+- `disableHoverableContent` - close when leaving trigger
+- `open` (v-model) - controlled open state
+
+### TooltipTrigger
+Element that shows tooltip on hover/focus.
+- `asChild` - merge props onto child
+
+### TooltipContent
+The tooltip popup.
+- `side` - "top" | "right" | "bottom" | "left" (default: "top")
+- `sideOffset` - offset from trigger (default: 4)
+- `align` - "start" | "center" | "end" (default: "center")
+- `class` - custom classes
+
+### TooltipArrow
+Optional arrow pointing to trigger.
+
+## Accessibility
+- Shows on focus for keyboard users
+- Uses ARIA tooltip role
+- Content is announced by screen readers
+- Icon-only buttons should have aria-label
+
+## Common Patterns
+
+Icon button:
+```vue
+<Tooltip>
+    <TooltipTrigger as-child>
+        <Button variant="ghost" size="icon" aria-label="Edit">
+            <Icon name="icon-edit" class="size-4" />
+        </Button>
+    </TooltipTrigger>
+    <TooltipContent>Edit</TooltipContent>
+</Tooltip>
+```
+
+Truncated text:
+```vue
+<Tooltip>
+    <TooltipTrigger as-child>
+        <span class="truncate max-w-[200px] block">
+            {{ veryLongText }}
+        </span>
+    </TooltipTrigger>
+    <TooltipContent class="max-w-sm">
+        {{ veryLongText }}
+    </TooltipContent>
+</Tooltip>
+```
+
+Feature hint:
+```vue
+<div class="flex items-center gap-1">
+    <Label>API Key</Label>
+    <Tooltip>
+        <TooltipTrigger as-child>
+            <Icon name="icon-info" class="size-3.5 text-muted-foreground cursor-help" />
+        </TooltipTrigger>
+        <TooltipContent>
+            Your API key is used to authenticate requests.
+        </TooltipContent>
+    </Tooltip>
+</div>
+```
+
+Disabled button explanation:
+```vue
+<Tooltip>
+    <TooltipTrigger as-child>
+        <span tabindex="0">
+            <Button disabled>Submit</Button>
+        </span>
+    </TooltipTrigger>
+    <TooltipContent>
+        Fill out all required fields to submit.
+    </TooltipContent>
+</Tooltip>
+```
+
+## Don't
+- Don't put interactive content in tooltips (use Popover)
+- Don't use for essential information (should be visible)
+- Don't make tooltips too long (keep brief)
+- Don't rely solely on tooltips for accessibility
+
+## Related
+- Popover - interactive floating content
+- HoverCard - preview on hover
+- floating-vue directive - simpler tooltip API

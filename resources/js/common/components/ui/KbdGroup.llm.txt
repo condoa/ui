@@ -1,0 +1,72 @@
+# KbdGroup
+
+Wraps multiple Kbd elements into a horizontal chord sequence with consistent spacing.
+
+## When to Use
+- Showing multi-key keyboard shortcuts (Ctrl+K, Cmd+Shift+P)
+- Grouping keys that must be pressed together
+- NOT for single-key shortcuts (use Kbd alone)
+
+## Usage
+
+Basic chord:
+```vue
+<KbdGroup>
+    <Kbd>Ctrl</Kbd>
+    <Kbd>K</Kbd>
+</KbdGroup>
+```
+
+With custom class:
+```vue
+<KbdGroup class="ml-auto">
+    <Kbd>Ctrl</Kbd>
+    <Kbd>Shift</Kbd>
+    <Kbd>P</Kbd>
+</KbdGroup>
+```
+
+## Props
+
+- `class` -- custom classes applied to the wrapper `<kbd>`
+
+## Slots
+
+- `default` -- one or more Kbd elements
+
+## Accessibility
+- Renders as a `<kbd>` element containing nested `<kbd>` children, the correct semantic pattern for key sequences per HTML spec
+
+## Common Patterns
+
+In a command palette row:
+```vue
+<div class="flex items-center justify-between">
+    <span>Toggle sidebar</span>
+    <KbdGroup>
+        <Kbd>Ctrl</Kbd>
+        <Kbd>B</Kbd>
+    </KbdGroup>
+</div>
+```
+
+In a help modal:
+```vue
+<table>
+    <tr>
+        <td>Save</td>
+        <td><KbdGroup><Kbd>Ctrl</Kbd><Kbd>S</Kbd></KbdGroup></td>
+    </tr>
+    <tr>
+        <td>Find</td>
+        <td><KbdGroup><Kbd>Ctrl</Kbd><Kbd>F</Kbd></KbdGroup></td>
+    </tr>
+</table>
+```
+
+## Don't
+- Don't put non-Kbd elements inside KbdGroup
+- Don't use KbdGroup for a single key
+
+## Related
+- Kbd -- individual key element

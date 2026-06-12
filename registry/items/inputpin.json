@@ -1,0 +1,28 @@
+{
+  "name": "inputpin",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/InputPin/InputPinInput.vue",
+      "to": "components/ui/InputPin/InputPinInput.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/InputPin/InputPin.vue",
+      "to": "components/ui/InputPin/InputPin.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/InputPin/Group.vue",
+      "to": "components/ui/InputPin/Group.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/InputPin/InputPin.llm.txt"
+}

@@ -1,0 +1,128 @@
+# TreeNode
+
+Self-contained tree node with connector lines, collapse toggle, and slot composition. Use when you need a custom hierarchical list that is not backed by reka-ui Tree data.
+
+## When to Use
+- Custom accounting/org chart rows with depth indentation and connector guides
+- Chart-of-accounts or any nested list where items are rendered manually
+- Situations where reka-ui Tree virtualizer is overkill and full control is needed
+- NOT for data-driven trees with keyboard navigation (use Tree instead)
+
+## Usage
+
+Basic node:
+```vue
+<TreeNode name="Revenue" code="4000" :depth="1" :has-children="true">
+    <template #children>
+        <TreeNode name="Service Revenue" code="4100" :depth="2" />
+        <TreeNode name="Product Revenue" code="4200" :depth="2" :is-last-child="true" />
+    </template>
+</TreeNode>
+```
+
+Node with actions:
+```vue
+<TreeNode :name="account.name" :code="account.code" :depth="depth" :has-children="hasChildren">
+    <template #badges>
+        <Badge v-if="account.active">Active</Badge>
+    </template>
+    <template #actions>
+        <Button variant="ghost" size="icon-sm" @click.stop="edit(account)">
+            <Icon name="icon-pencil" class="size-4" aria-hidden="true" />
+        </Button>
+    </template>
+    <template #children>
+        <TreeNode
+            v-for="child in account.children"
+            :key="child.id"
+            v-bind="child"
+            :depth="depth + 1"
+        />
+    </template>
+</TreeNode>
+```
+
+Force-collapse all nodes:
+```vue
+<Button @click="collapsed = true">Collapse all</Button>
+<TreeNode
+    v-for="root in tree"
+    :key="root.id"
+    :force-collapsed="collapsed"
+    :has-children="root.children.length > 0"
+    :name="root.name"
+>
+    <template #children>...</template>
+</TreeNode>
+```
+
+## Props
+
+- `code` -- optional short code rendered in monospace before the name
+- `name` -- display name
+- `depth` -- nesting level, 1-based (default: 1)
+- `isFirstChild` -- reserved prop (declared but not used in the template; may be used by callers for custom rendering logic)
+- `isLastChild` -- renders L-shape connector when true (default: true)
+- `hasChildren` -- shows chevron and enables collapse toggle
+- `forceCollapsed` -- collapse/expand programmatically (watched)
+- `showRow` -- hide the row itself while keeping children visible (default: true)
+
+## Slots
+
+- `content` -- replaces default code+name display
+- `badges` -- inline badges after content
+- `actions` -- trailing actions (right side of row)
+- `extra` -- content inserted between row and children
+- `children` -- nested TreeNode elements
+- `append` -- content appended after children
+
+## Exposed
+
+- `isCollapsed` -- ref, readable from a parent via template ref
+
+## Accessibility
+- The toggle target has `role="button"`, `tabindex="0"`, `aria-expanded`, and keyboard support (Enter/Space).
+- The chevron Icon has `aria-hidden="true"`.
+
+## Common Patterns
+
+Rendering a full chart-of-accounts tree recursively:
+```vue
+<script setup>
+function renderTree(nodes, depth = 1) { /* recursive helper */ }
+</script>
+<template>
+    <div class="border rounded-lg overflow-hidden">
+        <TreeNode
+            v-for="(node, i) in roots"
+            :key="node.id"
+            :name="node.name"
+            :code="node.code"
+            :depth="1"
+            :is-last-child="i === roots.length - 1"
+            :has-children="node.children.length > 0"
+        >
+            <template #children>
+                <TreeNode
+                    v-for="(child, j) in node.children"
+                    :key="child.id"
+                    :name="child.name"
+                    :code="child.code"
+                    :depth="2"
+                    :is-last-child="j === node.children.length - 1"
+                />
+            </template>
+        </TreeNode>
+    </div>
+</template>
+```
+
+## Don't
+- Don't use for data-driven keyboard-navigable trees (use Tree)
+- Don't omit `isLastChild` on deep nests or connector lines will overshoot
+- Don't put non-TreeNode content directly in `children` slot
+
+## Related
+- Tree -- reka-ui data-driven tree with keyboard navigation
+- List -- flat list layout
+- Accordion -- collapsible sections without connector guides

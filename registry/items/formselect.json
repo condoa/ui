@@ -1,0 +1,22 @@
+{
+  "name": "formselect",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/FormSelect.vue",
+      "to": "components/ui/FormSelect.vue"
+    }
+  ],
+  "dependencies": [
+    "motion-v",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "label"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/FormSelect.llm.txt"
+}

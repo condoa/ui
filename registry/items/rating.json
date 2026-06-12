@@ -1,0 +1,21 @@
+{
+  "name": "rating",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Rating.vue",
+      "to": "components/ui/Rating.vue"
+    }
+  ],
+  "dependencies": [
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-circle"
+  ],
+  "doc": "resources/js/common/components/ui/Rating.llm.txt"
+}

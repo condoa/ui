@@ -1,0 +1,51 @@
+{
+  "name": "table",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Table/Table.vue",
+      "to": "components/ui/Table/Table.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Table/Row.vue",
+      "to": "components/ui/Table/Row.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Table/Header.vue",
+      "to": "components/ui/Table/Header.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Table/Head.vue",
+      "to": "components/ui/Table/Head.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Table/Footer.vue",
+      "to": "components/ui/Table/Footer.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Table/Empty.vue",
+      "to": "components/ui/Table/Empty.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Table/Cell.vue",
+      "to": "components/ui/Table/Cell.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Table/Caption.vue",
+      "to": "components/ui/Table/Caption.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Table/Body.vue",
+      "to": "components/ui/Table/Body.vue"
+    }
+  ],
+  "dependencies": [
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Table/Table.llm.txt"
+}

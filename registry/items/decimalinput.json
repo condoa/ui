@@ -1,0 +1,23 @@
+{
+  "name": "decimalinput",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/DecimalInput.vue",
+      "to": "components/ui/DecimalInput.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DecimalInput.helpers.ts",
+      "to": "components/ui/DecimalInput.helpers.ts"
+    }
+  ],
+  "dependencies": [
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "input"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/DecimalInput.llm.txt"
+}

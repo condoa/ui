@@ -1,0 +1,23 @@
+{
+  "name": "vee-select",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/Select.vue",
+      "to": "components/ui/Vee/Select.vue"
+    }
+  ],
+  "dependencies": [
+    "motion-v",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "label",
+    "nativeselect"
+  ],
+  "icons": [],
+  "doc": null
+}

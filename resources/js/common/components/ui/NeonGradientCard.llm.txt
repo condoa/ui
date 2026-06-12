@@ -1,0 +1,60 @@
+# NeonGradientCard
+
+Card with an animated neon gradient border and a blurred glow behind it. Wraps slotted content; the glow is rendered by pseudo-elements on the inner layer.
+
+## When to Use
+- Highlighting a featured plan, promo, or hero card
+- Drawing the eye to a single standout panel
+- NOT as a default container (use Card)
+- NOT for dense lists or tables
+
+## Usage
+
+Basic:
+```vue
+<NeonGradientCard>
+    <h3 class="text-lg font-semibold">Pro plan</h3>
+    <p class="text-sm text-muted-foreground">Everything in Free, plus more.</p>
+</NeonGradientCard>
+```
+
+Custom colors and geometry:
+```vue
+<NeonGradientCard
+    :border-size="3"
+    :border-radius="24"
+    :neon-colors="{ firstColor: '#ff00aa', secondColor: '#00fff1' }"
+>
+    <p>Content</p>
+</NeonGradientCard>
+```
+
+## Props
+
+- `borderSize`: border thickness in px (default: 2)
+- `borderRadius`: outer corner radius in px (default: 20)
+- `neonColors`: `{ firstColor, secondColor }` gradient stops (default: `{ firstColor: '#ff00aa', secondColor: '#00FFF1' }`)
+- `class`: custom classes for the outer wrapper
+- Extends reka-ui `PrimitiveProps` (`as`, `asChild`) and accepts arbitrary attributes.
+
+## Slots
+
+- `default`: card content (rendered above the glow)
+
+## Behavior
+- Measures its own size on mount and on window resize to size the glow precisely.
+- The glow scales with card width (`after:blur` derives from width / 3).
+
+## Accessibility
+- The wrapper holds meaningful slotted content, so it is NOT `aria-hidden`.
+- The glow is drawn by `before:`/`after:` pseudo-elements, invisible to assistive tech by nature, so no extra decorative element exists to hide.
+- The gradient spin animation is disabled under `prefers-reduced-motion: reduce` via `motion-reduce:before:animate-none` / `motion-reduce:after:animate-none`; the border stays static.
+
+## Don't
+- Don't nest interactive focus traps expecting the glow to clip them; the glow lives behind content.
+- Don't apply conflicting `rounded-*` on the wrapper; pass `borderRadius` instead.
+- Don't overuse; one standout card per view reads best.
+
+## Related
+- BorderBeam: a lighter decorative traveling border for any container
+- Card: the standard, non-decorative container

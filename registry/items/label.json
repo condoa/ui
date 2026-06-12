@@ -1,0 +1,20 @@
+{
+  "name": "label",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Label.vue",
+      "to": "components/ui/Label.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Label.llm.txt"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "switch",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Switch/Thumb.vue",
+      "to": "components/ui/Switch/Thumb.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Switch/Switch.vue",
+      "to": "components/ui/Switch/Switch.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Switch/Switch.llm.txt"
+}

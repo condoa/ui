@@ -1,0 +1,40 @@
+{
+  "name": "empty",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Empty/Title.vue",
+      "to": "components/ui/Empty/Title.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Empty/Media.vue",
+      "to": "components/ui/Empty/Media.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Empty/Header.vue",
+      "to": "components/ui/Empty/Header.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Empty/Empty.vue",
+      "to": "components/ui/Empty/Empty.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Empty/Description.vue",
+      "to": "components/ui/Empty/Description.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Empty/Content.vue",
+      "to": "components/ui/Empty/Content.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Empty/Empty.llm.txt"
+}

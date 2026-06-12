@@ -1,0 +1,51 @@
+# InputControl
+
+The styled wrapper that gives inputs their border, background, shadow, and focus ring. Wrap a raw `<input>` (or any control) so it inherits the shared field chrome.
+
+## When to Use
+- Building a custom input that needs the standard field frame
+- Composing an input with adornments (icons, buttons) inside one bordered box
+- NOT for a plain text field (use Input, which wraps InputControl for you)
+
+## Usage
+
+Basic:
+```vue
+<InputControl>
+    <input data-slot="input" class="h-8.5 w-full border-0 bg-transparent px-3 outline-none" />
+</InputControl>
+```
+
+Unstyled (no frame):
+```vue
+<InputControl unstyled>
+    <input />
+</InputControl>
+```
+
+With a custom data-slot:
+```vue
+<InputControl data-slot="search-control">
+    <input />
+</InputControl>
+```
+
+## Props
+
+- `class` (ClassValue): extra classes merged onto the wrapper
+- `size`: "sm" | "default" | "lg" (default: "default")
+- `unstyled` (boolean): when true, removes all frame styles (default: false)
+- `dataSlot` (string): value for the `data-slot` attribute (default: "input-control")
+
+## Slots
+
+- default: the control(s) placed inside the frame
+
+## Notes
+- The frame reacts to inner state through `has-*` selectors: focus ring on `:focus-visible`, destructive border on `[aria-invalid]`, dimmed on `:disabled`, and an autofill tint.
+- It renders a `<span>` with `inline-flex`, so place a block-level input inside and size the input itself.
+
+## Related
+- Input: text input that already wraps InputControl
+- CurrencyInput: currency field built on InputControl
+- NumberInput: stepper field built on InputControl

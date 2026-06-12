@@ -1,0 +1,19 @@
+{
+  "name": "imagelightbox",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/ImageLightbox.vue",
+      "to": "components/ui/ImageLightbox.vue"
+    }
+  ],
+  "dependencies": [
+    "viewerjs",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/ImageLightbox.llm.txt"
+}

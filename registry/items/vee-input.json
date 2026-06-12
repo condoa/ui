@@ -1,0 +1,23 @@
+{
+  "name": "vee-input",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/Input.vue",
+      "to": "components/ui/Vee/Input.vue"
+    }
+  ],
+  "dependencies": [
+    "motion-v",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "input",
+    "label"
+  ],
+  "icons": [],
+  "doc": null
+}

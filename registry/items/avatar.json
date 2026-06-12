@@ -1,0 +1,28 @@
+{
+  "name": "avatar",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Avatar/Image.vue",
+      "to": "components/ui/Avatar/Image.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Avatar/Fallback.vue",
+      "to": "components/ui/Avatar/Fallback.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Avatar/Avatar.vue",
+      "to": "components/ui/Avatar/Avatar.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Avatar/Avatar.llm.txt"
+}

@@ -1,0 +1,149 @@
+# Empty
+
+Empty state placeholder for when there's no content to display. Guides users on what to do next.
+
+## When to Use
+- No data in a list or table
+- No search results
+- New feature with no content yet
+- NOT for loading states (use Skeleton)
+- NOT for errors (use Alert)
+
+## Usage
+
+Basic:
+```vue
+<Empty>
+    <EmptyMedia name="icon-inbox" />
+    <EmptyTitle>No messages</EmptyTitle>
+    <EmptyDescription>You haven't received any messages yet.</EmptyDescription>
+</Empty>
+```
+
+With action:
+```vue
+<Empty>
+    <EmptyMedia name="icon-users" />
+    <EmptyTitle>No team members</EmptyTitle>
+    <EmptyDescription>Get started by inviting your first team member.</EmptyDescription>
+    <EmptyActions>
+        <Button @click="inviteMember">
+            <Icon name="icon-plus" class="size-4 mr-2" />
+            Invite Member
+        </Button>
+    </EmptyActions>
+</Empty>
+```
+
+Horizontal variant:
+```vue
+<Empty variant="horizontal">
+    <EmptyMedia name="icon-search" />
+    <div>
+        <EmptyTitle>No results found</EmptyTitle>
+        <EmptyDescription>Try adjusting your search terms.</EmptyDescription>
+    </div>
+</Empty>
+```
+
+## Components
+
+### Empty
+Root container.
+- `variant`: "default" | "horizontal" (default: "default")
+- `class`: custom classes
+
+### EmptyMedia
+Large icon for visual emphasis.
+- `name`: icon name
+- `class`: custom classes (default: size-12)
+
+### EmptyTitle
+Heading text.
+- Renders as h3 by default
+
+### EmptyDescription
+Explanatory text.
+- Text is muted by default
+
+### EmptyActions
+Container for action buttons.
+
+## Accessibility
+- Uses semantic heading structure
+- Icon is decorative (not announced)
+- Action buttons are keyboard accessible
+
+## Common Patterns
+
+In DataTable:
+```vue
+<DataTable :columns="columns" :data="data">
+    <template #empty>
+        <Empty>
+            <EmptyMedia name="icon-inbox" />
+            <EmptyTitle>No items found</EmptyTitle>
+            <EmptyDescription>
+                {{ hasFilters ? 'Try adjusting your filters.' : 'Create your first item to get started.' }}
+            </EmptyDescription>
+            <EmptyActions v-if="!hasFilters">
+                <Button @click="createItem">Create Item</Button>
+            </EmptyActions>
+        </Empty>
+    </template>
+</DataTable>
+```
+
+Search results:
+```vue
+<template v-if="results.length === 0">
+    <Empty>
+        <EmptyMedia name="icon-search" />
+        <EmptyTitle>No results for "{{ query }}"</EmptyTitle>
+        <EmptyDescription>
+            Try different keywords or check your spelling.
+        </EmptyDescription>
+    </Empty>
+</template>
+```
+
+Feature placeholder:
+```vue
+<Empty>
+    <EmptyMedia name="icon-calendar" />
+    <EmptyTitle>No upcoming events</EmptyTitle>
+    <EmptyDescription>
+        Schedule your first event to see it here.
+    </EmptyDescription>
+    <EmptyActions>
+        <Button variant="outline" @click="learnMore">Learn More</Button>
+        <Button @click="createEvent">Create Event</Button>
+    </EmptyActions>
+</Empty>
+```
+
+Inline empty (horizontal):
+```vue
+<Card>
+    <CardContent>
+        <Empty variant="horizontal" class="py-8">
+            <EmptyMedia name="icon-file" class="size-8" />
+            <div>
+                <EmptyTitle class="text-base">No attachments</EmptyTitle>
+                <EmptyDescription>Drag files here to upload.</EmptyDescription>
+            </div>
+        </Empty>
+    </CardContent>
+</Card>
+```
+
+## Don't
+- Don't use for errors (use Alert)
+- Don't use for loading (use Skeleton)
+- Don't forget a clear action when users can add content
+- Don't use overly complex illustrations
+
+## Related
+- Skeleton: loading placeholder
+- Alert: error/warning messages
+- DataTable: has empty slot

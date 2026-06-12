@@ -1,0 +1,50 @@
+# RetroGrid
+
+Decorative animated perspective grid that scrolls toward the horizon, fading into the background. A full-size absolute overlay for hero and landing backgrounds.
+
+## When to Use
+- Hero backgrounds, landing sections, splash screens
+- Retro / synthwave visual ambiance behind content
+- NOT as foreground content
+- NOT in data-dense or accessibility-critical UI
+
+## Usage
+
+Place inside a relative, overflow-hidden container with content above it:
+```vue
+<div class="relative h-96 overflow-hidden">
+    <RetroGrid />
+    <div class="relative z-10 flex h-full items-center justify-center">
+        <h1>Welcome</h1>
+    </div>
+</div>
+```
+
+Custom angle, cell size, and color:
+```vue
+<RetroGrid :angle="70" :cell-size="40" :opacity="0.4" light-line-color="#94a3b8" dark-line-color="#334155" />
+```
+
+## Props
+
+- `angle`: perspective tilt in degrees (default: 65)
+- `cellSize`: grid cell size in px (default: 60)
+- `opacity`: overall grid opacity, 0 to 1 (default: 0.5)
+- `lightLineColor`: line color in light mode (default: "gray")
+- `darkLineColor`: line color in dark mode (default: "gray")
+- `class`: custom classes for the container
+- Extends reka-ui `PrimitiveProps` (`as`, `asChild`).
+
+## Accessibility
+- The root carries `aria-hidden="true"`; screen readers skip it.
+- `pointer-events-none`; never intercepts clicks.
+- The scrolling animation is disabled under `prefers-reduced-motion: reduce` via `motion-reduce:animate-none`; the grid renders static.
+
+## Don't
+- Don't render in a parent without `overflow-hidden`; the oversized grid spills out.
+- Don't place content without a higher `z-index`; the top fade gradient sits above the grid.
+- Don't rely on it to convey meaning; it is decorative only.
+
+## Related
+- Meteors: animated decorative meteor shower
+- NeonGradientCard: animated decorative glowing card

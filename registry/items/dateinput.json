@@ -1,0 +1,20 @@
+{
+  "name": "dateinput",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/DateInput.vue",
+      "to": "components/ui/DateInput.vue"
+    }
+  ],
+  "dependencies": [
+    "maska",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "inputcontrol"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/DateInput.llm.txt"
+}

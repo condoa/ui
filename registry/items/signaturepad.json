@@ -1,0 +1,19 @@
+{
+  "name": "signaturepad",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/SignaturePad.vue",
+      "to": "components/ui/SignaturePad.vue"
+    }
+  ],
+  "dependencies": [
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "button"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/SignaturePad.llm.txt"
+}

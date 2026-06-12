@@ -1,0 +1,113 @@
+# DescriptionList
+
+Semantic key-value pairs displayed in a responsive grid. Use for detail pages showing record attributes.
+
+## When to Use
+- Entity detail views (condominium info, resident profile)
+- Invoice or contract summary panels
+- Settings overview panels
+- NOT for editable forms (use form inputs)
+- NOT for tabular comparisons (use Table)
+
+## Usage
+
+Basic:
+```vue
+<DescriptionList>
+    <DescriptionListTerm>Name</DescriptionListTerm>
+    <DescriptionListDetails>Ana Silva</DescriptionListDetails>
+
+    <DescriptionListTerm>Unit</DescriptionListTerm>
+    <DescriptionListDetails>101 - Bloco A</DescriptionListDetails>
+
+    <DescriptionListTerm>Status</DescriptionListTerm>
+    <DescriptionListDetails>
+        <Badge variant="success">Active</Badge>
+    </DescriptionListDetails>
+</DescriptionList>
+```
+
+With text shorthand:
+```vue
+<DescriptionList>
+    <DescriptionListTerm text="Tax ID" />
+    <DescriptionListDetails text="XX.XXX.XXX/XXXX-XX" />
+</DescriptionList>
+```
+
+Wrapped in a section card:
+```vue
+<Card>
+    <CardHeader>
+        <CardTitle>Resident details</CardTitle>
+    </CardHeader>
+    <CardContent>
+        <DescriptionList>
+            <DescriptionListTerm>Name</DescriptionListTerm>
+            <DescriptionListDetails>{{ resident.name }}</DescriptionListDetails>
+            <DescriptionListTerm>Email</DescriptionListTerm>
+            <DescriptionListDetails>{{ resident.email }}</DescriptionListDetails>
+        </DescriptionList>
+    </CardContent>
+</Card>
+```
+
+## Components
+
+### DescriptionList
+Root wrapper, renders as `<dl>` by default.
+- `class` -- custom classes
+- `as`, `asChild` -- Primitive polymorphism
+
+### DescriptionListTerm
+The key/label, renders as `<dt>` by default.
+- `text` -- shorthand text prop (slot also accepted)
+- `class` -- custom classes
+- `as`, `asChild`
+
+### DescriptionListDetails
+The value, renders as `<dd>` by default.
+- `text` -- shorthand text prop (slot also accepted)
+- `class` -- custom classes
+- `as`, `asChild`
+
+## Accessibility
+- Uses native `<dl>/<dt>/<dd>` semantics by default.
+- Screen readers announce each term-details pair as a group.
+- Do not change `as` to a non-block element or list semantics break.
+
+## Common Patterns
+
+Two-column grid at sm breakpoint (default behavior):
+```vue
+<!-- DescriptionList applies sm:grid-cols-2 automatically -->
+<DescriptionList>
+    <DescriptionListTerm>Address</DescriptionListTerm>
+    <DescriptionListDetails>Rua das Flores, 123</DescriptionListDetails>
+    <DescriptionListTerm>City</DescriptionListTerm>
+    <DescriptionListDetails>Sao Paulo</DescriptionListDetails>
+</DescriptionList>
+```
+
+Mixing rich content:
+```vue
+<DescriptionList>
+    <DescriptionListTerm>Payment status</DescriptionListTerm>
+    <DescriptionListDetails>
+        <div class="flex items-center gap-2">
+            <Badge variant="destructive">Overdue</Badge>
+            <span class="text-sm tabular-nums">R$ 450,00</span>
+        </div>
+    </DescriptionListDetails>
+</DescriptionList>
+```
+
+## Don't
+- Don't use for editable fields (wrap in a form with inputs instead)
+- Don't skip the semantic `<dt>/<dd>` pairing by overriding `as` to `<div>`
+- Don't add more than 8-10 pairs before splitting into sections
+
+## Related
+- DetailView -- heading + icon layout for full detail pages
+- Table -- multi-row tabular comparisons
+- Card -- wrapping container for detail panels

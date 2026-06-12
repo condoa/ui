@@ -1,0 +1,18 @@
+{
+  "name": "inputcontrol",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/InputControl.vue",
+      "to": "components/ui/InputControl.vue"
+    }
+  ],
+  "dependencies": [
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/InputControl.llm.txt"
+}

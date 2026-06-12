@@ -1,0 +1,111 @@
+# Alert
+
+Inline feedback message for communicating status, warnings, or information to users.
+
+## When to Use
+- Form validation summaries
+- Success/error messages after actions
+- Important notices within page content
+- NOT for confirmations (use AlertDialog)
+- NOT for toast notifications (use toast system)
+- NOT for empty states
+
+## Usage
+
+Basic alert:
+```vue
+<Alert variant="info" icon="icon-info" title="Information" description="This is an informational message." />
+```
+
+With slots for custom content:
+```vue
+<Alert variant="success" icon="icon-check">
+    <AlertTitle>Success!</AlertTitle>
+    <AlertDescription>
+        Your changes have been saved. <Link :href="route('settings')">View settings</Link>
+    </AlertDescription>
+</Alert>
+```
+
+Dismissible alert:
+```vue
+<Alert v-model="showAlert" variant="warning" icon="icon-alert-triangle" title="Warning" description="This action cannot be undone." />
+```
+
+## Props
+
+### Alert
+- `variant`: "default" | "destructive" | "info" | "success" | "warning" (default: "default")
+- `filled`: boolean, use filled/colored background (default: false)
+- `icon`: icon name to display
+- `title`: title text (or use AlertTitle slot)
+- `description`: description text (or use AlertDescription slot)
+- `modelValue` (v-model): boolean, controls visibility (default: true)
+- `class`: custom classes for container
+- `iconClass`: custom classes for icon
+
+### AlertTitle
+- `title`: text content (or use slot)
+- `class`: custom classes
+- `as`: element type (default: "h5")
+
+### AlertDescription
+- `description`: text content (or use slot)
+- `class`: custom classes
+- `as`: element type (default: "div")
+
+## Variants
+
+| Variant | Use Case |
+|---------|----------|
+| default | Neutral information |
+| info | Tips, hints, neutral notices |
+| success | Completed actions, positive feedback |
+| warning | Caution, non-blocking issues |
+| destructive | Errors, failures, blocking issues |
+
+Add `filled` prop for stronger visual emphasis:
+```vue
+<Alert variant="destructive" filled icon="icon-alert-circle" title="Error" description="Failed to save." />
+```
+
+## Accessibility
+- Uses semantic heading (h5) for title
+- Icon is decorative (not announced)
+- Color is not the only indicator (icon + text)
+- Can be dismissed via v-model for dynamic alerts
+
+## Common Patterns
+
+Form error summary:
+```vue
+<Alert v-if="form.hasErrors" variant="destructive" icon="icon-alert-circle">
+    <AlertTitle>There were errors with your submission</AlertTitle>
+    <AlertDescription>
+        <ul class="list-disc list-inside">
+            <li v-for="error in form.errors" :key="error">{{ error }}</li>
+        </ul>
+    </AlertDescription>
+</Alert>
+```
+
+Info banner:
+```vue
+<Alert variant="info" filled icon="icon-info">
+    <AlertTitle>New Feature</AlertTitle>
+    <AlertDescription>
+        We've added bulk actions. <Link href="/help/bulk-actions">Learn more</Link>
+    </AlertDescription>
+</Alert>
+```
+
+## Don't
+- Don't use for confirmations: use AlertDialog
+- Don't use filled variant for subtle notices
+- Don't stack multiple alerts of the same type: consolidate messages
+- Don't use without icon when using color variants (accessibility)
+
+## Related
+- AlertDialog: modal confirmation dialog
+- Toast: ephemeral notifications
+- Empty: empty state component

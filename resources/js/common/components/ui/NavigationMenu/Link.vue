@@ -1,0 +1,25 @@
+<template>
+    <NavigationMenuLink :class="styles({ class: props.class })" data-slot="navigation-menu-link" v-bind="forwarded">
+        <slot />
+    </NavigationMenuLink>
+</template>
+
+<script lang="ts" setup>
+import { tv, type ClassValue } from 'tailwind-variants'
+import { NavigationMenuLink, useForwardPropsEmits } from 'reka-ui'
+import type { NavigationMenuLinkEmits, NavigationMenuLinkProps } from 'reka-ui'
+
+interface Props extends NavigationMenuLinkProps {
+    class?: ClassValue
+}
+
+const props = defineProps<Props>()
+
+const emits = defineEmits<NavigationMenuLinkEmits>()
+
+const forwarded = useForwardPropsEmits(props, emits)
+
+const styles = tv({
+    base: "flex flex-col gap-1 rounded-sm px-4 py-2 text-sm transition-all motion-reduce:transition-none outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:ring-offset-1 focus-visible:outline-1 data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground data-[active=true]:hover:bg-accent data-[active=true]:focus:bg-accent [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
+})
+</script>

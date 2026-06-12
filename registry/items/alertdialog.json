@@ -1,0 +1,65 @@
+{
+  "name": "alertdialog",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/AlertDialog/Trigger.vue",
+      "to": "components/ui/AlertDialog/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/AlertDialog/Title.vue",
+      "to": "components/ui/AlertDialog/Title.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/AlertDialog/Portal.vue",
+      "to": "components/ui/AlertDialog/Portal.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/AlertDialog/Overlay.vue",
+      "to": "components/ui/AlertDialog/Overlay.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/AlertDialog/Header.vue",
+      "to": "components/ui/AlertDialog/Header.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/AlertDialog/Footer.vue",
+      "to": "components/ui/AlertDialog/Footer.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/AlertDialog/Description.vue",
+      "to": "components/ui/AlertDialog/Description.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/AlertDialog/Content.vue",
+      "to": "components/ui/AlertDialog/Content.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/AlertDialog/Cancel.vue",
+      "to": "components/ui/AlertDialog/Cancel.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/AlertDialog/AlertDialog.vue",
+      "to": "components/ui/AlertDialog/AlertDialog.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/AlertDialog/Action.vue",
+      "to": "components/ui/AlertDialog/Action.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Button.variants.ts",
+      "to": "components/ui/Button.variants.ts"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base",
+    "button"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/AlertDialog/AlertDialog.llm.txt"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "vee-datefield",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/DateField.vue",
+      "to": "components/ui/Vee/DateField.vue"
+    }
+  ],
+  "dependencies": [
+    "@internationalized/date",
+    "motion-v",
+    "reka-ui",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "datefield",
+    "form",
+    "label"
+  ],
+  "icons": [],
+  "doc": null
+}

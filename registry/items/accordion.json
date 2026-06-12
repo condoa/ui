@@ -1,0 +1,38 @@
+{
+  "name": "accordion",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Accordion/Trigger.vue",
+      "to": "components/ui/Accordion/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Accordion/Item.vue",
+      "to": "components/ui/Accordion/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Accordion/Header.vue",
+      "to": "components/ui/Accordion/Header.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Accordion/Content.vue",
+      "to": "components/ui/Accordion/Content.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Accordion/Accordion.vue",
+      "to": "components/ui/Accordion/Accordion.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-chevron-down"
+  ],
+  "doc": "resources/js/common/components/ui/Accordion/Accordion.llm.txt"
+}

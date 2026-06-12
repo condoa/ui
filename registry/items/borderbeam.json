@@ -1,0 +1,20 @@
+{
+  "name": "borderbeam",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/BorderBeam.vue",
+      "to": "components/ui/BorderBeam.vue"
+    }
+  ],
+  "dependencies": [
+    "motion-v",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/BorderBeam.llm.txt"
+}

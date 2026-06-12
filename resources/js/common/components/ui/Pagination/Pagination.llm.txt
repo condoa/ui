@@ -1,0 +1,126 @@
+# Pagination
+
+Page navigation for large data sets. Use with tables and lists.
+
+## When to Use
+- Table pagination
+- List pagination
+- Search results
+- NOT for tabs/steps (use Tabs or Stepper)
+- NOT for carousels (use custom navigation)
+
+## Usage
+
+Basic:
+```vue
+<Pagination v-model:page="page" :total="100" :items-per-page="10" />
+```
+
+With sibling count:
+```vue
+<Pagination
+    v-model:page="page"
+    :total="500"
+    :items-per-page="20"
+    :sibling-count="1"
+/>
+```
+
+Custom slot content:
+```vue
+<Pagination v-model:page="page" :total="100">
+    <PaginationList v-slot="{ items }">
+        <PaginationPrev />
+        <template v-for="(item, i) in items" :key="i">
+            <PaginationItem v-if="item.type === 'page'" v-bind="item" />
+            <PaginationEllipsis v-else />
+        </template>
+        <PaginationNext />
+    </PaginationList>
+</Pagination>
+```
+
+## Components
+
+### Pagination
+Root component with default layout.
+- `v-model:page`: current page number
+- `total`: total number of items
+- `itemsPerPage`: items per page (default: 10)
+- `siblingCount`: pages shown on each side of current (default: 3)
+- `showEdges`: show first/last buttons (default: true)
+- `firstIcon`, `lastIcon`, `prevIcon`, `nextIcon`, `ellipsisIcon`: custom icons
+- `class`: custom classes
+
+### PaginationList
+Container for pagination items.
+- Provides `items` slot prop with page/ellipsis objects
+
+### PaginationItem
+Individual page button.
+- `value`: page number
+
+### PaginationFirst / PaginationLast
+Jump to first/last page buttons.
+- `icon`: custom icon name
+
+### PaginationPrev / PaginationNext
+Previous/next page buttons.
+- `icon`: custom icon name
+
+### PaginationEllipsis
+Indicator for skipped pages.
+- `icon`: custom icon name
+
+## Accessibility
+- Arrow keys navigate between buttons
+- Enter activates button
+- ARIA labels for navigation
+- Current page announced
+
+## Common Patterns
+
+Table footer:
+```vue
+<div class="flex items-center justify-between">
+    <p class="text-sm text-muted-foreground">
+        Showing {{ (page - 1) * perPage + 1 }} to {{ Math.min(page * perPage, total) }} of {{ total }}
+    </p>
+    <Pagination v-model:page="page" :total="total" :items-per-page="perPage" />
+</div>
+```
+
+With per-page selector:
+```vue
+<div class="flex items-center gap-4">
+    <Select v-model="perPage">
+        <SelectTrigger class="w-20" />
+        <SelectContent>
+            <SelectItem value="10">10</SelectItem>
+            <SelectItem value="25">25</SelectItem>
+            <SelectItem value="50">50</SelectItem>
+        </SelectContent>
+    </Select>
+    <Pagination v-model:page="page" :total="total" :items-per-page="perPage" />
+</div>
+```
+
+Compact (no edges):
+```vue
+<Pagination
+    v-model:page="page"
+    :total="total"
+    :show-edges="false"
+    :sibling-count="1"
+/>
+```
+
+## Don't
+- Don't show pagination for small datasets (< 1 page)
+- Don't use too large sibling count on mobile
+- Don't forget to reset page when filters change
+
+## Related
+- DataTable: includes built-in pagination
+- Table: basic table component
+- Button: navigation buttons

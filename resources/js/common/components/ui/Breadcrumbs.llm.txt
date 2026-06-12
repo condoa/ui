@@ -1,0 +1,120 @@
+# Breadcrumbs
+
+Navigation trail showing current location in hierarchy. Helps users understand and navigate page structure.
+
+## When to Use
+- Multi-level page hierarchies
+- Detail pages within lists
+- Nested settings/content
+- NOT for primary navigation (use NavigationMenu)
+- NOT for steps/progress (use Stepper)
+
+## Usage
+
+Basic with items array:
+```vue
+<Breadcrumbs :items="[
+    { label: 'Home', link: '/' },
+    { label: 'Users', link: '/users' },
+    { label: 'John Doe' },
+]" />
+```
+
+With icons:
+```vue
+<Breadcrumbs :items="[
+    { label: 'Dashboard', link: '/dashboard', icon: 'icon-home' },
+    { label: 'Settings', link: '/settings', icon: 'icon-settings' },
+    { label: 'Profile' },
+]" />
+```
+
+Custom separator:
+```vue
+<Breadcrumbs :items="items" separator="icon-slash" />
+```
+
+## Props
+
+- `items`: array of breadcrumb items (required)
+- `separator`: icon name for separator (default: "icon-chevron-right")
+- `class`: custom classes
+
+## Item Object Shape
+
+```ts
+interface BreadcrumbItem {
+    label?: string     // Display text
+    link?: string      // Navigation URL
+    icon?: string      // Leading icon
+    disabled?: boolean // Disable navigation
+    slot?: string      // Custom slot name
+    click?: () => void // Click handler
+}
+```
+
+## Slots
+
+- `default`: custom item rendering
+- `link`: custom link rendering
+- `crumbIcon`: custom icon rendering
+- `separator`: custom separator
+
+## Accessibility
+- Uses nav element with aria-label="breadcrumb"
+- Current page (last item) is not a link
+- Separator icons are decorative
+
+## Common Patterns
+
+In page header:
+```vue
+<div class="space-y-2">
+    <Breadcrumbs :items="[
+        { label: 'Home', link: '/dashboard' },
+        { label: 'Units', link: route('units.index') },
+        { label: unit.name },
+    ]" />
+    <h1 class="text-2xl font-bold">{{ unit.name }}</h1>
+</div>
+```
+
+Dynamic from route:
+```vue
+<script setup>
+const breadcrumbs = computed(() => {
+    const items = [{ label: 'Home', link: '/', icon: 'icon-home' }]
+
+    if (props.category) {
+        items.push({ label: props.category.name, link: route('categories.show', props.category.id) })
+    }
+
+    if (props.item) {
+        items.push({ label: props.item.name })
+    }
+
+    return items
+})
+</script>
+
+<template>
+    <Breadcrumbs :items="breadcrumbs" />
+</template>
+```
+
+With truncation for long labels:
+```vue
+<Breadcrumbs :items="items" class="max-w-full" />
+<!-- Labels auto-truncate via CSS -->
+```
+
+## Don't
+- Don't include current page as a link
+- Don't use for progress indicators (use Stepper)
+- Don't have too many levels (consider restructuring)
+- Don't use without a clear hierarchy
+
+## Related
+- NavigationMenu: primary navigation
+- Stepper: sequential steps
+- Link: individual navigation links

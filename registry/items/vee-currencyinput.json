@@ -1,0 +1,24 @@
+{
+  "name": "vee-currencyinput",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/CurrencyInput.vue",
+      "to": "components/ui/Vee/CurrencyInput.vue"
+    }
+  ],
+  "dependencies": [
+    "motion-v",
+    "vee-validate",
+    "vue",
+    "vue-currency-input"
+  ],
+  "registryDependencies": [
+    "base",
+    "currencyinput",
+    "form",
+    "label"
+  ],
+  "icons": [],
+  "doc": null
+}

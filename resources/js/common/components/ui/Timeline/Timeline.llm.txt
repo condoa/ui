@@ -1,0 +1,160 @@
+# Timeline
+
+Vertical or horizontal sequence of timestamped events. Use for activity feeds, payment histories, and process logs.
+
+## When to Use
+- Activity/audit logs
+- Payment or billing history
+- Multi-step process status (completed steps)
+- Onboarding progress
+- NOT for multi-step forms (use Stepper)
+- NOT for navigation (use Breadcrumbs)
+
+## Usage
+
+Basic vertical:
+```vue
+<Timeline v-model="currentStep">
+    <TimelineItem :step="1">
+        <TimelineIndicator />
+        <TimelineSeparator />
+        <TimelineHeader>
+            <TimelineDate>Jan 2024</TimelineDate>
+            <TimelineTitle>Account created</TimelineTitle>
+        </TimelineHeader>
+        <TimelineContent>Your account was set up.</TimelineContent>
+    </TimelineItem>
+    <TimelineItem :step="2">
+        <TimelineIndicator />
+        <TimelineSeparator />
+        <TimelineHeader>
+            <TimelineDate>Feb 2024</TimelineDate>
+            <TimelineTitle>First payment</TimelineTitle>
+        </TimelineHeader>
+        <TimelineContent>Payment processed successfully.</TimelineContent>
+    </TimelineItem>
+</Timeline>
+```
+
+Horizontal:
+```vue
+<Timeline orientation="horizontal" v-model="step">
+    <TimelineItem :step="1">
+        <TimelineIndicator />
+        <TimelineSeparator />
+        <TimelineHeader>
+            <TimelineTitle>Step 1</TimelineTitle>
+        </TimelineHeader>
+    </TimelineItem>
+    <TimelineItem :step="2">
+        <TimelineIndicator />
+        <TimelineSeparator />
+        <TimelineHeader>
+            <TimelineTitle>Step 2</TimelineTitle>
+        </TimelineHeader>
+    </TimelineItem>
+</Timeline>
+```
+
+## Components
+
+### Timeline
+Root wrapper.
+- `v-model` / `modelValue` -- current active step (1-indexed, default: 1)
+- `orientation` -- "vertical" | "horizontal" (default: "vertical")
+- `class` -- custom classes
+- `as`, `asChild` -- Primitive polymorphism
+
+### TimelineItem
+Single event row.
+- `step` (required) -- step number; items with step less than or equal to modelValue get `data-completed`
+- `class` -- custom classes
+- `as`, `asChild`
+
+### TimelineIndicator
+Dot/circle marker at the connector line.
+- `class` -- custom classes
+- `as`, `asChild`
+
+### TimelineSeparator
+Line connecting items.
+- `class` -- custom classes
+- `as`, `asChild`
+
+### TimelineHeader
+Wrapper for date and title.
+- `as`, `asChild`
+
+### TimelineDate
+Timestamp label, renders as `<time>` by default.
+- `class` -- custom classes
+- `as`, `asChild`
+
+### TimelineTitle
+Event title.
+- `class` -- custom classes
+- `as`, `asChild`
+
+### TimelineContent
+Event description body.
+- `class` -- custom classes
+- `as`, `asChild`
+
+## Accessibility
+- `TimelineIndicator` and `TimelineSeparator` have `aria-hidden="true"` (decorative).
+- `TimelineItem` also carries `aria-hidden="true"` (wrapper only; content is read naturally).
+- Use `<time datetime="...">` via TimelineDate for machine-readable dates.
+
+## Common Patterns
+
+Payment history:
+```vue
+<Timeline :model-value="payments.length">
+    <TimelineItem
+        v-for="(payment, i) in payments"
+        :key="payment.id"
+        :step="i + 1"
+    >
+        <TimelineIndicator />
+        <TimelineSeparator />
+        <TimelineHeader>
+            <TimelineDate :datetime="payment.paid_at">
+                {{ formatDate(payment.paid_at) }}
+            </TimelineDate>
+            <TimelineTitle>R$ {{ payment.amount }}</TimelineTitle>
+        </TimelineHeader>
+        <TimelineContent>{{ payment.description }}</TimelineContent>
+    </TimelineItem>
+</Timeline>
+```
+
+Process with incomplete steps:
+```vue
+<Timeline v-model="currentStep">
+    <TimelineItem v-for="step in steps" :key="step.id" :step="step.number">
+        <TimelineIndicator>
+            <Icon
+                v-if="step.number <= currentStep"
+                name="icon-check"
+                aria-hidden="true"
+                class="size-2.5"
+            />
+        </TimelineIndicator>
+        <TimelineSeparator />
+        <TimelineHeader>
+            <TimelineTitle>{{ step.title }}</TimelineTitle>
+        </TimelineHeader>
+        <TimelineContent>{{ step.description }}</TimelineContent>
+    </TimelineItem>
+</Timeline>
+```
+
+## Don't
+- Don't use for interactive multi-step forms (use Stepper)
+- Don't omit TimelineSeparator on all-but-last items or the connector line disappears
+- Don't use more than 8-10 items without virtualization/pagination
+
+## Related
+- Stepper -- interactive step-by-step flow
+- List -- simple non-temporal sequence
+- Breadcrumbs -- navigation hierarchy

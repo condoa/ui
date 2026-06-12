@@ -1,0 +1,21 @@
+{
+  "name": "breadcrumbs",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Breadcrumbs.vue",
+      "to": "components/ui/Breadcrumbs.vue"
+    }
+  ],
+  "dependencies": [
+    "@inertiajs/vue3",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-chevron-right"
+  ],
+  "doc": "resources/js/common/components/ui/Breadcrumbs.llm.txt"
+}

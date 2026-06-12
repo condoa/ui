@@ -1,0 +1,23 @@
+{
+  "name": "vee-moneyinput",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/MoneyInput.vue",
+      "to": "components/ui/Vee/MoneyInput.vue"
+    }
+  ],
+  "dependencies": [
+    "motion-v",
+    "v-money3",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "label"
+  ],
+  "icons": [],
+  "doc": null
+}

@@ -1,0 +1,198 @@
+# Dialog
+
+Modal overlay for focused interactions. Supports nesting, mobile-optimized bottom sheets, and accessible keyboard navigation.
+
+## When to Use
+- Forms that require focus (create/edit flows)
+- Confirmations before destructive actions (use AlertDialog instead)
+- Content that temporarily needs full attention
+- NOT for simple yes/no confirmations (use AlertDialog)
+- NOT for side panels (use Sheet)
+- NOT for tooltips or popovers
+
+## Usage
+
+Basic dialog with v-model:
+```vue
+<Dialog v-model:open="isOpen">
+    <DialogTrigger as-child>
+        <Button>Open Dialog</Button>
+    </DialogTrigger>
+    <DialogContent title="Dialog Title" description="Optional description">
+        <template #content>
+            <DialogPanel>
+                <!-- Form or content here -->
+            </DialogPanel>
+        </template>
+        <template #footer>
+            <DialogFooter>
+                <DialogClose as-child>
+                    <Button variant="outline">Cancel</Button>
+                </DialogClose>
+                <Button @click="handleSave">Save</Button>
+            </DialogFooter>
+        </template>
+    </DialogContent>
+</Dialog>
+```
+
+Programmatic control:
+```vue
+<script setup>
+const isOpen = ref(false)
+const openDialog = () => isOpen.value = true
+const closeDialog = () => isOpen.value = false
+</script>
+
+<template>
+    <Button @click="openDialog">Open</Button>
+    <Dialog v-model:open="isOpen">
+        <DialogContent title="Edit Item">
+            <template #content>
+                <DialogPanel>
+                    <VeeInput name="name" label="Name" />
+                </DialogPanel>
+            </template>
+            <template #footer>
+                <DialogFooter>
+                    <Button variant="outline" @click="closeDialog">Cancel</Button>
+                    <Button @click="save">Save</Button>
+                </DialogFooter>
+            </template>
+        </DialogContent>
+    </Dialog>
+</template>
+```
+
+## Components
+
+### Dialog
+Root component. Manages open state.
+- `open` (v-model) - boolean, controls visibility
+- `defaultOpen` - initial open state
+- `modal` - trap focus when open (default: true)
+
+### DialogTrigger
+Element that opens the dialog.
+- `asChild` - merge props onto child element
+
+### DialogContent
+The modal panel itself. Includes overlay, positioning, and close button.
+- `title` - header title text
+- `description` - header description text
+- `showCloseButton` - show X button (default: true)
+- `bottomStickOnMobile` - stick to bottom on mobile (default: true)
+- `class` - custom classes
+
+Slots:
+- `default` - full content override
+- `header` - custom header
+- `title` - custom title
+- `description` - custom description
+- `content` - main content area
+- `footer` - footer area
+- `close` - custom close button
+
+### DialogHeader
+Container for title and description.
+- `class` - custom classes
+
+### DialogTitle
+Dialog title text.
+- `title` - text content (or use slot)
+
+### DialogDescription
+Dialog description text. Required for accessibility (hidden if not provided).
+- `description` - text content (or use slot)
+
+### DialogPanel
+Scrollable content area with padding. Use for form content.
+- `scrollFade` - show scroll fade effect (default: true)
+- `class` - custom classes
+
+### DialogFooter
+Footer for action buttons.
+- `variant` - "default" (with border/bg) or "bare"
+
+### DialogClose
+Closes the dialog when clicked.
+- `asChild` - merge props onto child element
+
+## Accessibility
+- Focus trapped inside dialog when open
+- Escape key closes dialog
+- Focus returns to trigger on close
+- `aria-modal="true"` applied automatically
+- DialogDescription required (hidden visually if not provided)
+- Close button has `aria-label="Close"`
+
+## Common Patterns
+
+Form dialog with Inertia:
+```vue
+<script setup>
+const isOpen = ref(false)
+const form = useInertiaForm({ name: '', email: '' })
+
+function submit() {
+    form.post(route('users.store'), {
+        onSuccess: () => isOpen.value = false
+    })
+}
+</script>
+
+<template>
+    <Dialog v-model:open="isOpen">
+        <DialogTrigger as-child>
+            <Button>Add User</Button>
+        </DialogTrigger>
+        <DialogContent title="Add User" description="Create a new user account">
+            <template #content>
+                <DialogPanel>
+                    <div class="space-y-4">
+                        <VeeInput name="name" label="Name" v-model="form.name" />
+                        <VeeInput name="email" label="Email" v-model="form.email" />
+                    </div>
+                </DialogPanel>
+            </template>
+            <template #footer>
+                <DialogFooter>
+                    <DialogClose as-child>
+                        <Button variant="outline">Cancel</Button>
+                    </DialogClose>
+                    <Button :loading="form.processing" @click="submit">Create</Button>
+                </DialogFooter>
+            </template>
+        </DialogContent>
+    </Dialog>
+</template>
+```
+
+Nested dialogs:
+```vue
+<Dialog v-model:open="outerOpen">
+    <DialogContent title="Outer">
+        <template #content>
+            <Dialog v-model:open="innerOpen">
+                <DialogTrigger as-child>
+                    <Button>Open Inner</Button>
+                </DialogTrigger>
+                <DialogContent title="Inner Dialog">
+                    <!-- Automatically scales down outer dialog -->
+                </DialogContent>
+            </Dialog>
+        </template>
+    </DialogContent>
+</Dialog>
+```
+
+## Don't
+- Don't use Dialog for confirmations - use AlertDialog
+- Don't forget DialogPanel for scrollable content
+- Don't put forms directly in DialogContent without DialogPanel (breaks scroll)
+- Don't use multiple useForm() calls in one dialog - VeeValidate only sees the last one
+
+## Related
+- AlertDialog - for confirmations with explicit actions
+- Sheet - slide-out side panel
+- Popover - non-modal floating content

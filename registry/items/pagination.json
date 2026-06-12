@@ -1,0 +1,59 @@
+{
+  "name": "pagination",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Pagination/Prev.vue",
+      "to": "components/ui/Pagination/Prev.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Pagination/Pagination.vue",
+      "to": "components/ui/Pagination/Pagination.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Pagination/Next.vue",
+      "to": "components/ui/Pagination/Next.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Pagination/List.vue",
+      "to": "components/ui/Pagination/List.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Pagination/Last.vue",
+      "to": "components/ui/Pagination/Last.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Pagination/Item.vue",
+      "to": "components/ui/Pagination/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Pagination/First.vue",
+      "to": "components/ui/Pagination/First.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Pagination/Ellipsis.vue",
+      "to": "components/ui/Pagination/Ellipsis.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Button.variants.ts",
+      "to": "components/ui/Button.variants.ts"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base",
+    "button"
+  ],
+  "icons": [
+    "icon-chevron-left",
+    "icon-chevron-right",
+    "icon-chevrons-left",
+    "icon-chevrons-right",
+    "icon-ellipsis"
+  ],
+  "doc": "resources/js/common/components/ui/Pagination/Pagination.llm.txt"
+}

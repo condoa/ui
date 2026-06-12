@@ -1,0 +1,83 @@
+# StatBlock
+
+A compact KPI card that displays a metric value, a description label, and optionally a decorative icon or a percentage badge. Supports three semantic color variants.
+
+## When to Use
+- Dashboard KPI summaries (revenue, units, occupancy)
+- Highlight metrics in a report overview
+- NOT for data tables or detailed breakdowns
+
+## Usage
+
+Basic:
+```vue
+<StatBlock value="142" description="Active units" />
+```
+
+With icon:
+```vue
+<StatBlock value="R$ 48.200" description="Receita do mes" icon="icon-trending-up" />
+```
+
+With percentage badge:
+```vue
+<StatBlock value="94%" description="Taxa de ocupacao" :percentage="94" />
+```
+
+Destructive variant:
+```vue
+<StatBlock variant="destructive" value="7" description="Inadimplentes" icon="icon-alert-circle" />
+```
+
+Warning variant:
+```vue
+<StatBlock variant="warning" value="3" description="Vencendo hoje" icon="icon-clock" />
+```
+
+Custom slot:
+```vue
+<StatBlock description="Condo score">
+    <div class="flex items-baseline gap-1">
+        <span class="text-2xl font-bold tabular-nums">9.4</span>
+        <span class="text-xs text-muted-foreground">/ 10</span>
+    </div>
+</StatBlock>
+```
+
+## Props
+
+- `value` -- metric value string displayed in bold (e.g. "R$ 1.200", "94%")
+- `description` -- label below the value
+- `icon` -- icon name shown on the right when no percentage is set
+- `percentage` -- when provided, renders a Badge with this number instead of the icon
+- `variant` -- "default" | "destructive" | "warning" (default: "default")
+- `class` -- custom classes for the root card
+- `iconClass` -- custom classes for the icon (also applied to value/description slots -- name is inherited)
+- `percentageClass` -- custom classes for the percentage badge
+
+## Slots
+
+- `default` -- replaces the value + description block; icon/badge are still rendered
+
+## Accessibility
+- The decorative icon carries `aria-hidden="true"`
+- Numeric values use `tabular-nums` to prevent layout shift as numbers change
+
+## Common Patterns
+
+Dashboard grid:
+```vue
+<div class="grid grid-cols-3 gap-4">
+    <StatBlock value="197" description="Unidades" icon="icon-building" />
+    <StatBlock value="182" description="Ocupadas" :percentage="92" />
+    <StatBlock variant="destructive" value="12" description="Inadimplentes" icon="icon-alert-circle" />
+</div>
+```
+
+## Don't
+- Don't mix icon and percentage on the same block (percentage takes precedence)
+- Don't use for multi-row tabular data
+
+## Related
+- Badge -- used internally for the percentage display
+- Icon -- used internally for the decorative icon

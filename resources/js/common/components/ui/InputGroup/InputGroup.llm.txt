@@ -1,0 +1,87 @@
+# InputGroup
+
+Wraps an input or textarea with inline or stacked addons (icons, text, buttons) inside one bordered, focus-aware container. Use for prefixes, suffixes, and inline actions.
+
+## When to Use
+- Inputs with a leading or trailing icon, label, or unit
+- Inputs with an inline button (clear, submit, copy)
+- Textareas with a toolbar above or below the field
+- NOT for plain inputs with no addon (use Input)
+- NOT for grouping multiple separate fields (use Fieldset)
+
+## Usage
+
+Leading icon:
+```vue
+<InputGroup>
+    <InputGroupAddon align="inline-start">
+        <Icon name="icon-search" />
+    </InputGroupAddon>
+    <InputGroupInput placeholder="Search" />
+</InputGroup>
+```
+
+Trailing unit text:
+```vue
+<InputGroup>
+    <InputGroupInput v-model="weight" />
+    <InputGroupAddon align="inline-end">
+        <InputGroupText>kg</InputGroupText>
+    </InputGroupAddon>
+</InputGroup>
+```
+
+Textarea with a block addon:
+```vue
+<InputGroup>
+    <InputGroupTextarea v-model="note" />
+    <InputGroupAddon align="block-end">
+        <InputGroupText>Markdown supported</InputGroupText>
+    </InputGroupAddon>
+</InputGroup>
+```
+
+## Components
+
+### InputGroup
+The bordered container. Manages focus, invalid, and disabled styling for the nested control via `has-*` selectors.
+- `class` - custom classes
+- Sets `data-slot="input-group"` and `role="group"`
+- Slot: default (one input/textarea plus any addons)
+
+### InputGroupInput
+An Input rendered unstyled so it sits flush inside the group.
+- `class` - custom classes
+- Forwards all attributes to the inner input via `v-bind="$attrs"`
+
+### InputGroupTextarea
+A Textarea rendered unstyled for the group.
+- `class` - custom classes
+- Forwards all attributes to the inner textarea
+
+### InputGroupAddon
+A slot for icons, text, badges, kbd, or buttons positioned around the control. Clicking empty addon space focuses the field.
+- `align` - `inline-start` (default), `inline-end`, `block-start`, or `block-end`
+- `class` - custom classes
+- Sets `data-slot="input-group-addon"` and `data-align`
+- Slot: default (the addon content)
+
+### InputGroupText
+Muted inline text/icon helper for use inside an addon.
+- `class` - custom classes
+- Slot: default (the text)
+
+## Accessibility
+- The container is a `role="group"`
+- Focus, `aria-invalid`, and `disabled` states on the inner control drive the group ring and border styling
+- Clicking non-interactive addon area focuses the input; clicks on buttons/links/selects are left alone
+
+## Don't
+- Don't place more than one input/textarea in a single group
+- Don't style InputGroupInput/InputGroupTextarea directly; the group owns the border and ring
+- Don't use inline alignment for toolbars; use `block-start`/`block-end`
+
+## Related
+- Input - the base input the group wraps
+- Textarea - the base textarea the group wraps
+- Button - common inline action inside an addon

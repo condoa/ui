@@ -1,0 +1,21 @@
+{
+  "name": "heading",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Heading.vue",
+      "to": "components/ui/Heading.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Heading.llm.txt"
+}

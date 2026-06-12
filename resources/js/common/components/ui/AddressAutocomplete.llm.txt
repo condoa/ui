@@ -1,0 +1,56 @@
+# AddressAutocomplete
+
+Google Places autocomplete input for Brazilian addresses. Debounced search dropdown with keyboard navigation; selecting a prediction fetches the structured address fields plus coordinates and emits them. The Google Maps JS SDK is loaded lazily on first search using the `google_maps_api_key` Inertia page prop. Depends on the InputControl and Loader registry items (used in the template).
+
+## When to Use
+- Letting a user search and pick a real address, then auto-filling street, number, neighborhood, city, state, zip, and coordinates
+- Pre-filling from a hint (for example a company-registry lookup) via `initialQuery`, which also triggers a geocode
+- NOT for free-text address entry without Google (it needs a valid API key)
+- NOT outside Brazil (results are restricted to region `br`)
+
+## Usage
+```vue
+<AddressAutocomplete @select="onAddressSelect" @error="onAddressError" />
+```
+
+With an initial query that also geocodes:
+```vue
+<AddressAutocomplete
+    :initial-query="cnpjAddressHint"
+    @select="onAddressSelect"
+    @error="onAddressError"
+    @geocode="({ latitude, longitude }) => { form.latitude = latitude; form.longitude = longitude }"
+/>
+```
+
+The host app supplies the API key as an Inertia shared prop:
+```php
+Inertia::share('google_maps_api_key', config('services.google.maps_key'));
+```
+
+Security: this key reaches the browser (the Maps JS SDK needs it client-side), so treat it as public. In Google Cloud, restrict it by HTTP referrer to your own domains and limit it to only the Maps JS and Places APIs. An unrestricted key can be lifted from the page and run up your billing.
+
+## Props
+- `placeholder`: input placeholder text (defaults to a localized search hint)
+- `initialQuery`: seed text; when set, the field fills with it and immediately geocodes to emit `geocode`
+
+## Events
+- `select`: chosen address as `{ street, number, complement, neighborhood, city, state, zip_code, latitude, longitude }`. `complement` is always empty (Google does not return it). `zip_code` is digits only. `latitude` / `longitude` may be `null`.
+- `geocode`: `{ latitude, longitude }` resolved from `initialQuery` (does not fire on manual selection)
+- `error`: `{ title, description }` when SDK loading, suggestion fetch, or field fetch fails. The component logs to the console and leaves toasting to the host; wire this to your toast pipeline.
+
+## Behavior
+- Searches start at 3+ characters and are debounced 800ms
+- A Places session token is created per search session and reset after each selection (for correct Google billing)
+- Arrow keys move the highlight, Enter selects, Escape closes; blur closes after a short delay so clicks register
+- The Loader spinner shows inside the input while a request is in flight
+
+## Don't
+- Don't expect SSR; the Google SDK loads against `window` and `document`, so it runs only in the browser
+- Don't rely on `complement`; map it from a separate field
+- Don't omit the `error` handler if you want users to see failures; the component no longer raises its own toast
+
+## Related
+- AddressMap: render the selected coordinates on a Leaflet map
+- InputControl: the styled wrapper around the search input
+- Loader: the inline spinner shown while searching

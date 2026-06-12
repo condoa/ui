@@ -1,0 +1,23 @@
+{
+  "name": "vee-textarea",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/Textarea.vue",
+      "to": "components/ui/Vee/Textarea.vue"
+    }
+  ],
+  "dependencies": [
+    "motion-v",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "label",
+    "textarea"
+  ],
+  "icons": [],
+  "doc": null
+}

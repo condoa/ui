@@ -1,0 +1,21 @@
+{
+  "name": "neongradientcard",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/NeonGradientCard.vue",
+      "to": "components/ui/NeonGradientCard.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/NeonGradientCard.llm.txt"
+}

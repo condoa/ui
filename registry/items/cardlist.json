@@ -1,0 +1,23 @@
+{
+  "name": "cardlist",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/CardList/Item.vue",
+      "to": "components/ui/CardList/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/CardList/CardList.vue",
+      "to": "components/ui/CardList/CardList.vue"
+    }
+  ],
+  "dependencies": [
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/CardList/CardList.llm.txt"
+}

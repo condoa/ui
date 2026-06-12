@@ -1,0 +1,51 @@
+# Meteors
+
+Decorative shower of meteors streaking across a container. Renders a set of absolutely positioned, animated spans, each with a fading tail. Client-only (reads `window.innerWidth`).
+
+## When to Use
+- Hero sections, marketing banners, empty states with flair
+- Background ambiance behind a centered card
+- NOT for content (it is purely visual)
+- NOT inside data-dense or accessibility-critical UI
+
+## Usage
+
+Place inside a relative, overflow-hidden container:
+```vue
+<div class="relative h-64 overflow-hidden rounded-xl bg-black">
+    <Meteors :number="30" />
+</div>
+```
+
+Tune density and speed:
+```vue
+<Meteors :number="15" :min-duration="3" :max-duration="8" :angle="215" />
+```
+
+## Props
+
+- `number`: how many meteors to render (default: 20)
+- `minDelay`: minimum start delay in seconds (default: 0.2)
+- `maxDelay`: maximum start delay in seconds (default: 1.2)
+- `minDuration`: minimum fall duration in seconds (default: 2)
+- `maxDuration`: maximum fall duration in seconds (default: 10)
+- `angle`: fall angle in degrees (default: 215)
+- `class`: custom classes applied to each meteor span
+
+## Behavior
+- Positions and timings randomize on mount and recompute when any prop changes.
+- Component is `.client`; it depends on `window` and should not run during SSR.
+
+## Accessibility
+- Each meteor span carries `aria-hidden="true"`; screen readers skip them.
+- `pointer-events-none`; never intercepts clicks.
+- The CSS keyframe animation is disabled under `prefers-reduced-motion: reduce` via `motion-reduce:animate-none`; meteors render static.
+
+## Don't
+- Don't render in a parent without `overflow-hidden` (meteors spill out).
+- Don't use a very high `number` on low-end devices; each meteor is an animated element.
+- Don't rely on it to convey meaning; it is decorative only.
+
+## Related
+- BorderBeam: animated decorative border
+- RetroGrid: animated decorative background grid

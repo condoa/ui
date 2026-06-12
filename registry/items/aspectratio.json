@@ -1,0 +1,19 @@
+{
+  "name": "aspectratio",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/AspectRatio.vue",
+      "to": "components/ui/AspectRatio.vue"
+    }
+  ],
+  "dependencies": [
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/AspectRatio.llm.txt"
+}

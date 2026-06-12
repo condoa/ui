@@ -1,0 +1,18 @@
+{
+  "name": "fancyicon",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/FancyIcon.vue",
+      "to": "components/ui/FancyIcon.vue"
+    }
+  ],
+  "dependencies": [
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/FancyIcon.llm.txt"
+}

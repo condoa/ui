@@ -1,0 +1,20 @@
+{
+  "name": "skeleton",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Skeleton.vue",
+      "to": "components/ui/Skeleton.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Skeleton.llm.txt"
+}

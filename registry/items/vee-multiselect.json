@@ -1,0 +1,27 @@
+{
+  "name": "vee-multiselect",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/MultiSelect.vue",
+      "to": "components/ui/Vee/MultiSelect.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueform/multiselect",
+    "@vueuse/core",
+    "motion-v",
+    "reka-ui",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "label"
+  ],
+  "icons": [
+    "icon-close"
+  ],
+  "doc": null
+}

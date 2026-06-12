@@ -1,0 +1,49 @@
+{
+  "name": "chart",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Chart/StatList.vue",
+      "to": "components/ui/Chart/StatList.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Chart/StackedBar.vue",
+      "to": "components/ui/Chart/StackedBar.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Chart/Pie.vue",
+      "to": "components/ui/Chart/Pie.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Chart/Line.vue",
+      "to": "components/ui/Chart/Line.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Chart/Legend.vue",
+      "to": "components/ui/Chart/Legend.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Chart/HorizontalBar.vue",
+      "to": "components/ui/Chart/HorizontalBar.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Chart/Funnel.vue",
+      "to": "components/ui/Chart/Funnel.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Chart/Bar.vue",
+      "to": "components/ui/Chart/Bar.vue"
+    }
+  ],
+  "dependencies": [
+    "@inertiajs/vue3",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "badge",
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Chart/Chart.llm.txt"
+}

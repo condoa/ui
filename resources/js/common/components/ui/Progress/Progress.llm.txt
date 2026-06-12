@@ -1,0 +1,123 @@
+# Progress
+
+Determinate progress bar. Shows completion percentage of a task.
+
+## When to Use
+- File uploads
+- Multi-step processes
+- Loading with known progress
+- NOT for indeterminate loading (use Skeleton or spinner)
+- NOT for steps (use Stepper)
+
+## Usage
+
+Basic:
+```vue
+<Progress :model-value="progress" />
+```
+
+With percentage:
+```vue
+<div class="space-y-2">
+    <div class="flex justify-between text-sm">
+        <span>Uploading...</span>
+        <span class="tabular-nums">{{ progress }}%</span>
+    </div>
+    <Progress :model-value="progress" />
+</div>
+```
+
+Custom max:
+```vue
+<Progress :model-value="current" :max="total" />
+```
+
+## Props
+
+- `modelValue` (v-model): current value (default: 0)
+- `max`: maximum value (default: 100)
+- `class`: custom classes
+
+## Components
+
+### Progress
+Root container with track styling.
+
+### ProgressIndicator
+The filled portion (rendered automatically).
+
+## Accessibility
+- Uses progressbar role
+- aria-valuenow, aria-valuemin, aria-valuemax set automatically
+- Screen readers announce progress changes
+
+## Common Patterns
+
+File upload:
+```vue
+<script setup>
+const progress = ref(0)
+
+async function uploadFile(file) {
+    const formData = new FormData()
+    formData.append('file', file)
+
+    await axios.post('/upload', formData, {
+        onUploadProgress: (e) => {
+            progress.value = Math.round((e.loaded / e.total) * 100)
+        }
+    })
+}
+</script>
+
+<template>
+    <div v-if="progress > 0 && progress < 100" class="space-y-2">
+        <Progress :model-value="progress" />
+        <p class="text-sm text-muted-foreground">{{ progress }}% uploaded</p>
+    </div>
+</template>
+```
+
+Step progress:
+```vue
+<div class="space-y-2">
+    <Progress :model-value="currentStep" :max="totalSteps" />
+    <p class="text-sm text-muted-foreground">
+        Step {{ currentStep }} of {{ totalSteps }}
+    </p>
+</div>
+```
+
+With custom colors:
+```vue
+<Progress
+    :model-value="progress"
+    class="h-3 bg-blue-100 [&>div]:bg-blue-500"
+/>
+```
+
+Animated progress:
+```vue
+<script setup>
+const progress = ref(0)
+
+// Progress updates via reactive value
+watchEffect(() => {
+    // Progress bar animates via CSS transition
+})
+</script>
+
+<template>
+    <Progress :model-value="progress" class="[&>div]:transition-transform [&>div]:duration-500" />
+</template>
+```
+
+## Don't
+- Don't use for indeterminate loading
+- Don't update too frequently (causes jank)
+- Don't use for navigation steps (use Stepper)
+
+## Related
+- Skeleton: indeterminate loading
+- Stepper: step-by-step progress
+- Spinner (Icon): indeterminate loading indicator

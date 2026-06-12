@@ -1,0 +1,26 @@
+<template>
+    <Primitive data-slot="card-footer" :class="styles({ class: props.class })" :as="as" :as-child="asChild">
+        <slot />
+    </Primitive>
+</template>
+
+<script lang="ts" setup>
+import { Primitive } from 'reka-ui'
+import type { PrimitiveProps } from 'reka-ui'
+import { tv, type ClassValue } from 'tailwind-variants'
+
+interface Props extends PrimitiveProps {
+    /** Custom class(es) to add to the element */
+    class?: ClassValue
+}
+
+const props = withDefaults(defineProps<Props>(), { as: 'div' })
+
+const styles = tv({
+    base: [
+        'flex items-center px-4 py-6 lg:px-8',
+        // Reduce top padding when following card panel
+        'in-[[data-slot=card]:has(>[data-slot=card-panel])]:pt-4',
+    ],
+})
+</script>

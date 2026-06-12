@@ -1,0 +1,42 @@
+# DateTimeTooltip
+
+Shows a relative time label ("2 dias atras") with the full formatted timestamp in a tooltip on hover. Thin wrapper over the Tooltip registry item. Expects a `Datetime` object that carries both a `human` and a `formatted` string.
+
+## When to Use
+- Displaying a compact relative time that reveals the exact date and time on hover
+- Timestamps in lists, tables, and activity feeds
+- NOT when you need the full date inline (just render `date.formatted`)
+- NOT for editable dates (display only)
+
+## Usage
+```vue
+<template>
+    <DateTimeTooltip :date="comment.created_at" />
+</template>
+```
+
+Custom trigger text via the default slot:
+```vue
+<DateTimeTooltip :date="invoice.due_at">
+    Vence {{ invoice.due_at.human }}
+</DateTimeTooltip>
+```
+
+## Props
+- `date`: a `Datetime` with `human` (relative label shown inline) and `formatted` (full timestamp shown in the tooltip). Required.
+
+## Slots
+- default: replaces the inline trigger text. Defaults to `date.human`.
+
+## Behavior
+- The trigger renders as muted extra-small text with a default cursor
+- The tooltip uses the dark variant and shows an arrow
+- Hovering or focusing the trigger reveals `date.formatted`
+
+## Don't
+- Don't pass a raw date string; it needs the `Datetime` shape with `human` and `formatted`
+- Don't expect locale formatting here; the strings come from the `Datetime` object you pass in
+
+## Related
+- Tooltip: the underlying hover container
+- DatePeriodSelector: pick a date range rather than display a single timestamp

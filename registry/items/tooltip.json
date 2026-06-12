@@ -1,0 +1,41 @@
+{
+  "name": "tooltip",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Tooltip/Trigger.vue",
+      "to": "components/ui/Tooltip/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Tooltip/Tooltip.vue",
+      "to": "components/ui/Tooltip/Tooltip.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Tooltip/Provider.vue",
+      "to": "components/ui/Tooltip/Provider.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Tooltip/Portal.vue",
+      "to": "components/ui/Tooltip/Portal.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Tooltip/Content.vue",
+      "to": "components/ui/Tooltip/Content.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Tooltip/Arrow.vue",
+      "to": "components/ui/Tooltip/Arrow.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Tooltip/Tooltip.llm.txt"
+}

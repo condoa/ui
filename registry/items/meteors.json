@@ -1,0 +1,19 @@
+{
+  "name": "meteors",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Meteors.client.vue",
+      "to": "components/ui/Meteors.client.vue"
+    }
+  ],
+  "dependencies": [
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Meteors.client.llm.txt"
+}

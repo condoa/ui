@@ -1,0 +1,103 @@
+# Form
+
+Structural primitives for building accessible form fields with VeeValidate. Wire a label, control, description, and validation message to a single field with shared ARIA ids.
+
+## When to Use
+- Custom form fields that need label, description, and error wiring
+- Fields that already use VeeValidate for validation
+- NOT for standalone inputs without validation context (use Input directly)
+- NOT for full Vee-integrated fields (use the Vee/* wrappers, which build on these)
+
+## Usage
+
+Compose a field with FormItem and the sub-components:
+```vue
+<FormItem label="Email" description="We never share it.">
+    <Input v-model="email" type="email" />
+</FormItem>
+```
+
+Manual composition when you need control over layout:
+```vue
+<FormItem>
+    <template #label>
+        <FormLabel label="Email" hint="optional" />
+    </template>
+    <Input v-model="email" />
+    <template #description>
+        <FormDescription description="We never share it." />
+    </template>
+    <template #errorMessage>
+        <FormMessage />
+    </template>
+</FormItem>
+```
+
+## Components
+
+### FormItem
+Field wrapper. Provides a generated id to the sub-components and renders the default label, control, description, and message layout.
+- `label` - label text rendered via FormLabel
+- `description` - description text rendered via FormDescription
+- `hint` - hint text shown after the label
+- `hideMessage` - when true, skips the default FormMessage
+- `class` - custom classes
+- Slots: default (the control), `label`, `description`, `errorMessage`
+
+### FormLabel
+The field label, rendered with the registry Label component.
+- `label` - label text
+- `hint` - muted hint aligned to the end of the label row
+- `class` - custom classes
+- Applies the `error` variant (destructive color) when the field is invalid
+- Wired to the control via `for`/`formItemId`
+
+### FormControl
+Wraps the control element. Forwards `id` and the `aria-describedby`/`aria-invalid` attributes so the control is linked to its description and message.
+- No props; renders a reka-ui `Slot` around the field
+
+### FormDescription
+Helper text under the control.
+- `description` - text (also accepts a default slot)
+- `class` - custom classes
+- Linked to the control via `formDescriptionId`
+
+### FormMessage
+Renders the active VeeValidate error for the field.
+- No props; reads the field `name` from context and renders a vee-validate `ErrorMessage`
+- Linked to the control via `formMessageId`
+
+## Field Context
+
+The sub-components share state through `useFormField` (colocated in this family). It injects the VeeValidate field context plus the FormItem id and returns:
+- `error` - current field error ref (drives FormLabel error styling and FormMessage)
+- `name` - the field name for the error lookup
+- `formItemId`, `formDescriptionId`, `formMessageId` - the ARIA ids that tie label, control, description, and message together
+- `valid`, `isDirty`, `isTouched` - VeeValidate field flags
+
+Outside a VeeValidate Field, `useFormField` returns safe defaults so the sub-components still render.
+
+## formHintVariants
+
+`variants.ts` colocates `formHintVariants`, the shared style for inline hint and error text used across the Vee/* field wrappers and FormSelect:
+```vue
+<p :class="formHintVariants({ variant: 'hint' })">Optional</p>
+<p :class="formHintVariants({ variant: 'error' })">{{ errorMessage }}</p>
+```
+- `variant` - `hint` (muted), `error` (destructive), or `warning` (amber). Defaults to `hint`.
+
+## Accessibility
+- `aria-describedby` links the control to its description, and to the message when invalid
+- `aria-invalid` is set on the control while the field has an error
+- The label `for` targets the control id
+- All ids derive from one FormItem id so the relationships stay consistent
+
+## Don't
+- Don't render FormMessage without a VeeValidate field name in context (it renders nothing)
+- Don't duplicate ids by nesting multiple FormItem wrappers around one control
+- Don't hand-roll ARIA ids; let FormItem and useFormField provide them
+
+## Related
+- Label - the base label primitive FormLabel renders
+- Input - the control commonly placed inside FormItem
+- FormSelect - a select field built on these primitives

@@ -1,0 +1,24 @@
+{
+  "name": "numberinput",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/NumberInput.vue",
+      "to": "components/ui/NumberInput.vue"
+    }
+  ],
+  "dependencies": [
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "inputcontrol"
+  ],
+  "icons": [
+    "icon-minus",
+    "icon-plus"
+  ],
+  "doc": "resources/js/common/components/ui/NumberInput.llm.txt"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "kbd",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Kbd.vue",
+      "to": "components/ui/Kbd.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Kbd.llm.txt"
+}

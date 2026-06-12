@@ -1,0 +1,56 @@
+# Fieldset
+
+Groups related form controls under a single legend, with one disabled switch for the whole group. Use to section a form into labeled blocks.
+
+## When to Use
+- Grouping related fields (address, billing, preferences)
+- Disabling a set of controls at once
+- NOT for a single field (use FormItem)
+- NOT for visual-only grouping without semantics (use a plain div)
+
+## Usage
+
+Basic group:
+```vue
+<Fieldset>
+    <FieldsetLegend>Address</FieldsetLegend>
+    <FormItem label="Street"><Input v-model="street" /></FormItem>
+    <FormItem label="City"><Input v-model="city" /></FormItem>
+</Fieldset>
+```
+
+Disable the whole group:
+```vue
+<Fieldset :disabled="isReadOnly">
+    <FieldsetLegend>Preferences</FieldsetLegend>
+    <Checkbox v-model="optIn" />
+</Fieldset>
+```
+
+## Components
+
+### Fieldset
+Native `<fieldset>` wrapper. Lays out children in a vertical stack.
+- `disabled` - disables every control inside the fieldset
+- `class` - custom classes
+- Sets `data-slot="fieldset"`
+- Slot: default (the grouped controls and legend)
+
+### FieldsetLegend
+Native `<legend>` heading for the group.
+- `class` - custom classes
+- Sets `data-slot="fieldset-legend"`
+- Slot: default (the legend text)
+
+## Accessibility
+- Renders real `<fieldset>` and `<legend>` elements, so assistive tech announces the group name
+- The native `disabled` attribute propagates to all nested controls
+
+## Don't
+- Don't omit FieldsetLegend; the group loses its accessible name
+- Don't nest a Fieldset for a single control
+- Don't replicate the disabled state on each child; set it once on Fieldset
+
+## Related
+- Form - the field primitives placed inside a fieldset
+- FormItem - a single labeled field

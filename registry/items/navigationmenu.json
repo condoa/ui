@@ -1,0 +1,54 @@
+{
+  "name": "navigationmenu",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/NavigationMenu/Viewport.vue",
+      "to": "components/ui/NavigationMenu/Viewport.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/NavigationMenu/Trigger.vue",
+      "to": "components/ui/NavigationMenu/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/NavigationMenu/Sub.vue",
+      "to": "components/ui/NavigationMenu/Sub.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/NavigationMenu/NavigationMenu.vue",
+      "to": "components/ui/NavigationMenu/NavigationMenu.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/NavigationMenu/List.vue",
+      "to": "components/ui/NavigationMenu/List.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/NavigationMenu/Link.vue",
+      "to": "components/ui/NavigationMenu/Link.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/NavigationMenu/Item.vue",
+      "to": "components/ui/NavigationMenu/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/NavigationMenu/Indicator.vue",
+      "to": "components/ui/NavigationMenu/Indicator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/NavigationMenu/Content.vue",
+      "to": "components/ui/NavigationMenu/Content.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-chevron-down"
+  ],
+  "doc": "resources/js/common/components/ui/NavigationMenu/NavigationMenu.llm.txt"
+}

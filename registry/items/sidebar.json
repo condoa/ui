@@ -1,0 +1,122 @@
+{
+  "name": "sidebar",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Sidebar/Trigger.vue",
+      "to": "components/ui/Sidebar/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/Sidebar.vue",
+      "to": "components/ui/Sidebar/Sidebar.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/Separator.vue",
+      "to": "components/ui/Sidebar/Separator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/Rail.vue",
+      "to": "components/ui/Sidebar/Rail.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/Provider.vue",
+      "to": "components/ui/Sidebar/Provider.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/MenuSubItem.vue",
+      "to": "components/ui/Sidebar/MenuSubItem.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/MenuSubButton.vue",
+      "to": "components/ui/Sidebar/MenuSubButton.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/MenuSub.vue",
+      "to": "components/ui/Sidebar/MenuSub.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/MenuSkeleton.vue",
+      "to": "components/ui/Sidebar/MenuSkeleton.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/MenuItem.vue",
+      "to": "components/ui/Sidebar/MenuItem.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/MenuButtonChild.vue",
+      "to": "components/ui/Sidebar/MenuButtonChild.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/MenuButton.vue",
+      "to": "components/ui/Sidebar/MenuButton.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/MenuBadge.vue",
+      "to": "components/ui/Sidebar/MenuBadge.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/MenuAction.vue",
+      "to": "components/ui/Sidebar/MenuAction.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/Menu.vue",
+      "to": "components/ui/Sidebar/Menu.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/Inset.vue",
+      "to": "components/ui/Sidebar/Inset.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/Input.vue",
+      "to": "components/ui/Sidebar/Input.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/Header.vue",
+      "to": "components/ui/Sidebar/Header.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/GroupLabel.vue",
+      "to": "components/ui/Sidebar/GroupLabel.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/GroupContent.vue",
+      "to": "components/ui/Sidebar/GroupContent.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/GroupAction.vue",
+      "to": "components/ui/Sidebar/GroupAction.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/Group.vue",
+      "to": "components/ui/Sidebar/Group.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/Footer.vue",
+      "to": "components/ui/Sidebar/Footer.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/context.ts",
+      "to": "components/ui/Sidebar/context.ts"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sidebar/Content.vue",
+      "to": "components/ui/Sidebar/Content.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "button",
+    "input",
+    "separator"
+  ],
+  "icons": [
+    "icon-panel-left"
+  ],
+  "doc": "resources/js/common/components/ui/Sidebar/Sidebar.llm.txt"
+}

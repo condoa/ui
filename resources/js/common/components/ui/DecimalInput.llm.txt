@@ -1,0 +1,45 @@
+# DecimalInput
+
+Text field for decimal entry that displays a comma separator (Brazilian standard) but emits a dot-separated string. Sanitizes input to digits and a single decimal separator.
+
+## When to Use
+- Quantities, rates, or measurements that allow fractions
+- Integer-only entry by setting `allow-decimals` to false
+- NOT for currency amounts (use CurrencyInput)
+- NOT for stepper controls with +/- buttons (use NumberInput)
+
+## Usage
+
+Basic:
+```vue
+<DecimalInput v-model="quantity" />
+```
+
+Integer only:
+```vue
+<DecimalInput v-model="count" :allow-decimals="false" />
+```
+
+## Props
+
+- `modelValue` (string | number): the bound value. Stored with a dot separator, shown with a comma.
+- `allowDecimals` (boolean): allow a decimal separator (default: true). When false, only digits are kept.
+
+## Emits
+
+- `update:modelValue` (string): the sanitized value. Dot-separated when decimals are allowed, digits only otherwise.
+
+## Behavior
+
+- Display: a stored `12.5` renders as `12,5`. With `allow-decimals` false, only the integer part is shown.
+- Input mode: `decimal` when decimals are allowed, otherwise `numeric`.
+- Sanitizing: strips letters and extra separators; with decimals enabled it keeps at most one comma.
+
+## Notes
+- `inheritAttrs` is false. Extra attributes you pass land on the inner Input element.
+- Renders the shared Input component, so it carries the standard field frame and focus ring.
+
+## Related
+- CurrencyInput: money entry with a currency mask
+- NumberInput: integer stepper with +/- buttons
+- Input: the base text input this wraps

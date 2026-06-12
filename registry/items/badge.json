@@ -1,0 +1,21 @@
+{
+  "name": "badge",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Badge.vue",
+      "to": "components/ui/Badge.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Badge.llm.txt"
+}

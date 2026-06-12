@@ -1,0 +1,535 @@
+# VeeValidate Form Components
+
+Form inputs integrated with VeeValidate for client-side validation. All components auto-register with the parent useForm() context and display validation errors.
+
+## When to Use
+- Forms requiring client-side validation
+- Inertia forms with VeeValidate integration
+- NOT for forms with server-only validation (use plain Input, Textarea, etc.)
+
+## Critical: One useForm() Per Component
+
+VeeValidate uses provide/inject. If you call useForm() multiple times in one component, only the LAST form context is active. All VeeInput/VeeSelect fields register with that last form.
+
+Wrong:
+```vue
+<script setup>
+const form1 = useForm({ schema: schema1 }) // Lost!
+const form2 = useForm({ schema: schema2 }) // All fields use this
+</script>
+```
+
+Right (separate components or drop VeeValidate):
+```vue
+<!-- Option A: Extract forms to child components -->
+<Form1Dialog />
+<Form2Dialog />
+
+<!-- Option B: Use plain inputs with Inertia errors -->
+<Input v-model="form.name" :error="form.errors.name" />
+```
+
+## Usage with Inertia
+
+Dual form pattern (VeeValidate + Inertia):
+```vue
+<script setup>
+import { useForm as useVeeForm } from 'vee-validate'
+import { useForm as useInertiaForm } from '@inertiajs/vue3'
+import * as yup from 'yup'
+
+const schema = yup.object({
+    name: yup.string().required().label('Name'),
+    email: yup.string().email().required().label('Email'),
+})
+
+const { handleSubmit, setFieldValue } = useVeeForm({ validationSchema: schema })
+const form = useInertiaForm({ name: '', email: '' })
+
+const submit = handleSubmit((values) => {
+    form.post(route('users.store'))
+})
+</script>
+
+<template>
+    <form @submit.prevent="submit">
+        <VeeInput name="name" label="Name" v-model="form.name" required />
+        <VeeInput name="email" label="Email" v-model="form.email" type="email" required />
+        <Button :loading="form.processing">Save</Button>
+    </form>
+</template>
+```
+
+## Components
+
+### VeeInput
+Text input with label, validation, and icons.
+```vue
+<VeeInput
+    name="email"
+    label="Email"
+    type="email"
+    placeholder="Enter email"
+    hint="We'll never share your email"
+    icon="icon-mail"
+    required
+/>
+```
+
+Props:
+- `name`: field name (required for validation)
+- `label`: label text
+- `labelHint`: hint next to label
+- `type`: input type (default: "text")
+- `placeholder`: placeholder text
+- `hint`: helper text below input
+- `icon`: leading icon
+- `trailingIcon`: trailing icon
+- `disabled`: disable input
+- `required`: show required indicator
+- `rules`: validation rules (Yup or VeeValidate)
+- `validateOnMount`: validate immediately
+
+### VeeTextarea
+Multi-line text input.
+```vue
+<VeeTextarea
+    name="description"
+    label="Description"
+    :rows="4"
+    placeholder="Enter description..."
+/>
+```
+
+Props: Same as VeeInput plus:
+- `rows`: number of rows
+
+### VeeSelect
+Native HTML select with validation.
+```vue
+<VeeSelect name="country" label="Country" required>
+    <option value="">Select country</option>
+    <option value="BR">Brazil</option>
+    <option value="US">United States</option>
+</VeeSelect>
+```
+
+Props: Same as VeeInput plus:
+- `trailingIcon`: custom dropdown icon
+
+Note: Uses native `<select>`. For styled dropdowns, use the reka-ui Select components without VeeValidate and rely on server validation.
+
+### VeeRadioGroup
+Radio group with validation. Wrap RadioGroupItem children in the default slot.
+```vue
+<VeeRadioGroup name="plan" label="Plan" required>
+    <RadioGroupItem value="basic" />
+    <RadioGroupItem value="pro" />
+</VeeRadioGroup>
+```
+
+Props:
+- `name`: field name (required)
+- `label`: label text
+- `hint`: helper text below the group
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+- plus the reka-ui RadioGroupRoot props (`modelValue`, `disabled`, `orientation`, etc.)
+
+### VeeMultiSelect
+Single, multiple, or tags selection backed by @vueform/multiselect.
+```vue
+<VeeMultiSelect
+    name="tags"
+    formLabel="Tags"
+    mode="tags"
+    :options="['vue', 'react', 'svelte']"
+    searchable
+/>
+```
+
+Props:
+- `name`: field name (required for validation)
+- `formLabel`: label rendered above the control
+- `hint`: helper text below the control
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+- plus the full @vueform/multiselect prop set (`mode`, `options`, `searchable`, `valueProp`, etc.)
+
+### VeeTagsInput
+Free-form tag entry. Value is a string array.
+```vue
+<VeeTagsInput
+    name="keywords"
+    label="Keywords"
+    placeholder="Add a keyword and press Enter"
+/>
+```
+
+Props:
+- `name`: field name (required)
+- `label`: label text
+- `hint`: helper text below input
+- `icon`: leading icon
+- `placeholder`: placeholder for the entry input
+- `disabled`: disable input
+- `required`: show required indicator
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+
+### VeeNumberField
+Stepper number input backed by the reka-ui NumberField.
+```vue
+<VeeNumberField
+    name="quantity"
+    label="Quantity"
+    :min="1"
+    :max="99"
+    required
+/>
+```
+
+Props:
+- `name`: field name (required)
+- `label`: label text
+- `labelHint`: hint next to label
+- `hint`: helper text below input
+- `disabled`: disable input
+- `required`: show required indicator
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+- plus the reka-ui NumberFieldRoot props (`min`, `max`, `step`, `formatOptions`, etc.)
+
+### VueFormSlider
+Range slider backed by @vueform/slider. Registry item name: `vee-vueformslider`.
+```vue
+<VueFormSlider
+    name="budget"
+    label="Budget"
+    :min="0"
+    :max="1000"
+    :step="50"
+/>
+```
+
+Props:
+- `name`: field name (required)
+- `label`: label text
+- `hint`: helper text below slider
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+- plus the @vueform/slider props (`min`, `max`, `step`, `tooltips`, `format`, etc.)
+
+### VeeInputPin
+One-time-code / PIN entry. Value is a string array.
+```vue
+<VeeInputPin
+    name="code"
+    label="Verification code"
+    :length="6"
+    @complete="onComplete"
+/>
+```
+
+Props:
+- `name`: field name (required)
+- `label`: label text
+- `hint`: helper text below input
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+- plus the reka-ui PinInputRoot props (`length`, `mask`, `otp`, etc.)
+
+### VeeCurrencyInput
+Currency input with formatting.
+```vue
+<VeeCurrencyInput
+    name="amount"
+    label="Amount"
+    :options="{ currency: 'BRL', locale: 'pt-BR' }"
+/>
+```
+
+Props: Same as VeeInput plus:
+- `options`: vue-currency-input options
+
+### VeeMoneyInput
+Cents-based money input. Stores an integer number of cents and displays a masked "1.234,56" string via the v-money3 directive.
+```vue
+<VeeMoneyInput
+    name="price_cents"
+    label="Price"
+    currency="R$"
+/>
+```
+
+Props:
+- `name`: field name (required)
+- `label`: label text
+- `hint`: helper text below input
+- `currency`: prefix label shown in the addon (default "R$")
+- `disabled`: disable input
+- `required`: show required indicator
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+
+### VeeNumberInput
+Integer input with optional min, max, and step, backed by the styled NumberInput control.
+```vue
+<VeeNumberInput
+    name="quantity"
+    label="Quantity"
+    :min="0"
+    :max="99"
+    :step="1"
+    required
+/>
+```
+
+Props:
+- `name`: field name (required)
+- `label`: label text
+- `hint`: helper text below input
+- `min`, `max`, `step`: numeric bounds
+- `disabled`: disable input
+- `required`: show required indicator
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+
+### VeeDateField
+Segmented date entry (day, month, year) backed by the reka-ui DateField. Value is a `DateValue` from @internationalized/date.
+```vue
+<VeeDateField
+    name="birth_date"
+    label="Birth date"
+    required
+/>
+```
+
+Props:
+- `name`: field name (required)
+- `label`: label text
+- `labelHint`: hint next to label
+- `hint`: helper text below input
+- `separator`: text separator between segments
+- `separatorIcon`: icon separator between segments
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+- plus the reka-ui DateFieldRoot props (`minValue`, `maxValue`, `granularity`, etc.)
+
+### VeeDateInput
+Masked free-text date input ("dd/mm/yyyy"). Value is a string.
+```vue
+<VeeDateInput
+    name="due_date"
+    label="Due date"
+    placeholder="dd/mm/yyyy"
+    required
+/>
+```
+
+Props:
+- `name`: field name (required)
+- `label`: label text
+- `hint`: helper text below input
+- `placeholder`: placeholder text
+- `disabled`: disable input
+- `required`: show required indicator
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+
+### VeeDatepicker
+Calendar popover backed by @vuepic/vue-datepicker, rendered through the styled Input trigger. Supports date and date-time selection.
+```vue
+<VeeDatepicker
+    name="event_at"
+    label="Event date"
+    :date-picker-props="{ enableTimePicker: false }"
+/>
+```
+
+Props:
+- `name`: field name (required)
+- `label`: label text
+- `icon`: leading icon (default "icon-calendar-days")
+- `hint`: helper text below input
+- `placeholder`: placeholder text
+- `datePickerProps`: passthrough props for the underlying date picker
+- `disabled`: disable input
+- `required`: show required indicator
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+
+### VeeDateTimePicker
+Dialog-based date and time picker. Pairs a calendar with hour and minute inputs. Value is a formatted string ("yyyy-MM-dd HH:mm" by default).
+```vue
+<VeeDateTimePicker
+    name="starts_at"
+    label="Starts at"
+    :min-date="new Date()"
+/>
+```
+
+Props:
+- `name`: field name (required)
+- `label`: label text
+- `hint`: helper text below input
+- `placeholder`: placeholder text
+- `minDate`, `maxDate`: bounds on selectable dates
+- `displayFormat`: date-fns format for the visible value (default "dd/MM/yyyy - HH:mm")
+- `valueFormat`: date-fns format stored in the field (default "yyyy-MM-dd HH:mm")
+- `disabled`: disable input
+- `required`: show required indicator
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+
+### VeeCalendarPicker
+Popover calendar (date only). Value is a formatted string ("yyyy-MM-dd" by default).
+```vue
+<VeeCalendarPicker
+    name="check_in"
+    label="Check-in"
+    :min-date="new Date()"
+/>
+```
+
+Props:
+- `name`: field name (required)
+- `label`: label text
+- `hint`: helper text below input
+- `placeholder`: placeholder text
+- `minDate`, `maxDate`: bounds on selectable dates
+- `displayFormat`: date-fns format for the visible value (default "dd/MM/yyyy")
+- `valueFormat`: date-fns format stored in the field (default "yyyy-MM-dd")
+- `disabled`: disable input
+- `required`: show required indicator
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+
+### VeePhoneInput
+International phone input with a searchable country selector. Stores the E.164 number and formats the national part as you type (libphonenumber-js).
+```vue
+<VeePhoneInput
+    name="phone"
+    label="Phone"
+    default-country="BR"
+/>
+```
+
+Props:
+- `name`: field name (required)
+- `label`: label text
+- `labelHint`: hint next to label
+- `hint`: helper text below input
+- `placeholder`: placeholder text
+- `defaultCountry`: ISO country code selected initially (default "BR")
+- `disabled`: disable input
+- `required`: show required indicator
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+
+### VeeFileInput
+Native file input with validation. Emits the selected FileList on change.
+```vue
+<VeeFileInput
+    name="attachment"
+    label="Attachment"
+    accept="image/*"
+    multiple
+/>
+```
+
+Props:
+- `name`: field name (required)
+- `label`: label text
+- `icon`: leading icon
+- `hint`: helper text below input
+- `accept`: accepted file types
+- `multiple`: allow multiple files
+- `required`: show required indicator
+- `rules`: validation rules
+- `validateOnMount`: validate immediately
+
+### VeeCheckbox
+Checkbox with label and description.
+```vue
+<VeeCheckbox
+    name="terms"
+    label="I agree to the terms"
+    description="By checking this, you accept our terms of service."
+    :rules="yup.boolean().oneOf([true], 'You must accept')"
+/>
+```
+
+Props:
+- `name`: field name
+- `label`: label text
+- `description`: description text
+- `value`: checked value (default: true)
+- `unCheckedValue`: unchecked value (default: false)
+- `size`: "sm" | "md"
+- `color`: Tailwind color name
+- `disabled`: disable checkbox
+- `indeterminate`: indeterminate state
+- `required`: show required indicator
+
+## Accessibility
+
+- All inputs have associated labels
+- Error messages linked via aria-invalid and aria-describedby, and marked with role="alert"
+- Required fields marked with asterisk and aria-required
+- Focus management on validation errors
+- Disabled states properly conveyed
+
+## Common Patterns
+
+Conditional validation:
+```vue
+const schema = yup.object({
+    hasDiscount: yup.boolean(),
+    discountCode: yup.string().when('hasDiscount', {
+        is: true,
+        then: (schema) => schema.required(),
+    }),
+})
+```
+
+Async validation:
+```vue
+const schema = yup.object({
+    email: yup.string().email().test(
+        'unique',
+        'Email already in use',
+        async (value) => {
+            const { data } = await axios.get(`/api/check-email?email=${value}`)
+            return data.available
+        }
+    ),
+})
+```
+
+Setting values programmatically:
+```vue
+// IMPORTANT: Must use setFieldValue alongside form assignment
+const { setFieldValue } = useVeeForm({ validationSchema: schema })
+
+function selectUnit(unit) {
+    form.unit_id = unit.id
+    setFieldValue('unit_id', unit.id) // Required for VeeValidate to know!
+}
+```
+
+## Don't
+
+- Don't use multiple useForm() in one component
+- Don't forget setFieldValue when setting values programmatically
+- Don't mix Vee and non-Vee inputs in same validated form
+- Don't skip the name prop (validation won't work)
+- Don't use VeeSelect with :options prop, it uses slots
+
+## Related
+
+- Input: plain input without VeeValidate
+- Textarea: plain textarea
+- Select (reka-ui): styled select without VeeValidate
+- CurrencyInput: plain currency input
+- Checkbox: plain checkbox

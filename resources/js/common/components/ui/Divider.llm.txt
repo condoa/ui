@@ -1,0 +1,117 @@
+# Divider
+
+Visual separator between content sections. Can include labels, icons, or avatars.
+
+## When to Use
+- Separating content sections
+- Breaking up long lists
+- "Or" dividers in forms
+- NOT for spacing only (use margin/padding)
+
+## Usage
+
+Basic horizontal:
+```vue
+<Divider />
+```
+
+With label:
+```vue
+<Divider label="Or continue with" />
+```
+
+With icon:
+```vue
+<Divider icon="icon-mail" />
+```
+
+Vertical:
+```vue
+<div class="flex h-12 items-center">
+    <span>Left</span>
+    <Divider orientation="vertical" />
+    <span>Right</span>
+</div>
+```
+
+## Props
+
+- `orientation`: "horizontal" | "vertical" (default: "horizontal")
+- `type`: "solid" | "dashed" | "dotted" (default: "solid")
+- `label`: text to display in center
+- `icon`: icon to display in center
+- `avatar`: avatar image URL
+- `class`: custom classes
+
+## Slots
+
+- `default`: custom center content
+- `label`: custom label
+- `icon`: custom icon
+- `avatar`: custom avatar
+
+## Common Patterns
+
+Social login separator:
+```vue
+<form @submit="handleEmailLogin">
+    <VeeInput name="email" label="Email" />
+    <VeeInput name="password" label="Password" type="password" />
+    <Button type="submit">Sign in</Button>
+</form>
+
+<Divider label="Or continue with" class="my-6" />
+
+<div class="flex gap-2">
+    <Button variant="outline" @click="loginWithGoogle">
+        <Icon name="icon-google" class="size-4" />
+        Google
+    </Button>
+</div>
+```
+
+Section separator:
+```vue
+<div class="space-y-6">
+    <section>
+        <h2>General Settings</h2>
+        <!-- content -->
+    </section>
+
+    <Divider />
+
+    <section>
+        <h2>Advanced Settings</h2>
+        <!-- content -->
+    </section>
+</div>
+```
+
+Dashed separator:
+```vue
+<Divider type="dashed" />
+```
+
+With avatar (e.g., in timeline):
+```vue
+<Divider :avatar="user.avatar" />
+```
+
+Vertical in toolbar:
+```vue
+<div class="flex items-center gap-2">
+    <Button variant="ghost" size="icon"><Icon name="icon-bold" /></Button>
+    <Button variant="ghost" size="icon"><Icon name="icon-italic" /></Button>
+    <Divider orientation="vertical" class="h-6" />
+    <Button variant="ghost" size="icon"><Icon name="icon-link" /></Button>
+</div>
+```
+
+## Don't
+- Don't use for spacing only (use CSS)
+- Don't overuse dividers (consider whitespace instead)
+- Don't use with too much content in label
+
+## Related
+- Separator (reka-ui): primitive separator
+- Spacing utilities: for layout spacing

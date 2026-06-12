@@ -1,0 +1,23 @@
+{
+  "name": "vee-dateinput",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/DateInput.vue",
+      "to": "components/ui/Vee/DateInput.vue"
+    }
+  ],
+  "dependencies": [
+    "motion-v",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "dateinput",
+    "form",
+    "label"
+  ],
+  "icons": [],
+  "doc": null
+}

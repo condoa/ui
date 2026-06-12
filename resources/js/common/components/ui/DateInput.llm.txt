@@ -1,0 +1,69 @@
+# DateInput
+
+Masked text input for a Brazilian date (dd/mm/aaaa). Enforces the `##/##/####` mask via maska and keeps the value as a plain string. Use when you want typed date entry without segments or a calendar.
+
+## When to Use
+- Plain masked date entry as a string
+- Forms that store the date as "dd/mm/yyyy" text
+- NOT for segmented keyboard entry (use DateField)
+- NOT for calendar selection (use Datepicker)
+
+## Usage
+
+Basic:
+```vue
+<DateInput v-model="dateText" />
+```
+
+Custom placeholder:
+```vue
+<DateInput v-model="dateText" placeholder="dd/mm/aaaa" />
+```
+
+## Props
+- `v-model` (modelValue) - the masked string value (default: "")
+- `placeholder` - placeholder text (default: "dd/mm/aaaa")
+
+All other attributes fall through to the inner `<input>` (`inheritAttrs` is off, attrs land on the control wrapper for `class` and on the input otherwise).
+
+## Emits
+- `update:modelValue` - fires on every input with the masked string
+
+## Exposed Methods
+- `focus()` - focuses the underlying input
+
+## Accessibility
+- Uses `inputmode="numeric"` for a numeric keyboard on mobile
+- Pass `aria-invalid` to surface a validation error
+
+## Common Patterns
+
+With a label:
+```vue
+<div class="space-y-2">
+    <Label>Vencimento</Label>
+    <DateInput v-model="dueDate" />
+</div>
+```
+
+Focus on mount:
+```vue
+<script setup>
+const inputRef = ref()
+onMounted(() => inputRef.value?.focus())
+</script>
+
+<template>
+    <DateInput ref="inputRef" v-model="dateText" />
+</template>
+```
+
+## Don't
+- Don't expect a Date object (the value is a string)
+- Don't use for segment-by-segment editing (use DateField)
+
+## Related
+- DateField - segmented date entry
+- Datepicker - calendar popover picker
+- InputControl - the wrapper this composes
+- VeeDateInput - with VeeValidate integration

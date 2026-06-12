@@ -1,0 +1,48 @@
+# GradientDivider
+
+Thin horizontal rule whose line fades in from the edges using a gradient, for a softer separation than a solid border. Built on the reka-ui Separator primitive.
+
+## When to Use
+- Soft section breaks where a hard border feels heavy
+- Footers, card seams, between stacked panels
+- NOT for vertical separation (it is a fixed full-width horizontal line)
+- NOT for labeled or icon dividers (use Divider)
+
+## Usage
+
+Basic:
+```vue
+<GradientDivider />
+```
+
+With spacing:
+```vue
+<section>...</section>
+<GradientDivider class="my-8" />
+<section>...</section>
+```
+
+Non-decorative (announced as a separator):
+```vue
+<GradientDivider :decorative="false" />
+```
+
+## Props
+
+- `class`: custom classes for the line
+- Extends reka-ui `SeparatorProps`:
+  - `orientation`: "horizontal" | "vertical" (the gradient styling targets horizontal)
+  - `decorative`: when true the separator is purely visual and skipped by assistive tech; set false to expose it as a semantic separator
+  - `as`, `asChild`
+
+## Accessibility
+- Forwards reka-ui Separator semantics. Use `decorative` to control whether assistive tech announces it.
+- No animation; nothing to gate for reduced motion.
+
+## Don't
+- Don't use it as a vertical divider; the gradient is tuned for a full-width horizontal line.
+- Don't put a label inside it; use Divider for labeled separators.
+
+## Related
+- Separator: the base solid separator
+- Divider: separator with label, icon, or avatar support

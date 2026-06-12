@@ -1,0 +1,22 @@
+{
+  "name": "dropfile",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Dropfile.vue",
+      "to": "components/ui/Dropfile.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-cloud-upload"
+  ],
+  "doc": "resources/js/common/components/ui/Dropfile.llm.txt"
+}

@@ -1,0 +1,158 @@
+# Nav
+
+Application top navbar with responsive desktop and mobile layouts. The Nav family builds horizontal navigation bars, switching to a Sheet-based drawer on small screens.
+
+## When to Use
+- Top-level application navigation (logo, primary links, account menu)
+- Marketing or app shell headers
+- Layouts that need a sticky, floating, or inset navbar
+- NOT for in-page tab navigation (use Tabs)
+- NOT for side navigation (use Sidebar)
+- NOT for dropdown menus inside the bar (use DropdownMenu)
+
+## Usage
+
+Wrap everything in NavProvider, then place a Navbar (the `Nav` component) inside. Sections group links; Spacer pushes following content to the far edge.
+
+```vue
+<NavProvider>
+    <Nav intent="default">
+        <NavStart>
+            <Link href="/">
+                <BrandMark class="size-7" />
+            </Link>
+        </NavStart>
+        <NavSection>
+            <NavItem :href="route('home')" :aria-current="route().current('home') ? 'page' : ''">Home</NavItem>
+            <NavItem :href="route('about')">About</NavItem>
+        </NavSection>
+        <NavSpacer />
+        <NavSection>
+            <NavTrigger />
+        </NavSection>
+    </Nav>
+</NavProvider>
+```
+
+Mobile drawer content is provided as children of `Nav`. On screens under 768px the bar collapses and the children render inside a Sheet opened by NavTrigger.
+
+## Components
+
+### NavProvider
+Context provider. Owns the open state, the mobile media query, and the toggle. Must wrap every other Nav component.
+- `modelValue` (boolean): controlled open state of the mobile drawer. Use `v-model`.
+- `onOpenChange` ((open: boolean) => void): called when the open state changes.
+- `as` (string): element or component to render as. Default `div`.
+- `class` (ClassValue): custom classes.
+
+### Nav
+The navbar itself. Renders the desktop bar, or a Sheet drawer when mobile.
+- `intent` ('default' | 'float' | 'inset'): visual style. Default `default`.
+- `isSticky` (boolean): pin to the top of the viewport.
+- `side` ('left' | 'right'): side the mobile Sheet opens from. Default `left`.
+- `wrapperClass` (ClassValue): classes for the outer wrapper element.
+- `childClass` (ClassValue): classes for the child element.
+- `innerClass` (ClassValue): classes for the inner content element.
+- Exposes `navRef` via defineExpose.
+
+### NavStart
+Leading slot, typically the logo. Adds the start gutter.
+- `class` (ClassValue): custom classes.
+- Accepts all PrimitiveProps (for example `as`).
+
+### NavSection
+Groups related items horizontally on desktop, stacked on mobile.
+- `class` (ClassValue): custom classes.
+- Accepts all PrimitiveProps (for example `as`).
+
+### NavItem
+A single navigation link or item. Renders an Inertia Link when `href` is set, otherwise a plain element. Shows a current-page indicator when `aria-current="page"`.
+- `href` (string): destination. Omit for a non-link item.
+- `class` (ClassValue): custom classes.
+
+### NavLabel
+Truncating text label inside an item grid.
+- `class` (ClassValue): custom classes.
+
+### NavTrigger
+Button that toggles the mobile drawer. Hidden on large screens.
+- `ariaLabel` (string): accessible label. Default `Toggle Navbar`.
+- `icon` (string): icon name. Default `icon-menu`.
+- `onClick` ((event: MouseEvent) => void): extra click handler, called after the toggle.
+- `class` (ClassValue): custom classes.
+
+### NavMobile
+Container for a mobile-only row inside the bar. Hidden on desktop.
+- `class` (ClassValue): custom classes.
+- Accepts all PrimitiveProps (for example `as`).
+
+### NavSpacer
+Flexible spacer that pushes following content to the opposite edge.
+- `class` (ClassValue): custom classes.
+
+### NavGap
+Small fixed horizontal gap between groups.
+- `class` (ClassValue): custom classes.
+
+### NavSeparator
+Vertical separator between items. Wraps the base Separator.
+- `class` (ClassValue): custom classes.
+
+### NavInset
+Inset content region paired with `intent="inset"`. Provides the framed page surface below the bar.
+- `class` (ClassValue): custom classes.
+- Accepts all PrimitiveProps.
+
+## Accessibility
+- NavTrigger carries an `aria-label` and an `sr-only` "Toggle Navbar" text.
+- The mobile Sheet has an `aria-label` and a visually hidden title and description.
+- Mark the active link with `:aria-current="'page'"` so the current-page indicator shows and screen readers announce it.
+- NavProvider throws if a Nav child is rendered outside it, surfacing wiring mistakes early.
+
+## Common Patterns
+
+Sticky inset navbar with a framed page body:
+```vue
+<NavProvider>
+    <Nav intent="inset" is-sticky>
+        <NavStart><Logo /></NavStart>
+        <NavSection>
+            <NavItem :href="route('home')">Home</NavItem>
+        </NavSection>
+        <NavSpacer />
+        <NavTrigger />
+    </Nav>
+    <NavInset>
+        <slot />
+    </NavInset>
+</NavProvider>
+```
+
+Controlled mobile drawer:
+```vue
+<script setup lang="ts">
+const open = ref(false)
+</script>
+
+<template>
+    <NavProvider v-model="open">
+        <Nav>
+            <NavStart><Logo /></NavStart>
+            <NavSpacer />
+            <NavTrigger />
+        </Nav>
+    </NavProvider>
+</template>
+```
+
+## Don't
+- Don't render Nav components without a wrapping NavProvider.
+- Don't use more than one Nav inside a single NavProvider.
+- Don't reach for Nav to build a vertical side menu, use Sidebar.
+- Don't forget `aria-current` on the active NavItem.
+
+## Related
+- Sidebar: vertical, collapsible side navigation.
+- NavigationMenu: dropdown-style menu bar with rich panels.
+- Sheet: the drawer primitive Nav uses on mobile.
+- Separator: the divider NavSeparator wraps.

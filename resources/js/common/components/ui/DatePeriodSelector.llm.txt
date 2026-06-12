@@ -1,0 +1,51 @@
+# DatePeriodSelector
+
+Timeline-scrubber date range picker. Renders a row of presets (this month, last 7/30/90 days) over a draggable, resizable selection window on a month-marked timeline. Pointer-driven, no calendar popover. Reads the active locale from the Inertia page props to format month and day labels. Client-only (uses pointer events and window resize).
+
+## When to Use
+- Picking a custom date range by dragging a window across a timeline
+- Quick presets plus fine-grained range adjustment for reports and dashboards
+- NOT for a single date (use a date field or picker)
+- NOT for far-future ranges; the timeline is bounded and ends at today by default
+
+## Usage
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const period = ref({ from: '2026-06-01', to: '2026-06-10' })
+</script>
+
+<template>
+    <DatePeriodSelector
+        v-model="period"
+        timeline-start="2026-01-01"
+        timeline-end="2026-06-30"
+    />
+</template>
+```
+
+## Props
+- `modelValue`: the selected `{ from: string; to: string }` (both `YYYY-MM-DD`). Defaults to the start of the current month through today.
+- `timelineStart`: earliest selectable date (`YYYY-MM-DD`). Defaults to the first of the month six months back.
+- `timelineEnd`: latest selectable date (`YYYY-MM-DD`). Defaults to today.
+- `presets`: array of preset buttons. Each is either `{ key, label, days }` (last N days) or `{ key, label, type: 'this_month' }`. An empty `label` falls back to a built-in localized label.
+
+## Events
+- `update:modelValue`: emitted with the new `{ from, to }` after a preset, a month click, or a drag ends
+
+## Behavior
+- Drag the center of the selection window to move it; drag either edge to resize it
+- The selection is clamped to the timeline bounds
+- Clicking a month label selects that whole month (clipped to the end boundary)
+- Scroll arrows page the visible ~5-month window without going past the bounds
+- Month and day labels are formatted with the locale from the Inertia `language` page prop
+
+## Don't
+- Don't expect a calendar grid; selection is by dragging the timeline window
+- Don't pass a range outside the timeline bounds; it gets clamped
+- Don't use it outside an Inertia page; it reads the locale from page props
+
+## Related
+- DateTimeTooltip: display a single timestamp instead of selecting a range
+- Datepicker: calendar-style single date selection

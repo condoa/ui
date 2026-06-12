@@ -1,0 +1,216 @@
+# DataTable
+
+Full-featured data table built on TanStack Table (`@tanstack/vue-table`). Supports server-side pagination, sorting, filtering, row selection, and custom column rendering. Composes the Table, Button, Select, DropdownMenu, Checkbox, and VeeInput registry items. Server-side navigation runs through the Inertia router, so it expects a client Inertia app at runtime.
+
+## When to Use
+- Displaying paginated data from Laravel
+- Tables with sorting, filtering, or selection
+- NOT for simple static tables (use Table component directly)
+- NOT for card-based lists (use CardList)
+
+## Usage
+
+Basic with server-side pagination:
+```vue
+<script setup>
+import { createColumnHelper } from '@tanstack/vue-table'
+
+const props = defineProps<{
+    users: {
+        data: User[]
+        meta: PaginationMeta
+    }
+}>()
+
+const columnHelper = createColumnHelper<User>()
+
+const columns = [
+    columnHelper.accessor('name', {
+        header: 'Name',
+        cell: ({ row }) => row.original.name,
+    }),
+    columnHelper.accessor('email', {
+        header: 'Email',
+    }),
+    columnHelper.display({
+        id: 'actions',
+        header: '',
+        cell: ({ row }) => h(DataTableRowActions, null, () => [
+            h(DropdownMenuItem, { onClick: () => editUser(row.original.id) }, () => 'Edit'),
+            h(DropdownMenuItem, { onClick: () => deleteUser(row.original.id) }, () => 'Delete'),
+        ]),
+    }),
+]
+</script>
+
+<template>
+    <DataTable :columns="columns" :data="users.data" :meta="users.meta" />
+</template>
+```
+
+## Props
+
+- `columns`: TanStack column definitions (required)
+- `data`: array of row data (required)
+- `meta`: Laravel pagination meta object
+- `serverSide`: use server-side pagination/sorting (default: true)
+- `enableRowSelection`: allow row selection (default: false)
+- `enableMultiRowSelection`: allow selecting multiple rows (default: true)
+- `emptyIcon`: icon for empty state
+- `emptyText`: text for empty state
+- `wrapper`: custom wrapper component
+- `wrapperProps`: props for wrapper component
+- `class`: custom classes
+
+## v-model bindings
+
+- `v-model:sorting`: SortingState
+- `v-model:columnFilters`: ColumnFiltersState
+- `v-model:columnVisibility`: VisibilityState
+- `v-model:rowSelection`: RowSelectionState
+
+## Slots
+
+- `toolbar`: toolbar above table (receives `{ table }`)
+- `empty`: custom empty state
+- `pagination`: custom pagination (receives `{ table, meta }`)
+
+## Emits
+
+- `update:sorting`
+- `update:columnFilters`
+- `update:columnVisibility`
+- `update:rowSelection`
+
+## Helper Components
+
+### DataTableColumnHeader
+Sortable column header with sort indicators.
+```vue
+columnHelper.accessor('name', {
+    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Name' }),
+})
+```
+
+### DataTableSpatieColumnHeader
+Column header integrated with Spatie Laravel Query Builder. Reads/writes the `?sort=` query param via Inertia (prefix `-` for descending). Props: `columnId` (the Spatie sort key), `title`, `sortable` (default true).
+```vue
+columnHelper.accessor('name', {
+    header: () => h(DataTableSpatieColumnHeader, {
+        columnId: 'name', // maps to ?sort=name / ?sort=-name
+        title: 'Name',
+    }),
+})
+```
+
+### DataTableRowActions
+Ellipsis trigger opening a dropdown menu. Renders its default slot inside the menu content (compose DropdownMenuItem children yourself); it takes no props.
+```vue
+columnHelper.display({
+    id: 'actions',
+    cell: ({ row }) => h(DataTableRowActions, null, () => [
+        h(DropdownMenuItem, { onClick: () => editItem(row.original.id) }, () => 'Edit'),
+        h(DropdownMenuItem, { onClick: () => deleteItem(row.original.id) }, () => 'Delete'),
+    ]),
+})
+```
+
+### DataTableSelectCheckbox
+Checkbox for row selection.
+```vue
+columnHelper.display({
+    id: 'select',
+    header: ({ table }) => h(DataTableSelectCheckbox, { table }),
+    cell: ({ row }) => h(DataTableSelectCheckbox, { row }),
+    size: 40,
+})
+```
+
+### DataTableToolbar
+Toolbar with a debounced search box and a column-visibility dropdown. With `serverSide` it pushes `?{searchColumn}=` to the URL via the Inertia router (debounced by `debounceMs`, default 300); otherwise it sets the TanStack column filter. Props: `table` (required), `searchColumn`, `searchPlaceholder` (default "Buscar..."), `searchValue`, `enableColumnVisibility` (default true), `serverSide` (default true), `debounceMs`. Emits `update:searchValue`. Slots: `search`, `filters` (`{ table }`), `actions` (`{ table }`).
+```vue
+<template #toolbar="{ table }">
+    <DataTableToolbar :table="table" search-column="name" v-model:search-value="search">
+        <template #actions>
+            <Button @click="create">Add New</Button>
+        </template>
+    </DataTableToolbar>
+</template>
+```
+
+### DataTablePagination
+Pagination controls (rendered automatically if `meta` provided). Navigates by pushing `?page=` / `?per_page=` to the URL via the Inertia router. Props: `table`, `meta`, `pageSizeOptions` (default `[10, 20, 30, 50, 100]`), `preserveScroll`, `preserveState`.
+
+## Accessibility
+
+- Uses semantic table elements
+- Sortable columns are keyboard accessible
+- Row selection uses native checkboxes
+- Empty state announced to screen readers
+
+## Common Patterns
+
+Server-side sorting with Spatie Query Builder:
+```vue
+<script setup>
+const columns = [
+    columnHelper.accessor('created_at', {
+        header: () => h(DataTableSpatieColumnHeader, {
+            columnId: 'created_at',
+            title: 'Date',
+        }),
+        cell: ({ row }) => formatDate(row.original.created_at),
+    }),
+]
+</script>
+```
+
+Row selection with bulk actions:
+```vue
+<script setup>
+const rowSelection = ref({})
+
+const selectedIds = computed(() =>
+    Object.keys(rowSelection.value).map(idx => props.data[idx].id)
+)
+</script>
+
+<template>
+    <DataTable
+        :columns="columns"
+        :data="data"
+        v-model:rowSelection="rowSelection"
+        enableRowSelection
+    >
+        <template #toolbar="{ table }">
+            <Button v-if="selectedIds.length" @click="bulkDelete">
+                Delete {{ selectedIds.length }} items
+            </Button>
+        </template>
+    </DataTable>
+</template>
+```
+
+Custom empty state:
+```vue
+<DataTable :columns="columns" :data="data" emptyIcon="icon-inbox" emptyText="No items found">
+    <template #empty>
+        <Empty icon="icon-inbox" title="No items" description="Create your first item to get started.">
+            <Button @click="create">Create Item</Button>
+        </Empty>
+    </template>
+</DataTable>
+```
+
+## Don't
+
+- Don't use client-side pagination for large datasets (keep serverSide: true)
+- Don't forget meta prop for pagination to work
+- Don't create columns in template (define in setup to avoid re-renders)
+- Don't mutate data directly: use Inertia reload
+
+## Related
+
+- Table: simple semantic table without features
+- CardList: card-based list layout
+- DataTableSpatieColumnHeader: Spatie Query Builder integration

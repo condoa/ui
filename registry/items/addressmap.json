@@ -1,0 +1,19 @@
+{
+  "name": "addressmap",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/AddressMap.vue",
+      "to": "components/ui/AddressMap.vue"
+    }
+  ],
+  "dependencies": [
+    "leaflet",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/AddressMap.llm.txt"
+}

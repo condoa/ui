@@ -1,0 +1,72 @@
+{
+  "name": "dialog",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Dialog/Viewport.vue",
+      "to": "components/ui/Dialog/Viewport.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Dialog/useDialogNesting.ts",
+      "to": "components/ui/Dialog/useDialogNesting.ts"
+    },
+    {
+      "from": "resources/js/common/components/ui/Dialog/Trigger.vue",
+      "to": "components/ui/Dialog/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Dialog/Title.vue",
+      "to": "components/ui/Dialog/Title.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Dialog/Portal.vue",
+      "to": "components/ui/Dialog/Portal.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Dialog/Panel.vue",
+      "to": "components/ui/Dialog/Panel.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Dialog/Overlay.vue",
+      "to": "components/ui/Dialog/Overlay.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Dialog/Header.vue",
+      "to": "components/ui/Dialog/Header.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Dialog/Footer.vue",
+      "to": "components/ui/Dialog/Footer.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Dialog/Dialog.vue",
+      "to": "components/ui/Dialog/Dialog.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Dialog/Description.vue",
+      "to": "components/ui/Dialog/Description.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Dialog/Content.vue",
+      "to": "components/ui/Dialog/Content.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Dialog/Close.vue",
+      "to": "components/ui/Dialog/Close.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "button"
+  ],
+  "icons": [
+    "icon-close"
+  ],
+  "doc": "resources/js/common/components/ui/Dialog/Dialog.llm.txt"
+}

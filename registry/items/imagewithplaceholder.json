@@ -1,0 +1,20 @@
+{
+  "name": "imagewithplaceholder",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/ImageWithPlaceholder.vue",
+      "to": "components/ui/ImageWithPlaceholder.vue"
+    }
+  ],
+  "dependencies": [
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/ImageWithPlaceholder.llm.txt"
+}

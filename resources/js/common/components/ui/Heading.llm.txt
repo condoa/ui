@@ -1,0 +1,90 @@
+# Heading
+
+Semantic heading component with consistent typography. Use for page and section titles.
+
+## When to Use
+- Page titles
+- Section headings
+- Card headers
+- NOT for body text (use plain elements)
+- NOT for styled text without semantic meaning
+
+## Usage
+
+Basic:
+```vue
+<Heading>Page Title</Heading>
+```
+
+With level:
+```vue
+<Heading :level="2">Section Title</Heading>
+<Heading :level="3">Subsection Title</Heading>
+```
+
+As different element:
+```vue
+<Heading :level="1" as-child>
+    <span>Styled as h1 but rendered as span</span>
+</Heading>
+```
+
+## Props
+
+- `level`: heading level 1-6, determines both HTML tag and styling (default: 1)
+- `class`: custom classes
+- `asChild`: render slot content as root element
+
+## Levels
+
+| Level | Tag   | Size (mobile/desktop)    | Weight      |
+|-------|-------|--------------------------|-------------|
+| 1     | `h1`  | text-xl / text-2xl       | semibold    |
+| 2     | `h2`  | text-lg / text-xl        | semibold    |
+| 3     | `h3`  | text-base / text-lg      | semibold    |
+| 4     | `h4`  | text-base                | semibold    |
+| 5     | `h5`  | text-base                | medium      |
+| 6     | `h6`  | text-base                | normal      |
+
+## Accessibility
+- Uses semantic heading tags (h1-h6)
+- Maintains document outline
+- Proper heading hierarchy
+
+## Common Patterns
+
+Page header:
+```vue
+<div class="space-y-1">
+    <Heading>Dashboard</Heading>
+    <p class="text-muted-foreground">Welcome back, Admin</p>
+</div>
+```
+
+Card with heading:
+```vue
+<Card>
+    <CardHeader>
+        <Heading :level="3">Recent Activity</Heading>
+    </CardHeader>
+    <CardContent>...</CardContent>
+</Card>
+```
+
+With breadcrumbs:
+```vue
+<div class="space-y-4">
+    <Breadcrumbs :items="breadcrumbs" />
+    <Heading>Settings</Heading>
+</div>
+```
+
+## Don't
+- Don't skip heading levels (h1 -> h3)
+- Don't use headings purely for styling
+- Don't nest h1 inside sections (use h2+)
+
+## Related
+- CardTitle: card-specific title
+- DialogTitle: dialog title
+- Label: form field labels

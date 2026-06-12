@@ -1,0 +1,28 @@
+{
+  "name": "descriptionlist",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/DescriptionList/Term.vue",
+      "to": "components/ui/DescriptionList/Term.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DescriptionList/Details.vue",
+      "to": "components/ui/DescriptionList/Details.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DescriptionList/DescriptionList.vue",
+      "to": "components/ui/DescriptionList/DescriptionList.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/DescriptionList/DescriptionList.llm.txt"
+}

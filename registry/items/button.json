@@ -1,0 +1,27 @@
+{
+  "name": "button",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Button.vue",
+      "to": "components/ui/Button.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Button.variants.ts",
+      "to": "components/ui/Button.variants.ts"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-loading"
+  ],
+  "doc": "resources/js/common/components/ui/Button.llm.txt"
+}

@@ -1,0 +1,37 @@
+{
+  "name": "list",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/List/Title.vue",
+      "to": "components/ui/List/Title.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/List/Subtitle.vue",
+      "to": "components/ui/List/Subtitle.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/List/List.vue",
+      "to": "components/ui/List/List.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/List/Item.vue",
+      "to": "components/ui/List/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/List/Content.vue",
+      "to": "components/ui/List/Content.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/List/List.llm.txt"
+}

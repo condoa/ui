@@ -1,0 +1,25 @@
+{
+  "name": "vee-radiogroup",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/RadioGroup.vue",
+      "to": "components/ui/Vee/RadioGroup.vue"
+    }
+  ],
+  "dependencies": [
+    "motion-v",
+    "reka-ui",
+    "tailwind-variants",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "label",
+    "radiogroup"
+  ],
+  "icons": [],
+  "doc": null
+}

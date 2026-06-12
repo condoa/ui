@@ -1,0 +1,30 @@
+{
+  "name": "radiogroup",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/RadioGroup/RadioGroup.vue",
+      "to": "components/ui/RadioGroup/RadioGroup.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/RadioGroup/Item.vue",
+      "to": "components/ui/RadioGroup/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/RadioGroup/Indicator.vue",
+      "to": "components/ui/RadioGroup/Indicator.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-circle"
+  ],
+  "doc": "resources/js/common/components/ui/RadioGroup/RadioGroup.llm.txt"
+}

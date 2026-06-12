@@ -1,0 +1,31 @@
+{
+  "name": "vee-datepicker",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/Datepicker.vue",
+      "to": "components/ui/Vee/Datepicker.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "date-fns",
+    "motion-v",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "datepicker",
+    "form",
+    "label"
+  ],
+  "icons": [
+    "icon-calendar-days",
+    "icon-chevron-down",
+    "icon-chevron-left",
+    "icon-chevron-right",
+    "icon-chevron-up"
+  ],
+  "doc": null
+}

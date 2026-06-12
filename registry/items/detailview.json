@@ -1,0 +1,20 @@
+{
+  "name": "detailview",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/DetailView/DetailItem.vue",
+      "to": "components/ui/DetailView/DetailItem.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DetailView/DetailHeader.vue",
+      "to": "components/ui/DetailView/DetailHeader.vue"
+    }
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/DetailView/DetailView.llm.txt"
+}

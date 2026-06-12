@@ -1,0 +1,61 @@
+# NumberInput
+
+Compact integer stepper with minus and plus buttons. Built on reka-ui NumberField with grouping off and zero fraction digits, so it holds whole numbers. The input auto-sizes to its content.
+
+## When to Use
+- Small whole-number entry (quantities, counts, durations)
+- Values that benefit from +/- buttons and an auto-sizing field
+- NOT for decimals (use DecimalInput)
+- NOT for currency (use CurrencyInput)
+- NOT for continuous ranges (use Slider)
+
+## Usage
+
+Basic:
+```vue
+<NumberInput v-model="quantity" />
+```
+
+With bounds and step:
+```vue
+<NumberInput v-model="guests" :min="1" :max="10" :step="1" />
+```
+
+Disabled:
+```vue
+<NumberInput v-model="quantity" disabled />
+```
+
+## Props
+
+- `class` (ClassValue): extra classes for the control wrapper
+- `modelValue` (number | null): the bound value
+- `min` (number): minimum value
+- `max` (number): maximum value
+- `step` (number): increment per step (default: 1)
+- `disabled` (boolean): disable all controls (default: false)
+
+## Emits
+
+- `update:modelValue` (number | undefined): the new value, or undefined when the field is cleared
+- `raw-input` (string): the raw text on every input event, before parsing
+
+## Behavior
+
+- Format: integers only (no grouping, no fraction digits).
+- Clearing: emptying the field emits `update:modelValue` with undefined.
+- Sizing: the input width tracks the number of characters in the value.
+
+## Accessibility
+- Arrow keys adjust the value
+- Home and End jump to min and max
+- The minus and plus buttons are excluded from tab order (`tabindex="-1"`)
+
+## Notes
+- `inheritAttrs` is false. Extra attributes you pass land on the inner number input.
+- Wrapped in InputControl for the shared field frame and focus ring.
+
+## Related
+- DecimalInput: decimal text entry
+- Slider: continuous value selection
+- CurrencyInput: money entry with a currency mask

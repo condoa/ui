@@ -1,0 +1,37 @@
+{
+  "name": "tabs",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Tabs/Trigger.vue",
+      "to": "components/ui/Tabs/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Tabs/Tabs.vue",
+      "to": "components/ui/Tabs/Tabs.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Tabs/List.vue",
+      "to": "components/ui/Tabs/List.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Tabs/Indicator.vue",
+      "to": "components/ui/Tabs/Indicator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Tabs/Content.vue",
+      "to": "components/ui/Tabs/Content.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Tabs/Tabs.llm.txt"
+}

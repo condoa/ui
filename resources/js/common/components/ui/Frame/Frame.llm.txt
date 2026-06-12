@@ -1,0 +1,116 @@
+# Frame
+
+A composable layout container with nested panels, headers, and footers. Creates visual hierarchy with subtle background differentiation.
+
+## When to Use
+- Page-level layout containers with multiple content sections
+- Settings pages with grouped options
+- Multi-panel layouts (e.g., sidebar + main content)
+- NOT for simple content boxes (use Card instead)
+- NOT for overlays (use Dialog or Sheet)
+
+## Usage
+
+Basic structure (FrameHeader / FrameFooter are SIBLINGS of FramePanel, not nested inside it):
+```vue
+<Frame>
+    <FrameHeader>
+        <FrameTitle>Section Title</FrameTitle>
+        <FrameDescription>Optional description text</FrameDescription>
+    </FrameHeader>
+    <FramePanel>
+        <FrameBody>
+            <!-- Content here -->
+        </FrameBody>
+    </FramePanel>
+    <FrameFooter>
+        <Button>Action</Button>
+    </FrameFooter>
+</Frame>
+```
+
+Multiple panels:
+```vue
+<Frame>
+    <FramePanel>
+        <FrameBody>First panel</FrameBody>
+    </FramePanel>
+    <FramePanel>
+        <FrameBody>Second panel (auto-spaced)</FrameBody>
+    </FramePanel>
+</Frame>
+```
+
+## Components
+
+### Frame
+Root container. Provides muted background and spacing for child panels.
+- `class` - custom classes
+- `as` - element type (default: "div")
+- `asChild` - merge props onto child element
+
+### FramePanel
+Individual content panel with border and background. Holds the content (typically wrapped in FrameBody). Sibling of FrameHeader / FrameFooter.
+- `class` - custom classes
+- `as` - element type (default: "div")
+
+### FrameHeader
+Container for title and description. **Direct child of `Frame`, sibling of `FramePanel`** - not nested inside the panel.
+- `class` - custom classes
+- `as` - element type (default: "header")
+
+### FrameBody
+Main content area with padding.
+- `class` - custom classes
+- `as` - element type (default: "div")
+
+### FrameFooter
+Footer area for actions.
+- `class` - custom classes
+- `as` - element type (default: "footer")
+
+### FrameTitle
+Section title text.
+- `title` - text content (or use slot)
+- `class` - custom classes
+
+### FrameDescription
+Secondary description text.
+- `description` - text content (or use slot)
+- `class` - custom classes
+
+## Accessibility
+- Uses semantic HTML elements by default (header, footer)
+- Heading hierarchy should match document structure
+- Panel backgrounds provide visual grouping for users
+
+## Common Patterns
+
+Settings page layout:
+```vue
+<Frame>
+    <FrameHeader>
+        <FrameTitle>Profile Settings</FrameTitle>
+        <FrameDescription>Manage your account information</FrameDescription>
+    </FrameHeader>
+    <FramePanel>
+        <FrameBody>
+            <VeeInput name="name" label="Name" />
+            <VeeInput name="email" label="Email" />
+        </FrameBody>
+    </FramePanel>
+    <FrameFooter>
+        <Button type="submit">Save Changes</Button>
+    </FrameFooter>
+</Frame>
+```
+
+## Don't
+- Don't nest Frame inside Frame
+- Don't use FramePanel outside of Frame
+- Don't skip FrameBody when you have content (it provides correct padding)
+
+## Related
+- Card - simpler single-panel container
+- Dialog - overlay modal with similar structure
+- Sheet - slide-out panel

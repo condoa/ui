@@ -1,0 +1,64 @@
+{
+  "name": "sheet",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Sheet/X.vue",
+      "to": "components/ui/Sheet/X.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sheet/Trigger.vue",
+      "to": "components/ui/Sheet/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sheet/Title.vue",
+      "to": "components/ui/Sheet/Title.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sheet/Sheet.vue",
+      "to": "components/ui/Sheet/Sheet.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sheet/Portal.vue",
+      "to": "components/ui/Sheet/Portal.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sheet/Overlay.vue",
+      "to": "components/ui/Sheet/Overlay.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sheet/Header.vue",
+      "to": "components/ui/Sheet/Header.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sheet/Footer.vue",
+      "to": "components/ui/Sheet/Footer.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sheet/Description.vue",
+      "to": "components/ui/Sheet/Description.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sheet/Content.vue",
+      "to": "components/ui/Sheet/Content.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Sheet/Close.vue",
+      "to": "components/ui/Sheet/Close.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "motion-v",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-close"
+  ],
+  "doc": "resources/js/common/components/ui/Sheet/Sheet.llm.txt"
+}

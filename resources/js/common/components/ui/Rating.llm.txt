@@ -1,0 +1,97 @@
+# Rating
+
+Star rating display and input. Supports half-star rendering, custom icons, editable input with keyboard support, and an optional numeric value display.
+
+## When to Use
+- Displaying a read-only product or service rating
+- Collecting a user rating via interaction
+- NOT for binary yes/no sentiment (use a toggle or checkbox)
+
+## Usage
+
+Read-only display:
+```vue
+<Rating :model-value="4.5" />
+```
+
+Editable:
+```vue
+<Rating v-model="rating" :editable="true" />
+```
+
+With numeric value:
+```vue
+<Rating :model-value="3.7" :show-value="true" />
+```
+
+Custom icon and size:
+```vue
+<Rating :model-value="4" icon="lucide:heart" size="lg" />
+```
+
+With change callback:
+```vue
+<Rating
+    v-model="rating"
+    :editable="true"
+    :on-rating-change="(val) => saveRating(val)"
+/>
+```
+
+## Props
+
+- `maxRating` -- total number of stars to render (default: 5)
+- `size` -- "sm" | "md" | "lg" (default: "md")
+- `showValue` -- display the numeric value after the stars (default: false)
+- `editable` -- allow user interaction (default: false)
+- `icon` -- icon name string for the star (default: "lucide:star")
+- `onRatingChange` -- callback function called with the new rating on click
+- `label` -- accessible label for the radiogroup when editable (default: "Rating")
+- `class` -- custom classes for the root container
+- `valueClassName` -- custom classes for the numeric value span
+- `emptyIconClassName` -- custom classes for empty star icons
+- `filledIconClassName` -- custom classes for filled star icons
+
+## Model
+
+- `v-model` (number, default: 0) -- current rating value; supports fractional values for partial fills
+
+## Emits
+
+- `ratingChange` -- emitted with the new rating when a star is clicked (editable only)
+- `starHover` -- emitted with the hovered star value (or null on leave) when editable
+
+## Slots
+
+None.
+
+## Accessibility
+- In editable mode the root div has `role="radiogroup"` and `aria-label` (set via the `label` prop, default "Rating")
+- Each star has `role="radio"`, `aria-checked`, and `aria-label` of "{n} star"
+- Roving tabindex: only the selected star (or star 1 when none) has `tabindex="0"`; ArrowLeft/ArrowRight/ArrowUp/ArrowDown move selection and focus
+- Enter and Space keys activate the focused star
+- Star icons carry `aria-hidden="true"`; interaction is on the parent div
+- Numeric value uses `tabular-nums` to prevent layout shifts
+
+## Common Patterns
+
+Product card rating:
+```vue
+<div class="flex items-center gap-2">
+    <Rating :model-value="product.rating" size="sm" />
+    <span class="text-sm text-muted-foreground">({{ product.reviewCount }})</span>
+</div>
+```
+
+Review form:
+```vue
+<label>Your rating</label>
+<Rating v-model="form.rating" :editable="true" size="lg" />
+```
+
+## Don't
+- Don't use fractional values greater than maxRating
+- Don't set editable without handling v-model or onRatingChange
+
+## Related
+- Icon -- used internally for star rendering

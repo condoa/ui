@@ -1,0 +1,47 @@
+{
+  "name": "stepper",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Stepper/Trigger.vue",
+      "to": "components/ui/Stepper/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Stepper/Title.vue",
+      "to": "components/ui/Stepper/Title.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Stepper/Stepper.vue",
+      "to": "components/ui/Stepper/Stepper.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Stepper/Separator.vue",
+      "to": "components/ui/Stepper/Separator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Stepper/Item.vue",
+      "to": "components/ui/Stepper/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Stepper/Indicator.vue",
+      "to": "components/ui/Stepper/Indicator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Stepper/Description.vue",
+      "to": "components/ui/Stepper/Description.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-check",
+    "icon-loading"
+  ],
+  "doc": "resources/js/common/components/ui/Stepper/Stepper.llm.txt"
+}

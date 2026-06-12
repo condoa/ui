@@ -1,0 +1,133 @@
+# Switch
+
+Toggle switch for binary on/off states. Use for immediate settings changes.
+
+## When to Use
+- Settings that apply immediately
+- Enable/disable features
+- Boolean preferences
+- NOT for form submission (use Checkbox)
+- NOT for multiple options (use RadioGroup)
+
+## Usage
+
+Basic:
+```vue
+<Switch v-model="enabled" />
+```
+
+With label:
+```vue
+<div class="flex items-center gap-3">
+    <Switch id="notifications" v-model="notifications" />
+    <Label for="notifications">Enable notifications</Label>
+</div>
+```
+
+With description:
+```vue
+<div class="flex items-start gap-3">
+    <Switch id="marketing" v-model="marketing" class="mt-0.5" />
+    <div>
+        <Label for="marketing">Marketing emails</Label>
+        <p class="text-sm text-muted-foreground">
+            Receive emails about new features and updates.
+        </p>
+    </div>
+</div>
+```
+
+## Props
+
+- `v-model` / `checked`: boolean state
+- `defaultChecked`: initial state
+- `disabled`: disable switch
+- `required`: mark as required
+- `name`: form field name
+- `value`: value when checked (default: "on")
+- `id`: element id
+- `class`: custom classes
+
+## Emits
+
+- `update:checked`: state changed
+
+## Accessibility
+- Uses native switch role
+- Space key toggles state
+- Focus ring visible on keyboard navigation
+- Disabled state properly conveyed
+- Associate with Label via id/for
+
+## Common Patterns
+
+Settings list:
+```vue
+<div class="space-y-4">
+    <div class="flex items-center justify-between">
+        <div>
+            <Label for="email-notif">Email notifications</Label>
+            <p class="text-sm text-muted-foreground">Receive email updates</p>
+        </div>
+        <Switch id="email-notif" v-model="settings.emailNotifications" />
+    </div>
+
+    <Divider />
+
+    <div class="flex items-center justify-between">
+        <div>
+            <Label for="push-notif">Push notifications</Label>
+            <p class="text-sm text-muted-foreground">Receive push notifications</p>
+        </div>
+        <Switch id="push-notif" v-model="settings.pushNotifications" />
+    </div>
+</div>
+```
+
+With immediate save:
+```vue
+<script setup>
+const darkMode = ref(false)
+
+watch(darkMode, async (value) => {
+    await savePreference('dark_mode', value)
+})
+</script>
+
+<template>
+    <div class="flex items-center gap-3">
+        <Switch id="dark-mode" v-model="darkMode" />
+        <Label for="dark-mode">Dark mode</Label>
+    </div>
+</template>
+```
+
+In a Card:
+```vue
+<Card>
+    <CardHeader>
+        <CardTitle>Privacy</CardTitle>
+    </CardHeader>
+    <CardContent class="space-y-4">
+        <div class="flex items-center justify-between">
+            <Label for="public-profile">Public profile</Label>
+            <Switch id="public-profile" v-model="settings.publicProfile" />
+        </div>
+        <div class="flex items-center justify-between">
+            <Label for="show-email">Show email</Label>
+            <Switch id="show-email" v-model="settings.showEmail" />
+        </div>
+    </CardContent>
+</Card>
+```
+
+## Don't
+- Don't use for form fields that submit later (use Checkbox)
+- Don't use without a label
+- Don't use for multiple selections (use CheckboxGroup)
+- Don't use for yes/no questions in forms (use RadioGroup or Checkbox)
+
+## Related
+- Checkbox: for form submission with other fields
+- Toggle: button-style toggle
+- RadioGroup: multiple exclusive options

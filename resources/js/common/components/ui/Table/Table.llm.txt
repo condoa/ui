@@ -1,0 +1,180 @@
+# Table
+
+Basic semantic HTML table with consistent styling. Use for simple data display without sorting/pagination.
+
+## When to Use
+- Simple static data tables
+- Custom table layouts
+- Tables inside dialogs or cards
+- NOT for sortable/paginated data (use DataTable)
+- NOT for complex features (use DataTable)
+
+## Usage
+
+Basic:
+```vue
+<Table>
+    <TableHeader>
+        <TableRow>
+            <TableHead>Name</TableHead>
+            <TableHead>Email</TableHead>
+            <TableHead>Status</TableHead>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        <TableRow v-for="user in users" :key="user.id">
+            <TableCell>{{ user.name }}</TableCell>
+            <TableCell>{{ user.email }}</TableCell>
+            <TableCell>
+                <Badge :variant="user.active ? 'success' : 'secondary'">
+                    {{ user.active ? 'Active' : 'Inactive' }}
+                </Badge>
+            </TableCell>
+        </TableRow>
+    </TableBody>
+</Table>
+```
+
+With footer:
+```vue
+<Table>
+    <TableHeader>
+        <TableRow>
+            <TableHead>Item</TableHead>
+            <TableHead class="text-right">Amount</TableHead>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        <TableRow v-for="item in items" :key="item.id">
+            <TableCell>{{ item.name }}</TableCell>
+            <TableCell class="text-right tabular-nums">
+                {{ formatCurrency(item.amount) }}
+            </TableCell>
+        </TableRow>
+    </TableBody>
+    <TableFooter>
+        <TableRow>
+            <TableCell>Total</TableCell>
+            <TableCell class="text-right tabular-nums font-bold">
+                {{ formatCurrency(total) }}
+            </TableCell>
+        </TableRow>
+    </TableFooter>
+</Table>
+```
+
+## Components
+
+### Table
+Root container. Wraps in scrollable div.
+- `class` - custom classes for table element
+
+### TableHeader
+Container for header rows.
+
+### TableBody
+Container for body rows.
+
+### TableFooter
+Container for footer rows.
+
+### TableRow
+Table row.
+- `class` - custom classes
+
+### TableHead
+Header cell (th).
+- `class` - custom classes
+
+### TableCell
+Body cell (td).
+- `class` - custom classes
+
+### TableCaption
+Table caption (accessibility).
+
+### TableEmpty
+Empty state row (full width).
+
+## Accessibility
+- Uses semantic table elements
+- Screen readers announce row/column context
+- Use TableCaption for table description
+
+## Common Patterns
+
+In a Card:
+```vue
+<Card>
+    <CardHeader>
+        <CardTitle>Recent Orders</CardTitle>
+    </CardHeader>
+    <CardContent class="p-0">
+        <Table>
+            <TableHeader>
+                <TableRow>
+                    <TableHead>Order</TableHead>
+                    <TableHead>Customer</TableHead>
+                    <TableHead class="text-right">Amount</TableHead>
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                <TableRow v-for="order in orders" :key="order.id">
+                    <TableCell class="font-medium">{{ order.number }}</TableCell>
+                    <TableCell>{{ order.customer }}</TableCell>
+                    <TableCell class="text-right">{{ order.amount }}</TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+    </CardContent>
+</Card>
+```
+
+With selection:
+```vue
+<Table>
+    <TableHeader>
+        <TableRow>
+            <TableHead class="w-12">
+                <Checkbox v-model="selectAll" />
+            </TableHead>
+            <TableHead>Name</TableHead>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        <TableRow v-for="item in items" :key="item.id" :data-state="selected.includes(item.id) ? 'selected' : undefined">
+            <TableCell>
+                <Checkbox v-model="selected" :value="item.id" />
+            </TableCell>
+            <TableCell>{{ item.name }}</TableCell>
+        </TableRow>
+    </TableBody>
+</Table>
+```
+
+Empty state:
+```vue
+<Table>
+    <TableHeader>...</TableHeader>
+    <TableBody>
+        <template v-if="items.length">
+            <TableRow v-for="item in items">...</TableRow>
+        </template>
+        <TableRow v-else>
+            <TableCell :colspan="3" class="text-center text-muted-foreground py-8">
+                No items found
+            </TableCell>
+        </TableRow>
+    </TableBody>
+</Table>
+```
+
+## Don't
+- Don't use for complex tables (use DataTable)
+- Don't skip TableHeader for accessibility
+- Don't forget colspan on empty/footer cells
+
+## Related
+- DataTable - sortable, paginated tables
+- CardList - card-based list layout
+- DescriptionList - key-value pairs

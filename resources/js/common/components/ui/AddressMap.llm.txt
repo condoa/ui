@@ -1,0 +1,50 @@
+# AddressMap
+
+Leaflet-backed mini map that pins a single coordinate over OpenStreetMap tiles. Read-only by default; set `interactive` to let the user drag the pin and report back new coordinates. The map renders only when both `latitude` and `longitude` are non-null, and slides in and out with a height transition. Depends on `leaflet` (and its CSS, imported by the component).
+
+## When to Use
+- Showing the location of an address the user just selected or geocoded
+- Letting a user fine-tune a pin by dragging it (interactive mode)
+- NOT for multi-marker maps, routes, or clustering (single pin only)
+- NOT for choosing a location from scratch with no starting coordinate
+
+## Usage
+Read-only preview:
+```vue
+<AddressMap :latitude="form.latitude" :longitude="form.longitude" />
+```
+
+Interactive pin with two-way coordinate binding:
+```vue
+<AddressMap
+    :latitude="form.latitude"
+    :longitude="form.longitude"
+    interactive
+    @update:latitude="(v) => (form.latitude = v)"
+    @update:longitude="(v) => (form.longitude = v)"
+/>
+```
+
+## Props
+- `latitude`: pin latitude, or `null` to hide the map (required)
+- `longitude`: pin longitude, or `null` to hide the map (required)
+- `interactive`: when true, enables zoom controls, dragging, scroll-wheel zoom, and a draggable pin (default false)
+
+## Events
+- `update:latitude`: new latitude after the pin is dragged (interactive only)
+- `update:longitude`: new longitude after the pin is dragged (interactive only)
+
+## Behavior
+- Mounts the Leaflet map only when both coordinates are present; otherwise renders nothing
+- External coordinate changes re-center the map and move the pin; pin-drag changes do not re-trigger that re-center
+- Tears the map down on unmount to release the Leaflet instance
+- The pin is an inline SVG `divIcon` tinted with `text-primary`
+- A short hint line appears below the map in interactive mode
+
+## Don't
+- Don't expect SSR; Leaflet needs a real DOM element to mount, so the map exists only in the browser
+- Don't pass one coordinate and not the other; the map stays hidden until both are set
+- Don't use it as a location picker without a seed coordinate; it cannot drop a first pin on an empty map
+
+## Related
+- AddressAutocomplete: search for an address and emit the coordinates this map renders

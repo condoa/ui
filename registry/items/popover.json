@@ -1,0 +1,48 @@
+{
+  "name": "popover",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Popover/X.vue",
+      "to": "components/ui/Popover/X.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Popover/Trigger.vue",
+      "to": "components/ui/Popover/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Popover/Portal.vue",
+      "to": "components/ui/Popover/Portal.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Popover/Popover.vue",
+      "to": "components/ui/Popover/Popover.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Popover/Content.vue",
+      "to": "components/ui/Popover/Content.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Popover/Close.vue",
+      "to": "components/ui/Popover/Close.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Popover/Arrow.vue",
+      "to": "components/ui/Popover/Arrow.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Popover/Anchor.vue",
+      "to": "components/ui/Popover/Anchor.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Popover/Popover.llm.txt"
+}

@@ -1,0 +1,170 @@
+# Select
+
+Styled dropdown select built on reka-ui. Use for single-value selection with custom styling.
+
+## When to Use
+- Single selection from a list
+- When you need styled dropdown (not native select)
+- NOT for VeeValidate forms (use reka-ui Select + server validation, or plain inputs)
+- NOT for multi-select (use MultiSelect or Combobox)
+
+## Usage
+
+Basic:
+```vue
+<Select v-model="status" name="status">
+    <SelectTrigger placeholder="Select status" />
+    <SelectContent>
+        <SelectItem value="active">Active</SelectItem>
+        <SelectItem value="inactive">Inactive</SelectItem>
+        <SelectItem value="pending">Pending</SelectItem>
+    </SelectContent>
+</Select>
+```
+
+With label:
+```vue
+<div class="space-y-2">
+    <Label>Status</Label>
+    <Select v-model="form.status" name="status">
+        <SelectTrigger />
+        <SelectContent>
+            <SelectItem v-for="opt in options" :key="opt.value" :value="opt.value">
+                {{ opt.label }}
+            </SelectItem>
+        </SelectContent>
+    </Select>
+</div>
+```
+
+## Components
+
+### Select
+Root component. Manages selection state.
+- `v-model` - selected value
+- `name` - form field name
+- `disabled` - disable select
+- `required` - mark as required
+- `defaultValue` - initial value
+
+### SelectTrigger
+The button that opens the dropdown.
+- `placeholder` - placeholder text
+- `size` - "sm" | "default"
+- `icon` - custom dropdown icon
+- `class` - custom classes
+
+### SelectContent
+Dropdown panel containing items.
+- `position` - "item-aligned" | "popper" (default: "popper")
+- `side` - "top" | "right" | "bottom" | "left"
+- `sideOffset` - offset from trigger
+- `align` - "start" | "center" | "end"
+
+### SelectItem
+Individual selectable option.
+- `value` - option value (string or number - numbers are auto-coerced to strings internally)
+- `text` - display text (or use slot)
+- `disabled` - disable option
+- `icon` - checkmark icon
+
+### SelectGroup / SelectLabel
+Group items with a label.
+```vue
+<SelectContent>
+    <SelectGroup>
+        <SelectLabel>Fruits</SelectLabel>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+    </SelectGroup>
+</SelectContent>
+```
+
+### SelectSeparator
+Visual divider between items.
+
+## Numeric Values
+
+Both `Select` and `SelectItem` auto-coerce numeric `modelValue` / `value` to strings for reka-ui compatibility. `Select` also emits the value back as a number when the initial `modelValue` was numeric, so `v-model` stays typed.
+
+```vue
+<!-- Pass numeric IDs directly -->
+<SelectItem :value="user.id">{{ user.name }}</SelectItem>
+```
+
+## Null Values
+
+`SelectItem` accepts `:value="null"` to represent "no selection" (e.g. an explicit "None" option). The wrapper maps `null` through an internal sentinel so reka-ui's string-only requirement stays satisfied; the parent v-model receives plain `null` back.
+
+```vue
+<Select v-model="form.block_id">
+    <SelectTrigger placeholder="Select block" />
+    <SelectContent>
+        <SelectItem :value="null">No block</SelectItem>
+        <SelectItem v-for="block in blocks" :key="block.id" :value="block.id">
+            {{ block.name }}
+        </SelectItem>
+    </SelectContent>
+</Select>
+```
+
+## Accessibility
+- Full keyboard navigation (arrows, enter, escape)
+- Type-ahead search
+- ARIA attributes applied automatically
+- Focus management on open/close
+
+## Common Patterns
+
+With Inertia form:
+```vue
+<script setup>
+const form = useForm({ unit_id: '' })
+</script>
+
+<template>
+    <Select v-model="form.unit_id" name="unit_id">
+        <SelectTrigger placeholder="Select unit" />
+        <SelectContent>
+            <SelectItem v-for="unit in units" :key="unit.id" :value="unit.id">
+                {{ unit.name }}
+            </SelectItem>
+        </SelectContent>
+    </Select>
+</template>
+```
+
+With icons in items:
+```vue
+<SelectItem value="draft">
+    <Icon name="icon-edit" class="size-4" />
+    Draft
+</SelectItem>
+```
+
+Grouped options:
+```vue
+<SelectContent>
+    <SelectGroup>
+        <SelectLabel>Active</SelectLabel>
+        <SelectItem value="active">Active</SelectItem>
+        <SelectItem value="verified">Verified</SelectItem>
+    </SelectGroup>
+    <SelectSeparator />
+    <SelectGroup>
+        <SelectLabel>Inactive</SelectLabel>
+        <SelectItem value="inactive">Inactive</SelectItem>
+        <SelectItem value="blocked">Blocked</SelectItem>
+    </SelectGroup>
+</SelectContent>
+```
+
+## Don't
+- Don't use VeeSelect for styled selects (it wraps native select)
+- Don't mix with VeeValidate form validation - use server-side validation
+
+## Related
+- VeeSelect - native select with VeeValidate (different component!)
+- Combobox - searchable select
+- MultiSelect - multiple selection
+- DropdownMenu - for actions, not selection

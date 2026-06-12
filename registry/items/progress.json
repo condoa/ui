@@ -1,0 +1,24 @@
+{
+  "name": "progress",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Progress/Progress.vue",
+      "to": "components/ui/Progress/Progress.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Progress/Indicator.vue",
+      "to": "components/ui/Progress/Indicator.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Progress/Progress.llm.txt"
+}

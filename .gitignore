@@ -1,0 +1,6 @@
+node_modules
+registry/dist
+registry/.isolation
+registry/.selfcontained-test
+*.log
+.DS_Store

@@ -1,0 +1,31 @@
+{
+  "name": "group",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Group/index.ts",
+      "to": "components/ui/Group/index.ts"
+    },
+    {
+      "from": "resources/js/common/components/ui/Group/GroupText.vue",
+      "to": "components/ui/Group/GroupText.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Group/GroupSeparator.vue",
+      "to": "components/ui/Group/GroupSeparator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Group/Group.vue",
+      "to": "components/ui/Group/Group.vue"
+    }
+  ],
+  "dependencies": [
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base",
+    "separator"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Group/Group.llm.txt"
+}

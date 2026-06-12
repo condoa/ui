@@ -1,0 +1,24 @@
+{
+  "name": "loader",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Loader.vue",
+      "to": "components/ui/Loader.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "motion-v",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-loader"
+  ],
+  "doc": "resources/js/common/components/ui/Loader.llm.txt"
+}

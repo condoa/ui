@@ -1,0 +1,59 @@
+# BorderBeam
+
+Animated light beam that travels around the border of its parent. A purely decorative overlay positioned absolutely inside a relatively positioned, rounded container.
+
+## When to Use
+- Highlighting a featured card or pricing tier
+- Drawing attention to a CTA or upgrade panel
+- NOT for functional borders (use a static border)
+- NOT for content separation (use Divider or Separator)
+
+## Usage
+
+Wrap inside a relative, overflow-hidden, rounded element:
+```vue
+<div class="relative overflow-hidden rounded-xl border p-6">
+    <BorderBeam />
+    <p>Featured plan</p>
+</div>
+```
+
+Custom colors and speed:
+```vue
+<BorderBeam :size="120" :duration="8" color-from="#22d3ee" color-to="#a855f7" />
+```
+
+Two crossing beams:
+```vue
+<div class="relative overflow-hidden rounded-xl border p-6">
+    <BorderBeam :duration="6" :delay="0" />
+    <BorderBeam :duration="6" :delay="3" reverse />
+</div>
+```
+
+## Props
+
+- `size`: beam length in px (default: 50)
+- `duration`: seconds for one full loop (default: 6)
+- `delay`: animation delay in seconds, applied as a negative offset (default: 0)
+- `colorFrom`: gradient start color (default: "#ffaa40")
+- `colorTo`: gradient mid color (default: "#9c40ff")
+- `transition`: extra motion-v Transition merged into the loop
+- `style`: inline CSSProperties merged onto the beam
+- `reverse`: travel the border in the opposite direction (default: false)
+- `initialOffset`: starting position along the path, 0 to 100 (default: 0)
+- `class`: custom classes for the beam element
+
+## Accessibility
+- The overlay carries `aria-hidden="true"`; screen readers skip it.
+- `pointer-events-none`; never intercepts clicks.
+- Driven by motion-v. Under `prefers-reduced-motion: reduce` the loop is skipped via `useReducedMotion()` and the beam stays static.
+
+## Don't
+- Don't place it in a parent without `position: relative` (it positions against the wrong box).
+- Don't forget `overflow-hidden` and a matching `rounded-*` on the parent.
+- Don't rely on it to convey state; it is decorative only.
+
+## Related
+- NeonGradientCard: a self-contained animated glowing border
+- Card: the usual host container

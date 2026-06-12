@@ -1,0 +1,25 @@
+{
+  "name": "pdfviewer",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/PdfViewer.vue",
+      "to": "components/ui/PdfViewer.vue"
+    }
+  ],
+  "dependencies": [
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "button"
+  ],
+  "icons": [
+    "icon-download",
+    "icon-external-link",
+    "icon-file-text",
+    "icon-loading"
+  ],
+  "doc": "resources/js/common/components/ui/PdfViewer.llm.txt"
+}

@@ -1,0 +1,26 @@
+{
+  "name": "vee-datetimepicker",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/DateTimePicker.vue",
+      "to": "components/ui/Vee/DateTimePicker.vue"
+    }
+  ],
+  "dependencies": [
+    "date-fns",
+    "motion-v",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "label"
+  ],
+  "icons": [
+    "icon-calendar-days",
+    "icon-clock"
+  ],
+  "doc": null
+}

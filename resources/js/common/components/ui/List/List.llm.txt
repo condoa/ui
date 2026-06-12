@@ -1,0 +1,138 @@
+# List
+
+Simple vertical list with optional title, subtitle, and content slots per item. Use for settings rows, contact rows, or any card-free item list.
+
+## When to Use
+- Settings rows with label + value
+- Contact or resident rows
+- Simple option lists inside dialogs
+- NOT for selectable lists (use Listbox)
+- NOT for card-style items with borders (use CardList)
+- NOT for tabular data (use Table)
+
+## Usage
+
+Basic:
+```vue
+<List>
+    <ListItem>
+        <ListContent>
+            <ListTitle>Ana Silva</ListTitle>
+            <ListSubtitle>Unidade 101</ListSubtitle>
+        </ListContent>
+    </ListItem>
+    <ListItem>
+        <ListContent>
+            <ListTitle>Bruno Costa</ListTitle>
+            <ListSubtitle>Unidade 202</ListSubtitle>
+        </ListContent>
+    </ListItem>
+</List>
+```
+
+Clickable items:
+```vue
+<List>
+    <ListItem
+        v-for="resident in residents"
+        :key="resident.id"
+        :on-click="() => select(resident)"
+    >
+        <ListContent>
+            <ListTitle>{{ resident.name }}</ListTitle>
+            <ListSubtitle>{{ resident.unit }}</ListSubtitle>
+        </ListContent>
+    </ListItem>
+</List>
+```
+
+Link items:
+```vue
+<List>
+    <ListItem v-for="item in items" :key="item.id" :to="route('item.show', item)">
+        <ListContent>
+            <ListTitle>{{ item.name }}</ListTitle>
+        </ListContent>
+        <Icon name="icon-chevron-right" aria-hidden="true" class="size-4 text-muted-foreground ml-auto" />
+    </ListItem>
+</List>
+```
+
+## Components
+
+### List
+Wrapper element, renders as `<ul>` by default.
+- `class` -- custom classes
+- `as` -- override element tag (default: "ul")
+- `asChild` -- merge onto child
+
+### ListItem
+Row element. Renders as `<li>`, `<button>`, or `<Link>` depending on props.
+- `class` -- custom classes
+- `onClick` -- makes element a button
+- `to` -- Inertia/Vue Router link target
+- `href` -- plain anchor target
+
+### ListContent
+Inner flex column, renders as `<div>` by default.
+- `class` -- custom classes
+- `as` -- override element tag
+
+### ListTitle
+Primary label, renders as `<p>` by default.
+- `title` -- shorthand text prop (can use slot instead)
+- `class` -- custom classes
+
+### ListSubtitle
+Secondary label, renders as `<p>` by default.
+- `subtitle` -- shorthand text prop (can use slot instead)
+- `class` -- custom classes
+
+## Accessibility
+- Non-interactive ListItem renders as `<li>` inside `<ul>` for correct list semantics.
+- Interactive ListItem renders as `<button>` (onClick) or `<a>` (href/to), preserving native keyboard behavior.
+- Focus ring applied via `focus-visible:ring-4 focus-visible:ring-primary/10` on interactive items.
+
+## Common Patterns
+
+List with trailing badge:
+```vue
+<List>
+    <ListItem v-for="item in items" :key="item.id">
+        <ListContent>
+            <ListTitle>{{ item.name }}</ListTitle>
+            <ListSubtitle>{{ item.description }}</ListSubtitle>
+        </ListContent>
+        <Badge :variant="item.active ? 'success' : 'neutral'" class="ml-auto">
+            {{ item.active ? 'Active' : 'Inactive' }}
+        </Badge>
+    </ListItem>
+</List>
+```
+
+List inside a Card:
+```vue
+<Card>
+    <CardHeader>
+        <CardTitle>Residents</CardTitle>
+    </CardHeader>
+    <CardContent class="p-0">
+        <List>
+            <ListItem v-for="r in residents" :key="r.id" :to="route('residents.show', r)">
+                <ListContent>
+                    <ListTitle>{{ r.name }}</ListTitle>
+                </ListContent>
+            </ListItem>
+        </List>
+    </CardContent>
+</Card>
+```
+
+## Don't
+- Don't use for selectable multi-item picking (use Listbox or Checkbox list)
+- Don't add borders/shadows to ListItem directly (use CardList for that look)
+
+## Related
+- CardList -- bordered card-style item list
+- Listbox -- accessible select-like list
+- Table -- tabular data with columns

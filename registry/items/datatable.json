@@ -1,0 +1,67 @@
+{
+  "name": "datatable",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/DataTable/Toolbar.vue",
+      "to": "components/ui/DataTable/Toolbar.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DataTable/SpatieColumnHeader.vue",
+      "to": "components/ui/DataTable/SpatieColumnHeader.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DataTable/SelectCheckbox.vue",
+      "to": "components/ui/DataTable/SelectCheckbox.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DataTable/RowActions.vue",
+      "to": "components/ui/DataTable/RowActions.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DataTable/Pagination.vue",
+      "to": "components/ui/DataTable/Pagination.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DataTable/index.ts",
+      "to": "components/ui/DataTable/index.ts"
+    },
+    {
+      "from": "resources/js/common/components/ui/DataTable/DataTable.vue",
+      "to": "components/ui/DataTable/DataTable.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/DataTable/ColumnHeader.vue",
+      "to": "components/ui/DataTable/ColumnHeader.vue"
+    }
+  ],
+  "dependencies": [
+    "@inertiajs/vue3",
+    "@tanstack/vue-table",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "button",
+    "checkbox",
+    "dropdownmenu",
+    "select",
+    "table",
+    "vee-input"
+  ],
+  "icons": [
+    "icon-arrow-down",
+    "icon-arrow-up",
+    "icon-chevron-left",
+    "icon-chevron-right",
+    "icon-chevrons-left",
+    "icon-chevrons-right",
+    "icon-chevrons-up-down",
+    "icon-close",
+    "icon-ellipsis",
+    "icon-search",
+    "icon-settings-2"
+  ],
+  "doc": "resources/js/common/components/ui/DataTable/DataTable.llm.txt"
+}

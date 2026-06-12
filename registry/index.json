@@ -1,0 +1,4128 @@
+{
+  "version": "0b2f2b0b5f71",
+  "items": [
+    {
+      "name": "base",
+      "type": "base",
+      "files": [
+        {
+          "from": "resources/js/common/helpers/cn.ts",
+          "to": "common/helpers/cn.ts"
+        },
+        {
+          "from": "resources/js/common/components/Icon.vue",
+          "to": "common/components/Icon.vue"
+        },
+        {
+          "from": "generated:tokens.css",
+          "to": "tokens.css"
+        },
+        {
+          "from": "generated:icons.js",
+          "to": "icons.js"
+        },
+        {
+          "from": "resources/svg/icon-loading.svg",
+          "to": "svg/icon-loading.svg"
+        },
+        {
+          "from": "resources/svg/icon-chevron-right.svg",
+          "to": "svg/icon-chevron-right.svg"
+        },
+        {
+          "from": "resources/svg/icon-circle.svg",
+          "to": "svg/icon-circle.svg"
+        },
+        {
+          "from": "resources/svg/icon-loader.svg",
+          "to": "svg/icon-loader.svg"
+        },
+        {
+          "from": "resources/svg/icon-chevron-down.svg",
+          "to": "svg/icon-chevron-down.svg"
+        },
+        {
+          "from": "resources/svg/icon-minus.svg",
+          "to": "svg/icon-minus.svg"
+        },
+        {
+          "from": "resources/svg/icon-plus.svg",
+          "to": "svg/icon-plus.svg"
+        },
+        {
+          "from": "resources/svg/icon-close.svg",
+          "to": "svg/icon-close.svg"
+        },
+        {
+          "from": "resources/svg/icon-calendar-days.svg",
+          "to": "svg/icon-calendar-days.svg"
+        },
+        {
+          "from": "resources/svg/icon-chevron-left.svg",
+          "to": "svg/icon-chevron-left.svg"
+        },
+        {
+          "from": "resources/svg/icon-chevron-up.svg",
+          "to": "svg/icon-chevron-up.svg"
+        },
+        {
+          "from": "resources/svg/icon-clock.svg",
+          "to": "svg/icon-clock.svg"
+        },
+        {
+          "from": "resources/svg/icon-download.svg",
+          "to": "svg/icon-download.svg"
+        },
+        {
+          "from": "resources/svg/icon-external-link.svg",
+          "to": "svg/icon-external-link.svg"
+        },
+        {
+          "from": "resources/svg/icon-file-text.svg",
+          "to": "svg/icon-file-text.svg"
+        },
+        {
+          "from": "resources/svg/icon-map-pin.svg",
+          "to": "svg/icon-map-pin.svg"
+        },
+        {
+          "from": "resources/svg/icon-search.svg",
+          "to": "svg/icon-search.svg"
+        },
+        {
+          "from": "resources/svg/icon-cloud-upload.svg",
+          "to": "svg/icon-cloud-upload.svg"
+        },
+        {
+          "from": "resources/svg/icon-chevrons-left.svg",
+          "to": "svg/icon-chevrons-left.svg"
+        },
+        {
+          "from": "resources/svg/icon-chevrons-right.svg",
+          "to": "svg/icon-chevrons-right.svg"
+        },
+        {
+          "from": "resources/svg/icon-bold.svg",
+          "to": "svg/icon-bold.svg"
+        },
+        {
+          "from": "resources/svg/icon-heading.svg",
+          "to": "svg/icon-heading.svg"
+        },
+        {
+          "from": "resources/svg/icon-italic.svg",
+          "to": "svg/icon-italic.svg"
+        },
+        {
+          "from": "resources/svg/icon-link.svg",
+          "to": "svg/icon-link.svg"
+        },
+        {
+          "from": "resources/svg/icon-list.svg",
+          "to": "svg/icon-list.svg"
+        },
+        {
+          "from": "resources/svg/icon-list-ordered.svg",
+          "to": "svg/icon-list-ordered.svg"
+        },
+        {
+          "from": "resources/svg/icon-message-square.svg",
+          "to": "svg/icon-message-square.svg"
+        },
+        {
+          "from": "resources/svg/icon-underline.svg",
+          "to": "svg/icon-underline.svg"
+        },
+        {
+          "from": "resources/svg/icon-circle-alert.svg",
+          "to": "svg/icon-circle-alert.svg"
+        },
+        {
+          "from": "resources/svg/icon-circle-check.svg",
+          "to": "svg/icon-circle-check.svg"
+        },
+        {
+          "from": "resources/svg/icon-circle-info.svg",
+          "to": "svg/icon-circle-info.svg"
+        },
+        {
+          "from": "resources/svg/icon-triangle-alert.svg",
+          "to": "svg/icon-triangle-alert.svg"
+        },
+        {
+          "from": "resources/svg/icon-check.svg",
+          "to": "svg/icon-check.svg"
+        },
+        {
+          "from": "resources/svg/icon-chevrons-up-down.svg",
+          "to": "svg/icon-chevrons-up-down.svg"
+        },
+        {
+          "from": "resources/svg/icon-ellipsis.svg",
+          "to": "svg/icon-ellipsis.svg"
+        },
+        {
+          "from": "resources/svg/icon-menu.svg",
+          "to": "svg/icon-menu.svg"
+        },
+        {
+          "from": "resources/svg/icon-panel-left.svg",
+          "to": "svg/icon-panel-left.svg"
+        },
+        {
+          "from": "resources/svg/icon-x.svg",
+          "to": "svg/icon-x.svg"
+        },
+        {
+          "from": "resources/svg/icon-arrow-down.svg",
+          "to": "svg/icon-arrow-down.svg"
+        },
+        {
+          "from": "resources/svg/icon-arrow-up.svg",
+          "to": "svg/icon-arrow-up.svg"
+        },
+        {
+          "from": "resources/svg/icon-settings-2.svg",
+          "to": "svg/icon-settings-2.svg"
+        },
+        {
+          "from": "resources/svg/icon-copy.svg",
+          "to": "svg/icon-copy.svg"
+        }
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": []
+    },
+    {
+      "name": "button",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Button.vue",
+          "to": "components/ui/Button.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Button.variants.ts",
+          "to": "components/ui/Button.variants.ts"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-loading"
+      ],
+      "doc": "resources/js/common/components/ui/Button.llm.txt"
+    },
+    {
+      "name": "badge",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Badge.vue",
+          "to": "components/ui/Badge.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Badge.llm.txt"
+    },
+    {
+      "name": "label",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Label.vue",
+          "to": "components/ui/Label.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Label.llm.txt"
+    },
+    {
+      "name": "separator",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Separator.vue",
+          "to": "components/ui/Separator.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Separator.llm.txt"
+    },
+    {
+      "name": "input",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Input.vue",
+          "to": "components/ui/Input.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "inputcontrol"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Input.llm.txt"
+    },
+    {
+      "name": "breadcrumbs",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Breadcrumbs.vue",
+          "to": "components/ui/Breadcrumbs.vue"
+        }
+      ],
+      "dependencies": [
+        "@inertiajs/vue3",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-chevron-right"
+      ],
+      "doc": "resources/js/common/components/ui/Breadcrumbs.llm.txt"
+    },
+    {
+      "name": "skeleton",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Skeleton.vue",
+          "to": "components/ui/Skeleton.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Skeleton.llm.txt"
+    },
+    {
+      "name": "textarea",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Textarea.vue",
+          "to": "components/ui/Textarea.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "inputcontrol"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Textarea.llm.txt"
+    },
+    {
+      "name": "toggle",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Toggle.vue",
+          "to": "components/ui/Toggle.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Toggle.llm.txt"
+    },
+    {
+      "name": "kbd",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Kbd.vue",
+          "to": "components/ui/Kbd.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Kbd.llm.txt"
+    },
+    {
+      "name": "kbdgroup",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/KbdGroup.vue",
+          "to": "components/ui/KbdGroup.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/KbdGroup.llm.txt"
+    },
+    {
+      "name": "chip",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Chip.vue",
+          "to": "components/ui/Chip.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Chip.llm.txt"
+    },
+    {
+      "name": "heading",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Heading.vue",
+          "to": "components/ui/Heading.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Heading.llm.txt"
+    },
+    {
+      "name": "divider",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Divider.vue",
+          "to": "components/ui/Divider.vue"
+        }
+      ],
+      "dependencies": [
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Divider.llm.txt"
+    },
+    {
+      "name": "rating",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Rating.vue",
+          "to": "components/ui/Rating.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-circle"
+      ],
+      "doc": "resources/js/common/components/ui/Rating.llm.txt"
+    },
+    {
+      "name": "container",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Container.vue",
+          "to": "components/ui/Container.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Container.llm.txt"
+    },
+    {
+      "name": "aspectratio",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/AspectRatio.vue",
+          "to": "components/ui/AspectRatio.vue"
+        }
+      ],
+      "dependencies": [
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/AspectRatio.llm.txt"
+    },
+    {
+      "name": "statblock",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/StatBlock.vue",
+          "to": "components/ui/StatBlock.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "badge",
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/StatBlock.llm.txt"
+    },
+    {
+      "name": "loader",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Loader.vue",
+          "to": "components/ui/Loader.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "motion-v",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-loader"
+      ],
+      "doc": "resources/js/common/components/ui/Loader.llm.txt"
+    },
+    {
+      "name": "placeholder",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Placeholder.vue",
+          "to": "components/ui/Placeholder.vue"
+        }
+      ],
+      "dependencies": [
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Placeholder.llm.txt"
+    },
+    {
+      "name": "nativeselect",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/NativeSelect.vue",
+          "to": "components/ui/NativeSelect.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-chevron-down"
+      ],
+      "doc": "resources/js/common/components/ui/NativeSelect.llm.txt"
+    },
+    {
+      "name": "formselect",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/FormSelect.vue",
+          "to": "components/ui/FormSelect.vue"
+        }
+      ],
+      "dependencies": [
+        "motion-v",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "label"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/FormSelect.llm.txt"
+    },
+    {
+      "name": "currencyinput",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/CurrencyInput.vue",
+          "to": "components/ui/CurrencyInput.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "defu",
+        "tailwind-variants",
+        "vue",
+        "vue-currency-input"
+      ],
+      "registryDependencies": [
+        "base",
+        "inputcontrol"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/CurrencyInput.llm.txt"
+    },
+    {
+      "name": "decimalinput",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/DecimalInput.vue",
+          "to": "components/ui/DecimalInput.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DecimalInput.helpers.ts",
+          "to": "components/ui/DecimalInput.helpers.ts"
+        }
+      ],
+      "dependencies": [
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "input"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/DecimalInput.llm.txt"
+    },
+    {
+      "name": "numberinput",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/NumberInput.vue",
+          "to": "components/ui/NumberInput.vue"
+        }
+      ],
+      "dependencies": [
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "inputcontrol"
+      ],
+      "icons": [
+        "icon-minus",
+        "icon-plus"
+      ],
+      "doc": "resources/js/common/components/ui/NumberInput.llm.txt"
+    },
+    {
+      "name": "inputcontrol",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/InputControl.vue",
+          "to": "components/ui/InputControl.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/InputControl.llm.txt"
+    },
+    {
+      "name": "datefield",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/DateField.vue",
+          "to": "components/ui/DateField.vue"
+        }
+      ],
+      "dependencies": [
+        "@internationalized/date",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/DateField.llm.txt"
+    },
+    {
+      "name": "dateinput",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/DateInput.vue",
+          "to": "components/ui/DateInput.vue"
+        }
+      ],
+      "dependencies": [
+        "maska",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "inputcontrol"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/DateInput.llm.txt"
+    },
+    {
+      "name": "datepicker",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Datepicker.vue",
+          "to": "components/ui/Datepicker.vue"
+        }
+      ],
+      "dependencies": [
+        "@vuepic/vue-datepicker",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Datepicker.llm.txt"
+    },
+    {
+      "name": "vee-input",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/Input.vue",
+          "to": "components/ui/Vee/Input.vue"
+        }
+      ],
+      "dependencies": [
+        "motion-v",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "input",
+        "label"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "vee-textarea",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/Textarea.vue",
+          "to": "components/ui/Vee/Textarea.vue"
+        }
+      ],
+      "dependencies": [
+        "motion-v",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "label",
+        "textarea"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "vee-checkbox",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/Checkbox.vue",
+          "to": "components/ui/Vee/Checkbox.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "motion-v",
+        "tailwind-variants",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "vee-select",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/Select.vue",
+          "to": "components/ui/Vee/Select.vue"
+        }
+      ],
+      "dependencies": [
+        "motion-v",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "label",
+        "nativeselect"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "vee-radiogroup",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/RadioGroup.vue",
+          "to": "components/ui/Vee/RadioGroup.vue"
+        }
+      ],
+      "dependencies": [
+        "motion-v",
+        "reka-ui",
+        "tailwind-variants",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "label",
+        "radiogroup"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "vee-multiselect",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/MultiSelect.vue",
+          "to": "components/ui/Vee/MultiSelect.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueform/multiselect",
+        "@vueuse/core",
+        "motion-v",
+        "reka-ui",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "label"
+      ],
+      "icons": [
+        "icon-close"
+      ],
+      "doc": null
+    },
+    {
+      "name": "vee-tagsinput",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/TagsInput.vue",
+          "to": "components/ui/Vee/TagsInput.vue"
+        }
+      ],
+      "dependencies": [
+        "motion-v",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "label",
+        "tagsinput"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "vee-numberfield",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/NumberField.vue",
+          "to": "components/ui/Vee/NumberField.vue"
+        }
+      ],
+      "dependencies": [
+        "motion-v",
+        "reka-ui",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "label",
+        "numberfield"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "vee-vueformslider",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/VueFormSlider.vue",
+          "to": "components/ui/Vee/VueFormSlider.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueform/slider",
+        "reka-ui",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "label"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "vee-inputpin",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/InputPin.vue",
+          "to": "components/ui/Vee/InputPin.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "motion-v",
+        "reka-ui",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "inputpin",
+        "label"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "vee-currencyinput",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/CurrencyInput.vue",
+          "to": "components/ui/Vee/CurrencyInput.vue"
+        }
+      ],
+      "dependencies": [
+        "motion-v",
+        "vee-validate",
+        "vue",
+        "vue-currency-input"
+      ],
+      "registryDependencies": [
+        "base",
+        "currencyinput",
+        "form",
+        "label"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "vee-moneyinput",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/MoneyInput.vue",
+          "to": "components/ui/Vee/MoneyInput.vue"
+        }
+      ],
+      "dependencies": [
+        "motion-v",
+        "v-money3",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "label"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "vee-numberinput",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/NumberInput.vue",
+          "to": "components/ui/Vee/NumberInput.vue"
+        }
+      ],
+      "dependencies": [
+        "motion-v",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "label",
+        "numberinput"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "vee-datefield",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/DateField.vue",
+          "to": "components/ui/Vee/DateField.vue"
+        }
+      ],
+      "dependencies": [
+        "@internationalized/date",
+        "motion-v",
+        "reka-ui",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "datefield",
+        "form",
+        "label"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "vee-dateinput",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/DateInput.vue",
+          "to": "components/ui/Vee/DateInput.vue"
+        }
+      ],
+      "dependencies": [
+        "motion-v",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "dateinput",
+        "form",
+        "label"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "vee-datepicker",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/Datepicker.vue",
+          "to": "components/ui/Vee/Datepicker.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "date-fns",
+        "motion-v",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "datepicker",
+        "form",
+        "label"
+      ],
+      "icons": [
+        "icon-calendar-days",
+        "icon-chevron-down",
+        "icon-chevron-left",
+        "icon-chevron-right",
+        "icon-chevron-up"
+      ],
+      "doc": null
+    },
+    {
+      "name": "vee-datetimepicker",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/DateTimePicker.vue",
+          "to": "components/ui/Vee/DateTimePicker.vue"
+        }
+      ],
+      "dependencies": [
+        "date-fns",
+        "motion-v",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "label"
+      ],
+      "icons": [
+        "icon-calendar-days",
+        "icon-clock"
+      ],
+      "doc": null
+    },
+    {
+      "name": "vee-calendarpicker",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/CalendarPicker.vue",
+          "to": "components/ui/Vee/CalendarPicker.vue"
+        }
+      ],
+      "dependencies": [
+        "date-fns",
+        "motion-v",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "label"
+      ],
+      "icons": [
+        "icon-calendar-days"
+      ],
+      "doc": null
+    },
+    {
+      "name": "vee-phoneinput",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/PhoneInput.vue",
+          "to": "components/ui/Vee/PhoneInput.vue"
+        }
+      ],
+      "dependencies": [
+        "libphonenumber-js",
+        "motion-v",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "input",
+        "inputcontrol",
+        "label"
+      ],
+      "icons": [
+        "icon-chevron-down"
+      ],
+      "doc": null
+    },
+    {
+      "name": "vee-fileinput",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/FileInput.vue",
+          "to": "components/ui/Vee/FileInput.vue"
+        }
+      ],
+      "dependencies": [
+        "motion-v",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "input",
+        "label"
+      ],
+      "icons": [],
+      "doc": null
+    },
+    {
+      "name": "fullcalendar",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/FullCalendar.vue",
+          "to": "components/ui/FullCalendar.vue"
+        }
+      ],
+      "dependencies": [
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-chevron-left",
+        "icon-chevron-right"
+      ],
+      "doc": "resources/js/common/components/ui/FullCalendar.llm.txt"
+    },
+    {
+      "name": "pdfviewer",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/PdfViewer.vue",
+          "to": "components/ui/PdfViewer.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "button"
+      ],
+      "icons": [
+        "icon-download",
+        "icon-external-link",
+        "icon-file-text",
+        "icon-loading"
+      ],
+      "doc": "resources/js/common/components/ui/PdfViewer.llm.txt"
+    },
+    {
+      "name": "addressmap",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/AddressMap.vue",
+          "to": "components/ui/AddressMap.vue"
+        }
+      ],
+      "dependencies": [
+        "leaflet",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/AddressMap.llm.txt"
+    },
+    {
+      "name": "addressautocomplete",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/AddressAutocomplete.vue",
+          "to": "components/ui/AddressAutocomplete.vue"
+        }
+      ],
+      "dependencies": [
+        "@inertiajs/vue3",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "inputcontrol",
+        "loader"
+      ],
+      "icons": [
+        "icon-map-pin",
+        "icon-search"
+      ],
+      "doc": "resources/js/common/components/ui/AddressAutocomplete.llm.txt"
+    },
+    {
+      "name": "signaturepad",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/SignaturePad.vue",
+          "to": "components/ui/SignaturePad.vue"
+        }
+      ],
+      "dependencies": [
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "button"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/SignaturePad.llm.txt"
+    },
+    {
+      "name": "imagelightbox",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/ImageLightbox.vue",
+          "to": "components/ui/ImageLightbox.vue"
+        }
+      ],
+      "dependencies": [
+        "viewerjs",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/ImageLightbox.llm.txt"
+    },
+    {
+      "name": "dropfile",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Dropfile.vue",
+          "to": "components/ui/Dropfile.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-cloud-upload"
+      ],
+      "doc": "resources/js/common/components/ui/Dropfile.llm.txt"
+    },
+    {
+      "name": "minisparkline",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/MiniSparkline.vue",
+          "to": "components/ui/MiniSparkline.vue"
+        }
+      ],
+      "dependencies": [
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/MiniSparkline.llm.txt"
+    },
+    {
+      "name": "dateperiodselector",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/DatePeriodSelector.vue",
+          "to": "components/ui/DatePeriodSelector.vue"
+        }
+      ],
+      "dependencies": [
+        "@inertiajs/vue3",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-chevrons-left",
+        "icon-chevrons-right"
+      ],
+      "doc": "resources/js/common/components/ui/DatePeriodSelector.llm.txt"
+    },
+    {
+      "name": "datetimetooltip",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/DateTimeTooltip.vue",
+          "to": "components/ui/DateTimeTooltip.vue"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "base",
+        "tooltip"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/DateTimeTooltip.llm.txt"
+    },
+    {
+      "name": "licenseplate",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/LicensePlate.vue",
+          "to": "components/ui/LicensePlate.vue"
+        }
+      ],
+      "dependencies": [
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/LicensePlate.llm.txt"
+    },
+    {
+      "name": "vee-htmleditor",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/HtmlEditor.vue",
+          "to": "components/ui/Vee/HtmlEditor.vue"
+        }
+      ],
+      "dependencies": [
+        "@tiptap/extension-link",
+        "@tiptap/extension-placeholder",
+        "@tiptap/extension-underline",
+        "@tiptap/starter-kit",
+        "@tiptap/vue-3",
+        "motion-v",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "label"
+      ],
+      "icons": [
+        "icon-bold",
+        "icon-heading",
+        "icon-italic",
+        "icon-link",
+        "icon-list",
+        "icon-list-ordered",
+        "icon-message-square",
+        "icon-minus",
+        "icon-underline"
+      ],
+      "doc": "resources/js/common/components/ui/Vee/HtmlEditor.llm.txt"
+    },
+    {
+      "name": "vee-markdowneditor",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Vee/MarkdownEditor.vue",
+          "to": "components/ui/Vee/MarkdownEditor.vue"
+        }
+      ],
+      "dependencies": [
+        "@tiptap/extension-placeholder",
+        "@tiptap/extension-underline",
+        "@tiptap/starter-kit",
+        "@tiptap/vue-3",
+        "marked",
+        "motion-v",
+        "turndown",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "form",
+        "label"
+      ],
+      "icons": [
+        "icon-bold",
+        "icon-heading",
+        "icon-italic",
+        "icon-list",
+        "icon-list-ordered",
+        "icon-message-square",
+        "icon-minus",
+        "icon-underline"
+      ],
+      "doc": "resources/js/common/components/ui/Vee/MarkdownEditor.llm.txt"
+    },
+    {
+      "name": "borderbeam",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/BorderBeam.vue",
+          "to": "components/ui/BorderBeam.vue"
+        }
+      ],
+      "dependencies": [
+        "motion-v",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/BorderBeam.llm.txt"
+    },
+    {
+      "name": "meteors",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Meteors.client.vue",
+          "to": "components/ui/Meteors.client.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Meteors.client.llm.txt"
+    },
+    {
+      "name": "neongradientcard",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/NeonGradientCard.vue",
+          "to": "components/ui/NeonGradientCard.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/NeonGradientCard.llm.txt"
+    },
+    {
+      "name": "retrogrid",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/RetroGrid.vue",
+          "to": "components/ui/RetroGrid.vue"
+        }
+      ],
+      "dependencies": [
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/RetroGrid.llm.txt"
+    },
+    {
+      "name": "gradientdivider",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/GradientDivider.vue",
+          "to": "components/ui/GradientDivider.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/GradientDivider.llm.txt"
+    },
+    {
+      "name": "fancyicon",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/FancyIcon.vue",
+          "to": "components/ui/FancyIcon.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/FancyIcon.llm.txt"
+    },
+    {
+      "name": "clientonly",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/ClientOnly.vue",
+          "to": "components/ui/ClientOnly.vue"
+        }
+      ],
+      "dependencies": [
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/ClientOnly.llm.txt"
+    },
+    {
+      "name": "iframelazy",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/IframeLazy.vue",
+          "to": "components/ui/IframeLazy.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/IframeLazy.llm.txt"
+    },
+    {
+      "name": "scrollspy",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Scrollspy.vue",
+          "to": "components/ui/Scrollspy.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Scrollspy.llm.txt"
+    },
+    {
+      "name": "sonner",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Sonner.vue",
+          "to": "components/ui/Sonner.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "vue",
+        "vue-sonner"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-circle-alert",
+        "icon-circle-check",
+        "icon-circle-info",
+        "icon-loading",
+        "icon-triangle-alert"
+      ],
+      "doc": "resources/js/common/components/ui/Sonner.llm.txt"
+    },
+    {
+      "name": "navbar",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Navbar.vue",
+          "to": "components/ui/Navbar.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Navbar.llm.txt"
+    },
+    {
+      "name": "imagewithplaceholder",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/ImageWithPlaceholder.vue",
+          "to": "components/ui/ImageWithPlaceholder.vue"
+        }
+      ],
+      "dependencies": [
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/ImageWithPlaceholder.llm.txt"
+    },
+    {
+      "name": "select",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Select/Viewport.vue",
+          "to": "components/ui/Select/Viewport.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/Value.vue",
+          "to": "components/ui/Select/Value.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/Trigger.vue",
+          "to": "components/ui/Select/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/Separator.vue",
+          "to": "components/ui/Select/Separator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/Select.vue",
+          "to": "components/ui/Select/Select.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/ScrollUpButton.vue",
+          "to": "components/ui/Select/ScrollUpButton.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/ScrollDownButton.vue",
+          "to": "components/ui/Select/ScrollDownButton.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/Portal.vue",
+          "to": "components/ui/Select/Portal.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/Label.vue",
+          "to": "components/ui/Select/Label.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/ItemText.vue",
+          "to": "components/ui/Select/ItemText.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/ItemIndicator.vue",
+          "to": "components/ui/Select/ItemIndicator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/Item.vue",
+          "to": "components/ui/Select/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/Icon.vue",
+          "to": "components/ui/Select/Icon.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/Group.vue",
+          "to": "components/ui/Select/Group.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/Content.vue",
+          "to": "components/ui/Select/Content.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Select/Arrow.vue",
+          "to": "components/ui/Select/Arrow.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-check",
+        "icon-chevron-down",
+        "icon-chevron-up",
+        "icon-chevrons-up-down"
+      ],
+      "doc": "resources/js/common/components/ui/Select/Select.llm.txt"
+    },
+    {
+      "name": "dialog",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Dialog/Viewport.vue",
+          "to": "components/ui/Dialog/Viewport.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Dialog/useDialogNesting.ts",
+          "to": "components/ui/Dialog/useDialogNesting.ts"
+        },
+        {
+          "from": "resources/js/common/components/ui/Dialog/Trigger.vue",
+          "to": "components/ui/Dialog/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Dialog/Title.vue",
+          "to": "components/ui/Dialog/Title.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Dialog/Portal.vue",
+          "to": "components/ui/Dialog/Portal.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Dialog/Panel.vue",
+          "to": "components/ui/Dialog/Panel.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Dialog/Overlay.vue",
+          "to": "components/ui/Dialog/Overlay.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Dialog/Header.vue",
+          "to": "components/ui/Dialog/Header.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Dialog/Footer.vue",
+          "to": "components/ui/Dialog/Footer.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Dialog/Dialog.vue",
+          "to": "components/ui/Dialog/Dialog.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Dialog/Description.vue",
+          "to": "components/ui/Dialog/Description.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Dialog/Content.vue",
+          "to": "components/ui/Dialog/Content.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Dialog/Close.vue",
+          "to": "components/ui/Dialog/Close.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "button"
+      ],
+      "icons": [
+        "icon-close"
+      ],
+      "doc": "resources/js/common/components/ui/Dialog/Dialog.llm.txt"
+    },
+    {
+      "name": "tooltip",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Tooltip/Trigger.vue",
+          "to": "components/ui/Tooltip/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Tooltip/Tooltip.vue",
+          "to": "components/ui/Tooltip/Tooltip.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Tooltip/Provider.vue",
+          "to": "components/ui/Tooltip/Provider.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Tooltip/Portal.vue",
+          "to": "components/ui/Tooltip/Portal.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Tooltip/Content.vue",
+          "to": "components/ui/Tooltip/Content.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Tooltip/Arrow.vue",
+          "to": "components/ui/Tooltip/Arrow.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Tooltip/Tooltip.llm.txt"
+    },
+    {
+      "name": "table",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Table/Table.vue",
+          "to": "components/ui/Table/Table.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Table/Row.vue",
+          "to": "components/ui/Table/Row.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Table/Header.vue",
+          "to": "components/ui/Table/Header.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Table/Head.vue",
+          "to": "components/ui/Table/Head.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Table/Footer.vue",
+          "to": "components/ui/Table/Footer.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Table/Empty.vue",
+          "to": "components/ui/Table/Empty.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Table/Cell.vue",
+          "to": "components/ui/Table/Cell.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Table/Caption.vue",
+          "to": "components/ui/Table/Caption.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Table/Body.vue",
+          "to": "components/ui/Table/Body.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Table/Table.llm.txt"
+    },
+    {
+      "name": "card",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Card/Title.vue",
+          "to": "components/ui/Card/Title.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Card/Header.vue",
+          "to": "components/ui/Card/Header.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Card/FrameFooter.vue",
+          "to": "components/ui/Card/FrameFooter.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Card/Frame.vue",
+          "to": "components/ui/Card/Frame.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Card/Footer.vue",
+          "to": "components/ui/Card/Footer.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Card/Description.vue",
+          "to": "components/ui/Card/Description.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Card/Content.vue",
+          "to": "components/ui/Card/Content.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Card/Card.vue",
+          "to": "components/ui/Card/Card.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Card/Action.vue",
+          "to": "components/ui/Card/Action.vue"
+        }
+      ],
+      "dependencies": [
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Card/Card.llm.txt"
+    },
+    {
+      "name": "checkbox",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Checkbox/Checkbox.vue",
+          "to": "components/ui/Checkbox/Checkbox.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Checkbox/Checkbox.llm.txt"
+    },
+    {
+      "name": "frame",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Frame/Title.vue",
+          "to": "components/ui/Frame/Title.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Frame/Panel.vue",
+          "to": "components/ui/Frame/Panel.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Frame/Header.vue",
+          "to": "components/ui/Frame/Header.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Frame/Frame.vue",
+          "to": "components/ui/Frame/Frame.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Frame/Footer.vue",
+          "to": "components/ui/Frame/Footer.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Frame/Description.vue",
+          "to": "components/ui/Frame/Description.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Frame/Body.vue",
+          "to": "components/ui/Frame/Body.vue"
+        }
+      ],
+      "dependencies": [
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Frame/Frame.llm.txt"
+    },
+    {
+      "name": "dropdownmenu",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/Trigger.vue",
+          "to": "components/ui/DropdownMenu/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/SubTrigger.vue",
+          "to": "components/ui/DropdownMenu/SubTrigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/SubContent.vue",
+          "to": "components/ui/DropdownMenu/SubContent.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/Sub.vue",
+          "to": "components/ui/DropdownMenu/Sub.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/Shortcut.vue",
+          "to": "components/ui/DropdownMenu/Shortcut.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/Separator.vue",
+          "to": "components/ui/DropdownMenu/Separator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/RadioItem.vue",
+          "to": "components/ui/DropdownMenu/RadioItem.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/RadioGroup.vue",
+          "to": "components/ui/DropdownMenu/RadioGroup.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/Portal.vue",
+          "to": "components/ui/DropdownMenu/Portal.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/Label.vue",
+          "to": "components/ui/DropdownMenu/Label.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/ItemIndicator.vue",
+          "to": "components/ui/DropdownMenu/ItemIndicator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/Item.vue",
+          "to": "components/ui/DropdownMenu/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/Group.vue",
+          "to": "components/ui/DropdownMenu/Group.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/DropdownMenu.vue",
+          "to": "components/ui/DropdownMenu/DropdownMenu.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/Content.vue",
+          "to": "components/ui/DropdownMenu/Content.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/CheckboxItem.vue",
+          "to": "components/ui/DropdownMenu/CheckboxItem.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DropdownMenu/Arrow.vue",
+          "to": "components/ui/DropdownMenu/Arrow.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-check",
+        "icon-chevron-right"
+      ],
+      "doc": "resources/js/common/components/ui/DropdownMenu/DropdownMenu.llm.txt"
+    },
+    {
+      "name": "popover",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Popover/X.vue",
+          "to": "components/ui/Popover/X.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Popover/Trigger.vue",
+          "to": "components/ui/Popover/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Popover/Portal.vue",
+          "to": "components/ui/Popover/Portal.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Popover/Popover.vue",
+          "to": "components/ui/Popover/Popover.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Popover/Content.vue",
+          "to": "components/ui/Popover/Content.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Popover/Close.vue",
+          "to": "components/ui/Popover/Close.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Popover/Arrow.vue",
+          "to": "components/ui/Popover/Arrow.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Popover/Anchor.vue",
+          "to": "components/ui/Popover/Anchor.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Popover/Popover.llm.txt"
+    },
+    {
+      "name": "sheet",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Sheet/X.vue",
+          "to": "components/ui/Sheet/X.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sheet/Trigger.vue",
+          "to": "components/ui/Sheet/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sheet/Title.vue",
+          "to": "components/ui/Sheet/Title.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sheet/Sheet.vue",
+          "to": "components/ui/Sheet/Sheet.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sheet/Portal.vue",
+          "to": "components/ui/Sheet/Portal.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sheet/Overlay.vue",
+          "to": "components/ui/Sheet/Overlay.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sheet/Header.vue",
+          "to": "components/ui/Sheet/Header.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sheet/Footer.vue",
+          "to": "components/ui/Sheet/Footer.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sheet/Description.vue",
+          "to": "components/ui/Sheet/Description.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sheet/Content.vue",
+          "to": "components/ui/Sheet/Content.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sheet/Close.vue",
+          "to": "components/ui/Sheet/Close.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "motion-v",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-close"
+      ],
+      "doc": "resources/js/common/components/ui/Sheet/Sheet.llm.txt"
+    },
+    {
+      "name": "drawer",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Drawer/Trigger.vue",
+          "to": "components/ui/Drawer/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Drawer/Title.vue",
+          "to": "components/ui/Drawer/Title.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Drawer/Portal.vue",
+          "to": "components/ui/Drawer/Portal.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Drawer/Overlay.vue",
+          "to": "components/ui/Drawer/Overlay.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Drawer/Header.vue",
+          "to": "components/ui/Drawer/Header.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Drawer/Footer.vue",
+          "to": "components/ui/Drawer/Footer.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Drawer/Drawer.vue",
+          "to": "components/ui/Drawer/Drawer.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Drawer/Description.vue",
+          "to": "components/ui/Drawer/Description.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Drawer/Content.vue",
+          "to": "components/ui/Drawer/Content.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Drawer/Close.vue",
+          "to": "components/ui/Drawer/Close.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vaul-vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Drawer/Drawer.llm.txt"
+    },
+    {
+      "name": "alertdialog",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/AlertDialog/Trigger.vue",
+          "to": "components/ui/AlertDialog/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/AlertDialog/Title.vue",
+          "to": "components/ui/AlertDialog/Title.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/AlertDialog/Portal.vue",
+          "to": "components/ui/AlertDialog/Portal.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/AlertDialog/Overlay.vue",
+          "to": "components/ui/AlertDialog/Overlay.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/AlertDialog/Header.vue",
+          "to": "components/ui/AlertDialog/Header.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/AlertDialog/Footer.vue",
+          "to": "components/ui/AlertDialog/Footer.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/AlertDialog/Description.vue",
+          "to": "components/ui/AlertDialog/Description.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/AlertDialog/Content.vue",
+          "to": "components/ui/AlertDialog/Content.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/AlertDialog/Cancel.vue",
+          "to": "components/ui/AlertDialog/Cancel.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/AlertDialog/AlertDialog.vue",
+          "to": "components/ui/AlertDialog/AlertDialog.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/AlertDialog/Action.vue",
+          "to": "components/ui/AlertDialog/Action.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Button.variants.ts",
+          "to": "components/ui/Button.variants.ts"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base",
+        "button"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/AlertDialog/AlertDialog.llm.txt"
+    },
+    {
+      "name": "avatar",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Avatar/Image.vue",
+          "to": "components/ui/Avatar/Image.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Avatar/Fallback.vue",
+          "to": "components/ui/Avatar/Fallback.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Avatar/Avatar.vue",
+          "to": "components/ui/Avatar/Avatar.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Avatar/Avatar.llm.txt"
+    },
+    {
+      "name": "alert",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Alert/Title.vue",
+          "to": "components/ui/Alert/Title.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Alert/Description.vue",
+          "to": "components/ui/Alert/Description.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Alert/Alert.vue",
+          "to": "components/ui/Alert/Alert.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Alert/Alert.llm.txt"
+    },
+    {
+      "name": "switch",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Switch/Thumb.vue",
+          "to": "components/ui/Switch/Thumb.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Switch/Switch.vue",
+          "to": "components/ui/Switch/Switch.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Switch/Switch.llm.txt"
+    },
+    {
+      "name": "progress",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Progress/Progress.vue",
+          "to": "components/ui/Progress/Progress.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Progress/Indicator.vue",
+          "to": "components/ui/Progress/Indicator.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Progress/Progress.llm.txt"
+    },
+    {
+      "name": "radiogroup",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/RadioGroup/RadioGroup.vue",
+          "to": "components/ui/RadioGroup/RadioGroup.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/RadioGroup/Item.vue",
+          "to": "components/ui/RadioGroup/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/RadioGroup/Indicator.vue",
+          "to": "components/ui/RadioGroup/Indicator.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-circle"
+      ],
+      "doc": "resources/js/common/components/ui/RadioGroup/RadioGroup.llm.txt"
+    },
+    {
+      "name": "accordion",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Accordion/Trigger.vue",
+          "to": "components/ui/Accordion/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Accordion/Item.vue",
+          "to": "components/ui/Accordion/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Accordion/Header.vue",
+          "to": "components/ui/Accordion/Header.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Accordion/Content.vue",
+          "to": "components/ui/Accordion/Content.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Accordion/Accordion.vue",
+          "to": "components/ui/Accordion/Accordion.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-chevron-down"
+      ],
+      "doc": "resources/js/common/components/ui/Accordion/Accordion.llm.txt"
+    },
+    {
+      "name": "tabs",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Tabs/Trigger.vue",
+          "to": "components/ui/Tabs/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Tabs/Tabs.vue",
+          "to": "components/ui/Tabs/Tabs.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Tabs/List.vue",
+          "to": "components/ui/Tabs/List.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Tabs/Indicator.vue",
+          "to": "components/ui/Tabs/Indicator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Tabs/Content.vue",
+          "to": "components/ui/Tabs/Content.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Tabs/Tabs.llm.txt"
+    },
+    {
+      "name": "empty",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Empty/Title.vue",
+          "to": "components/ui/Empty/Title.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Empty/Media.vue",
+          "to": "components/ui/Empty/Media.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Empty/Header.vue",
+          "to": "components/ui/Empty/Header.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Empty/Empty.vue",
+          "to": "components/ui/Empty/Empty.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Empty/Description.vue",
+          "to": "components/ui/Empty/Description.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Empty/Content.vue",
+          "to": "components/ui/Empty/Content.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Empty/Empty.llm.txt"
+    },
+    {
+      "name": "pagination",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Pagination/Prev.vue",
+          "to": "components/ui/Pagination/Prev.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Pagination/Pagination.vue",
+          "to": "components/ui/Pagination/Pagination.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Pagination/Next.vue",
+          "to": "components/ui/Pagination/Next.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Pagination/List.vue",
+          "to": "components/ui/Pagination/List.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Pagination/Last.vue",
+          "to": "components/ui/Pagination/Last.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Pagination/Item.vue",
+          "to": "components/ui/Pagination/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Pagination/First.vue",
+          "to": "components/ui/Pagination/First.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Pagination/Ellipsis.vue",
+          "to": "components/ui/Pagination/Ellipsis.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Button.variants.ts",
+          "to": "components/ui/Button.variants.ts"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base",
+        "button"
+      ],
+      "icons": [
+        "icon-chevron-left",
+        "icon-chevron-right",
+        "icon-chevrons-left",
+        "icon-chevrons-right",
+        "icon-ellipsis"
+      ],
+      "doc": "resources/js/common/components/ui/Pagination/Pagination.llm.txt"
+    },
+    {
+      "name": "command",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Command/useCommand.ts",
+          "to": "components/ui/Command/useCommand.ts"
+        },
+        {
+          "from": "resources/js/common/components/ui/Command/Shortcut.vue",
+          "to": "components/ui/Command/Shortcut.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Command/Separator.vue",
+          "to": "components/ui/Command/Separator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Command/List.vue",
+          "to": "components/ui/Command/List.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Command/Item.vue",
+          "to": "components/ui/Command/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Command/Input.vue",
+          "to": "components/ui/Command/Input.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Command/Group.vue",
+          "to": "components/ui/Command/Group.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Command/Empty.vue",
+          "to": "components/ui/Command/Empty.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Command/Dialog.vue",
+          "to": "components/ui/Command/Dialog.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Command/Command.vue",
+          "to": "components/ui/Command/Command.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "dialog",
+        "separator"
+      ],
+      "icons": [
+        "icon-search"
+      ],
+      "doc": "resources/js/common/components/ui/Command/Command.llm.txt"
+    },
+    {
+      "name": "contextmenu",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/Trigger.vue",
+          "to": "components/ui/ContextMenu/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/SubTrigger.vue",
+          "to": "components/ui/ContextMenu/SubTrigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/SubContent.vue",
+          "to": "components/ui/ContextMenu/SubContent.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/Sub.vue",
+          "to": "components/ui/ContextMenu/Sub.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/Shortcut.vue",
+          "to": "components/ui/ContextMenu/Shortcut.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/Separator.vue",
+          "to": "components/ui/ContextMenu/Separator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/RadioItem.vue",
+          "to": "components/ui/ContextMenu/RadioItem.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/RadioGroup.vue",
+          "to": "components/ui/ContextMenu/RadioGroup.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/Portal.vue",
+          "to": "components/ui/ContextMenu/Portal.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/Label.vue",
+          "to": "components/ui/ContextMenu/Label.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/ItemIndicator.vue",
+          "to": "components/ui/ContextMenu/ItemIndicator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/Item.vue",
+          "to": "components/ui/ContextMenu/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/Group.vue",
+          "to": "components/ui/ContextMenu/Group.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/ContextMenu.vue",
+          "to": "components/ui/ContextMenu/ContextMenu.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/Content.vue",
+          "to": "components/ui/ContextMenu/Content.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/CheckboxItem.vue",
+          "to": "components/ui/ContextMenu/CheckboxItem.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ContextMenu/Arrow.vue",
+          "to": "components/ui/ContextMenu/Arrow.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-check",
+        "icon-chevron-right"
+      ],
+      "doc": "resources/js/common/components/ui/ContextMenu/ContextMenu.llm.txt"
+    },
+    {
+      "name": "navigationmenu",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/NavigationMenu/Viewport.vue",
+          "to": "components/ui/NavigationMenu/Viewport.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/NavigationMenu/Trigger.vue",
+          "to": "components/ui/NavigationMenu/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/NavigationMenu/Sub.vue",
+          "to": "components/ui/NavigationMenu/Sub.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/NavigationMenu/NavigationMenu.vue",
+          "to": "components/ui/NavigationMenu/NavigationMenu.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/NavigationMenu/List.vue",
+          "to": "components/ui/NavigationMenu/List.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/NavigationMenu/Link.vue",
+          "to": "components/ui/NavigationMenu/Link.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/NavigationMenu/Item.vue",
+          "to": "components/ui/NavigationMenu/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/NavigationMenu/Indicator.vue",
+          "to": "components/ui/NavigationMenu/Indicator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/NavigationMenu/Content.vue",
+          "to": "components/ui/NavigationMenu/Content.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-chevron-down"
+      ],
+      "doc": "resources/js/common/components/ui/NavigationMenu/NavigationMenu.llm.txt"
+    },
+    {
+      "name": "scrollarea",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/ScrollArea/Viewport.vue",
+          "to": "components/ui/ScrollArea/Viewport.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ScrollArea/Thumb.vue",
+          "to": "components/ui/ScrollArea/Thumb.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ScrollArea/Scrollbar.vue",
+          "to": "components/ui/ScrollArea/Scrollbar.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ScrollArea/ScrollArea.vue",
+          "to": "components/ui/ScrollArea/ScrollArea.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/ScrollArea/Corner.vue",
+          "to": "components/ui/ScrollArea/Corner.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/ScrollArea/ScrollArea.llm.txt"
+    },
+    {
+      "name": "collapsible",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Collapsible/Trigger.vue",
+          "to": "components/ui/Collapsible/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Collapsible/Content.vue",
+          "to": "components/ui/Collapsible/Content.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Collapsible/Collapsible.vue",
+          "to": "components/ui/Collapsible/Collapsible.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Collapsible/Collapsible.llm.txt"
+    },
+    {
+      "name": "stepper",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Stepper/Trigger.vue",
+          "to": "components/ui/Stepper/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Stepper/Title.vue",
+          "to": "components/ui/Stepper/Title.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Stepper/Stepper.vue",
+          "to": "components/ui/Stepper/Stepper.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Stepper/Separator.vue",
+          "to": "components/ui/Stepper/Separator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Stepper/Item.vue",
+          "to": "components/ui/Stepper/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Stepper/Indicator.vue",
+          "to": "components/ui/Stepper/Indicator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Stepper/Description.vue",
+          "to": "components/ui/Stepper/Description.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-check",
+        "icon-loading"
+      ],
+      "doc": "resources/js/common/components/ui/Stepper/Stepper.llm.txt"
+    },
+    {
+      "name": "tree",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Tree/Virtualizer.vue",
+          "to": "components/ui/Tree/Virtualizer.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Tree/Tree.vue",
+          "to": "components/ui/Tree/Tree.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Tree/Item.vue",
+          "to": "components/ui/Tree/Item.vue"
+        }
+      ],
+      "dependencies": [
+        "reka-ui"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Tree/Tree.llm.txt"
+    },
+    {
+      "name": "treenode",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/TreeNode/TreeNode.vue",
+          "to": "components/ui/TreeNode/TreeNode.vue"
+        }
+      ],
+      "dependencies": [
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-chevron-right"
+      ],
+      "doc": "resources/js/common/components/ui/TreeNode/TreeNode.llm.txt"
+    },
+    {
+      "name": "nav",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Nav/Trigger.vue",
+          "to": "components/ui/Nav/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Nav/Start.vue",
+          "to": "components/ui/Nav/Start.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Nav/Spacer.vue",
+          "to": "components/ui/Nav/Spacer.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Nav/Separator.vue",
+          "to": "components/ui/Nav/Separator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Nav/Section.vue",
+          "to": "components/ui/Nav/Section.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Nav/Provider.vue",
+          "to": "components/ui/Nav/Provider.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Nav/provider.ts",
+          "to": "components/ui/Nav/provider.ts"
+        },
+        {
+          "from": "resources/js/common/components/ui/Nav/Nav.vue",
+          "to": "components/ui/Nav/Nav.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Nav/Mobile.vue",
+          "to": "components/ui/Nav/Mobile.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Nav/Label.vue",
+          "to": "components/ui/Nav/Label.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Nav/Item.vue",
+          "to": "components/ui/Nav/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Nav/Inset.vue",
+          "to": "components/ui/Nav/Inset.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Nav/Gap.vue",
+          "to": "components/ui/Nav/Gap.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "button",
+        "separator"
+      ],
+      "icons": [
+        "icon-menu"
+      ],
+      "doc": "resources/js/common/components/ui/Nav/Nav.llm.txt"
+    },
+    {
+      "name": "sidebar",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Sidebar/Trigger.vue",
+          "to": "components/ui/Sidebar/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/Sidebar.vue",
+          "to": "components/ui/Sidebar/Sidebar.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/Separator.vue",
+          "to": "components/ui/Sidebar/Separator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/Rail.vue",
+          "to": "components/ui/Sidebar/Rail.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/Provider.vue",
+          "to": "components/ui/Sidebar/Provider.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/MenuSubItem.vue",
+          "to": "components/ui/Sidebar/MenuSubItem.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/MenuSubButton.vue",
+          "to": "components/ui/Sidebar/MenuSubButton.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/MenuSub.vue",
+          "to": "components/ui/Sidebar/MenuSub.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/MenuSkeleton.vue",
+          "to": "components/ui/Sidebar/MenuSkeleton.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/MenuItem.vue",
+          "to": "components/ui/Sidebar/MenuItem.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/MenuButtonChild.vue",
+          "to": "components/ui/Sidebar/MenuButtonChild.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/MenuButton.vue",
+          "to": "components/ui/Sidebar/MenuButton.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/MenuBadge.vue",
+          "to": "components/ui/Sidebar/MenuBadge.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/MenuAction.vue",
+          "to": "components/ui/Sidebar/MenuAction.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/Menu.vue",
+          "to": "components/ui/Sidebar/Menu.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/Inset.vue",
+          "to": "components/ui/Sidebar/Inset.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/Input.vue",
+          "to": "components/ui/Sidebar/Input.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/Header.vue",
+          "to": "components/ui/Sidebar/Header.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/GroupLabel.vue",
+          "to": "components/ui/Sidebar/GroupLabel.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/GroupContent.vue",
+          "to": "components/ui/Sidebar/GroupContent.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/GroupAction.vue",
+          "to": "components/ui/Sidebar/GroupAction.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/Group.vue",
+          "to": "components/ui/Sidebar/Group.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/Footer.vue",
+          "to": "components/ui/Sidebar/Footer.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/context.ts",
+          "to": "components/ui/Sidebar/context.ts"
+        },
+        {
+          "from": "resources/js/common/components/ui/Sidebar/Content.vue",
+          "to": "components/ui/Sidebar/Content.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "button",
+        "input",
+        "separator"
+      ],
+      "icons": [
+        "icon-panel-left"
+      ],
+      "doc": "resources/js/common/components/ui/Sidebar/Sidebar.llm.txt"
+    },
+    {
+      "name": "list",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/List/Title.vue",
+          "to": "components/ui/List/Title.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/List/Subtitle.vue",
+          "to": "components/ui/List/Subtitle.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/List/List.vue",
+          "to": "components/ui/List/List.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/List/Item.vue",
+          "to": "components/ui/List/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/List/Content.vue",
+          "to": "components/ui/List/Content.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/List/List.llm.txt"
+    },
+    {
+      "name": "cardlist",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/CardList/Item.vue",
+          "to": "components/ui/CardList/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/CardList/CardList.vue",
+          "to": "components/ui/CardList/CardList.vue"
+        }
+      ],
+      "dependencies": [
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/CardList/CardList.llm.txt"
+    },
+    {
+      "name": "timeline",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Timeline/useTimeline.ts",
+          "to": "components/ui/Timeline/useTimeline.ts"
+        },
+        {
+          "from": "resources/js/common/components/ui/Timeline/Title.vue",
+          "to": "components/ui/Timeline/Title.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Timeline/Timeline.vue",
+          "to": "components/ui/Timeline/Timeline.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Timeline/Separator.vue",
+          "to": "components/ui/Timeline/Separator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Timeline/Item.vue",
+          "to": "components/ui/Timeline/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Timeline/Indicator.vue",
+          "to": "components/ui/Timeline/Indicator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Timeline/Header.vue",
+          "to": "components/ui/Timeline/Header.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Timeline/Date.vue",
+          "to": "components/ui/Timeline/Date.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Timeline/Content.vue",
+          "to": "components/ui/Timeline/Content.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Timeline/Timeline.llm.txt"
+    },
+    {
+      "name": "descriptionlist",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/DescriptionList/Term.vue",
+          "to": "components/ui/DescriptionList/Term.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DescriptionList/Details.vue",
+          "to": "components/ui/DescriptionList/Details.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DescriptionList/DescriptionList.vue",
+          "to": "components/ui/DescriptionList/DescriptionList.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/DescriptionList/DescriptionList.llm.txt"
+    },
+    {
+      "name": "group",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Group/index.ts",
+          "to": "components/ui/Group/index.ts"
+        },
+        {
+          "from": "resources/js/common/components/ui/Group/GroupText.vue",
+          "to": "components/ui/Group/GroupText.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Group/GroupSeparator.vue",
+          "to": "components/ui/Group/GroupSeparator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Group/Group.vue",
+          "to": "components/ui/Group/Group.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base",
+        "separator"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Group/Group.llm.txt"
+    },
+    {
+      "name": "detailview",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/DetailView/DetailItem.vue",
+          "to": "components/ui/DetailView/DetailItem.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DetailView/DetailHeader.vue",
+          "to": "components/ui/DetailView/DetailHeader.vue"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/DetailView/DetailView.llm.txt"
+    },
+    {
+      "name": "combobox",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Combobox/Trigger.vue",
+          "to": "components/ui/Combobox/Trigger.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Combobox/Separator.vue",
+          "to": "components/ui/Combobox/Separator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Combobox/Label.vue",
+          "to": "components/ui/Combobox/Label.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Combobox/Item.vue",
+          "to": "components/ui/Combobox/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Combobox/Input.vue",
+          "to": "components/ui/Combobox/Input.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Combobox/Group.vue",
+          "to": "components/ui/Combobox/Group.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Combobox/Empty.vue",
+          "to": "components/ui/Combobox/Empty.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Combobox/Content.vue",
+          "to": "components/ui/Combobox/Content.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Combobox/Combobox.vue",
+          "to": "components/ui/Combobox/Combobox.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Combobox/ChipsInput.vue",
+          "to": "components/ui/Combobox/ChipsInput.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Combobox/Chips.vue",
+          "to": "components/ui/Combobox/Chips.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Combobox/Chip.vue",
+          "to": "components/ui/Combobox/Chip.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Combobox/Cancel.vue",
+          "to": "components/ui/Combobox/Cancel.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Combobox/Anchor.vue",
+          "to": "components/ui/Combobox/Anchor.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-check",
+        "icon-chevrons-up-down",
+        "icon-x"
+      ],
+      "doc": "resources/js/common/components/ui/Combobox/Combobox.llm.txt"
+    },
+    {
+      "name": "listbox",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Listbox/Virtualizer.vue",
+          "to": "components/ui/Listbox/Virtualizer.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Listbox/Listbox.vue",
+          "to": "components/ui/Listbox/Listbox.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Listbox/ItemIndicator.vue",
+          "to": "components/ui/Listbox/ItemIndicator.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Listbox/Item.vue",
+          "to": "components/ui/Listbox/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Listbox/GroupLabel.vue",
+          "to": "components/ui/Listbox/GroupLabel.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Listbox/Group.vue",
+          "to": "components/ui/Listbox/Group.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Listbox/Filter.vue",
+          "to": "components/ui/Listbox/Filter.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Listbox/Content.vue",
+          "to": "components/ui/Listbox/Content.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-check"
+      ],
+      "doc": "resources/js/common/components/ui/Listbox/Listbox.llm.txt"
+    },
+    {
+      "name": "tagsinput",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/TagsInput/TagsInputInput.vue",
+          "to": "components/ui/TagsInput/TagsInputInput.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/TagsInput/TagsInput.vue",
+          "to": "components/ui/TagsInput/TagsInput.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/TagsInput/ItemText.vue",
+          "to": "components/ui/TagsInput/ItemText.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/TagsInput/ItemDelete.vue",
+          "to": "components/ui/TagsInput/ItemDelete.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/TagsInput/Item.vue",
+          "to": "components/ui/TagsInput/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/TagsInput/Clear.vue",
+          "to": "components/ui/TagsInput/Clear.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-close"
+      ],
+      "doc": "resources/js/common/components/ui/TagsInput/TagsInput.llm.txt"
+    },
+    {
+      "name": "numberfield",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/NumberField/NumberField.vue",
+          "to": "components/ui/NumberField/NumberField.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/NumberField/Input.vue",
+          "to": "components/ui/NumberField/Input.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/NumberField/Increment.vue",
+          "to": "components/ui/NumberField/Increment.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/NumberField/Decrement.vue",
+          "to": "components/ui/NumberField/Decrement.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [
+        "icon-minus",
+        "icon-plus"
+      ],
+      "doc": "resources/js/common/components/ui/NumberField/NumberField.llm.txt"
+    },
+    {
+      "name": "slider",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Slider/Track.vue",
+          "to": "components/ui/Slider/Track.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Slider/Thumb.vue",
+          "to": "components/ui/Slider/Thumb.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Slider/Slider.vue",
+          "to": "components/ui/Slider/Slider.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Slider/Range.vue",
+          "to": "components/ui/Slider/Range.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "tooltip"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Slider/Slider.llm.txt"
+    },
+    {
+      "name": "inputgroup",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/InputGroup/Textarea.vue",
+          "to": "components/ui/InputGroup/Textarea.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/InputGroup/Text.vue",
+          "to": "components/ui/InputGroup/Text.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/InputGroup/InputGroup.vue",
+          "to": "components/ui/InputGroup/InputGroup.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/InputGroup/Input.vue",
+          "to": "components/ui/InputGroup/Input.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/InputGroup/Addon.vue",
+          "to": "components/ui/InputGroup/Addon.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base",
+        "input",
+        "textarea"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/InputGroup/InputGroup.llm.txt"
+    },
+    {
+      "name": "fieldset",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Fieldset/index.ts",
+          "to": "components/ui/Fieldset/index.ts"
+        },
+        {
+          "from": "resources/js/common/components/ui/Fieldset/FieldsetLegend.vue",
+          "to": "components/ui/Fieldset/FieldsetLegend.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Fieldset/Fieldset.vue",
+          "to": "components/ui/Fieldset/Fieldset.vue"
+        }
+      ],
+      "dependencies": [
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Fieldset/Fieldset.llm.txt"
+    },
+    {
+      "name": "editable",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Editable/Submit.vue",
+          "to": "components/ui/Editable/Submit.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Editable/Preview.vue",
+          "to": "components/ui/Editable/Preview.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Editable/Input.vue",
+          "to": "components/ui/Editable/Input.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Editable/Editable.vue",
+          "to": "components/ui/Editable/Editable.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Editable/Edit.vue",
+          "to": "components/ui/Editable/Edit.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Editable/Cancel.vue",
+          "to": "components/ui/Editable/Cancel.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Editable/Area.vue",
+          "to": "components/ui/Editable/Area.vue"
+        }
+      ],
+      "dependencies": [
+        "reka-ui",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Editable/Editable.llm.txt"
+    },
+    {
+      "name": "form",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Form/variants.ts",
+          "to": "components/ui/Form/variants.ts"
+        },
+        {
+          "from": "resources/js/common/components/ui/Form/useFormField.ts",
+          "to": "components/ui/Form/useFormField.ts"
+        },
+        {
+          "from": "resources/js/common/components/ui/Form/Message.vue",
+          "to": "components/ui/Form/Message.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Form/Label.vue",
+          "to": "components/ui/Form/Label.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Form/keys.ts",
+          "to": "components/ui/Form/keys.ts"
+        },
+        {
+          "from": "resources/js/common/components/ui/Form/Item.vue",
+          "to": "components/ui/Form/Item.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Form/Description.vue",
+          "to": "components/ui/Form/Description.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Form/Control.vue",
+          "to": "components/ui/Form/Control.vue"
+        }
+      ],
+      "dependencies": [
+        "reka-ui",
+        "tailwind-variants",
+        "vee-validate",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "label"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Form/Form.llm.txt"
+    },
+    {
+      "name": "inputpin",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/InputPin/InputPinInput.vue",
+          "to": "components/ui/InputPin/InputPinInput.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/InputPin/InputPin.vue",
+          "to": "components/ui/InputPin/InputPin.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/InputPin/Group.vue",
+          "to": "components/ui/InputPin/Group.vue"
+        }
+      ],
+      "dependencies": [
+        "@vueuse/core",
+        "reka-ui",
+        "tailwind-variants"
+      ],
+      "registryDependencies": [
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/InputPin/InputPin.llm.txt"
+    },
+    {
+      "name": "chart",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/Chart/StatList.vue",
+          "to": "components/ui/Chart/StatList.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Chart/StackedBar.vue",
+          "to": "components/ui/Chart/StackedBar.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Chart/Pie.vue",
+          "to": "components/ui/Chart/Pie.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Chart/Line.vue",
+          "to": "components/ui/Chart/Line.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Chart/Legend.vue",
+          "to": "components/ui/Chart/Legend.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Chart/HorizontalBar.vue",
+          "to": "components/ui/Chart/HorizontalBar.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Chart/Funnel.vue",
+          "to": "components/ui/Chart/Funnel.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/Chart/Bar.vue",
+          "to": "components/ui/Chart/Bar.vue"
+        }
+      ],
+      "dependencies": [
+        "@inertiajs/vue3",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "badge",
+        "base"
+      ],
+      "icons": [],
+      "doc": "resources/js/common/components/ui/Chart/Chart.llm.txt"
+    },
+    {
+      "name": "datatable",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/DataTable/Toolbar.vue",
+          "to": "components/ui/DataTable/Toolbar.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DataTable/SpatieColumnHeader.vue",
+          "to": "components/ui/DataTable/SpatieColumnHeader.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DataTable/SelectCheckbox.vue",
+          "to": "components/ui/DataTable/SelectCheckbox.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DataTable/RowActions.vue",
+          "to": "components/ui/DataTable/RowActions.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DataTable/Pagination.vue",
+          "to": "components/ui/DataTable/Pagination.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DataTable/index.ts",
+          "to": "components/ui/DataTable/index.ts"
+        },
+        {
+          "from": "resources/js/common/components/ui/DataTable/DataTable.vue",
+          "to": "components/ui/DataTable/DataTable.vue"
+        },
+        {
+          "from": "resources/js/common/components/ui/DataTable/ColumnHeader.vue",
+          "to": "components/ui/DataTable/ColumnHeader.vue"
+        }
+      ],
+      "dependencies": [
+        "@inertiajs/vue3",
+        "@tanstack/vue-table",
+        "tailwind-variants",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "button",
+        "checkbox",
+        "dropdownmenu",
+        "select",
+        "table",
+        "vee-input"
+      ],
+      "icons": [
+        "icon-arrow-down",
+        "icon-arrow-up",
+        "icon-chevron-left",
+        "icon-chevron-right",
+        "icon-chevrons-left",
+        "icon-chevrons-right",
+        "icon-chevrons-up-down",
+        "icon-close",
+        "icon-ellipsis",
+        "icon-search",
+        "icon-settings-2"
+      ],
+      "doc": "resources/js/common/components/ui/DataTable/DataTable.llm.txt"
+    },
+    {
+      "name": "codeblock",
+      "type": "component",
+      "files": [
+        {
+          "from": "resources/js/common/components/ui/CodeBlock/index.ts",
+          "to": "components/ui/CodeBlock/index.ts"
+        },
+        {
+          "from": "resources/js/common/components/ui/CodeBlock/CodeBlock.vue",
+          "to": "components/ui/CodeBlock/CodeBlock.vue"
+        }
+      ],
+      "dependencies": [
+        "@shikijs/transformers",
+        "shiki",
+        "vue"
+      ],
+      "registryDependencies": [
+        "base",
+        "button"
+      ],
+      "icons": [
+        "icon-check",
+        "icon-copy"
+      ],
+      "doc": "resources/js/common/components/ui/CodeBlock/CodeBlock.llm.txt"
+    }
+  ]
+}

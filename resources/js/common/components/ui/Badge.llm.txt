@@ -1,0 +1,110 @@
+# Badge
+
+Inline label for status, categories, or counts. Supports multiple semantic variants.
+
+## When to Use
+- Status indicators (active, pending, error)
+- Category tags
+- Counts and metrics
+- NOT for actions (use Button)
+- NOT for navigation (use Link or Button with href)
+
+## Usage
+
+Basic:
+```vue
+<Badge>Default</Badge>
+<Badge variant="success">Active</Badge>
+<Badge variant="destructive">Error</Badge>
+<Badge variant="warning">Pending</Badge>
+```
+
+With sizes:
+```vue
+<Badge size="sm">Small</Badge>
+<Badge size="md">Medium</Badge>
+<Badge size="lg">Large</Badge>
+```
+
+As a link:
+```vue
+<Badge href="/users?status=active" variant="info">View Active</Badge>
+```
+
+Clickable badge:
+```vue
+<Badge variant="outline" @click="handleClick">Clickable</Badge>
+```
+
+## Props
+
+- `variant` - visual style (default: "default")
+  - "default" | "primary" | "secondary" | "success" | "destructive" | "destructivesolid" | "destructiveoutline" | "warning" | "info" | "purple" | "amber" | "outline"
+- `size` - "sm" | "md" | "lg" (default: "sm")
+- `isCircle` - use rounded-full (default: false)
+- `disabled` - disable interactions (default: false)
+- `href` - render as Link for navigation
+- `onClick` - click handler (renders as button)
+- `tag` - custom element type override
+- `class` - custom classes
+
+## Variants
+
+| Variant | Use Case |
+|---------|----------|
+| default | Neutral labels |
+| primary | Primary/brand items |
+| secondary | Secondary labels |
+| success | Active, completed, verified |
+| warning | Pending, attention needed |
+| destructive | Errors, blocked, failed |
+| info | Informational, new |
+| outline | Subtle, minimal emphasis |
+
+## Accessibility
+- Renders as `<div>` by default (decorative)
+- Renders as `<button>` when onClick provided
+- Renders as `<Link>` when href provided
+- Disabled state properly conveyed
+- Focus ring on interactive badges
+
+## Common Patterns
+
+Status badge:
+```vue
+<Badge :variant="user.active ? 'success' : 'secondary'">
+    {{ user.active ? 'Active' : 'Inactive' }}
+</Badge>
+```
+
+Count badge:
+```vue
+<Badge variant="info" class="tabular-nums">{{ count }}</Badge>
+```
+
+Tag list:
+```vue
+<div class="flex flex-wrap gap-1">
+    <Badge v-for="tag in tags" :key="tag.id" variant="outline">
+        {{ tag.name }}
+    </Badge>
+</div>
+```
+
+With icon:
+```vue
+<Badge variant="success">
+    <Icon name="icon-check" class="size-3" />
+    Verified
+</Badge>
+```
+
+## Don't
+- Don't use for primary actions (use Button)
+- Don't use destructive variant for non-error states
+- Don't overuse badges - they lose impact
+
+## Related
+- Button - for actions
+- Chip - removable tags (if available)
+- Alert - for larger status messages

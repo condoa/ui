@@ -1,0 +1,185 @@
+# Chart
+
+Data visualization components for dashboards. Includes bar, line, pie, funnel, and stat list charts. Hand-rolled SVG, no charting library at runtime. Renders fine on the server; tooltips, hover, and crosshairs activate on the client. Depends on the Badge registry item (trend badges and the legend percentage pill).
+
+## When to Use
+- Dashboard metrics and KPIs
+- Time series data
+- Category comparisons
+- Distribution breakdowns
+- NOT for complex analytics (use dedicated charting library)
+
+## Chart Types
+
+### Bar
+Vertical bar chart for comparing categories.
+```vue
+<ChartBar
+    :labels="['Jan', 'Feb', 'Mar']"
+    :datasets="[{ label: 'Revenue', data: [100, 200, 150] }]"
+/>
+```
+
+### HorizontalBar
+Horizontal bar chart comparing two values per row (primary over secondary).
+```vue
+<ChartHorizontalBar
+    :items="[
+        { label: 'Bloco A', primary: 320, secondary: 450 },
+        { label: 'Bloco B', primary: 180, secondary: 200 },
+    ]"
+    primary-label="Pago"
+    secondary-label="Previsto"
+    format="currency"
+/>
+```
+Props: `items` (required, `{ label, primary, secondary }[]`), `primaryLabel`, `secondaryLabel`, `primaryColor`, `secondaryColor`, `format` ("currency" | "number", default "currency").
+
+### StackedBar
+Single stacked bar for part-to-whole comparison. Pass `segments`, each `{ label, value, color? }`.
+```vue
+<ChartStackedBar
+    :segments="[
+        { label: 'Direct', value: 140 },
+        { label: 'Referral', value: 70 },
+        { label: 'Organic', value: 90 },
+    ]"
+/>
+```
+Props: `segments` (required), `showLegend` (default true), `showValues` (default true), `height` (`'sm' | 'md' | 'lg'`, default `'md'`).
+
+### Line
+Line chart for trends over time.
+```vue
+<ChartLine
+    :labels="['Mon', 'Tue', 'Wed', 'Thu', 'Fri']"
+    :datasets="[{ label: 'Visits', data: [120, 190, 150, 220, 180] }]"
+/>
+```
+
+### Pie
+Pie/donut chart for proportions.
+```vue
+<ChartPie
+    :labels="['Rent', 'Utilities', 'Maintenance']"
+    :data="[60, 25, 15]"
+    donut
+    show-total
+/>
+```
+
+### Funnel
+Funnel chart for conversion stages. Each step carries a precomputed `count` and `percentage`.
+```vue
+<ChartFunnel
+    :steps="[
+        { label: 'Visitantes', count: 1000, percentage: 100 },
+        { label: 'Leads', count: 400, percentage: 40 },
+        { label: 'Vendas', count: 100, percentage: 25 },
+    ]"
+    variant="smooth"
+    label-variant="cards"
+/>
+```
+Props: `steps` (required), `colors`, `formatValue`, `variant` ("smooth" | "sharp" | "stepped" | "organic", default "smooth"), `labelVariant` ("minimal" | "cards" | "inline" | "stacked", default "minimal").
+
+### StatList
+Compact list of labeled values with optional sub-label, badge, icon, and link.
+```vue
+<ChartStatList
+    :items="[
+        { label: 'Ativos', value: '245', badge: { text: '+12%', variant: 'success' } },
+        { label: 'Pendentes', value: '32', sub_label: 'aguardando', icon: 'icon-clock' },
+        { label: 'Inativos', value: '8', link: '/inativos' },
+    ]"
+    compact
+/>
+```
+Props: `items` (required, `{ label, value: string, sub_label?, badge?, link?, icon? }[]`), `emptyText`, `compact`. Items with a `link` render as Inertia `<Link>`; a numeric trend in `badge.text` ("+12%", "-3%") gets an up/down arrow.
+
+## Common Props
+
+Most charts accept:
+- `labels`: x-axis labels or category names
+- `data` / `datasets`: numeric data (single array or multiple datasets)
+- `colors`: custom color palette
+- `height`: chart height in pixels
+- `formatValue`: function to format displayed values
+- `showLegend`: show/hide legend
+- `showLabels`: show/hide axis labels
+
+Bar adds `showTrend`, `showYAxis`, `yAxisSteps`. Line inverts the toggles: `hideLegend`, `hideXAxis`, `hideYAxis`, `yAxisSteps`, plus `formatTooltip`.
+
+## ChartLegend
+
+Standalone legend component for custom layouts:
+```vue
+<ChartLegend
+    :items="[
+        { label: 'Revenue', color: '#3b82f6', value: 45000, percentage: 65 },
+        { label: 'Expenses', color: '#ef4444', value: 24000, percentage: 35 },
+    ]"
+    layout="horizontal"
+    show-value
+    show-percentage
+/>
+```
+
+Props:
+- `items`: array of `{ label, color, value?, percentage? }`
+- `layout`: "horizontal" | "vertical"
+- `size`: "sm" | "md"
+- `dotShape`: "square" | "circle"
+- `showValue`: display values
+- `showPercentage`: display percentages
+- `interactive`: enable hover highlighting
+- `v-model:hoveredIndex`: syncs hover state with chart
+
+## Accessibility
+- Tooltips on hover show exact values
+- Keyboard accessible legends
+- Color + shape/position encoding
+- Motion reduced for prefers-reduced-motion
+
+## Common Patterns
+
+Dashboard card with bar chart:
+```vue
+<Card>
+    <CardHeader>
+        <CardTitle>Monthly Revenue</CardTitle>
+    </CardHeader>
+    <CardContent>
+        <ChartBar
+            :labels="months"
+            :datasets="[{ label: 'Revenue', data: revenueData }]"
+            :height="200"
+            show-y-axis
+            show-trend
+        />
+    </CardContent>
+</Card>
+```
+
+Donut chart with center total:
+```vue
+<ChartPie
+    :labels="categories"
+    :data="values"
+    :format-value="(v) => formatCurrency(v)"
+    donut
+    show-total
+/>
+```
+(Pie renders its own legend beside the chart; props are `labels`, `data`, `colors`, `donut`, `showTotal`, `formatValue`.)
+
+## Don't
+- Don't use for complex interactive analytics
+- Don't put too many data points (becomes unreadable)
+- Don't use pie charts for more than 6-7 categories
+- Don't forget to format currency/large numbers
+
+## Related
+- Progress: single value progress
+- Badge: status indicators
+- Table: tabular data display

@@ -1,0 +1,19 @@
+{
+  "name": "datepicker",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Datepicker.vue",
+      "to": "components/ui/Datepicker.vue"
+    }
+  ],
+  "dependencies": [
+    "@vuepic/vue-datepicker",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Datepicker.llm.txt"
+}

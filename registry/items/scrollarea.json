@@ -1,0 +1,37 @@
+{
+  "name": "scrollarea",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/ScrollArea/Viewport.vue",
+      "to": "components/ui/ScrollArea/Viewport.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ScrollArea/Thumb.vue",
+      "to": "components/ui/ScrollArea/Thumb.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ScrollArea/Scrollbar.vue",
+      "to": "components/ui/ScrollArea/Scrollbar.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ScrollArea/ScrollArea.vue",
+      "to": "components/ui/ScrollArea/ScrollArea.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ScrollArea/Corner.vue",
+      "to": "components/ui/ScrollArea/Corner.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/ScrollArea/ScrollArea.llm.txt"
+}

@@ -1,0 +1,120 @@
+# Button
+
+Interactive button for actions and navigation. Supports variants, sizes, icons, loading states, and visual effects.
+
+## When to Use
+- User-initiated actions (save, delete, submit, confirm)
+- Navigation that feels like an action (not inline text links)
+- NOT for inline text links (use Link component)
+- NOT for toggles (use Switch or Toggle)
+- NOT for menu items (use DropdownMenuItem)
+
+## Usage
+
+Basic:
+```vue
+<Button>Click me</Button>
+<Button variant="primary">Save</Button>
+<Button variant="destructive">Delete</Button>
+```
+
+With loading state:
+```vue
+<Button :loading="form.processing" type="submit">Save</Button>
+```
+
+As a link:
+```vue
+<Button href="/dashboard">Go to Dashboard</Button>
+```
+
+With icon (reveals on hover):
+```vue
+<Button icon="icon-arrow-right" iconPlacement="right">Continue</Button>
+```
+
+## Props
+
+- `variant` - visual style (default: "default")
+  - "default" | "primary" | "secondary" | "outline" | "ghost" | "destructive" | "destructiveoutline" | "link"
+- `size` - button size (default: "default")
+  - "xs" | "sm" | "default" | "lg" | "xl" | "icon-xs" | "icon-sm" | "icon" | "icon-lg"
+- `effect` - visual effect on hover
+  - "expandIcon" | "ringHover" | "shine" | "shineHover" | "gooeyRight" | "gooeyLeft" | "underline" | "hoverUnderline"
+- `loading` - show spinner, disable button (default: false)
+- `disabled` - disable interactions (default: false)
+- `icon` - icon name (revealed on hover with expandIcon effect)
+- `iconPlacement` - "left" | "right" (default: "left")
+- `loadingIcon` - custom loading icon (default: "icon-loading")
+- `text` - button text (alternative to slot)
+- `type` - "button" | "submit" | "reset" (default: "submit")
+- `as` - element type override
+- `href` - renders as Link component for navigation
+- `class` - custom classes
+
+## Slots
+
+- `default` - button content
+- `iconLeft` - custom left icon
+- `iconRight` - custom right icon
+- `loading` - custom loading indicator
+
+## Accessibility
+
+- Renders as `<button>` by default (correct semantics)
+- Uses `disabled` attribute when disabled/loading
+- Loading state preserves button text for screen readers
+- When `href` provided, renders as `<Link>` with correct navigation behavior
+- Focus ring visible on keyboard navigation
+
+## Common Patterns
+
+Form submit button:
+```vue
+<Button :loading="form.processing" :disabled="!form.isDirty" type="submit">
+    Save Changes
+</Button>
+```
+
+Destructive action:
+```vue
+<Button variant="destructive" @click="handleDelete">
+    Delete
+</Button>
+```
+
+Icon-only button:
+```vue
+<Button variant="ghost" size="icon" aria-label="Settings">
+    <Icon name="icon-settings" class="size-4" />
+</Button>
+```
+
+Button group:
+```vue
+<div class="flex gap-2">
+    <Button variant="outline" @click="cancel">Cancel</Button>
+    <Button variant="primary" @click="save">Save</Button>
+</div>
+```
+
+Link styled as button:
+```vue
+<Button variant="outline" href="/settings">Settings</Button>
+```
+
+## Don't
+
+- Don't use `as="a"` when you can use `href` prop
+- Don't combine loading with custom icons in slots
+- Don't use variant="link" for actual navigation - use the Link component
+- Don't forget aria-label for icon-only buttons
+- Don't use "destructive" for non-destructive actions
+
+## Related
+
+- AlertDialog - for destructive actions requiring confirmation
+- Link - for text navigation
+- Toggle - for on/off states
+- Switch - for settings toggles
+- DropdownMenu - for action menus

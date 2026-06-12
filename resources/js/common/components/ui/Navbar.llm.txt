@@ -1,0 +1,48 @@
+# Navbar
+
+Top bar container with a subtle bottom border and translucent blurred background, optionally sticky. It is a layout shell: you fill it with your own brand, links, and actions. Built on the reka-ui Primitive so the rendered element is configurable.
+
+## When to Use
+- The page or app header bar that holds the logo, primary navigation, and actions
+- A sticky bar that stays at the top while content scrolls under a blurred backdrop
+- NOT the navigation list itself (compose Nav inside for the link group)
+
+## Usage
+
+Basic:
+```vue
+<Navbar>
+    <div class="container flex items-center justify-between py-4">
+        <Logo />
+        <Nav aria-label="Primary">...</Nav>
+    </div>
+</Navbar>
+```
+
+Sticky:
+```vue
+<Navbar sticky class="px-6">...</Navbar>
+```
+
+## Props
+- `sticky`: when true the bar is `sticky top-0` so it pins to the top on scroll (default false).
+- `class`: custom classes for the bar.
+- Extends reka-ui `PrimitiveProps`:
+  - `as`: the rendered element/tag (default "header", a banner landmark). Set to "nav" if this bar is purely a navigation region.
+  - `asChild`: merge props onto the single child instead of rendering a wrapper.
+
+## Landmark note
+- Defaults to `<header>` (a banner landmark) because the bar typically holds brand and actions, not only links. If the bar is exclusively navigation, set `as="nav"` and give it an `aria-label`.
+- When the bar contains a navigation group, label that inner group (for example `<Nav aria-label="Primary">`), and use distinct labels when a page has more than one navigation region.
+
+## Accessibility
+- Provide accessible names for the interactive items you place inside (links, buttons) and ensure they have visible focus rings.
+- Keep one banner per page; nest navigation regions rather than stacking multiple `<header>` elements.
+
+## Don't
+- Don't put the bar's links directly on the Navbar element; group them in a labeled Nav.
+- Don't set `sticky` on a bar that should scroll away with the page.
+
+## Related
+- Nav: the navigation link group placed inside the bar
+- Container: width-constraining wrapper for the bar's contents

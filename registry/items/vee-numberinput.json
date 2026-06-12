@@ -1,0 +1,23 @@
+{
+  "name": "vee-numberinput",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/NumberInput.vue",
+      "to": "components/ui/Vee/NumberInput.vue"
+    }
+  ],
+  "dependencies": [
+    "motion-v",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "label",
+    "numberinput"
+  ],
+  "icons": [],
+  "doc": null
+}

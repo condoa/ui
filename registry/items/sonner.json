@@ -1,0 +1,26 @@
+{
+  "name": "sonner",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Sonner.vue",
+      "to": "components/ui/Sonner.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "vue",
+    "vue-sonner"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-circle-alert",
+    "icon-circle-check",
+    "icon-circle-info",
+    "icon-loading",
+    "icon-triangle-alert"
+  ],
+  "doc": "resources/js/common/components/ui/Sonner.llm.txt"
+}

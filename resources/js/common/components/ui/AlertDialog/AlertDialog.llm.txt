@@ -1,0 +1,238 @@
+# AlertDialog
+
+Modal dialog for confirmations requiring explicit user action. Blocks interaction until dismissed.
+
+## When to Use
+- Destructive action confirmations (delete, remove)
+- Irreversible operations
+- Important decisions requiring acknowledgment
+- NOT for forms (use Dialog)
+- NOT for information display (use Dialog or Alert)
+
+## Usage
+
+Basic:
+```vue
+<AlertDialog>
+    <AlertDialogTrigger as-child>
+        <Button variant="destructive">Delete</Button>
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+        <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+                This action cannot be undone. This will permanently delete the item.
+            </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction @click="confirmDelete">Delete</AlertDialogAction>
+        </AlertDialogFooter>
+    </AlertDialogContent>
+</AlertDialog>
+```
+
+With props shorthand:
+```vue
+<AlertDialog
+    title="Delete Item"
+    description="This action cannot be undone."
+>
+    <template #trigger>
+        <Button variant="destructive">Delete</Button>
+    </template>
+    <template #action>
+        <AlertDialogAction @click="confirmDelete" class="bg-destructive">
+            Delete
+        </AlertDialogAction>
+    </template>
+</AlertDialog>
+```
+
+Programmatic control:
+```vue
+<script setup>
+const open = ref(false)
+
+function showConfirmation() {
+    open.value = true
+}
+
+function handleConfirm() {
+    // Do action
+    open.value = false
+}
+</script>
+
+<template>
+    <Button @click="showConfirmation">Delete</Button>
+    <AlertDialog v-model:open="open">
+        <AlertDialogContent>
+            <AlertDialogHeader>
+                <AlertDialogTitle>Confirm Deletion</AlertDialogTitle>
+                <AlertDialogDescription>
+                    This will delete the selected items.
+                </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+                <AlertDialogCancel />
+                <AlertDialogAction @click="handleConfirm">
+                    Confirm
+                </AlertDialogAction>
+            </AlertDialogFooter>
+        </AlertDialogContent>
+    </AlertDialog>
+</template>
+```
+
+## Components
+
+### AlertDialog
+Root component.
+- `open` (v-model): controlled open state
+- `defaultOpen`: initial open state
+- `title`: shorthand for AlertDialogTitle
+- `description`: shorthand for AlertDialogDescription
+- `triggerText`: text for auto-generated trigger button
+
+### AlertDialogTrigger
+Element that opens the dialog.
+- `asChild`: merge props onto child
+
+### AlertDialogContent
+The modal panel.
+
+### AlertDialogHeader
+Container for title and description.
+
+### AlertDialogTitle
+Dialog heading.
+- `title`: text content (or use slot)
+
+### AlertDialogDescription
+Explanatory text. Required for accessibility.
+- `description`: text content (or use slot)
+
+### AlertDialogFooter
+Container for action buttons.
+
+### AlertDialogCancel
+Cancel button. Closes dialog without action.
+- Default text: "Cancel"
+
+### AlertDialogAction
+Confirm button. Should trigger the action.
+- Default text: "Continue"
+
+## Accessibility
+- Focus trapped inside dialog
+- Escape key cancels (does not confirm)
+- Focus moves to cancel button by default (safer)
+- ARIA role="alertdialog"
+- Description required for context
+
+## Note: AlertDialogAction click ordering
+
+`AlertDialogAction` (from `reka-ui`) closes the dialog as part of the click. By default reka-ui's bubble-phase close handler runs **before** your `@click=` handler, which would null any derived open-state (e.g. `:open="!!deleting"`) before your handler reads it.
+
+The project's `AlertDialogAction` wrapper binds `onClick` in the **capture phase**, so your handler runs *before* the dialog closes. That makes the natural pattern below work: your `onDelete` reads `deleting.value` while it's still set, fires the request, and the dialog closes naturally afterward.
+
+```vue
+<script setup>
+const deleting = ref<Item | null>(null)
+const deleteOpen = computed({
+    get: () => deleting.value !== null,
+    set: (value) => { if (!value) deleting.value = null },
+})
+const deleteForm = useInertiaForm({})
+
+const onDelete = () => {
+    if (!deleting.value) return
+
+    deleteForm.delete(route('items.delete', deleting.value.id), {
+        preserveScroll: true,
+        onSuccess: () => { deleting.value = null },
+    })
+}
+</script>
+
+<template>
+    <AlertDialog v-model:open="deleteOpen">
+        <AlertDialogContent>
+            <AlertDialogHeader>
+                <AlertDialogTitle>Delete "{{ deleting?.name }}"?</AlertDialogTitle>
+                <AlertDialogDescription>This cannot be undone.</AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+                <AlertDialogCancel @click="deleting = null" />
+                <AlertDialogAction
+                    variant="destructive"
+                    :disabled="deleteForm.processing"
+                    @click="onDelete"
+                />
+            </AlertDialogFooter>
+        </AlertDialogContent>
+    </AlertDialog>
+</template>
+```
+
+If you ever need to keep the dialog open across the request (e.g. show a spinner inside while waiting and only close on success/error), use a plain `<Button>` in the footer and call `deleting.value = null` yourself in `onSuccess`.
+
+## Common Patterns
+
+Delete confirmation:
+```vue
+<AlertDialog>
+    <AlertDialogTrigger as-child>
+        <Button variant="destructive" size="sm">Delete</Button>
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+        <AlertDialogHeader>
+            <AlertDialogTitle>Delete "{{ item.name }}"?</AlertDialogTitle>
+            <AlertDialogDescription>
+                This action cannot be undone. All associated data will be permanently removed.
+            </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+            <AlertDialogCancel />
+            <AlertDialogAction
+                variant="destructive"
+                @click="deleteItem"
+            >
+                Delete
+            </AlertDialogAction>
+        </AlertDialogFooter>
+    </AlertDialogContent>
+</AlertDialog>
+```
+
+Unsaved changes warning:
+```vue
+<AlertDialog v-model:open="showUnsavedWarning">
+    <AlertDialogContent>
+        <AlertDialogHeader>
+            <AlertDialogTitle>Unsaved Changes</AlertDialogTitle>
+            <AlertDialogDescription>
+                You have unsaved changes. Are you sure you want to leave?
+            </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+            <AlertDialogCancel>Keep Editing</AlertDialogCancel>
+            <AlertDialogAction @click="discardAndLeave">
+                Discard Changes
+            </AlertDialogAction>
+        </AlertDialogFooter>
+    </AlertDialogContent>
+</AlertDialog>
+```
+
+## Don't
+- Don't use for forms (use Dialog)
+- Don't use for information-only (use Dialog)
+- Don't skip AlertDialogDescription (accessibility)
+- Don't style action button as primary for destructive actions
+
+## Related
+- Dialog: for forms and content
+- Alert: inline feedback messages
+- Toast: ephemeral notifications

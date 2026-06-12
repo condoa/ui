@@ -1,0 +1,23 @@
+{
+  "name": "vee-fileinput",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/FileInput.vue",
+      "to": "components/ui/Vee/FileInput.vue"
+    }
+  ],
+  "dependencies": [
+    "motion-v",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "input",
+    "label"
+  ],
+  "icons": [],
+  "doc": null
+}

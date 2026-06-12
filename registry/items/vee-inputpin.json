@@ -1,0 +1,25 @@
+{
+  "name": "vee-inputpin",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/InputPin.vue",
+      "to": "components/ui/Vee/InputPin.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "motion-v",
+    "reka-ui",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "inputpin",
+    "label"
+  ],
+  "icons": [],
+  "doc": null
+}

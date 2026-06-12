@@ -1,0 +1,76 @@
+{
+  "name": "combobox",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Combobox/Trigger.vue",
+      "to": "components/ui/Combobox/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Combobox/Separator.vue",
+      "to": "components/ui/Combobox/Separator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Combobox/Label.vue",
+      "to": "components/ui/Combobox/Label.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Combobox/Item.vue",
+      "to": "components/ui/Combobox/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Combobox/Input.vue",
+      "to": "components/ui/Combobox/Input.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Combobox/Group.vue",
+      "to": "components/ui/Combobox/Group.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Combobox/Empty.vue",
+      "to": "components/ui/Combobox/Empty.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Combobox/Content.vue",
+      "to": "components/ui/Combobox/Content.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Combobox/Combobox.vue",
+      "to": "components/ui/Combobox/Combobox.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Combobox/ChipsInput.vue",
+      "to": "components/ui/Combobox/ChipsInput.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Combobox/Chips.vue",
+      "to": "components/ui/Combobox/Chips.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Combobox/Chip.vue",
+      "to": "components/ui/Combobox/Chip.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Combobox/Cancel.vue",
+      "to": "components/ui/Combobox/Cancel.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Combobox/Anchor.vue",
+      "to": "components/ui/Combobox/Anchor.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-check",
+    "icon-chevrons-up-down",
+    "icon-x"
+  ],
+  "doc": "resources/js/common/components/ui/Combobox/Combobox.llm.txt"
+}

@@ -1,0 +1,94 @@
+# Loader
+
+Animated loading indicator. Supports an inline mode and a full-page overlay with backdrop blur. Dismissible via Escape key. Respects prefers-reduced-motion.
+
+## When to Use
+- Blocking the page during a critical async operation (full-page mode)
+- Showing inline loading state inside a card or section
+- NOT for skeleton placeholders (use Skeleton instead)
+- NOT for button loading states (use the Button loading prop)
+
+## Usage
+
+Inline loader (open by default):
+```vue
+<Loader />
+```
+
+Controlled inline loader:
+```vue
+<Loader v-model="isLoading" />
+```
+
+Full-page overlay:
+```vue
+<Loader v-model="isSubmitting" :full-page="true" text="Salvando..." />
+```
+
+Custom icon:
+```vue
+<Loader icon="icon-spinner" />
+```
+
+With slot content:
+```vue
+<Loader v-model="isLoading" :full-page="true">
+    <p class="text-sm text-muted-foreground">Processando pagamento...</p>
+</Loader>
+```
+
+## Props
+
+- `icon` -- icon name for the spinner graphic (default: "icon-loader")
+- `fullPage` -- when true, renders a fixed full-screen overlay with backdrop blur (default: false)
+- `lockScroll` -- lock body scroll while open (default: undefined; recommended to set true with fullPage)
+- `closeOnEscape` -- close on Escape key press (default: true)
+- `text` -- text shown below the icon when no slot is provided
+- `class` -- custom classes for the icon element
+- `backdropClass` -- custom classes for the backdrop/wrapper element
+- `role` -- ARIA role (default: "progressbar")
+- `as` -- HTML element (default: "div")
+- `asChild` -- render slot content as root element
+
+## Model
+
+- `v-model` (boolean, default: true) -- controls visibility
+
+## Slots
+
+- `default` -- slotted with `{ open }` (boolean); replaces the text prop when provided
+
+## Accessibility
+- Root element has `role="progressbar"` by default
+- Loader icon carries `aria-hidden="true"`
+- Full-page mode responds to Escape key for dismissal
+- Transition duration collapses to 0 in both inline and full-page modes when the user prefers reduced motion
+
+## Common Patterns
+
+Form submission overlay:
+```vue
+<template>
+    <form @submit.prevent="submit">
+        ...
+        <Button type="submit">Salvar</Button>
+    </form>
+    <Loader v-model="form.processing" :full-page="true" :lock-scroll="true" text="Salvando alteracoes..." />
+</template>
+```
+
+Section content loading:
+```vue
+<div class="relative min-h-32">
+    <Loader v-model="isLoading" />
+    <DataTable v-if="!isLoading" :rows="rows" />
+</div>
+```
+
+## Don't
+- Don't use for partial data states in tables (use Skeleton rows)
+- Don't set fullPage without v-model; it will block indefinitely
+
+## Related
+- Skeleton -- placeholder shimmer for content regions
+- Button -- has a built-in loading prop for button states

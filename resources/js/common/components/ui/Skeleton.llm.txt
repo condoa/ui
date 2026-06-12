@@ -1,0 +1,113 @@
+# Skeleton
+
+Loading placeholder with pulse animation. Use to indicate content is loading.
+
+## When to Use
+- Content loading states
+- Deferred props placeholders
+- Image loading placeholders
+- NOT for empty states (use Empty)
+- NOT for errors (use Alert)
+
+## Usage
+
+Basic:
+```vue
+<Skeleton class="h-4 w-32" />
+```
+
+Card skeleton:
+```vue
+<div class="space-y-3">
+    <Skeleton class="h-32 w-full" />
+    <Skeleton class="h-4 w-3/4" />
+    <Skeleton class="h-4 w-1/2" />
+</div>
+```
+
+Conditional with content:
+```vue
+<template v-if="loading">
+    <Skeleton class="h-8 w-48" />
+</template>
+<template v-else>
+    <h1>{{ title }}</h1>
+</template>
+```
+
+## Props
+
+- `loading`: show loading cursor (default: undefined)
+- `class`: custom classes (use for sizing)
+- `as`: element type (default: "div")
+
+## Accessibility
+- Purely visual placeholder
+- Use with proper loading announcements if needed
+- Content should replace skeleton, not overlay
+
+## Common Patterns
+
+Table row skeleton:
+```vue
+<TableRow v-for="i in 5" :key="i">
+    <TableCell><Skeleton class="h-4 w-24" /></TableCell>
+    <TableCell><Skeleton class="h-4 w-32" /></TableCell>
+    <TableCell><Skeleton class="h-4 w-20" /></TableCell>
+</TableRow>
+```
+
+Card content skeleton:
+```vue
+<Card>
+    <CardHeader>
+        <Skeleton class="h-5 w-32" />
+        <Skeleton class="h-4 w-48" />
+    </CardHeader>
+    <CardContent class="space-y-2">
+        <Skeleton class="h-4 w-full" />
+        <Skeleton class="h-4 w-full" />
+        <Skeleton class="h-4 w-2/3" />
+    </CardContent>
+</Card>
+```
+
+Avatar with text skeleton:
+```vue
+<div class="flex items-center gap-3">
+    <Skeleton class="size-10 rounded-full" />
+    <div class="space-y-2">
+        <Skeleton class="h-4 w-24" />
+        <Skeleton class="h-3 w-32" />
+    </div>
+</div>
+```
+
+With deferred props (Inertia v3):
+```vue
+<template v-if="users === undefined">
+    <Skeleton class="h-64 w-full" />
+</template>
+<template v-else>
+    <DataTable :columns="columns" :data="users.data" />
+</template>
+```
+
+Image placeholder:
+```vue
+<div class="relative">
+    <Skeleton v-if="!imageLoaded" class="absolute inset-0" />
+    <img :src="src" @load="imageLoaded = true" :class="{ 'opacity-0': !imageLoaded }" />
+</div>
+```
+
+## Don't
+- Don't use for empty states (use Empty)
+- Don't use for errors (use Alert)
+- Don't make skeletons exact size of content (approximate is fine)
+- Don't animate skeleton appearing (let it be immediate)
+
+## Related
+- Empty: for no content states
+- Alert: for error states
+- Progress: for determinate loading

@@ -1,0 +1,27 @@
+{
+  "name": "vee-phoneinput",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/PhoneInput.vue",
+      "to": "components/ui/Vee/PhoneInput.vue"
+    }
+  ],
+  "dependencies": [
+    "libphonenumber-js",
+    "motion-v",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "input",
+    "inputcontrol",
+    "label"
+  ],
+  "icons": [
+    "icon-chevron-down"
+  ],
+  "doc": null
+}

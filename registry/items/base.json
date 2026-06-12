@@ -1,0 +1,195 @@
+{
+  "name": "base",
+  "type": "base",
+  "files": [
+    {
+      "from": "resources/js/common/helpers/cn.ts",
+      "to": "common/helpers/cn.ts"
+    },
+    {
+      "from": "resources/js/common/components/Icon.vue",
+      "to": "common/components/Icon.vue"
+    },
+    {
+      "from": "generated:tokens.css",
+      "to": "tokens.css"
+    },
+    {
+      "from": "generated:icons.js",
+      "to": "icons.js"
+    },
+    {
+      "from": "resources/svg/icon-loading.svg",
+      "to": "svg/icon-loading.svg"
+    },
+    {
+      "from": "resources/svg/icon-chevron-right.svg",
+      "to": "svg/icon-chevron-right.svg"
+    },
+    {
+      "from": "resources/svg/icon-circle.svg",
+      "to": "svg/icon-circle.svg"
+    },
+    {
+      "from": "resources/svg/icon-loader.svg",
+      "to": "svg/icon-loader.svg"
+    },
+    {
+      "from": "resources/svg/icon-chevron-down.svg",
+      "to": "svg/icon-chevron-down.svg"
+    },
+    {
+      "from": "resources/svg/icon-minus.svg",
+      "to": "svg/icon-minus.svg"
+    },
+    {
+      "from": "resources/svg/icon-plus.svg",
+      "to": "svg/icon-plus.svg"
+    },
+    {
+      "from": "resources/svg/icon-close.svg",
+      "to": "svg/icon-close.svg"
+    },
+    {
+      "from": "resources/svg/icon-calendar-days.svg",
+      "to": "svg/icon-calendar-days.svg"
+    },
+    {
+      "from": "resources/svg/icon-chevron-left.svg",
+      "to": "svg/icon-chevron-left.svg"
+    },
+    {
+      "from": "resources/svg/icon-chevron-up.svg",
+      "to": "svg/icon-chevron-up.svg"
+    },
+    {
+      "from": "resources/svg/icon-clock.svg",
+      "to": "svg/icon-clock.svg"
+    },
+    {
+      "from": "resources/svg/icon-download.svg",
+      "to": "svg/icon-download.svg"
+    },
+    {
+      "from": "resources/svg/icon-external-link.svg",
+      "to": "svg/icon-external-link.svg"
+    },
+    {
+      "from": "resources/svg/icon-file-text.svg",
+      "to": "svg/icon-file-text.svg"
+    },
+    {
+      "from": "resources/svg/icon-map-pin.svg",
+      "to": "svg/icon-map-pin.svg"
+    },
+    {
+      "from": "resources/svg/icon-search.svg",
+      "to": "svg/icon-search.svg"
+    },
+    {
+      "from": "resources/svg/icon-cloud-upload.svg",
+      "to": "svg/icon-cloud-upload.svg"
+    },
+    {
+      "from": "resources/svg/icon-chevrons-left.svg",
+      "to": "svg/icon-chevrons-left.svg"
+    },
+    {
+      "from": "resources/svg/icon-chevrons-right.svg",
+      "to": "svg/icon-chevrons-right.svg"
+    },
+    {
+      "from": "resources/svg/icon-bold.svg",
+      "to": "svg/icon-bold.svg"
+    },
+    {
+      "from": "resources/svg/icon-heading.svg",
+      "to": "svg/icon-heading.svg"
+    },
+    {
+      "from": "resources/svg/icon-italic.svg",
+      "to": "svg/icon-italic.svg"
+    },
+    {
+      "from": "resources/svg/icon-link.svg",
+      "to": "svg/icon-link.svg"
+    },
+    {
+      "from": "resources/svg/icon-list.svg",
+      "to": "svg/icon-list.svg"
+    },
+    {
+      "from": "resources/svg/icon-list-ordered.svg",
+      "to": "svg/icon-list-ordered.svg"
+    },
+    {
+      "from": "resources/svg/icon-message-square.svg",
+      "to": "svg/icon-message-square.svg"
+    },
+    {
+      "from": "resources/svg/icon-underline.svg",
+      "to": "svg/icon-underline.svg"
+    },
+    {
+      "from": "resources/svg/icon-circle-alert.svg",
+      "to": "svg/icon-circle-alert.svg"
+    },
+    {
+      "from": "resources/svg/icon-circle-check.svg",
+      "to": "svg/icon-circle-check.svg"
+    },
+    {
+      "from": "resources/svg/icon-circle-info.svg",
+      "to": "svg/icon-circle-info.svg"
+    },
+    {
+      "from": "resources/svg/icon-triangle-alert.svg",
+      "to": "svg/icon-triangle-alert.svg"
+    },
+    {
+      "from": "resources/svg/icon-check.svg",
+      "to": "svg/icon-check.svg"
+    },
+    {
+      "from": "resources/svg/icon-chevrons-up-down.svg",
+      "to": "svg/icon-chevrons-up-down.svg"
+    },
+    {
+      "from": "resources/svg/icon-ellipsis.svg",
+      "to": "svg/icon-ellipsis.svg"
+    },
+    {
+      "from": "resources/svg/icon-menu.svg",
+      "to": "svg/icon-menu.svg"
+    },
+    {
+      "from": "resources/svg/icon-panel-left.svg",
+      "to": "svg/icon-panel-left.svg"
+    },
+    {
+      "from": "resources/svg/icon-x.svg",
+      "to": "svg/icon-x.svg"
+    },
+    {
+      "from": "resources/svg/icon-arrow-down.svg",
+      "to": "svg/icon-arrow-down.svg"
+    },
+    {
+      "from": "resources/svg/icon-arrow-up.svg",
+      "to": "svg/icon-arrow-up.svg"
+    },
+    {
+      "from": "resources/svg/icon-settings-2.svg",
+      "to": "svg/icon-settings-2.svg"
+    },
+    {
+      "from": "resources/svg/icon-copy.svg",
+      "to": "svg/icon-copy.svg"
+    }
+  ],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": []
+}

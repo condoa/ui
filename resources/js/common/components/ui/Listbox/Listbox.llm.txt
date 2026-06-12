@@ -1,0 +1,140 @@
+# Listbox
+
+Always-visible list of selectable options with keyboard navigation. Use when the choices should stay on screen rather than hide behind a trigger.
+
+## When to Use
+- A visible list the user picks from (single or multiple)
+- Inline option lists inside a panel or sidebar
+- Long lists that need a built-in filter or virtualization
+- NOT for a collapsed dropdown trigger (use Select or Combobox)
+- NOT for tag entry (use TagsInput)
+
+## Usage
+
+Basic:
+```vue
+<Listbox v-model="selected">
+    <ListboxContent>
+        <ListboxItem v-for="item in items" :key="item.value" :value="item.value">
+            {{ item.label }}
+        </ListboxItem>
+    </ListboxContent>
+</Listbox>
+```
+
+With filter:
+```vue
+<Listbox v-model="selected">
+    <ListboxFilter v-model="query" placeholder="Filter..." />
+    <ListboxContent>
+        <ListboxItem v-for="item in filtered" :key="item.value" :value="item.value">
+            {{ item.label }}
+        </ListboxItem>
+    </ListboxContent>
+</Listbox>
+```
+
+## Components
+
+### Listbox
+Root component. Exposes `modelValue` to the default slot.
+- `v-model` (`modelValue`) - selected value (array when `multiple`)
+- `defaultValue` - uncontrolled initial value
+- `multiple` - allow selecting more than one option
+- `orientation` - `'vertical'` (default) or `'horizontal'`
+- `selectionBehavior` - `'toggle'` (default) or `'replace'`
+- `highlightOnHover` - highlight options on pointer hover
+- `disabled` - disable the whole listbox
+- `by` - key or comparator for object values
+- `name` - hidden field name for form submission
+- `required` - mark the field as required
+- `dir` - text direction
+- `class` - custom classes
+
+### ListboxContent
+Scrollable container for the options.
+- `class` - custom classes
+
+### ListboxFilter
+Text input that filters the options.
+- `v-model` (`modelValue`) - filter text
+- `autoFocus` - focus the input on mount
+- `disabled` - disable the filter
+- `placeholder` - placeholder text
+- `class` - custom classes
+
+### ListboxItem
+A single selectable option. Renders a trailing check indicator.
+- `value` - option value (required)
+- `disabled` - disable this option
+- `icon` - indicator icon name (default: `icon-check`)
+- `class` - custom classes
+
+### ListboxItemIndicator
+Selected-state icon, rendered inside ListboxItem by default.
+- `icon` - icon name (default: `icon-check`)
+- `class` - custom classes
+
+### ListboxGroup / ListboxGroupLabel
+Group options under a label.
+- ListboxGroupLabel: `class` - custom classes
+
+### ListboxVirtualizer
+Renders large option lists with virtualization. Exposes `option` to its slot.
+- `class` - custom classes
+
+## Accessibility
+- Arrow keys move the highlight
+- Enter or Space selects the highlighted option
+- Type-ahead jumps to matching options
+- Home and End jump to the first and last option
+- Full ARIA listbox roles and state
+
+## Common Patterns
+
+Multiple selection:
+```vue
+<Listbox v-model="selected" multiple>
+    <ListboxContent>
+        <ListboxItem v-for="item in items" :key="item.value" :value="item.value">
+            {{ item.label }}
+        </ListboxItem>
+    </ListboxContent>
+</Listbox>
+```
+
+Grouped options:
+```vue
+<Listbox v-model="selected">
+    <ListboxContent>
+        <ListboxGroup v-for="group in groups" :key="group.label">
+            <ListboxGroupLabel>{{ group.label }}</ListboxGroupLabel>
+            <ListboxItem v-for="item in group.items" :key="item.value" :value="item.value">
+                {{ item.label }}
+            </ListboxItem>
+        </ListboxGroup>
+    </ListboxContent>
+</Listbox>
+```
+
+Virtualized list:
+```vue
+<Listbox v-model="selected">
+    <ListboxContent>
+        <ListboxVirtualizer v-slot="{ option }" :options="items">
+            <ListboxItem :value="option.value">{{ option.label }}</ListboxItem>
+        </ListboxVirtualizer>
+    </ListboxContent>
+</Listbox>
+```
+
+## Don't
+- Don't use for a collapsed trigger (use Select or Combobox)
+- Don't render thousands of items without ListboxVirtualizer
+- Don't forget `value` on each ListboxItem
+
+## Related
+- Select - collapsed dropdown for smaller sets
+- Combobox - searchable dropdown with a trigger
+- Command - command palette built on the same primitive
+- RadioGroup - single choice with radio styling

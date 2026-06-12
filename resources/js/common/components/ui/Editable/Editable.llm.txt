@@ -1,0 +1,80 @@
+# Editable
+
+Inline edit-in-place field. Shows a preview that turns into an input on demand, with submit and cancel triggers. Wraps reka-ui Editable. Use for inline renaming and quick single-value edits.
+
+## When to Use
+- Click-to-edit titles, names, and labels
+- Inline editing inside lists, tables, or cards
+- NOT for multi-field forms (use Form)
+- NOT for rich text (use an editor)
+
+## Usage
+
+Default edit-in-place:
+```vue
+<Editable v-slot="{ isEditing }">
+    <EditableArea>
+        <EditablePreview />
+        <EditableInput />
+    </EditableArea>
+    <EditableEditTrigger v-if="!isEditing">Edit</EditableEditTrigger>
+    <template v-else>
+        <EditableSubmitTrigger>Save</EditableSubmitTrigger>
+        <EditableCancelTrigger>Cancel</EditableCancelTrigger>
+    </template>
+</Editable>
+```
+
+Controlled value:
+```vue
+<Editable v-model="title" :placeholder="'Untitled'">
+    <EditableArea>
+        <EditablePreview />
+        <EditableInput />
+    </EditableArea>
+</Editable>
+```
+
+## Components
+
+### Editable
+Root, forwarding reka-ui `EditableRoot` props and emits (`v-model`, `placeholder`, `activationMode`, `submitMode`, and the rest). Exposes the root's slot props (such as `isEditing`, `value`, `modelValue`) on its default slot.
+- All `EditableRootProps`
+- Emits all `EditableRootEmits` plus `ready` (fired on mount with the resolved root ref)
+- Slot: default, scoped with the reka-ui editable state
+
+### EditableArea
+Wraps the preview and input region. Forwards `EditableAreaProps`.
+- Slot: default (EditablePreview and EditableInput)
+
+### EditablePreview
+The read mode display. Forwards `EditablePreviewProps`. Clicking it enters edit mode under the default activation.
+- Slot: default
+
+### EditableInput
+The edit mode input. Forwards `EditableInputProps`.
+
+### EditableEditTrigger
+Button that switches the field into edit mode. Forwards `EditableEditTriggerProps`.
+- Slot: default (the trigger label)
+
+### EditableSubmitTrigger
+Button that commits the edit. Forwards `EditableSubmitTriggerProps`.
+- Slot: default
+
+### EditableCancelTrigger
+Button that discards the edit and restores the previous value. Forwards `EditableCancelTriggerProps`.
+- Slot: default
+
+## Accessibility
+- Built on reka-ui Editable, so keyboard activation, Enter to submit, and Escape to cancel work out of the box
+- Preview and input share the field value and announce edit state to assistive tech
+
+## Don't
+- Don't render EditableInput without EditablePreview; the field has no read mode
+- Don't pair submit and cancel triggers with `submitMode` set to blur unless you also handle the implicit commit
+- Don't use for long or multi-line content; this is for single inline values
+
+## Related
+- Input - standalone text input
+- Form - multi-field editing with validation

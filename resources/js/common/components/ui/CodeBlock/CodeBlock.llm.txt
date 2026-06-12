@@ -1,0 +1,58 @@
+# CodeBlock
+
+Syntax-highlighted code block with copy-to-clipboard and an optional Preview/Code tab toggle. Highlights with Shiki's core build (`shiki/core` plus the Oniguruma engine), loading themes and languages on demand. Highlighting runs in the browser and is async, so the code area is empty for a moment on first render. Depends on the Button registry item (copy button in code-only mode).
+
+## When to Use
+- Showing read-only source snippets with line numbers and theme-aware highlighting
+- Documentation and component catalogs that pair a live preview with its code
+- NOT for editable code (no input; use an editor component)
+- NOT for plain text without highlighting (use a styled `<pre>`)
+
+## Usage
+```vue
+<template>
+    <CodeBlock :code="snippet" lang="vue-html" />
+</template>
+```
+
+With a live preview tab:
+```vue
+<CodeBlock :code="snippet" lang="vue-html" :show-preview="true">
+    <MyComponent />
+</CodeBlock>
+```
+
+With variant tabs (e.g. one snippet per package manager):
+```vue
+<CodeBlock
+    :tabs="[
+        { label: 'npm', code: 'npm i thing', lang: 'shellscript' },
+        { label: 'pnpm', code: 'pnpm add thing', lang: 'shellscript' },
+    ]"
+/>
+```
+
+## Props
+- `code`: the source to highlight. It is trimmed before highlighting and copying. Required unless `tabs` is provided.
+- `lang`: language id (default `vue-html`). Bundled languages: `vue-html`, `shellscript`, `javascript`, `php`, `json`. Other ids will not highlight.
+- `showPreview`: when true, renders Preview/Code tabs and the default slot as the preview (default false)
+- `tabs`: array of `{ label, code, lang? }` variants. When more than one is given (and `showPreview` is false), a tab bar switches between them; each tab carries its own `lang`. Takes precedence over `code`.
+
+## Slots
+- default: preview content, shown under the Preview tab when `showPreview` is true
+
+## Behavior
+- The Shiki highlighter is created once and reused across instances
+- Re-highlights whenever `code` changes (immediate on mount)
+- Light and dark themes (`github-light` / `github-dark`) switch with the `html.dark` class
+- Copy writes the trimmed code to the clipboard and flips the icon to a check for 2 seconds
+- In code-only mode the copy button floats top-right; with tabs it sits in the tab bar
+
+## Don't
+- Don't pass a `lang` outside the bundled set and expect highlighting; only the listed languages load
+- Don't expect highlighted output during SSR; Shiki runs client-side and asynchronously
+- Don't use it as an editor; the code is display only
+
+## Related
+- Button: the copy control
+- Kbd: inline key hints when you do not need a full code block

@@ -1,0 +1,75 @@
+# Placeholder
+
+Empty-state container with a dashed border and a subtle diagonal stripe pattern. Use to mark regions that have no content yet or are under construction.
+
+## When to Use
+- Empty droppable areas in a drag-and-drop UI
+- "Coming soon" sections in a layout
+- Preview slots in a builder/editor where nothing has been placed yet
+- NOT for skeleton loading states (use Skeleton)
+- NOT for empty data lists (use the Empty family)
+
+## Usage
+
+Basic empty region:
+```vue
+<Placeholder class="h-48 w-full" />
+```
+
+With label:
+```vue
+<Placeholder class="h-48">
+    <p class="text-sm text-muted-foreground">Nenhum widget adicionado</p>
+</Placeholder>
+```
+
+As a section element:
+```vue
+<Placeholder as="section" class="min-h-64">
+    <span class="text-muted-foreground">Em breve</span>
+</Placeholder>
+```
+
+## Props
+
+- `class` -- custom classes applied to the wrapper (use to set height/width)
+- `as` -- rendered HTML element (default: "div")
+- `asChild` -- render slot content as root element
+
+## Slots
+
+- `default` -- optional centered content overlaid on the stripe pattern
+
+## Accessibility
+- The SVG stripe pattern is purely decorative and does not need an accessible label
+- Add meaningful content in the default slot to communicate the purpose of the empty region
+
+## Common Patterns
+
+Droppable canvas zone:
+```vue
+<Placeholder
+    class="h-64 w-full cursor-pointer transition-colors hover:border-ring hover:bg-muted/30"
+    @click="openWidgetPicker"
+>
+    <div class="flex flex-col items-center gap-2 text-muted-foreground">
+        <Icon name="icon-plus" class="size-6" />
+        <span class="text-sm">Adicionar widget</span>
+    </div>
+</Placeholder>
+```
+
+Layout preview slot:
+```vue
+<div class="grid grid-cols-3 gap-4">
+    <Placeholder v-for="i in 3" :key="i" class="h-32" />
+</div>
+```
+
+## Don't
+- Don't use without setting an explicit height (the element collapses without content)
+- Don't use for data-loading states (use Skeleton)
+
+## Related
+- Skeleton -- shimmer placeholders for loading content
+- Empty -- opinionated empty state with icon and CTA

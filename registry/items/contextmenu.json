@@ -1,0 +1,87 @@
+{
+  "name": "contextmenu",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/Trigger.vue",
+      "to": "components/ui/ContextMenu/Trigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/SubTrigger.vue",
+      "to": "components/ui/ContextMenu/SubTrigger.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/SubContent.vue",
+      "to": "components/ui/ContextMenu/SubContent.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/Sub.vue",
+      "to": "components/ui/ContextMenu/Sub.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/Shortcut.vue",
+      "to": "components/ui/ContextMenu/Shortcut.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/Separator.vue",
+      "to": "components/ui/ContextMenu/Separator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/RadioItem.vue",
+      "to": "components/ui/ContextMenu/RadioItem.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/RadioGroup.vue",
+      "to": "components/ui/ContextMenu/RadioGroup.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/Portal.vue",
+      "to": "components/ui/ContextMenu/Portal.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/Label.vue",
+      "to": "components/ui/ContextMenu/Label.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/ItemIndicator.vue",
+      "to": "components/ui/ContextMenu/ItemIndicator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/Item.vue",
+      "to": "components/ui/ContextMenu/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/Group.vue",
+      "to": "components/ui/ContextMenu/Group.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/ContextMenu.vue",
+      "to": "components/ui/ContextMenu/ContextMenu.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/Content.vue",
+      "to": "components/ui/ContextMenu/Content.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/CheckboxItem.vue",
+      "to": "components/ui/ContextMenu/CheckboxItem.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/ContextMenu/Arrow.vue",
+      "to": "components/ui/ContextMenu/Arrow.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-check",
+    "icon-chevron-right"
+  ],
+  "doc": "resources/js/common/components/ui/ContextMenu/ContextMenu.llm.txt"
+}

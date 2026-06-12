@@ -1,0 +1,110 @@
+# Avatar
+
+User or entity image with fallback. Displays profile pictures with graceful fallback to initials.
+
+## When to Use
+- User profile pictures
+- Entity thumbnails (companies, teams)
+- Comment/message authors
+- NOT for content images (use img or AspectRatio)
+- NOT for icons (use Icon)
+
+## Usage
+
+Basic with image:
+```vue
+<Avatar src="/avatars/user.jpg" alt="John Doe" fallback="JD" />
+```
+
+Fallback only (no image):
+```vue
+<Avatar fallback="JD" />
+```
+
+With slots for custom content:
+```vue
+<Avatar>
+    <AvatarImage src="/avatar.jpg" alt="User" />
+    <AvatarFallback>JD</AvatarFallback>
+</Avatar>
+```
+
+## Props
+
+### Avatar
+- `src`: image URL
+- `alt`: alt text for image
+- `fallback`: text to show when image fails/missing
+- `delayMs`: delay before showing fallback (for slow connections)
+- `class`: custom classes for root
+- `imageClass`: custom classes for image
+- `fallbackClass`: custom classes for fallback
+
+### AvatarImage
+- `src`: image URL
+- `alt`: alt text
+
+### AvatarFallback
+- `fallback`: text content (or use slot)
+- `delayMs`: delay before showing
+
+## Emits
+
+- `loadingStatusChange`: image load status changed
+
+## Accessibility
+- Uses img element with alt text
+- Fallback is visible and readable
+- Decorative when used alongside name text
+
+## Common Patterns
+
+User list item:
+```vue
+<div class="flex items-center gap-3">
+    <Avatar :src="user.avatar" :fallback="user.initials" />
+    <div>
+        <p class="font-medium">{{ user.name }}</p>
+        <p class="text-sm text-muted-foreground">{{ user.email }}</p>
+    </div>
+</div>
+```
+
+Different sizes:
+```vue
+<Avatar class="size-6" :src="user.avatar" :fallback="user.initials" />
+<Avatar class="size-8" :src="user.avatar" :fallback="user.initials" />
+<Avatar class="size-10" :src="user.avatar" :fallback="user.initials" />
+<Avatar class="size-12" :src="user.avatar" :fallback="user.initials" />
+```
+
+Avatar group:
+```vue
+<div class="flex -space-x-2">
+    <Avatar v-for="user in users.slice(0, 3)" :key="user.id"
+        :src="user.avatar"
+        :fallback="user.initials"
+        class="ring-2 ring-background"
+    />
+    <div v-if="users.length > 3" class="flex size-8 items-center justify-center rounded-full bg-muted text-xs font-medium ring-2 ring-background">
+        +{{ users.length - 3 }}
+    </div>
+</div>
+```
+
+With status indicator:
+```vue
+<div class="relative">
+    <Avatar :src="user.avatar" :fallback="user.initials" />
+    <span class="absolute bottom-0 right-0 size-2.5 rounded-full bg-green-500 ring-2 ring-background" />
+</div>
+```
+
+## Don't
+- Don't use for content images
+- Don't skip alt text when image is meaningful
+- Don't make avatars too small to read fallback text
+
+## Related
+- AvatarGroup: stacked avatars (if available)
+- Badge: for status labels

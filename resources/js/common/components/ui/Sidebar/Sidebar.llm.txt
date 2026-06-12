@@ -1,0 +1,238 @@
+# Sidebar
+
+Composable, collapsible application side navigation. The Sidebar family builds a full app shell: a provider that owns open state, the sidebar panel with desktop and mobile rendering, grouped menus, sub-menus, and an inset content area. It persists its open state in localStorage and toggles with Cmd/Ctrl+B.
+
+## When to Use
+- Primary app navigation in a dashboard or admin shell
+- Layouts that need a collapsible, persistent side panel
+- Multi-level navigation with groups and sub-menus
+- NOT for top horizontal navigation (use Nav)
+- NOT for menu bars with rich dropdown panels (use NavigationMenu)
+- NOT for transient overlays (use Sheet or Drawer)
+
+## Usage
+
+Wrap the shell in SidebarProvider. Place a Sidebar panel and a SidebarInset (the main content) as siblings. Build the panel from Header, Content with Groups and Menus, and Footer.
+
+```vue
+<SidebarProvider>
+    <Sidebar collapsible="icon">
+        <SidebarHeader>
+            <BrandMark class="size-7" />
+        </SidebarHeader>
+        <SidebarContent>
+            <SidebarGroup>
+                <SidebarGroupLabel>Platform</SidebarGroupLabel>
+                <SidebarGroupContent>
+                    <SidebarMenu>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton :is-active="true" as-child>
+                                <Link :href="route('home')">
+                                    <Icon name="icon-home" />
+                                    <span>Home</span>
+                                </Link>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    </SidebarMenu>
+                </SidebarGroupContent>
+            </SidebarGroup>
+        </SidebarContent>
+        <SidebarFooter>
+            <UserMenu />
+        </SidebarFooter>
+        <SidebarRail />
+    </Sidebar>
+
+    <SidebarInset>
+        <header>
+            <SidebarTrigger />
+        </header>
+        <slot />
+    </SidebarInset>
+</SidebarProvider>
+```
+
+## Components
+
+### SidebarProvider
+Owns the sidebar state and exposes it through context and a default slot. Must wrap everything else.
+- `defaultOpen` (boolean): initial open state. Default `true`.
+- `open` (boolean): controlled open state. Pair with `@update:open`.
+- `class` (ClassValue): classes for the wrapper element.
+- Default slot props: `state`, `open`, `setOpen`, `isMobile`, `openMobile`, `setOpenMobile`, `toggleSidebar`.
+
+### Sidebar
+The sidebar panel. Renders inline on desktop and as a Sheet on mobile.
+- `side` ('left' | 'right'): which edge the panel sits on. Default `left`.
+- `variant` ('sidebar' | 'floating' | 'inset'): visual treatment. Default `sidebar`.
+- `collapsible` ('offcanvas' | 'icon' | 'none'): collapse behavior. Default `offcanvas`.
+- `class` (ClassValue): custom classes.
+
+### SidebarHeader
+Top region of the panel, typically the logo or workspace switcher.
+- `class` (ClassValue): custom classes.
+- Accepts all PrimitiveProps.
+
+### SidebarContent
+Scrollable middle region that holds groups and menus.
+- `class` (ClassValue): custom classes.
+
+### SidebarFooter
+Bottom region of the panel, typically the account menu.
+- `class` (ClassValue): custom classes.
+- Accepts all PrimitiveProps.
+
+### SidebarGroup
+A labelled section within the content.
+- `class` (ClassValue): custom classes.
+- Accepts all PrimitiveProps.
+
+### SidebarGroupLabel
+Heading for a group. Hidden when collapsed to icon mode.
+- `label` (string): text label, or use the default slot.
+- `class` (ClassValue): custom classes.
+- Accepts all PrimitiveProps (for example `as`, `asChild`).
+
+### SidebarGroupAction
+Trailing action button for a group header.
+- `class` (ClassValue): custom classes.
+- Accepts all PrimitiveProps.
+
+### SidebarGroupContent
+Wrapper for the items inside a group.
+- `class` (ClassValue): custom classes.
+
+### SidebarMenu
+The `ul` list that holds menu items.
+- `class` (ClassValue): custom classes.
+
+### SidebarMenuItem
+A single `li` menu row. Hosts a button and optional action, badge, or sub-menu.
+- `class` (ClassValue): custom classes.
+
+### SidebarMenuButton
+The main clickable element of a menu item, with an optional collapsed-state tooltip.
+- `variant` ('default' | 'outline'): visual style. Default `default`.
+- `size` ('default' | 'sm' | 'lg'): button height. Default `default`.
+- `isActive` (boolean): mark as the current page.
+- `tooltip` (string | Component): tooltip shown when collapsed to icon mode.
+- `class` (ClassValue): custom classes.
+- Accepts all PrimitiveProps (`as` defaults to `button`).
+
+### SidebarMenuAction
+Trailing action button on a menu item.
+- `showOnHover` (boolean): reveal only on hover or focus.
+- `class` (ClassValue): custom classes.
+- Accepts all PrimitiveProps (`as` defaults to `button`).
+
+### SidebarMenuBadge
+Small count or status badge pinned to the right of a menu item.
+- `class` (ClassValue): custom classes.
+
+### SidebarMenuSkeleton
+Loading placeholder for a menu item, with a randomized text width.
+- `showIcon` (boolean): also render an icon skeleton.
+- `class` (ClassValue): custom classes.
+
+### SidebarMenuSub
+Nested `ul` for a sub-menu under a menu item. Hidden in icon mode.
+- `class` (ClassValue): custom classes.
+
+### SidebarMenuSubItem
+A single `li` within a sub-menu.
+- `class` (ClassValue): custom classes.
+
+### SidebarMenuSubButton
+The clickable element of a sub-menu item.
+- `size` ('sm' | 'md'): text size. Default `md`.
+- `isActive` (boolean): mark as the current page.
+- `class` (ClassValue): custom classes.
+- Accepts all PrimitiveProps (`as` defaults to `a`).
+
+### SidebarSeparator
+Divider between sections. Wraps the base Separator.
+- `class` (ClassValue): custom classes.
+
+### SidebarInput
+Search input styled for the sidebar. Wraps the base Input.
+- `v-model` (string): bound value.
+- `class` (ClassValue): custom classes.
+
+### SidebarTrigger
+Button that toggles the sidebar. Place it in the inset header.
+- `icon` (string): icon name. Default `icon-panel-left`.
+- `label` (string): accessible label and title. Default `Toggle Sidebar`.
+- `class` (ClassValue): custom classes.
+- Default slot props: `state`.
+
+### SidebarRail
+Thin draggable rail along the panel edge that toggles the sidebar on click.
+- `class` (ClassValue): custom classes.
+
+### SidebarInset
+The main content area beside the panel. Use as the sibling of Sidebar.
+- `class` (ClassValue): custom classes.
+
+## Accessibility
+- SidebarTrigger and SidebarRail both carry a `Toggle Sidebar` accessible label.
+- The mobile Sheet has a visually hidden title and description.
+- Cmd/Ctrl+B toggles the sidebar from anywhere via a global keydown listener.
+- Transitions respect `prefers-reduced-motion` through `motion-reduce:transition-none`.
+- Use `as-child` on SidebarMenuButton to render a real link or button so keyboard and screen-reader semantics are correct.
+
+## Common Patterns
+
+Icon-collapsible sidebar with tooltips:
+```vue
+<Sidebar collapsible="icon">
+    <SidebarContent>
+        <SidebarMenu>
+            <SidebarMenuItem v-for="item in items" :key="item.href">
+                <SidebarMenuButton :tooltip="item.label" :is-active="item.active" as-child>
+                    <Link :href="item.href">
+                        <Icon :name="item.icon" />
+                        <span>{{ item.label }}</span>
+                    </Link>
+                </SidebarMenuButton>
+                <SidebarMenuBadge v-if="item.count">{{ item.count }}</SidebarMenuBadge>
+            </SidebarMenuItem>
+        </SidebarMenu>
+    </SidebarContent>
+</Sidebar>
+```
+
+Nested sub-menu:
+```vue
+<SidebarMenuItem>
+    <SidebarMenuButton>Settings</SidebarMenuButton>
+    <SidebarMenuSub>
+        <SidebarMenuSubItem>
+            <SidebarMenuSubButton :is-active="true" as-child>
+                <Link :href="route('settings.general')">General</Link>
+            </SidebarMenuSubButton>
+        </SidebarMenuSubItem>
+    </SidebarMenuSub>
+</SidebarMenuItem>
+```
+
+Loading state:
+```vue
+<SidebarMenu>
+    <SidebarMenuItem v-for="i in 5" :key="i">
+        <SidebarMenuSkeleton show-icon />
+    </SidebarMenuItem>
+</SidebarMenu>
+```
+
+## Don't
+- Don't render Sidebar pieces without a wrapping SidebarProvider.
+- Don't omit SidebarInset, the main content needs it to size correctly.
+- Don't put navigation text directly on SidebarMenuButton, use `as-child` with a Link.
+- Don't reach for Sidebar to build a top bar, use Nav.
+
+## Related
+- Nav: horizontal top navigation.
+- Sheet: the drawer Sidebar uses on mobile.
+- Separator: the divider SidebarSeparator wraps.
+- Input: the control SidebarInput wraps.
+- Tooltip: powers SidebarMenuButton tooltips in icon mode.

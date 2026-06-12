@@ -1,0 +1,98 @@
+# NumberField
+
+Numeric input with increment/decrement buttons. Use for precise numeric value entry with step controls.
+
+## When to Use
+- Quantity selectors
+- Numeric form fields with step controls
+- Values that benefit from +/- buttons
+- NOT for sliders/ranges (use Slider)
+- NOT for plain numbers (use Input type="number")
+
+## Usage
+
+Basic:
+```vue
+<NumberField v-model="quantity" />
+```
+
+With min/max/step:
+```vue
+<NumberField v-model="price" :min="0" :max="1000" :step="10" />
+```
+
+With custom layout:
+```vue
+<NumberField v-model="quantity">
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+</NumberField>
+```
+
+## Components
+
+### NumberField
+Root component with default layout (decrement, input, increment).
+- `v-model` (modelValue) - numeric value
+- `min` - minimum value
+- `max` - maximum value
+- `step` - step increment (default: 1)
+- `disabled` - disable all controls
+- `class` - custom classes
+
+### NumberFieldInput
+The numeric input field.
+- Auto-styled with focus ring
+
+### NumberFieldDecrement
+Button to decrease value.
+
+### NumberFieldIncrement
+Button to increase value.
+
+## Accessibility
+- Arrow keys adjust value
+- Home/End jump to min/max
+- Page Up/Down for larger steps
+- Buttons are keyboard accessible
+- Full ARIA spinbutton implementation
+
+## Common Patterns
+
+Quantity selector:
+```vue
+<div class="flex items-center gap-2">
+    <Label>Quantity</Label>
+    <NumberField v-model="quantity" :min="1" :max="99" class="w-24" />
+</div>
+```
+
+Currency input:
+```vue
+<NumberField v-model="amount" :min="0" :step="0.01">
+    <span class="px-2 text-muted-foreground">R$</span>
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+    <NumberFieldDecrement />
+</NumberField>
+```
+
+With label and description:
+```vue
+<div class="space-y-2">
+    <Label for="guests">Guests</Label>
+    <NumberField id="guests" v-model="guests" :min="1" :max="10" />
+    <p class="text-sm text-muted-foreground">Maximum 10 guests per reservation</p>
+</div>
+```
+
+## Don't
+- Don't use for price ranges (use Slider)
+- Don't omit min/max when values should be bounded
+- Don't use for large numeric ranges (step controls become tedious)
+
+## Related
+- Input - plain text/number input
+- Slider - continuous value selection
+- VeeNumberField - with VeeValidate integration

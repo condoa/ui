@@ -1,0 +1,25 @@
+{
+  "name": "vee-calendarpicker",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/CalendarPicker.vue",
+      "to": "components/ui/Vee/CalendarPicker.vue"
+    }
+  ],
+  "dependencies": [
+    "date-fns",
+    "motion-v",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "label"
+  ],
+  "icons": [
+    "icon-calendar-days"
+  ],
+  "doc": null
+}

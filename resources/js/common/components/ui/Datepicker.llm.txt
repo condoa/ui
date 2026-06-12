@@ -1,0 +1,61 @@
+# Datepicker
+
+Thin wrapper around `@vuepic/vue-datepicker` (VueDatePicker). It forwards every attribute and slot through to the underlying picker and exposes its instance ref. Use it as the project's styled entry point to the full calendar picker.
+
+## When to Use
+- Calendar popover date/time selection
+- Range pickers, month/year pickers, time pickers (all VueDatePicker features)
+- NOT for typed segments (use DateField)
+- NOT for masked text (use DateInput)
+
+## Usage
+
+Basic:
+```vue
+<Datepicker v-model="date" />
+```
+
+Any VueDatePicker prop passes straight through:
+```vue
+<Datepicker v-model="range" range auto-apply :format="formatDate" locale="pt-BR" />
+```
+
+Slots forward through too (use VueDatePicker slot names):
+```vue
+<Datepicker v-model="date">
+    <template #dp-input="{ value }">
+        <Input :model-value="value" />
+    </template>
+</Datepicker>
+```
+
+## Props
+- `trimWeeks` - whether to trim weeks with no days in the current month
+
+Every other attribute (`v-model`, `range`, `format`, `locale`, `auto-apply`, `is-24`, and the rest of the VueDatePicker API) is forwarded via `$attrs`. See the VueDatePicker docs for the full prop and event list.
+
+## Slots
+All slots are forwarded to VueDatePicker by name, so any VueDatePicker slot (`dp-input`, `arrow-up`, `action-row`, and so on) works.
+
+## Exposed
+- `datepickerRef` - the underlying VueDatePicker instance ref, for calling methods like `openMenu()` or `closeMenu()`
+
+## Common Patterns
+
+Custom trigger input:
+```vue
+<Datepicker v-model="date" :format="formatDate">
+    <template #dp-input="{ value }">
+        <Input readonly :model-value="value" />
+    </template>
+</Datepicker>
+```
+
+## Don't
+- Don't reach for this when a single typed field is enough (use DateField or DateInput)
+- Don't redefine forwarded VueDatePicker props here; pass them as attributes
+
+## Related
+- DateField - segmented keyboard date entry
+- DateInput - masked dd/mm/yyyy text input
+- VeeDatepicker - with VeeValidate integration

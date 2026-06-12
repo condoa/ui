@@ -1,0 +1,55 @@
+# ImageLightbox
+
+Fullscreen image viewer with zoom, rotate, flip, and gallery navigation. Wraps the `viewerjs` library and its CSS. Renders a hidden `<img>` list and opens the overlay on mount, so mount it conditionally (for example behind a `v-if`) when the user wants to view images. Client-only.
+
+## When to Use
+- Opening one or more attachment images in a zoomable fullscreen overlay
+- Browsing a small gallery with prev/next, rotate, and flip controls
+- NOT for inline thumbnails (this is a modal overlay, not an embedded image)
+- NOT for PDFs or non-image files (use PdfViewer)
+
+## Usage
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const showLightbox = ref(false)
+const images = [
+    { url: '/storage/a.jpg', name: 'Fachada' },
+    { url: '/storage/b.jpg', name: 'Hall' },
+]
+</script>
+
+<template>
+    <Button @click="showLightbox = true">Ver fotos</Button>
+
+    <ImageLightbox
+        v-if="showLightbox"
+        :images="images"
+        :start-index="0"
+        @close="showLightbox = false"
+    />
+</template>
+```
+
+## Props
+- `images`: `{ url: string; name?: string }[]`. `url` is the image source; `name` becomes the alt text and overlay title.
+- `startIndex`: zero-based index of the first image shown (default 0)
+
+## Events
+- `close`: fires when the overlay is dismissed. Use it to flip the `v-if` that mounted the component.
+
+## Behavior
+- Opens immediately on mount and re-initializes when `images` or `startIndex` change
+- The navbar, prev, and next controls appear only when there is more than one image
+- Toolbar exposes zoom in/out, 1:1, reset, rotate, and flip; transitions are disabled for snappier opening
+- Destroys the underlying viewer on unmount to release listeners
+
+## Don't
+- Don't leave it permanently mounted; mount it when needed and unmount on `close`, otherwise the overlay reopens
+- Don't pass an empty `images` array and expect an overlay; nothing initializes
+- Don't use it for non-image content
+
+## Related
+- PdfViewer: framed inline preview for PDF documents
+- Dropfile: capture the images this component later displays

@@ -1,0 +1,177 @@
+# Sheet
+
+Slide-out panel from screen edge. Use for secondary content or actions without leaving context.
+
+## When to Use
+- Filters and settings panels
+- Detail views alongside lists
+- Mobile navigation menus
+- Forms that don't need full focus
+- NOT for confirmations (use AlertDialog)
+- NOT for focused tasks (use Dialog)
+
+## Usage
+
+Basic:
+```vue
+<Sheet>
+    <SheetTrigger as-child>
+        <Button variant="outline">Open Filters</Button>
+    </SheetTrigger>
+    <SheetContent>
+        <SheetHeader>
+            <SheetTitle>Filters</SheetTitle>
+        </SheetHeader>
+        <div class="py-4">
+            <!-- Filter content -->
+        </div>
+        <SheetFooter>
+            <Button @click="applyFilters">Apply</Button>
+        </SheetFooter>
+    </SheetContent>
+</Sheet>
+```
+
+Different sides:
+```vue
+<Sheet>
+    <SheetTrigger as-child>
+        <Button>Left Panel</Button>
+    </SheetTrigger>
+    <SheetContent side="left">
+        <!-- Content -->
+    </SheetContent>
+</Sheet>
+
+<Sheet>
+    <SheetTrigger as-child>
+        <Button>Top Panel</Button>
+    </SheetTrigger>
+    <SheetContent side="top">
+        <!-- Content -->
+    </SheetContent>
+</Sheet>
+```
+
+## Components
+
+### Sheet
+Root component. Same API as Dialog.
+- `open` (v-model): controlled open state
+- `defaultOpen`: initial open state
+- `modal`: trap focus when open (default: true)
+
+### SheetTrigger
+Element that opens the sheet.
+- `asChild`: merge props onto child
+
+### SheetContent
+The slide-out panel.
+- `side`: "top" | "right" | "bottom" | "left" (default: "left")
+- `class`: custom classes
+
+### SheetHeader
+Container for title and description.
+
+### SheetTitle
+Sheet heading.
+- `title`: text content (or use slot)
+
+### SheetFooter
+Footer for actions.
+
+### SheetClose
+Closes the sheet when clicked.
+- `asChild`: merge props onto child
+
+### SheetOverlay
+Background overlay (rendered automatically).
+
+## Accessibility
+- Focus trapped inside when open
+- Escape key closes sheet
+- Focus returns to trigger on close
+- ARIA attributes applied automatically
+- Close button has SR-only label text
+
+## Common Patterns
+
+Filter panel:
+```vue
+<Sheet v-model:open="filtersOpen">
+    <SheetTrigger as-child>
+        <Button variant="outline">
+            <Icon name="icon-filter" class="size-4 mr-2" />
+            Filters
+        </Button>
+    </SheetTrigger>
+    <SheetContent>
+        <SheetHeader>
+            <SheetTitle>Filters</SheetTitle>
+        </SheetHeader>
+        <div class="space-y-4 py-4">
+            <div>
+                <Label>Status</Label>
+                <Select v-model="filters.status">
+                    <SelectTrigger />
+                    <SelectContent>
+                        <SelectItem value="all">All</SelectItem>
+                        <SelectItem value="active">Active</SelectItem>
+                        <SelectItem value="inactive">Inactive</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
+        </div>
+        <SheetFooter>
+            <Button variant="outline" @click="resetFilters">Reset</Button>
+            <Button @click="applyFilters">Apply</Button>
+        </SheetFooter>
+    </SheetContent>
+</Sheet>
+```
+
+Mobile navigation:
+```vue
+<Sheet>
+    <SheetTrigger as-child>
+        <Button variant="ghost" size="icon" class="md:hidden">
+            <Icon name="icon-menu" class="size-5" />
+        </Button>
+    </SheetTrigger>
+    <SheetContent side="left" class="w-64">
+        <nav class="flex flex-col gap-2">
+            <Link :href="route('dashboard')" class="...">Dashboard</Link>
+            <Link :href="route('users')" class="...">Users</Link>
+            <Link :href="route('settings')" class="...">Settings</Link>
+        </nav>
+    </SheetContent>
+</Sheet>
+```
+
+Detail view:
+```vue
+<Sheet v-model:open="detailOpen">
+    <SheetContent class="w-[400px] sm:w-[540px]">
+        <SheetHeader>
+            <SheetTitle>{{ selectedItem.name }}</SheetTitle>
+        </SheetHeader>
+        <div class="py-4">
+            <DescriptionList>
+                <DescriptionItem label="Status">{{ selectedItem.status }}</DescriptionItem>
+                <DescriptionItem label="Created">{{ selectedItem.created_at }}</DescriptionItem>
+            </DescriptionList>
+        </div>
+    </SheetContent>
+</Sheet>
+```
+
+## Don't
+- Don't use for confirmations (use AlertDialog)
+- Don't use for focused tasks requiring full attention (use Dialog)
+- Don't make sheets too wide on desktop
+- Don't nest sheets
+
+## Related
+- Dialog: centered modal overlay
+- AlertDialog: confirmations
+- Drawer: bottom sheet variant (if available)

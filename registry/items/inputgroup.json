@@ -1,0 +1,36 @@
+{
+  "name": "inputgroup",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/InputGroup/Textarea.vue",
+      "to": "components/ui/InputGroup/Textarea.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/InputGroup/Text.vue",
+      "to": "components/ui/InputGroup/Text.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/InputGroup/InputGroup.vue",
+      "to": "components/ui/InputGroup/InputGroup.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/InputGroup/Input.vue",
+      "to": "components/ui/InputGroup/Input.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/InputGroup/Addon.vue",
+      "to": "components/ui/InputGroup/Addon.vue"
+    }
+  ],
+  "dependencies": [
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base",
+    "input",
+    "textarea"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/InputGroup/InputGroup.llm.txt"
+}

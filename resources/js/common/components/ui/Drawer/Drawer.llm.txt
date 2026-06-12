@@ -1,0 +1,168 @@
+# Drawer
+
+Touch-friendly slide-out panel driven by vaul-vue. Supports swipe-to-dismiss and drag handle. Best for mobile bottom sheets and secondary panels.
+
+## When to Use
+- Mobile bottom sheets with swipe-to-dismiss
+- Secondary content panels on mobile
+- Step flows or action sheets triggered by touch
+- NOT for desktop-first detail panels (use Sheet)
+- NOT for confirmations (use AlertDialog)
+- NOT for complex forms requiring full focus (use Dialog)
+
+## Usage
+
+Basic bottom drawer:
+```vue
+<Drawer>
+    <DrawerTrigger as-child>
+        <Button variant="outline">Open</Button>
+    </DrawerTrigger>
+    <DrawerContent>
+        <DrawerHeader>
+            <DrawerTitle text="Title" />
+            <DrawerDescription text="Description text." />
+        </DrawerHeader>
+        <div class="px-4 pb-4">
+            <!-- Content -->
+        </div>
+        <DrawerFooter>
+            <Button>Confirm</Button>
+            <DrawerClose as-child>
+                <Button variant="outline">Cancel</Button>
+            </DrawerClose>
+        </DrawerFooter>
+    </DrawerContent>
+</Drawer>
+```
+
+Controlled open state:
+```vue
+<Drawer v-model:open="isOpen">
+    <DrawerContent>
+        <!-- Content -->
+    </DrawerContent>
+</Drawer>
+```
+
+## Components
+
+### Drawer
+Root component. Wraps `DrawerRoot` from vaul-vue.
+- `open` (v-model): controlled open state
+- `defaultOpen`: uncontrolled initial open state
+- `shouldScaleBackground`: scale the page behind the drawer (default true)
+- `direction`: "top" | "right" | "bottom" | "left" (default "bottom")
+- `modal`: trap focus when open (default true)
+
+### DrawerTrigger
+Element that opens the drawer.
+- `asChild`: merge props onto child element
+
+### DrawerContent
+The drawer panel. Renders a portal, overlay, and the content with an optional drag knob.
+- `class`: custom classes
+- `hideKnob`: hide the drag handle knob (default false)
+
+### DrawerHeader
+Container for title and description. Centered on mobile, left-aligned on sm and up.
+
+### DrawerTitle
+Title text for the drawer.
+- `text`: string content (or use slot)
+- `class`: custom classes
+
+### DrawerDescription
+Supporting description below the title.
+- `text`: string content (or use slot)
+- `class`: custom classes
+
+### DrawerFooter
+Bottom action area. Stacks buttons vertically.
+- `as`: HTML tag or component to render as (default "div")
+- `class`: custom classes
+
+### DrawerClose
+Closes the drawer when clicked.
+- `asChild`: merge props onto child element
+
+### DrawerOverlay
+Semi-transparent backdrop with blur. Rendered automatically inside DrawerContent.
+- `class`: custom classes
+
+## Accessibility
+- Focus trapped inside when open
+- Escape key closes the drawer
+- Focus returns to trigger on close
+- ARIA attributes applied automatically by vaul-vue
+- Drag knob is keyboard-accessible via vaul-vue internals
+
+## Common Patterns
+
+Action sheet:
+```vue
+<Drawer>
+    <DrawerTrigger as-child>
+        <Button variant="ghost" size="icon">
+            <Icon name="icon-dots-vertical" class="size-5" />
+        </Button>
+    </DrawerTrigger>
+    <DrawerContent>
+        <DrawerHeader>
+            <DrawerTitle text="Actions" />
+        </DrawerHeader>
+        <div class="px-4 pb-4 flex flex-col gap-2">
+            <Button variant="outline" @click="handleEdit">Edit</Button>
+            <Button variant="destructive" @click="handleDelete">Delete</Button>
+        </div>
+        <DrawerFooter>
+            <DrawerClose as-child>
+                <Button variant="outline">Cancel</Button>
+            </DrawerClose>
+        </DrawerFooter>
+    </DrawerContent>
+</Drawer>
+```
+
+Controlled with form submit:
+```vue
+<Drawer v-model:open="open">
+    <DrawerContent>
+        <DrawerHeader>
+            <DrawerTitle text="Add note" />
+        </DrawerHeader>
+        <div class="px-4">
+            <Textarea v-model="note" placeholder="Write a note..." />
+        </div>
+        <DrawerFooter>
+            <Button @click="submitNote">Save</Button>
+            <DrawerClose as-child>
+                <Button variant="outline">Cancel</Button>
+            </DrawerClose>
+        </DrawerFooter>
+    </DrawerContent>
+</Drawer>
+```
+
+Hide knob when content is scrollable:
+```vue
+<DrawerContent :hide-knob="true">
+    <DrawerHeader>
+        <DrawerTitle text="Long list" />
+    </DrawerHeader>
+    <div class="overflow-y-auto px-4 pb-4">
+        <p v-for="item in items" :key="item.id">{{ item.name }}</p>
+    </div>
+</DrawerContent>
+```
+
+## Don't
+- Don't use on desktop as the primary navigation (use Sheet)
+- Don't use for destructive confirmations (use AlertDialog)
+- Don't nest drawers
+- Don't set `shouldScaleBackground="false"` unless background scaling causes layout issues
+
+## Related
+- Sheet: desktop slide-out panel with motion animations
+- Dialog: centered modal overlay
+- AlertDialog: destructive action confirmations

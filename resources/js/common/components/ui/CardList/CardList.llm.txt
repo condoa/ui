@@ -1,0 +1,119 @@
+# CardList
+
+Bordered card-style list with dividers between items. Use when each row deserves visual separation inside a rounded card.
+
+## When to Use
+- Settings sections with distinct rows
+- Resource lists inside a card panel
+- Items that benefit from a leading icon or avatar and trailing action
+- NOT for plain unstyled rows (use List)
+- NOT for tabular data (use Table)
+
+## Usage
+
+Basic:
+```vue
+<CardList>
+    <CardListItem>
+        <Icon name="icon-home" aria-hidden="true" class="size-5 text-muted-foreground" />
+        <div>
+            <p class="text-sm font-medium">Unidade 101</p>
+            <p class="text-xs text-muted-foreground">Bloco A</p>
+        </div>
+        <template #action>
+            <Button variant="ghost" size="sm">Editar</Button>
+        </template>
+    </CardListItem>
+    <CardListItem>
+        <Icon name="icon-home" aria-hidden="true" class="size-5 text-muted-foreground" />
+        <div>
+            <p class="text-sm font-medium">Unidade 202</p>
+            <p class="text-xs text-muted-foreground">Bloco B</p>
+        </div>
+    </CardListItem>
+</CardList>
+```
+
+With Primitive polymorphism:
+```vue
+<CardList as="section">
+    <CardListItem
+        v-for="item in items"
+        :key="item.id"
+        as="a"
+        :href="route('items.show', item)"
+        class="cursor-pointer hover:bg-muted/25"
+    >
+        <span>{{ item.name }}</span>
+        <template #action>
+            <Icon name="icon-chevron-right" aria-hidden="true" class="size-4" />
+        </template>
+    </CardListItem>
+</CardList>
+```
+
+## Components
+
+### CardList
+Outer wrapper. Adds shadow, rounded corners, and internal border structure.
+- `class` -- custom classes
+- `as` -- override element tag (default: "div")
+- `asChild` -- merge onto child
+
+### CardListItem
+Individual row. Left side is a flex row with your content; right side is the optional `action` slot.
+- `class` -- custom classes
+- `as` -- override element tag (default: "div")
+- `asChild` -- merge onto child
+
+**Slots:**
+- default -- left-side content (icon, text, avatar, etc.)
+- `action` -- trailing right-side actions (buttons, chevrons)
+
+## Accessibility
+- Use semantic `as` overrides (`"a"`, `"button"`) on CardListItem when rows are interactive.
+- Add `aria-label` to icon-only action buttons.
+
+## Common Patterns
+
+Document list:
+```vue
+<CardList>
+    <CardListItem v-for="doc in documents" :key="doc.id">
+        <Icon name="icon-file-text" aria-hidden="true" class="size-5 text-muted-foreground shrink-0" />
+        <div class="min-w-0">
+            <p class="text-sm font-medium truncate">{{ doc.title }}</p>
+            <p class="text-xs text-muted-foreground">{{ doc.created_at }}</p>
+        </div>
+        <template #action>
+            <Button variant="ghost" size="icon-sm" @click="download(doc)">
+                <Icon name="icon-download" aria-hidden="true" class="size-4" />
+            </Button>
+        </template>
+    </CardListItem>
+</CardList>
+```
+
+Settings list:
+```vue
+<CardList class="max-w-lg">
+    <CardListItem>
+        <div>
+            <p class="text-sm font-medium">Notificacoes por email</p>
+            <p class="text-xs text-muted-foreground">Receba alertas de vencimento</p>
+        </div>
+        <template #action>
+            <Switch v-model="emailNotifs" />
+        </template>
+    </CardListItem>
+</CardList>
+```
+
+## Don't
+- Don't use CardList inside another CardList
+- Don't add top-level borders/shadow yourself; the outer card handles it
+
+## Related
+- List -- plain list without card styling
+- Card -- single card without divided rows
+- Table -- grid layout for columnar data

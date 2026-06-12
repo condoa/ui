@@ -1,0 +1,38 @@
+# LicensePlate
+
+Renders a Brazilian vehicle license plate as a styled badge. Detects the old format (ABC1234) and the Mercosul format (ABC1D23) from the plate string and draws the matching layout, with a separate two-row variant for motorcycles. Pure presentational, no dependencies beyond Vue.
+
+## When to Use
+- Showing a vehicle's plate in a recognizable, plate-like badge
+- Distinguishing car vs motorcycle plates visually
+- NOT for plate input or validation (display only)
+- NOT for non-Brazilian plate formats
+
+## Usage
+```vue
+<template>
+    <LicensePlate plate="ABC1D23" vehicle-type="car" />
+    <LicensePlate plate="XYZ-9876" vehicle-type="motorcycle" size="sm" />
+</template>
+```
+
+## Props
+- `plate`: the plate string. Non-alphanumeric characters are stripped and it is uppercased before matching, so `abc-1234` and `ABC1234` render the same. (required)
+- `vehicleType`: `'car'` or `'motorcycle'` (default `'car'`). Motorcycle uses a two-row layout.
+- `size`: `'sm'` or `'md'` (default `'md'`)
+
+## Behavior
+- Old format (three letters then four digits) renders a gray plate; a car shows one row, a motorcycle shows two
+- Mercosul format (ABC1D23) renders a white plate with the blue BRASIL header band
+- Any other non-empty value falls back to a plain monospace muted-text rendering
+- An empty plate renders nothing
+- `aria-label` is the normalized plate for screen readers
+
+## Don't
+- Don't pass a plate expecting validation feedback; unrecognized formats just fall back to plain text
+- Don't rely on it for international plates; only Brazilian old and Mercosul layouts are styled
+- Don't use it as an input; it is display only
+
+## Related
+- Chip: generic compact label when a plate-styled badge is not needed
+- Badge: status pills shown alongside vehicle rows

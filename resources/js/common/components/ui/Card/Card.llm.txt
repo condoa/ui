@@ -1,0 +1,137 @@
+# Card
+
+Simple container for grouping related content with consistent styling. Provides header, content, and footer slots.
+
+## When to Use
+- Single content blocks with title/description
+- Dashboard widgets
+- List items with actions
+- NOT for multi-section layouts (use Frame)
+- NOT for modals (use Dialog)
+
+## Usage
+
+Basic with props:
+```vue
+<Card title="Card Title" description="Optional description">
+    <template #content>
+        Card content goes here
+    </template>
+</Card>
+```
+
+With slots for full control:
+```vue
+<Card>
+    <CardHeader>
+        <CardTitle>Settings</CardTitle>
+        <CardDescription>Manage your preferences</CardDescription>
+    </CardHeader>
+    <CardContent>
+        <VeeInput name="name" label="Name" />
+    </CardContent>
+    <CardFooter>
+        <Button>Save</Button>
+    </CardFooter>
+</Card>
+```
+
+With action slot:
+```vue
+<Card title="Users">
+    <template #action>
+        <Button variant="outline" size="sm">Add User</Button>
+    </template>
+    <template #content>
+        <DataTable :columns="columns" :data="users" />
+    </template>
+</Card>
+```
+
+## Components
+
+### Card
+Root container.
+- `title` - title text (passed to CardTitle)
+- `description` - description text (passed to CardDescription)
+- `content` - content HTML string
+- `class` - custom classes
+- `as` - element type (default: "div")
+
+Slots:
+- `default` - full content override
+- `header` - custom header
+- `title` - custom title
+- `description` - custom description
+- `action` - header action area
+- `content` - main content
+- `footer` - footer area
+
+### CardHeader
+Container for title, description, and actions.
+
+### CardTitle
+Card heading.
+- `title` - text content (or use slot)
+
+### CardDescription
+Secondary text below title.
+- `description` - text content (or use slot)
+
+### CardContent
+Main content area with padding.
+
+### CardFooter
+Footer area for actions.
+
+### CardFrame / CardFrameFooter
+Alternative layout with muted background footer.
+
+## Accessibility
+- Uses semantic heading structure
+- Card is a generic container (no ARIA role needed)
+- Action buttons are keyboard accessible
+
+## Common Patterns
+
+Dashboard stat card:
+```vue
+<Card>
+    <CardHeader>
+        <CardTitle class="text-sm font-medium text-muted-foreground">
+            Total Revenue
+        </CardTitle>
+    </CardHeader>
+    <CardContent>
+        <div class="text-2xl font-bold">R$ 45.231,89</div>
+        <p class="text-xs text-muted-foreground">+20.1% from last month</p>
+    </CardContent>
+</Card>
+```
+
+Settings card:
+```vue
+<Card>
+    <CardHeader>
+        <CardTitle>Notifications</CardTitle>
+        <CardDescription>Configure how you receive notifications.</CardDescription>
+    </CardHeader>
+    <CardContent class="space-y-4">
+        <VeeCheckbox name="email" label="Email notifications" />
+        <VeeCheckbox name="push" label="Push notifications" />
+    </CardContent>
+    <CardFooter>
+        <Button>Save preferences</Button>
+    </CardFooter>
+</Card>
+```
+
+## Don't
+- Don't nest Cards
+- Don't use Card for page-level layout (use Frame)
+- Don't skip CardContent when you have body content
+
+## Related
+- Frame - multi-section page layout
+- CardList - list of card items
+- Dialog - modal content

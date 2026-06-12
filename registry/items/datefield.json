@@ -1,0 +1,20 @@
+{
+  "name": "datefield",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/DateField.vue",
+      "to": "components/ui/DateField.vue"
+    }
+  ],
+  "dependencies": [
+    "@internationalized/date",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/DateField.llm.txt"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "vee-tagsinput",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/TagsInput.vue",
+      "to": "components/ui/Vee/TagsInput.vue"
+    }
+  ],
+  "dependencies": [
+    "motion-v",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "label",
+    "tagsinput"
+  ],
+  "icons": [],
+  "doc": null
+}

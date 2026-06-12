@@ -1,0 +1,107 @@
+# DetailView
+
+Page-level detail header and labeled field atoms for entity detail pages. Use DetailViewDetailHeader as the page top section and DetailViewDetailItem for each attribute row below it.
+
+## When to Use
+- Entity detail pages (resident profile, condominium info, invoice view)
+- Read-only attribute grids below a page header
+- Quick summary panels in sheet or dialog sidebars
+- NOT for editable forms (use form inputs with Label)
+- NOT for grouped key-value pairs in a `<dl>` (use DescriptionList)
+
+## Usage
+
+Full detail page layout:
+```vue
+<DetailViewDetailHeader title="Ana Silva">
+    <template #badges>
+        <Badge variant="success">Active</Badge>
+        <Badge variant="neutral">Owner</Badge>
+    </template>
+</DetailViewDetailHeader>
+
+<div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
+    <DetailViewDetailItem label="Unit" icon="icon-home">
+        Apt 101 - Block A
+    </DetailViewDetailItem>
+    <DetailViewDetailItem label="Email" icon="icon-mail">
+        ana@example.com
+    </DetailViewDetailItem>
+    <DetailViewDetailItem label="Phone" icon="icon-phone">
+        (11) 98765-4321
+    </DetailViewDetailItem>
+    <DetailViewDetailItem label="Since">
+        January 2022
+    </DetailViewDetailItem>
+</div>
+```
+
+Inside a Sheet sidebar:
+```vue
+<SheetContent>
+    <DetailViewDetailHeader title="Invoice #1042" />
+    <div class="mt-4 grid grid-cols-2 gap-3">
+        <DetailViewDetailItem label="Amount" icon="icon-coins">
+            <span class="tabular-nums">R$ 450,00</span>
+        </DetailViewDetailItem>
+        <DetailViewDetailItem label="Due date" icon="icon-calendar">
+            {{ formatDate(invoice.due_at) }}
+        </DetailViewDetailItem>
+        <DetailViewDetailItem label="Status">
+            <Badge :variant="statusVariant">{{ invoice.status }}</Badge>
+        </DetailViewDetailItem>
+    </div>
+</SheetContent>
+```
+
+## Components
+
+### DetailViewDetailHeader
+Tinted header block with title and optional badge row.
+- `title` (required) -- main heading text
+
+**Slots:**
+- `badges` -- badge row shown below the title (only rendered when slot is provided)
+
+### DetailViewDetailItem
+Labeled field row. Label above, value below with optional leading icon.
+- `label` (required) -- field label text
+- `icon` -- optional icon name (renders Icon with `aria-hidden="true"`)
+
+**Slots:**
+- default -- field value content (text, Badge, formatted number, etc.)
+
+## Accessibility
+- `DetailViewDetailHeader` renders an `<h1>` for the page title; use only one per page.
+- `DetailViewDetailItem` icon has `aria-hidden="true"` (decorative).
+- Label text provides visual context; pair with semantic markup in the default slot when needed.
+
+## Common Patterns
+
+Compact 3-column grid:
+```vue
+<div class="grid grid-cols-3 gap-4">
+    <DetailViewDetailItem label="Tax ID">XX.XXX.XXX/XXXX-XX</DetailViewDetailItem>
+    <DetailViewDetailItem label="Inscricao municipal">123456</DetailViewDetailItem>
+    <DetailViewDetailItem label="Founded">2010</DetailViewDetailItem>
+</div>
+```
+
+Using tabular numbers on monetary values:
+```vue
+<DetailViewDetailItem label="Balance" icon="icon-coins">
+    <span class="tabular-nums font-medium">
+        R$ {{ formatCurrency(account.balance) }}
+    </span>
+</DetailViewDetailItem>
+```
+
+## Don't
+- Don't use DetailViewDetailHeader `<h1>` inside cards or sections (use CardTitle instead)
+- Don't omit labels; they are required for accessibility
+- Don't mix DetailViewDetailItem with editable inputs in the same grid
+
+## Related
+- DescriptionList -- semantic `<dl>/<dt>/<dd>` key-value pairs
+- Card + CardHeader -- alternative section container
+- Sheet -- slide-out panel that often hosts a DetailView

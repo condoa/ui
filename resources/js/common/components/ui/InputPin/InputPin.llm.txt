@@ -1,0 +1,109 @@
+# InputPin
+
+PIN/OTP input with separate character boxes. Use for verification codes and PINs.
+
+## When to Use
+- OTP/verification codes
+- PIN entry
+- License key input
+- NOT for regular text (use Input)
+- NOT for passwords (use Input type="password")
+
+## Usage
+
+Basic 4-digit PIN:
+```vue
+<InputPin v-model="pin" />
+```
+
+6-digit OTP with separator:
+```vue
+<InputPin v-model="otp" :input-count="6" separator="-" />
+```
+
+Custom layout:
+```vue
+<InputPin v-model="code" :input-count="6">
+    <InputPinGroup class="gap-1">
+        <InputPinInput :index="0" />
+        <InputPinInput :index="1" />
+        <InputPinInput :index="2" />
+    </InputPinGroup>
+    <span class="text-muted-foreground">-</span>
+    <InputPinGroup class="gap-1">
+        <InputPinInput :index="3" />
+        <InputPinInput :index="4" />
+        <InputPinInput :index="5" />
+    </InputPinGroup>
+</InputPin>
+```
+
+## Components
+
+### InputPin
+Root component.
+- `v-model` - string value of all inputs combined
+- `inputCount` - number of input boxes (default: 4)
+- `separator` - character between inputs
+- `type` - "text" | "password" (masks input)
+- `placeholder` - placeholder for each input
+- `disabled` - disable all inputs
+- `ariaInvalid` - mark as invalid for accessibility
+- `class` - custom classes
+
+### InputPinInput
+Individual input box.
+- `index` - position in sequence (required for custom layouts)
+- Auto-focuses next input on entry
+
+### InputPinGroup
+Container for grouping inputs (for custom separators).
+
+## Accessibility
+- Tab navigates between inputs
+- Arrow keys move focus left/right
+- Backspace clears and moves back
+- Paste distributes characters across inputs
+- ARIA attributes for screen readers
+
+## Common Patterns
+
+Verification code:
+```vue
+<script setup>
+const code = ref('')
+const isValid = computed(() => code.value.length === 6)
+</script>
+
+<template>
+    <div class="space-y-4">
+        <Label>Verification Code</Label>
+        <InputPin v-model="code" :input-count="6" separator="-" />
+        <Button :disabled="!isValid" @click="verify">Verify</Button>
+    </div>
+</template>
+```
+
+With validation error:
+```vue
+<InputPin
+    v-model="pin"
+    :aria-invalid="hasError"
+    :class="{ 'border-destructive': hasError }"
+/>
+<p v-if="hasError" class="text-sm text-destructive">Invalid PIN</p>
+```
+
+Password/masked PIN:
+```vue
+<InputPin v-model="pin" type="password" placeholder="*" />
+```
+
+## Don't
+- Don't use for regular text input
+- Don't use for numeric-only without input masking
+- Don't forget to handle paste events (built-in)
+
+## Related
+- Input - regular text input
+- VeePinInput - with VeeValidate integration

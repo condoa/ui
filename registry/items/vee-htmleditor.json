@@ -1,0 +1,37 @@
+{
+  "name": "vee-htmleditor",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/HtmlEditor.vue",
+      "to": "components/ui/Vee/HtmlEditor.vue"
+    }
+  ],
+  "dependencies": [
+    "@tiptap/extension-link",
+    "@tiptap/extension-placeholder",
+    "@tiptap/extension-underline",
+    "@tiptap/starter-kit",
+    "@tiptap/vue-3",
+    "motion-v",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "form",
+    "label"
+  ],
+  "icons": [
+    "icon-bold",
+    "icon-heading",
+    "icon-italic",
+    "icon-link",
+    "icon-list",
+    "icon-list-ordered",
+    "icon-message-square",
+    "icon-minus",
+    "icon-underline"
+  ],
+  "doc": "resources/js/common/components/ui/Vee/HtmlEditor.llm.txt"
+}

@@ -1,0 +1,60 @@
+# CurrencyInput
+
+Masked money field built on `vue-currency-input`. Formats, groups, and parses currency as the user types. Defaults to BRL with pt-BR locale.
+
+## When to Use
+- Entering monetary amounts (fees, prices, balances)
+- Any value that should display a currency symbol and grouping
+- NOT for plain decimals without a currency (use DecimalInput)
+- NOT for integer steppers (use NumberInput)
+
+## Usage
+
+Basic:
+```vue
+<CurrencyInput ref="amountRef" v-model="amount" />
+```
+
+Custom currency or locale via options:
+```vue
+<CurrencyInput
+    v-model="price"
+    :options="{ currency: 'USD', locale: 'en-US' }"
+/>
+```
+
+## Props
+
+- `class` (ClassValue): extra classes for the inner input element
+- `id` (string): id of the input (defaults to a generated `currency-input-{id}`)
+- `name` (string): name of the input
+- `placeholder` (string): placeholder text
+- `disabled` (boolean): disable the input
+- `required` (boolean): mark the input required
+- `modelValue` (any): the bound numeric value
+- `options` (CurrencyInputOptions): config passed to `useCurrencyInput`, merged over the defaults below
+
+### Default options
+- `currency`: "BRL"
+- `locale`: "pt-BR"
+- `hideCurrencySymbolOnFocus`: false
+- `hideGroupingSeparatorOnFocus`: false
+
+See https://dm4t2.github.io/vue-currency-input/config.html for the full option list.
+
+## Exposed (via ref)
+
+- `inputRef`: the underlying input element ref
+- `formattedValue`: the displayed, formatted string
+- `numberValue`: the parsed numeric value
+- `setOptions(options)`: update the currency options at runtime
+- `setValue(value)`: set the value programmatically
+
+## Notes
+- `inheritAttrs` is false. Extra attributes you pass land on the inner `<input>`, not the wrapper.
+- The field is wrapped in InputControl, so it shares the standard border, focus ring, and disabled styling.
+
+## Related
+- DecimalInput: decimal entry without a currency mask
+- NumberInput: integer stepper
+- InputControl: the frame this component renders inside

@@ -1,0 +1,61 @@
+{
+  "name": "command",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Command/useCommand.ts",
+      "to": "components/ui/Command/useCommand.ts"
+    },
+    {
+      "from": "resources/js/common/components/ui/Command/Shortcut.vue",
+      "to": "components/ui/Command/Shortcut.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Command/Separator.vue",
+      "to": "components/ui/Command/Separator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Command/List.vue",
+      "to": "components/ui/Command/List.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Command/Item.vue",
+      "to": "components/ui/Command/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Command/Input.vue",
+      "to": "components/ui/Command/Input.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Command/Group.vue",
+      "to": "components/ui/Command/Group.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Command/Empty.vue",
+      "to": "components/ui/Command/Empty.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Command/Dialog.vue",
+      "to": "components/ui/Command/Dialog.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Command/Command.vue",
+      "to": "components/ui/Command/Command.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "dialog",
+    "separator"
+  ],
+  "icons": [
+    "icon-search"
+  ],
+  "doc": "resources/js/common/components/ui/Command/Command.llm.txt"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "vee-vueformslider",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Vee/VueFormSlider.vue",
+      "to": "components/ui/Vee/VueFormSlider.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueform/slider",
+    "reka-ui",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "label"
+  ],
+  "icons": [],
+  "doc": null
+}

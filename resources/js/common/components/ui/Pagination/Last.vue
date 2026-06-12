@@ -1,0 +1,29 @@
+<template>
+    <PaginationLast data-slot="pagination-last" aria-label="Go to the last page" v-bind="forwarded">
+        <slot>
+            <Button v-if="icon" :variant :size>
+                <Icon :name="icon"></Icon>
+            </Button>
+        </slot>
+    </PaginationLast>
+</template>
+
+<script lang="ts" setup>
+import { reactiveOmit } from '@vueuse/core'
+import Icon from '@/common/components/Icon.vue'
+import type { ButtonProps } from '../Button.variants'
+import { PaginationLast, type PaginationLastProps } from 'reka-ui'
+
+interface Props extends PaginationLastProps {
+    /** Icon to show */
+    icon?: string
+    /** The variant of the button */
+    variant?: ButtonProps['variant']
+    /** The size of the button */
+    size?: ButtonProps['size']
+}
+
+const props = withDefaults(defineProps<Props>(), { variant: 'ghost', size: 'icon-sm' })
+
+const forwarded = reactiveOmit(props, 'icon')
+</script>

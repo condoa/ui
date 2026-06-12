@@ -1,0 +1,17 @@
+{
+  "name": "datetimetooltip",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/DateTimeTooltip.vue",
+      "to": "components/ui/DateTimeTooltip.vue"
+    }
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "base",
+    "tooltip"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/DateTimeTooltip.llm.txt"
+}

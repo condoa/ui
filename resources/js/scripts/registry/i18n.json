@@ -1,0 +1,22 @@
+{
+    "address_map.hint": "Arraste o pin para ajustar a localização exata.",
+    "address_map.search_failed_description": "Não foi possível consultar o Google Maps. Tente novamente em instantes.",
+    "address_map.search_failed_title": "Falha na busca de endereço",
+    "address_map.search_placeholder": "Digite um endereço para buscar...",
+    "analytics.no_data": "Nenhum dado disponível.",
+    "datatable.no_results": "Nenhum resultado.",
+    "form.clear": "Limpar",
+    "form.day": "Dia",
+    "form.days": "Dias",
+    "form.download": "Baixar",
+    "form.last_7d": "Últimos 7D",
+    "form.link_copied": "Link copiado para a área de transferência.",
+    "form.phone_input.country_label": "País",
+    "form.phone_input.country_search_placeholder": "Buscar país...",
+    "form.phone_input.no_country_found": "Nenhum país encontrado.",
+    "form.select_date": "Selecionar data",
+    "form.select_date_time": "Selecionar data e hora",
+    "form.share_failed": "Falha ao gerar o link. Tente novamente.",
+    "form.this_month": "Este mês",
+    "form.today": "Hoje"
+}

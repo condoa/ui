@@ -1,0 +1,42 @@
+{
+  "name": "tagsinput",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/TagsInput/TagsInputInput.vue",
+      "to": "components/ui/TagsInput/TagsInputInput.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/TagsInput/TagsInput.vue",
+      "to": "components/ui/TagsInput/TagsInput.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/TagsInput/ItemText.vue",
+      "to": "components/ui/TagsInput/ItemText.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/TagsInput/ItemDelete.vue",
+      "to": "components/ui/TagsInput/ItemDelete.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/TagsInput/Item.vue",
+      "to": "components/ui/TagsInput/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/TagsInput/Clear.vue",
+      "to": "components/ui/TagsInput/Clear.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [
+    "icon-close"
+  ],
+  "doc": "resources/js/common/components/ui/TagsInput/TagsInput.llm.txt"
+}

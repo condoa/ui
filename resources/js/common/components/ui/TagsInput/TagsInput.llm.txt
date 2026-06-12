@@ -1,0 +1,140 @@
+# TagsInput
+
+Multi-value input with tag chips. Use for entering multiple items like tags, emails, or keywords.
+
+## When to Use
+- Multiple tag/keyword entry
+- Email recipient lists
+- Category assignments
+- NOT for single selection (use Select)
+- NOT for search with suggestions (use Combobox)
+
+## Usage
+
+Basic:
+```vue
+<TagsInput v-model="tags">
+    <TagsInputItem v-for="tag in tags" :key="tag" :value="tag">
+        <TagsInputItemText>{{ tag }}</TagsInputItemText>
+        <TagsInputItemDelete />
+    </TagsInputItem>
+    <TagsInputInput placeholder="Add tag..." />
+</TagsInput>
+```
+
+With suggestions:
+```vue
+<TagsInput v-model="tags">
+    <TagsInputItem v-for="tag in tags" :key="tag" :value="tag">
+        <TagsInputItemText>{{ tag }}</TagsInputItemText>
+        <TagsInputItemDelete />
+    </TagsInputItem>
+    <Combobox v-model="newTag" @update:model-value="addTag">
+        <ComboboxAnchor as-child>
+            <TagsInputInput as-child>
+                <ComboboxInput placeholder="Add tag..." />
+            </TagsInputInput>
+        </ComboboxAnchor>
+        <ComboboxContent>
+            <ComboboxItem v-for="s in suggestions" :key="s" :value="s">
+                {{ s }}
+            </ComboboxItem>
+        </ComboboxContent>
+    </Combobox>
+</TagsInput>
+```
+
+## Components
+
+### TagsInput
+Root container.
+- `v-model` - array of tag values
+- `addOnPaste` - add tags from pasted text (default: true)
+- `addOnBlur` - add tag on blur (default: false)
+- `addOnTab` - add tag on Tab (default: true)
+- `delimiter` - split character for paste
+- `duplicate` - allow duplicates (default: false)
+- `disabled` - disable input
+- `max` - maximum number of tags
+- `class` - custom classes
+
+### TagsInputItem
+Individual tag chip.
+- `value` - tag value (required)
+- `disabled` - disable this tag
+
+### TagsInputItemText
+Tag label text.
+
+### TagsInputItemDelete
+Remove button for tag.
+
+### TagsInputInput
+Text input for adding new tags.
+- `placeholder` - placeholder text
+
+### TagsInputClear
+Clear all tags button.
+
+## Accessibility
+- Backspace removes last tag
+- Arrow keys navigate between tags
+- Delete removes focused tag
+- Enter adds new tag
+
+## Common Patterns
+
+Email recipients:
+```vue
+<script setup>
+const recipients = ref<string[]>([])
+</script>
+
+<template>
+    <div class="space-y-2">
+        <Label>Recipients</Label>
+        <TagsInput v-model="recipients" add-on-blur>
+            <TagsInputItem v-for="email in recipients" :key="email" :value="email">
+                <TagsInputItemText>{{ email }}</TagsInputItemText>
+                <TagsInputItemDelete />
+            </TagsInputItem>
+            <TagsInputInput placeholder="Enter email..." />
+        </TagsInput>
+    </div>
+</template>
+```
+
+With max tags:
+```vue
+<TagsInput v-model="tags" :max="5">
+    <TagsInputItem v-for="tag in tags" :key="tag" :value="tag">
+        <TagsInputItemText>{{ tag }}</TagsInputItemText>
+        <TagsInputItemDelete />
+    </TagsInputItem>
+    <TagsInputInput v-if="tags.length < 5" placeholder="Add tag..." />
+</TagsInput>
+<p class="text-sm text-muted-foreground">{{ tags.length }}/5 tags</p>
+```
+
+With clear all:
+```vue
+<TagsInput v-model="tags">
+    <TagsInputItem v-for="tag in tags" :key="tag" :value="tag">
+        <TagsInputItemText>{{ tag }}</TagsInputItemText>
+        <TagsInputItemDelete />
+    </TagsInputItem>
+    <TagsInputInput placeholder="Add tag..." />
+    <TagsInputClear v-if="tags.length" />
+</TagsInput>
+```
+
+## Don't
+- Don't use for single values (use Select)
+- Don't allow duplicates unless intentional
+- Don't forget to validate input (e.g., email format)
+
+## Related
+- Combobox - searchable with suggestions
+- MultiSelect - select from predefined options
+- Badge - display-only tags
+- VeeTagsInput - with VeeValidate integration

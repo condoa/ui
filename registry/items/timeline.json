@@ -1,0 +1,53 @@
+{
+  "name": "timeline",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Timeline/useTimeline.ts",
+      "to": "components/ui/Timeline/useTimeline.ts"
+    },
+    {
+      "from": "resources/js/common/components/ui/Timeline/Title.vue",
+      "to": "components/ui/Timeline/Title.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Timeline/Timeline.vue",
+      "to": "components/ui/Timeline/Timeline.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Timeline/Separator.vue",
+      "to": "components/ui/Timeline/Separator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Timeline/Item.vue",
+      "to": "components/ui/Timeline/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Timeline/Indicator.vue",
+      "to": "components/ui/Timeline/Indicator.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Timeline/Header.vue",
+      "to": "components/ui/Timeline/Header.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Timeline/Date.vue",
+      "to": "components/ui/Timeline/Date.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Timeline/Content.vue",
+      "to": "components/ui/Timeline/Content.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Timeline/Timeline.llm.txt"
+}

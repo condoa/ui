@@ -1,0 +1,167 @@
+# Combobox
+
+Searchable select with type-ahead filtering. Use when users need to search through many options.
+
+## When to Use
+- Many options (10+) that need filtering
+- Autocomplete for known values
+- Searchable dropdown
+- NOT for few options (use Select)
+- NOT for free-form input (use Input with suggestions)
+
+## Usage
+
+Basic:
+```vue
+<Combobox v-model="selected">
+    <ComboboxAnchor>
+        <ComboboxInput placeholder="Search..." />
+    </ComboboxAnchor>
+    <ComboboxContent>
+        <ComboboxEmpty>No results found</ComboboxEmpty>
+        <ComboboxItem v-for="item in items" :key="item.value" :value="item.value">
+            {{ item.label }}
+        </ComboboxItem>
+    </ComboboxContent>
+</Combobox>
+```
+
+With filtering:
+```vue
+<script setup>
+const search = ref('')
+const filteredItems = computed(() =>
+    items.filter(item =>
+        item.label.toLowerCase().includes(search.value.toLowerCase())
+    )
+)
+</script>
+
+<template>
+    <Combobox v-model="selected" v-model:search-term="search">
+        <ComboboxAnchor>
+            <ComboboxInput placeholder="Search users..." />
+        </ComboboxAnchor>
+        <ComboboxContent>
+            <ComboboxEmpty>No users found</ComboboxEmpty>
+            <ComboboxItem v-for="item in filteredItems" :key="item.value" :value="item.value">
+                {{ item.label }}
+            </ComboboxItem>
+        </ComboboxContent>
+    </Combobox>
+</template>
+```
+
+## Components
+
+### Combobox
+Root component.
+- `v-model` - selected value
+- `v-model:searchTerm` - search input value
+- `open` (v-model:open) - dropdown open state
+- `multiple` - allow multiple selection
+- `disabled` - disable combobox
+- `openOnFocus` - open dropdown on focus (default: true)
+
+### ComboboxAnchor
+Wrapper for the input trigger.
+
+### ComboboxInput
+The search input field.
+- `placeholder` - placeholder text
+- `displayValue` - function to format displayed value
+
+### ComboboxTrigger
+Button to toggle dropdown.
+
+### ComboboxContent
+The dropdown panel.
+- `side` - dropdown position
+- `sideOffset` - offset from trigger
+
+### ComboboxEmpty
+Shown when no results match.
+
+### ComboboxItem
+Individual option.
+- `value` - option value (required)
+- `disabled` - disable option
+
+### ComboboxGroup / ComboboxLabel
+Group options with a label.
+
+## Accessibility
+- Type-ahead search
+- Arrow keys navigate options
+- Enter selects option
+- Escape closes dropdown
+- Full ARIA combobox implementation
+
+## Common Patterns
+
+User search:
+```vue
+<script setup>
+const search = ref('')
+const selectedUser = ref(null)
+
+const users = computed(() =>
+    allUsers.filter(u =>
+        u.name.toLowerCase().includes(search.value.toLowerCase()) ||
+        u.email.toLowerCase().includes(search.value.toLowerCase())
+    )
+)
+</script>
+
+<template>
+    <Combobox v-model="selectedUser" v-model:search-term="search">
+        <ComboboxAnchor class="w-full">
+            <ComboboxInput placeholder="Search users..." />
+            <ComboboxTrigger />
+        </ComboboxAnchor>
+        <ComboboxContent>
+            <ComboboxEmpty>No users found</ComboboxEmpty>
+            <ComboboxItem v-for="user in users" :key="user.id" :value="user.id">
+                <div class="flex items-center gap-2">
+                    <Avatar :src="user.avatar" :fallback="user.initials" class="size-6" />
+                    <div>
+                        <p>{{ user.name }}</p>
+                        <p class="text-xs text-muted-foreground">{{ user.email }}</p>
+                    </div>
+                </div>
+            </ComboboxItem>
+        </ComboboxContent>
+    </Combobox>
+</template>
+```
+
+Multiple selection:
+```vue
+<Combobox v-model="selectedTags" multiple>
+    <ComboboxAnchor>
+        <div class="flex flex-wrap gap-1">
+            <Badge v-for="tag in selectedTags" :key="tag">
+                {{ tag }}
+                <button @click="removeTag(tag)">×</button>
+            </Badge>
+            <ComboboxInput placeholder="Add tags..." />
+        </div>
+    </ComboboxAnchor>
+    <ComboboxContent>
+        <ComboboxItem v-for="tag in availableTags" :key="tag" :value="tag">
+            {{ tag }}
+        </ComboboxItem>
+    </ComboboxContent>
+</Combobox>
+```
+
+## Don't
+- Don't use for few options (use Select)
+- Don't use for free text (use Input)
+- Don't forget ComboboxEmpty for no results
+
+## Related
+- Select - for smaller option sets
+- MultiSelect - pre-built multi-select
+- TagsInput - for tag input
+- Command - command palette style

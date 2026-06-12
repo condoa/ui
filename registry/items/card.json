@@ -1,0 +1,51 @@
+{
+  "name": "card",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Card/Title.vue",
+      "to": "components/ui/Card/Title.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Card/Header.vue",
+      "to": "components/ui/Card/Header.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Card/FrameFooter.vue",
+      "to": "components/ui/Card/FrameFooter.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Card/Frame.vue",
+      "to": "components/ui/Card/Frame.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Card/Footer.vue",
+      "to": "components/ui/Card/Footer.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Card/Description.vue",
+      "to": "components/ui/Card/Description.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Card/Content.vue",
+      "to": "components/ui/Card/Content.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Card/Card.vue",
+      "to": "components/ui/Card/Card.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Card/Action.vue",
+      "to": "components/ui/Card/Action.vue"
+    }
+  ],
+  "dependencies": [
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Card/Card.llm.txt"
+}

@@ -1,0 +1,182 @@
+# Command
+
+Command palette / spotlight search interface. Use for quick navigation and actions.
+
+## When to Use
+- Global search (Cmd+K)
+- Quick navigation
+- Action palettes
+- NOT for form selection (use Select or Combobox)
+- NOT for menus (use DropdownMenu)
+
+## Usage
+
+Basic command palette:
+```vue
+<Command>
+    <CommandInput placeholder="Search..." />
+    <CommandList>
+        <CommandEmpty>No results found.</CommandEmpty>
+        <CommandGroup heading="Actions">
+            <CommandItem @select="createNew">
+                <Icon name="icon-plus" class="size-4 mr-2" />
+                Create new...
+            </CommandItem>
+            <CommandItem @select="openSettings">
+                <Icon name="icon-settings" class="size-4 mr-2" />
+                Settings
+            </CommandItem>
+        </CommandGroup>
+        <CommandSeparator />
+        <CommandGroup heading="Navigation">
+            <CommandItem @select="goToDashboard">Dashboard</CommandItem>
+            <CommandItem @select="goToUsers">Users</CommandItem>
+        </CommandGroup>
+    </CommandList>
+</Command>
+```
+
+In a dialog:
+```vue
+<Dialog v-model:open="open">
+    <DialogContent class="p-0">
+        <Command>
+            <CommandInput placeholder="Type a command or search..." />
+            <CommandList>
+                <CommandEmpty>No results found.</CommandEmpty>
+                <CommandGroup heading="Suggestions">
+                    <CommandItem v-for="item in suggestions" :key="item.id" @select="select(item)">
+                        {{ item.label }}
+                    </CommandItem>
+                </CommandGroup>
+            </CommandList>
+        </Command>
+    </DialogContent>
+</Dialog>
+```
+
+## Components
+
+### Command
+Root component with built-in filtering.
+- `v-model`: selected value
+- `class`: custom classes
+
+### CommandInput
+Search input.
+- `placeholder`: placeholder text
+
+### CommandList
+Scrollable list container.
+
+### CommandEmpty
+Shown when no items match search.
+
+### CommandGroup
+Group of related items.
+- `heading`: group label
+
+### CommandItem
+Individual action/option.
+- `value`: item value for filtering
+- `disabled`: disable item
+- `@select`: selection handler
+
+### CommandSeparator
+Visual divider between groups.
+
+### CommandShortcut
+Keyboard shortcut hint. Rendered as decorative (aria-hidden), not announced by screen readers.
+
+### CommandDialog
+A ready-made dialog wrapper that combines Dialog and Command. Use instead of manually composing Dialog + DialogContent + Command.
+- `title` (string): visually hidden dialog title. Default `"Command Palette"`.
+- `description` (string): visually hidden dialog description. Default `"Search for a command to run..."`.
+- `showCloseButton` (boolean): whether to show the close button. Default `true`.
+- All DialogRootProps (for example `open`, `onOpenChange`) are forwarded.
+
+```vue
+<CommandDialog v-model:open="open" title="Quick search" :show-close-button="false">
+    <CommandInput placeholder="Search..." />
+    <CommandList>
+        <CommandEmpty>No results found.</CommandEmpty>
+        <CommandGroup heading="Pages">
+            <CommandItem value="home" @select="navigate('home')">Home</CommandItem>
+        </CommandGroup>
+    </CommandList>
+</CommandDialog>
+```
+
+## Accessibility
+- Arrow keys navigate items
+- Enter selects item
+- Escape closes
+- Type-ahead filtering
+- Focus management
+
+## Common Patterns
+
+Global command palette (Cmd+K):
+```vue
+<script setup>
+const open = ref(false)
+
+onMounted(() => {
+    const handler = (e: KeyboardEvent) => {
+        if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+            e.preventDefault()
+            open.value = !open.value
+        }
+    }
+    document.addEventListener('keydown', handler)
+    onUnmounted(() => document.removeEventListener('keydown', handler))
+})
+</script>
+
+<template>
+    <Dialog v-model:open="open">
+        <DialogContent class="overflow-hidden p-0 shadow-lg">
+            <Command class="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium">
+                <CommandInput placeholder="Type a command or search..." />
+                <CommandList class="max-h-[300px]">
+                    <CommandEmpty>No results found.</CommandEmpty>
+                    <CommandGroup heading="Quick Actions">
+                        <CommandItem @select="() => { router.visit('/new'); open = false }">
+                            <Icon name="icon-plus" class="mr-2 size-4" />
+                            Create new
+                            <CommandShortcut>⌘N</CommandShortcut>
+                        </CommandItem>
+                    </CommandGroup>
+                    <CommandSeparator />
+                    <CommandGroup heading="Pages">
+                        <CommandItem v-for="page in pages" :key="page.href" @select="() => { router.visit(page.href); open = false }">
+                            <Icon :name="page.icon" class="mr-2 size-4" />
+                            {{ page.label }}
+                        </CommandItem>
+                    </CommandGroup>
+                </CommandList>
+            </Command>
+        </DialogContent>
+    </Dialog>
+</template>
+```
+
+With recent searches:
+```vue
+<CommandGroup v-if="recentSearches.length" heading="Recent">
+    <CommandItem v-for="search in recentSearches" :key="search" @select="() => doSearch(search)">
+        <Icon name="icon-clock" class="mr-2 size-4 text-muted-foreground" />
+        {{ search }}
+    </CommandItem>
+</CommandGroup>
+```
+
+## Don't
+- Don't use for form selection (use Combobox)
+- Don't put too many items (becomes overwhelming)
+- Don't forget keyboard shortcut to open
+
+## Related
+- Combobox: form selection with search
+- DropdownMenu: action menus
+- Dialog: modal container

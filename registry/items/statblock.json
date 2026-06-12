@@ -1,0 +1,19 @@
+{
+  "name": "statblock",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/StatBlock.vue",
+      "to": "components/ui/StatBlock.vue"
+    }
+  ],
+  "dependencies": [
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "badge",
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/StatBlock.llm.txt"
+}

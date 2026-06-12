@@ -1,0 +1,53 @@
+# Sonner
+
+Pre-styled toast region for the app, wrapping the `vue-sonner` Toaster with the design system tokens, icons, and stacking rules. Mount it once near the app root; trigger toasts from anywhere with `vue-sonner`'s `toast()` API.
+
+## When to Use
+- The single global toast outlet for an application (mount once)
+- NOT per-page; multiple Toasters fight over the same region
+
+## Usage
+
+Mount once at the root:
+```vue
+<Sonner />
+```
+
+Then trigger toasts from any component:
+```ts
+import { toast } from 'vue-sonner'
+
+toast.success('Saved')
+toast.error('Something went wrong')
+```
+
+Force a theme (otherwise it follows the document):
+```vue
+<Sonner theme="dark" />
+```
+
+## Props
+- `theme`: "light" | "dark" | "system". When omitted, the theme follows the `dark` class on the document element (the same signal a theme toggle sets on `<html>`), so toasts track light/dark automatically. Pass an explicit value to override.
+
+## Theme behavior
+- Without the `theme` prop, the component derives dark vs light from `document.documentElement.classList.contains('dark')` via a computed. There is no store dependency: toggle the `dark` class on `<html>` and the toast theme follows.
+- Pass `theme` to pin a value regardless of the document class.
+
+## Styling
+- Toast colors come from the popover/border CSS variables, so toasts match the surrounding surface.
+- Status icons (success, error, warning, info, loading) are wired to the Icon set. Success/error/warning/info tint the icon with the matching semantic color.
+- Toasts are placed below dialog and alert-dialog overlays so a modal backdrop sits in front of them.
+
+## Client-only caveat
+- The theme read touches `document`, and the underlying Toaster renders into a browser portal. It is meant to mount on the client; it produces no meaningful server-rendered output.
+
+## Accessibility
+- `vue-sonner` renders toasts in an ARIA live region and includes a close button. Keep toast titles short and meaningful.
+
+## Don't
+- Don't mount more than one Sonner; you get duplicate, competing toast regions.
+- Don't put long-form content in a toast; use a dialog or inline message.
+
+## Related
+- AlertDialog: blocking confirmation surface
+- Alert: inline, persistent status message

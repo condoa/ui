@@ -1,0 +1,55 @@
+# PdfViewer
+
+Framed PDF preview with a toolbar (download, open in new tab) over a native `<iframe>`. No PDF rendering library; it relies on the browser's built-in PDF viewer, so it only works client-side and only for sources the browser can render inline. Depends on the Button registry item.
+
+## When to Use
+- Previewing a generated or uploaded PDF inline (contracts, statements, termos)
+- Giving users a quick download or open-in-tab action over a document
+- NOT for thumbnails or page-by-page extraction (no per-page API)
+- NOT for non-PDF files
+
+## Usage
+```vue
+<template>
+    <PdfViewer
+        :src="document.url"
+        :download-url="document.download_url"
+        class="h-[80vh]"
+    />
+</template>
+```
+
+With custom title and extra actions:
+```vue
+<PdfViewer :src="invoice.pdf_url" class="h-[600px]">
+    <template #title>
+        <Icon name="icon-receipt" class="size-4 text-muted-foreground" />
+        <span class="text-sm font-medium">Boleto</span>
+    </template>
+    <template #actions>
+        <Button size="sm" variant="ghost" @click="print">Imprimir</Button>
+    </template>
+</PdfViewer>
+```
+
+## Props
+- `src`: PDF URL loaded into the iframe (required)
+- `downloadUrl`: explicit download href; when omitted the download button appends `download=1` to `src`
+- `class`: classes on the outer frame (set a height here; the iframe fills the frame)
+
+## Slots
+- `title`: replaces the default "PDF" label and file icon in the toolbar
+- `actions`: extra controls appended to the right of the built-in download/open buttons
+
+## Behavior
+- Shows a centered loading spinner until the iframe fires `load`
+- The open-in-tab button targets `src` with `target="_blank"`
+
+## Don't
+- Don't expect SSR; the iframe renders only in the browser
+- Don't assume inline rendering on every device; some mobile browsers force a download
+- Don't set the height on the iframe directly; size the wrapper via `class`
+
+## Related
+- Dropfile: upload the document this viewer previews
+- ImageLightbox: preview image attachments instead of PDFs

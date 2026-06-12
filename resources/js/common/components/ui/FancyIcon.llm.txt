@@ -1,0 +1,59 @@
+# FancyIcon
+
+Icon wrapped in a sized, styled container (rounded square or circle) with color and emphasis variants. Use for feature highlights, list leads, and stat tiles.
+
+## When to Use
+- Leading visual for a feature row, setting, or list item
+- Status or category badge with an icon
+- NOT for bare inline icons (use Icon directly)
+- NOT for clickable controls (use Button with an icon)
+
+## Usage
+
+Basic:
+```vue
+<FancyIcon icon="icon-bell" />
+```
+
+Variants:
+```vue
+<FancyIcon icon="icon-check" color="success" type="light" size="md" circle />
+```
+
+Custom content via slot (receives computed icon classes):
+```vue
+<FancyIcon color="info" type="dark" #default="{ styles }">
+    <Icon name="icon-star" :class="styles" />
+</FancyIcon>
+```
+
+## Props
+
+- `icon`: icon name to render (omit when using the default slot)
+- `color`: "primary" | "success" | "warning" | "error" | "info" (default: "primary")
+- `type`: "light" | "dark" | "modern" (default: "modern")
+- `size`: "sm" | "md" | "lg" | "xl" (default: "lg")
+- `circle`: round the container fully instead of `rounded-lg` (default: false)
+- `class`: custom classes for the container
+
+## Slots
+
+- `default`: replaces the inner icon. Slot prop `styles` is the computed icon class string (apply it to your own element for consistent sizing and color).
+
+## Variants
+- `modern` (default): bordered, neutral background, muted icon.
+- `light`: tinted soft background with a saturated icon color.
+- `dark`: solid colored background with a contrasting icon.
+
+## Accessibility
+- Renders meaningful iconography, so it is NOT `aria-hidden`. Pair with a visible label or accessible text where the icon carries meaning.
+- No animation; nothing to gate for reduced motion.
+
+## Don't
+- Don't use it as a button; wrap in Button for interactivity.
+- Don't mix `icon` and the default slot; the slot takes precedence.
+
+## Related
+- Icon: the raw icon primitive
+- Badge: text-first status indicator
+- StatBlock: metric tile that often pairs with a FancyIcon

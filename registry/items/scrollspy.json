@@ -1,0 +1,20 @@
+{
+  "name": "scrollspy",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Scrollspy.vue",
+      "to": "components/ui/Scrollspy.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "tailwind-variants",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Scrollspy.llm.txt"
+}

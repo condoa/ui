@@ -1,0 +1,26 @@
+{
+  "name": "fieldset",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Fieldset/index.ts",
+      "to": "components/ui/Fieldset/index.ts"
+    },
+    {
+      "from": "resources/js/common/components/ui/Fieldset/FieldsetLegend.vue",
+      "to": "components/ui/Fieldset/FieldsetLegend.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Fieldset/Fieldset.vue",
+      "to": "components/ui/Fieldset/Fieldset.vue"
+    }
+  ],
+  "dependencies": [
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Fieldset/Fieldset.llm.txt"
+}

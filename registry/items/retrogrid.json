@@ -1,0 +1,19 @@
+{
+  "name": "retrogrid",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/RetroGrid.vue",
+      "to": "components/ui/RetroGrid.vue"
+    }
+  ],
+  "dependencies": [
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/RetroGrid.llm.txt"
+}

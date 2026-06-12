@@ -1,0 +1,55 @@
+# Vee HtmlEditor
+
+VeeValidate-bound rich text editor built on Tiptap. Renders a small formatting toolbar over a contenteditable area and stores HTML. Registers a field via `useField`, so it participates in the surrounding VeeValidate form (validation, error display, value sync). Outputs HTML through both `v-model` and the field value. Depends on the Label and Form registry items, plus `@tiptap/vue-3`, `@tiptap/starter-kit`, and the underline, link, and placeholder Tiptap extensions.
+
+## When to Use
+- Editing formatted prose where the stored value should be HTML (announcements, rich descriptions)
+- A form field that needs bold, italic, underline, H2, lists, quote, link, and horizontal rule
+- NOT for Markdown storage (use Vee MarkdownEditor)
+- NOT for plain text (use Vee Textarea)
+
+## Usage
+```vue
+<HtmlEditor
+    name="body"
+    :label="__('announcements.body')"
+    :rules="bodyRules"
+    v-model="form.body"
+    :hint="__('announcements.body_hint')"
+    placeholder="Escreva aqui..."
+    required
+/>
+```
+
+## Props
+- `name`: VeeValidate field name (falls back to a generated id)
+- `id`: explicit field id (otherwise generated with `useId`)
+- `label`: label text shown above the editor
+- `modelValue`: bound HTML string
+- `rules`: VeeValidate rules for the field
+- `hint`: helper text shown below when there is no error
+- `placeholder`: empty-state placeholder inside the editor
+- `required`: shows a `*` next to the label
+
+## Events
+- `update:modelValue`: emits the current HTML on every edit
+
+## Slots
+- `hint`: replaces the default hint line; receives `{ errorMessage, value }`
+- `errorMessage`: replaces the default error line; receives `{ errorMessage, value }`
+
+## Behavior
+- The toolbar toggles bold, italic, underline, H2, bullet and ordered lists, blockquote, link (via a `window.prompt` URL), and horizontal rule; active marks are highlighted
+- Editing pushes HTML into both the VeeValidate field value and `update:modelValue`
+- External `modelValue` changes are written back into the editor only when they differ from its current HTML, avoiding cursor resets
+- The wrapper border turns destructive on error and shows a focus ring while the editor is focused
+
+## Don't
+- Don't expect SSR; Tiptap mounts a ProseMirror editor in the browser only
+- Don't place two `useField` wrappers under one form expecting both to bind; VeeValidate provides a single form context
+- Don't feed it Markdown; it neither parses nor emits Markdown
+
+## Related
+- Vee MarkdownEditor: same toolbar, stores Markdown instead of HTML
+- Label: the field label
+- Form: provides the shared hint and error styling

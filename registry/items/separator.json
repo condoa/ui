@@ -1,0 +1,20 @@
+{
+  "name": "separator",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Separator.vue",
+      "to": "components/ui/Separator.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Separator.llm.txt"
+}

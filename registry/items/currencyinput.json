@@ -1,0 +1,23 @@
+{
+  "name": "currencyinput",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/CurrencyInput.vue",
+      "to": "components/ui/CurrencyInput.vue"
+    }
+  ],
+  "dependencies": [
+    "@vueuse/core",
+    "defu",
+    "tailwind-variants",
+    "vue",
+    "vue-currency-input"
+  ],
+  "registryDependencies": [
+    "base",
+    "inputcontrol"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/CurrencyInput.llm.txt"
+}

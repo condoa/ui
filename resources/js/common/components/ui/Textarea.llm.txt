@@ -1,0 +1,111 @@
+# Textarea
+
+Multi-line text input. Use for longer text content like descriptions or messages.
+
+## When to Use
+- Multi-line text input
+- Descriptions, comments, messages
+- NOT for single-line input (use Input)
+- NOT for rich text (use HtmlEditor or MarkdownEditor)
+
+## Usage
+
+Basic:
+```vue
+<Textarea v-model="description" placeholder="Enter description..." :rows="4" />
+```
+
+With label:
+```vue
+<div class="space-y-2">
+    <Label for="notes">Notes</Label>
+    <Textarea id="notes" v-model="notes" placeholder="Add notes..." />
+</div>
+```
+
+With VeeValidate:
+```vue
+<VeeTextarea
+    name="description"
+    label="Description"
+    :rows="4"
+    placeholder="Enter description..."
+    hint="Minimum 50 characters"
+/>
+```
+
+## Props
+
+- `modelValue` (v-model): text content
+- `rows`: initial row count (default: auto-sizes)
+- `placeholder`: placeholder text
+- `disabled`: disable input
+- `required`: mark as required
+- `id`: element id
+- `name`: form field name
+- `maxlength`: max character count
+- `pattern`: regex pattern for filtering
+- `autofocus`: focus on mount
+- `unstyled`: remove wrapper styles
+- `class`: wrapper classes
+- `inputClass`: inner textarea classes
+
+## Emits
+
+- `update:modelValue`: content changed
+
+## Accessibility
+- Connect Label via id/for attributes
+- Use required prop for required fields
+- Error states should use aria-invalid
+
+## Common Patterns
+
+Character count:
+```vue
+<div class="space-y-2">
+    <Label for="bio">Bio</Label>
+    <Textarea id="bio" v-model="bio" :maxlength="500" />
+    <p class="text-xs text-muted-foreground text-right">
+        {{ bio.length }}/500
+    </p>
+</div>
+```
+
+Auto-growing height:
+```vue
+<!-- Textarea uses field-sizing: content by default -->
+<Textarea v-model="content" placeholder="Start typing..." />
+```
+
+With Inertia errors:
+```vue
+<div class="space-y-2">
+    <Label for="message">Message</Label>
+    <Textarea
+        id="message"
+        v-model="form.message"
+        :class="{ 'border-destructive': form.errors.message }"
+    />
+    <p v-if="form.errors.message" class="text-sm text-destructive">
+        {{ form.errors.message }}
+    </p>
+</div>
+```
+
+Disabled state:
+```vue
+<Textarea v-model="text" disabled class="opacity-50 cursor-not-allowed" />
+```
+
+## Don't
+- Don't use for single-line input (use Input)
+- Don't use without label (accessibility)
+- Don't use for rich text (use editors)
+- Don't set very small rows (let it auto-size)
+
+## Related
+- Input: single-line text
+- VeeTextarea: with VeeValidate integration
+- MarkdownEditor: markdown editing
+- HtmlEditor: rich text editing

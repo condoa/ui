@@ -1,0 +1,50 @@
+{
+  "name": "form",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Form/variants.ts",
+      "to": "components/ui/Form/variants.ts"
+    },
+    {
+      "from": "resources/js/common/components/ui/Form/useFormField.ts",
+      "to": "components/ui/Form/useFormField.ts"
+    },
+    {
+      "from": "resources/js/common/components/ui/Form/Message.vue",
+      "to": "components/ui/Form/Message.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Form/Label.vue",
+      "to": "components/ui/Form/Label.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Form/keys.ts",
+      "to": "components/ui/Form/keys.ts"
+    },
+    {
+      "from": "resources/js/common/components/ui/Form/Item.vue",
+      "to": "components/ui/Form/Item.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Form/Description.vue",
+      "to": "components/ui/Form/Description.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Form/Control.vue",
+      "to": "components/ui/Form/Control.vue"
+    }
+  ],
+  "dependencies": [
+    "reka-ui",
+    "tailwind-variants",
+    "vee-validate",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base",
+    "label"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Form/Form.llm.txt"
+}

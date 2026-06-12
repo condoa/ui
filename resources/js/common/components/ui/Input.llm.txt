@@ -1,0 +1,97 @@
+# Input
+
+Basic text input without VeeValidate integration. Use for simple inputs or when relying on server-side validation only.
+
+## When to Use
+- Simple forms with server-side validation
+- Search inputs
+- Inputs outside of VeeValidate form context
+- NOT for forms needing client-side validation (use VeeInput)
+
+## Usage
+
+Basic:
+```vue
+<Input v-model="search" placeholder="Search..." />
+```
+
+With label (manual):
+```vue
+<div>
+    <Label for="email">Email</Label>
+    <Input id="email" v-model="form.email" type="email" />
+</div>
+```
+
+With Inertia form errors:
+```vue
+<Input v-model="form.name" :class="{ 'border-destructive': form.errors.name }" />
+<p v-if="form.errors.name" class="text-sm text-destructive">{{ form.errors.name }}</p>
+```
+
+## Props
+
+- `modelValue` (v-model) - input value
+- `type` - input type (default: "text")
+- `placeholder` - placeholder text
+- `disabled` - disable input
+- `required` - mark as required
+- `id` - input id
+- `name` - input name
+- `size` - "sm" | "default" | "lg" (default: "default")
+- `autofocus` - focus on mount
+- `maxlength` - max character length
+- `pattern` - regex pattern for filtering characters
+- `sanitize` - custom sanitize function on input
+- `unstyled` - remove wrapper styles
+- `class` - wrapper classes
+- `inputClass` - inner input classes
+
+## Emits
+
+- `update:modelValue` - value changed
+
+## Exposed
+
+- `inputRef` - reference to the native input element
+
+## Accessibility
+- Connect Label via `for` attribute matching input `id`
+- Use `required` prop for required fields
+- Error states should use `aria-invalid="true"`
+
+## Common Patterns
+
+Search input:
+```vue
+<div class="relative">
+    <Icon name="icon-search" class="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+    <Input v-model="search" placeholder="Search..." class="pl-9" />
+</div>
+```
+
+Numeric input with pattern:
+```vue
+<Input v-model="phone" pattern="[0-9]" maxlength="11" placeholder="Phone number" />
+```
+
+With sanitize function:
+```vue
+<Input v-model="cpf" :sanitize="formatCpf" placeholder="000.000.000-00" />
+```
+
+Autofocus on mount:
+```vue
+<Input v-model="name" autofocus placeholder="Enter name" />
+```
+
+## Don't
+- Don't use without label (accessibility)
+- Don't use for forms needing client validation (use VeeInput)
+- Don't manually style error states when VeeInput handles it
+
+## Related
+- VeeInput - with VeeValidate integration
+- Textarea - multi-line text
+- CurrencyInput - formatted currency
+- InputControl - styled wrapper primitive

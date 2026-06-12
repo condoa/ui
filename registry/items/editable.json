@@ -1,0 +1,43 @@
+{
+  "name": "editable",
+  "type": "component",
+  "files": [
+    {
+      "from": "resources/js/common/components/ui/Editable/Submit.vue",
+      "to": "components/ui/Editable/Submit.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Editable/Preview.vue",
+      "to": "components/ui/Editable/Preview.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Editable/Input.vue",
+      "to": "components/ui/Editable/Input.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Editable/Editable.vue",
+      "to": "components/ui/Editable/Editable.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Editable/Edit.vue",
+      "to": "components/ui/Editable/Edit.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Editable/Cancel.vue",
+      "to": "components/ui/Editable/Cancel.vue"
+    },
+    {
+      "from": "resources/js/common/components/ui/Editable/Area.vue",
+      "to": "components/ui/Editable/Area.vue"
+    }
+  ],
+  "dependencies": [
+    "reka-ui",
+    "vue"
+  ],
+  "registryDependencies": [
+    "base"
+  ],
+  "icons": [],
+  "doc": "resources/js/common/components/ui/Editable/Editable.llm.txt"
+}

@@ -1,0 +1,93 @@
+# Label
+
+Form label component. Associates text with form inputs for accessibility.
+
+## When to Use
+- Label any form input
+- Always use with Input, Textarea, Select, etc.
+- NOT optional - required for accessibility
+
+## Usage
+
+Basic:
+```vue
+<Label for="email">Email</Label>
+<Input id="email" v-model="email" type="email" />
+```
+
+With hint:
+```vue
+<Label for="password" hint="Minimum 8 characters">Password</Label>
+<Input id="password" v-model="password" type="password" />
+```
+
+With slot hint:
+```vue
+<Label for="api-key">
+    API Key
+    <template #hint>
+        <Link href="/docs/api" class="text-primary">How to get one?</Link>
+    </template>
+</Label>
+<Input id="api-key" v-model="apiKey" />
+```
+
+## Props
+
+- `for` - ID of the associated input element
+- `hint` - hint text displayed after label
+- `class` - custom classes
+
+## Slots
+
+- `default` - label text
+- `hint` - custom hint content (replaces hint prop)
+
+## Accessibility
+- Always use `for` attribute matching input `id`
+- Screen readers announce label with input
+- Clicking label focuses associated input
+- Disabled input state reflected in label styling
+
+## Common Patterns
+
+With required indicator:
+```vue
+<Label for="name">
+    Name <span class="text-destructive">*</span>
+</Label>
+<Input id="name" v-model="name" required />
+```
+
+With character count hint:
+```vue
+<Label for="bio" :hint="`${bio.length}/500`">Bio</Label>
+<Textarea id="bio" v-model="bio" :maxlength="500" />
+```
+
+Inline with checkbox:
+```vue
+<div class="flex items-center gap-2">
+    <Checkbox id="terms" v-model="acceptTerms" />
+    <Label for="terms">I accept the terms and conditions</Label>
+</div>
+```
+
+With Switch:
+```vue
+<div class="flex items-center gap-3">
+    <Switch id="notifications" v-model="notifications" />
+    <Label for="notifications">Enable notifications</Label>
+</div>
+```
+
+## Don't
+- Don't skip labels (accessibility violation)
+- Don't use placeholder as label substitute
+- Don't forget `for` attribute
+
+## Related
+- VeeInput - includes built-in label
+- VeeTextarea - includes built-in label
+- Input - needs manual Label
+- Checkbox - can include label via slot
